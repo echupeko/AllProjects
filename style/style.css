@@ -111,30 +111,15 @@ header {
         display: none;
         overflow: hidden;
     }
-    .menu ul{
-        padding: 0;
-    }
-    .menu ul li {
-        list-style-type: none;
-        margin: 0px 5px 0px 5px;
-    }
 
-    .menu ul li a{
-        font-size: 10px;
-    }
 
     .logo {
-        width: 40px;
-        height: 25px;
         position: absolute;
         margin-right: 50px;
         left: 20px;
     }
 
-    .logo img {
-        width: 40px;
-        height: 25px;
-    }
+
 
     .searchBlock {
         position: absolute;
