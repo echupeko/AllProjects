@@ -107,6 +107,10 @@ header {
 }
 
 @media (max-device-width: 850px) {
+    .menu {
+        display: none;
+        overflow: hidden;
+    }
     .menu ul{
         padding: 0;
     }
