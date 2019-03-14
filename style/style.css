@@ -21,15 +21,15 @@ header {
 }
 
 .logo {
-    width: 80px;
-    height: 50px;
+
+    height: 70%;
     float: left;
     margin-right: 100px;
 }
 
 .logo img {
-    width: 80px;
-    height: 50px;
+    width: auto;
+    height: 100%;
 }
 
 .menu ul {
