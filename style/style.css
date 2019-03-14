@@ -106,23 +106,9 @@ header {
     color: #323232;
 }
 
-@media (max-device-width: 480px) {
+@media (max-width: 850px) {
     .menu {
         display: none;
         overflow: hidden;
-    }
-
-
-    .logo {
-        position: absolute;
-        margin-right: 50px;
-        left: 20px;
-    }
-
-
-
-    .searchBlock {
-        position: absolute;
-        right: 20px;
     }
 }
