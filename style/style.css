@@ -54,12 +54,12 @@ header {
 }
 
 .searchBlock {
-    margin-left: 50px;
+    position: relative;
     float: right;
 }
 
 .searchBlock form {
-    position: relative;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,7 +74,7 @@ header {
 }
 
 .searchBtn {
-    position: absolute;
+
     float: left;
     right: 10px;
     width: 18px;
