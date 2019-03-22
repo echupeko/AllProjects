@@ -145,7 +145,12 @@ header {
     }
 }
 
-@media (max-width: 550px) {
+@media only screen
+and (max-device-width: 550px){
+
+/*}*/
+
+/*@media (max-width: 550px) {*/
     .container {
         width: 100%;
         padding-left: 10px;
@@ -174,6 +179,7 @@ header {
         height: 40px;
         cursor: pointer;
     }
+
     .nav_toggle span {
         display: block;
         position: absolute;
@@ -183,6 +189,7 @@ header {
         height: 2px;
         background: #323232;
     }
+
     .nav_toggle span:before, .nav_toggle span:after {
         content: "";
         position: absolute;
@@ -192,9 +199,11 @@ header {
         height: 2px;
         background: #323232;
     }
+
     .nav_toggle span:before {
         top: -10px;
     }
+
     .nav_toggle span:after {
         bottom: -10px;
     }
