@@ -96,6 +96,7 @@ header {
     border: none;
     padding: 0;
     cursor: pointer;
+    outline: none;
 }
 
 .searchBtn div {
