@@ -1,3 +1,6 @@
+html {
+    color: #323232;
+}
 body {
     margin: 0;
     font-family: "Open Sans";
@@ -16,7 +19,6 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /*justify-content: center;*/
     margin: 0 auto;
 }
 
@@ -45,10 +47,6 @@ header {
 
 .menu ul li {
     list-style-type: none;
-}
-
-.menu ul li:hover {
-
 }
 
 .menu ul li a {
@@ -85,6 +83,7 @@ header {
     height: 40px;
     padding: 0px 10px 0px 10px;
     outline: none;
+    color: #323232;
 }
 
 .searchBtn {
