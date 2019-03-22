@@ -35,6 +35,8 @@ header {
     height: 40px;
 }
 
+
+
 .menu {
     margin-left: auto;
 }
@@ -139,8 +141,65 @@ header {
 @media (max-width: 650px) {
     .searchBox {
         display: none;
+        visibility: hidden;
     }
 }
+
+@media (max-width: 550px) {
+    .container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo {
+        float: none;
+        margin: 0 auto;
+    }
+
+    .menu {
+        display: none;
+        visibility: hidden;
+    }
+
+    .searchBlock {
+        display: none;
+        visibility: hidden;
+    }
+
+    .nav_toggle {
+        position: absolute;
+        float: right;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    .nav_toggle span {
+        display: block;
+        position: absolute;
+        top: 19px;
+        left: 8px;
+        right: 8px;
+        height: 2px;
+        background: #323232;
+    }
+    .nav_toggle span:before, .nav_toggle span:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: #323232;
+    }
+    .nav_toggle span:before {
+        top: -10px;
+    }
+    .nav_toggle span:after {
+        bottom: -10px;
+    }
+}
+
 
 /*@media (max-width: 850px) {
     .menu {
