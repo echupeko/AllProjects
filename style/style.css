@@ -145,8 +145,7 @@ header {
     }
 }
 
-@media only screen
-and (max-device-width: 550px){
+@media only screen and (min-device-width: 900px) and (max-device-width: 1080px){
 
 /*}*/
 
