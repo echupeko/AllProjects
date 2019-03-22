@@ -45,7 +45,10 @@ header {
 
 .menu ul li {
     list-style-type: none;
-    margin: 0px 10px 0px 10px;
+}
+
+.menu ul li:hover {
+
 }
 
 .menu ul li a {
@@ -53,7 +56,15 @@ header {
     font-weight: lighter;
     text-decoration: none;
     text-transform: uppercase;
+    padding: 6px 20px;
     color: #323232;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom-color 200ms ease;
+}
+
+.menu ul li a:hover {
+    border-bottom: 2px solid #bcbcbc;
+    color: #ff5b14;
 }
 
 .searchBlock {
@@ -61,7 +72,7 @@ header {
 }
 
 .searchBlock form {
-
+    position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -73,10 +84,11 @@ header {
     width: 170px;
     height: 40px;
     padding: 0px 10px 0px 10px;
+    outline: none;
 }
 
 .searchBtn {
-
+    position: absolute;
     float: left;
     right: 10px;
     width: 18px;
@@ -87,9 +99,15 @@ header {
     cursor: pointer;
 }
 
-.searchBtn img {
+.searchBtn div {
+    background-image: url("../source/search.png");
+    background-size: contain;
     width: 100%;
     height: 100%;
+}
+
+.searchBtn div:hover {
+    background-image: url("../source/search_hover.png");
 }
 
 .biografy {
