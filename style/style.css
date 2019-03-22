@@ -128,9 +128,16 @@ header {
     color: #323232;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 960px) {
     .container {
-        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media (max-width: 650px) {
+    .searchBox {
+        display: none;
     }
 }
 
