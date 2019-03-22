@@ -35,8 +35,6 @@ header {
     height: 40px;
 }
 
-
-
 .menu {
     margin-left: auto;
 }
@@ -112,23 +110,9 @@ header {
     background-image: url("../source/search_hover.png");
 }
 
-.biografy {
-    width: 70%;
-}
-
-.biografy h1 {
-    font-size: 20px;
-    font-weight: lighter;
-    text-decoration: none;
-    text-transform: uppercase;
-    color: #323232;
-}
-
-.biografy p {
-    font-size: 15px;
-    font-weight: lighter;
-    text-decoration: none;
-    color: #323232;
+.content {
+    width: 100%;
+    height: 500px;
 }
 
 @media (max-width: 960px) {
@@ -185,7 +169,7 @@ header {
         top: 19px;
         left: 8px;
         right: 8px;
-        height: 2px;
+        height: 3px;
         background: #323232;
     }
 
@@ -195,7 +179,7 @@ header {
         display: block;
         left: 0;
         width: 100%;
-        height: 2px;
+        height: 3px;
         background: #323232;
     }
 
@@ -207,23 +191,3 @@ header {
         bottom: -10px;
     }
 }
-
-
-/*@media (max-width: 850px) {
-    .menu {
-        display: none;
-        overflow: hidden;
-    }
-
-    .container {
-        align-items: left;
-        justify-items: left;
-    }
-
-    .logo {
-        left: 20px;
-    }
-    .searchBox {
-        display: none;
-    }
-}*/
