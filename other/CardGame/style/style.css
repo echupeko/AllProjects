@@ -1,0 +1,15 @@
+.mainBlock {
+    width: 70%;
+}
+
+.gamePlace {
+    display: flex;
+flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.gamePlace div{
+    width: 150px;
+    height: 250px;
+    background-color: darkgray;
+}
