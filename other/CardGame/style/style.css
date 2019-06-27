@@ -13,3 +13,8 @@ flex-wrap: wrap;
     height: 250px;
     background-color: darkgray;
 }
+
+#tableBlock img {
+    width: 150px;
+    height: 250px;
+}
