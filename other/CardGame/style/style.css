@@ -5,16 +5,10 @@
 .gamePlace {
     display: flex;
 flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
-.gamePlace div{
+#tableBlock img{
     width: 150px;
-    height: 250px;
-    background-color: darkgray;
-}
 
-#tableBlock img {
-    width: 150px;
-    height: 250px;
 }
