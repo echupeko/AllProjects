@@ -9,10 +9,10 @@ const listCard = [
     'S6', 'S7', 'S8', 'S9', 'S10', 'SJack', 'SQueen', 'SKing', 'SAce',
 ];
 
-startGame = () => {
-    count = prompt('Введите четное количество элементов', 12);
-    if (count % 2 > 0) {
-        alert('Введено нечетное число');
+// startGame = () => {
+    count = prompt('Введите четное количество элементов', 16);
+    if (count % 2 > 0 || count > listCard.length*2) {
+        alert('Введено нечетное число, либо число больше ' + listCard.length*2);
     }
     else {
         for (let i = 0; i < count /(count/4); i++) {
@@ -33,37 +33,30 @@ startGame = () => {
                 td.appendChild(img);
             }
         }
-        imgBlock = tableGame.querySelectorAll('img')
+        imgBlock = tableGame.querySelectorAll('img');
     }
-}
 
-startGame()
+
+// startGame()
 
 
 randomGetCard = () => {
-    let max = listCard.length;
-    let arr = getRandomArray(max, count/2);
-    let arr2 = getRandomArray(count, count)
+    let max = listCard.length; //количество карт
+    let arr = getRandomArray(max, count/2); //массив карт для вывода
+    let arr2 = getRandomArray(count, count); //массив положения карт
 
-    for (let i = 0; i < arr2.length/2; i++) {
+    for (let i = 0; i < arr2.length/2; i++) { //заполнение карт
         imgBlock[arr2[i]].src = 'resources/' + listCard[arr[i]] + '.png';
         imgBlock[arr2[i+arr2.length/2]].src = 'resources/' + listCard[arr[i]] + '.png';
     }
 
+    showAllCards(imgBlock);
+    flipAllCards(imgBlock);
 }
 
-function changeCardVisible(card) {
-    card.classList.toggle('hide');
-    card.parentElement.classList.toggle('flipBack');
-}
-
-function getRandomArray(max = 0, length = 0) {
+getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
     let parseMax = Number.parseInt(max.toString());
-
-    // if (Number.isNaN(parseLength) || Number.isNaN(parseMax)) return [];
-    // if (parseLength < 0 || parseMax < 0 || parseLength >= parseMax) return [];
-
     let current, array = [];
 
     while (array.length !== parseLength) {
@@ -75,3 +68,24 @@ function getRandomArray(max = 0, length = 0) {
     return array;
 }
 
+changeCardVisible = (card) => {
+    card.classList.toggle('hide');
+    card.parentElement.classList.toggle('flipBack');
+}
+
+showAllCards = (cardsList) => {
+    for (let i = 0; i < cardsList.length; i++) {
+        cardsList[i].classList.remove('hide');
+        cardsList[i].parentElement.classList.remove('collapse');
+        cardsList[i].parentElement.classList.toggle('flipBack');
+    }
+}
+
+flipAllCards = (cardsList, time = 5000) => {
+    setTimeout(() => {
+        for (let i = 0; i < cardsList.length; i++) {
+            changeCardVisible(cardsList[i]);
+        }
+        wait = false;
+    }, time);
+}

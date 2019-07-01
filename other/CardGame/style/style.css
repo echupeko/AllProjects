@@ -19,5 +19,29 @@
     transition: opacity 250ms 200ms ease, transform 300ms 300ms ease, visibility 400ms 400ms ease;
     box-shadow: black 0 1px 5px;
     cursor: pointer;
-    /*transform: rotateY(-180deg);*/
+    transform: rotateY(-180deg);
 }
+
+.card {
+    display: block;
+    opacity: 1;
+    border-radius: 8px;
+    height: 181px;
+    width: 128px;
+    box-shadow: black 0 1px 5px;
+    transition: opacity 200ms 300ms ease, transform 300ms 300ms ease;
+}
+
+#tableBlock .hide {
+    opacity: 0;
+}
+
+#tableBlock .flipBack {
+    transform: rotateY(0deg);
+}
+
+#tableBlock .collapse {
+    opacity: 0;
+    visibility: hidden;
+}
+
