@@ -1,6 +1,9 @@
+const menuGame = document.getElementById('menu');
+const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
+const inputCount = document.getElementById('countImage');
 let imgBlock;
-let count = 0;
+let count;
 
 const listCard = [
     'C6', 'C7', 'C8', 'C9', 'C10', 'CJack', 'CQueen', 'CKing', 'CAce',
@@ -9,36 +12,46 @@ const listCard = [
     'S6', 'S7', 'S8', 'S9', 'S10', 'SJack', 'SQueen', 'SKing', 'SAce',
 ];
 
-// startGame = () => {
-    count = prompt('Введите четное количество элементов', 16);
-    if (count % 2 > 0 || count > listCard.length*2) {
-        alert('Введено нечетное число, либо число больше ' + listCard.length*2);
-    }
+startGame = () => {
+
+    let countCard = listCard.length;
+    count = parseInt(inputCount.value);
+
+    if (count % 2 > 0 || count > countCard*2)
+        alert('Введено нечетное число, либо число больше ' + countCard*2);
     else {
-        for (let i = 0; i < count /(count/4); i++) {
-            let tr = document.createElement('tr');
-
-            tableGame.appendChild(tr);
-
-            tr.className = 'row';
-            tr = document.getElementsByClassName('row')[i];
-
-            for (let j = 0; j < count / 4; j++) {
-                let td = document.createElement('td');
-                let img = document.createElement('img');
-
-                tr.appendChild(td);
-                td.className = 'col';
-                td = tr.getElementsByClassName('col')[j];
-                td.appendChild(img);
-            }
-        }
+        addElementsCards(count);
         imgBlock = tableGame.querySelectorAll('img');
     }
+    menuGame.style.visibility = 'hidden';
+    mainBlock.style.visibility = 'visible';
+    randomGetCard();
+}
 
+addElementsCards = (count) => {
+    for (let i = 0; i < count /(count/4); i++) {
+        let tr = document.createElement('tr');
+        tr.className = 'row';
 
-// startGame()
+        createElements(tableGame,tr);
+        tr = document.getElementsByClassName('row')[i];
 
+        for (let j = 0; j < count / 4; j++) {
+            let td = document.createElement('td');
+            let img = document.createElement('img');
+            td.className = 'col';
+
+            createElements(tr,td);
+            td = tr.getElementsByClassName('col')[j];
+            createElements(td,img);
+        }
+    }
+}
+
+createElements = (parent, element) => {
+  parent.appendChild(element);
+  console.log('Добавлен ' + element + ' класса ' + element.className + ' в элемент ' + parent + ' класса ' + parent.className)
+}
 
 randomGetCard = () => {
     let max = listCard.length; //количество карт

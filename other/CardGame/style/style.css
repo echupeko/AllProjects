@@ -1,4 +1,11 @@
-.mainBlock {
+*{
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+#mainBlock {
+    visibility: hidden;
     width: 70%;
 }
 
