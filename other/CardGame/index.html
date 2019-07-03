@@ -7,18 +7,28 @@
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
-<div class="menu">
-    <div></div>
+<div id="menu">
+    <div>
+        <img src="resources/label.png">
+        <button onclick="startGame()">начать игру</button>
+        <div>
+            <h3>Введите количество карт</h3>
+            <p>*количество должно быть чётным</p>
+            <input id="countImage" type="number">
+            <input class="check" type="radio" name="chck" value="36" onchange="changeCheck()">36
+            <input class="check" type="radio" name="chck" value="54" onchange="changeCheck()">54
+        </div>
+    </div>
 </div>
-<div class="mainBlock">
-    <div class="hudBlock" onclick="randomGetCard()">
-        начать игру
+<div id="mainBlock">
+
+
+    <div class="hud">
+        <div id="newGame"  onclick="startGame()">начать заново</div>
+        <div id="scoreLabel">Счёт: <span id="score"></span></div>
     </div>
     <table id="tableBlock">
     </table>
-</div>
-<div class="menu">
-    <div></div>
 </div>
 <script type="text/javascript" src="script/script.js"></script>
 </body>
