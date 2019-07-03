@@ -2,6 +2,7 @@ const menuGame = document.getElementById('menu');
 const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('countImage');
+const checkElem = document.getElementsByName('chck');
 let imgBlock;
 let count;
 
@@ -13,12 +14,24 @@ const listCard = [
 ];
 
 function startGame() {
-
+    let check = getCheckedElem(checkElem);
     let countCard = listCard.length;
     count = parseInt(inputCount.value);
 
-    if (count % 2 > 0 || count > countCard * 2) {
-        alert('Введено нечетное число, либо число больше ' + countCard * 2);
+
+    if (!check) {
+        alert('Выберите число карт в колоде');
+        return false;
+    }
+
+    if (!inputCount.value) {
+        alert('Введите размерность поля');
+        return false;
+    }
+
+    if (count % 2 > 0 || count > parseInt(check.value) * 2) {
+
+        alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
         return false;
     }
     else {
@@ -80,6 +93,19 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
         }
     }
     return array;
+}
+
+changeCheck = () => {
+    let check = getCheckedElem(checkElem);
+    alert('Максимум карт: ' + parseInt(check.value) * 2);
+
+}
+
+getCheckedElem = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].checked)
+            return arr[i]
+    }
 }
 
 tableGame.onclick = (event) => {
