@@ -8,12 +8,21 @@
 </head>
 <body>
 <div id="menu">
-    <div onclick="startGame()">
-        начать игру
+    <div>
+        <img src="resources/label.png">
+        <button onclick="startGame()">начать игру</button>
+        <div>
+            <h3>Введите количество карт</h3>
+            <p>*количество должно быть чётным</p>
+            <input id="countImage" type="number">
+            <input class="check" type="radio" name="chck">36
+            <input class="check" type="radio" name="chck">54
+        </div>
     </div>
-    <input id="countImage" type="number">
 </div>
 <div id="mainBlock">
+
+
     <div class="hud">
         <div id="newGame">начать заново</div>
         <div id="scoreLabel">Счёт: <span id="score"></span></div>

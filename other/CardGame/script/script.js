@@ -12,19 +12,21 @@ const listCard = [
     'S6', 'S7', 'S8', 'S9', 'S10', 'SJack', 'SQueen', 'SKing', 'SAce',
 ];
 
-startGame = () => {
+function startGame () {
 
     let countCard = listCard.length;
     count = parseInt(inputCount.value);
 
-    if (count % 2 > 0 || count > countCard*2)
+    if (count % 2 > 0 || count > countCard*2){
         alert('Введено нечетное число, либо число больше ' + countCard*2);
+    return false;}
     else {
         addElementsCards(count);
         imgBlock = tableGame.querySelectorAll('img');
     }
-    menuGame.style.visibility = 'hidden';
-    mainBlock.style.visibility = 'visible';
+
+     menuGame.style.display = 'none';
+     mainBlock.style.display = 'flex';
     randomGetCard();
 }
 
