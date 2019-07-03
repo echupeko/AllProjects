@@ -106,7 +106,7 @@ showAllCards = (cardsList) => {
     }
 }
 
-flipAllCards = (cardsList, time = 500) => {
+flipAllCards = (cardsList, time = 5000) => {
     setTimeout(() => {
         for (let i = 0; i < cardsList.length; i++) {
             changeCardVisible(cardsList[i]);
