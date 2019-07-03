@@ -3,8 +3,9 @@ const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('countImage');
 const checkElem = document.getElementsByName('chck');
+let finalListCart;
 let imgBlock;
-let count;
+let cntPlace;
 
 const listCard = [
     'C6', 'C7', 'C8', 'C9', 'C10', 'CJack', 'CQueen', 'CKing', 'CAce',
@@ -13,73 +14,103 @@ const listCard = [
     'S6', 'S7', 'S8', 'S9', 'S10', 'SJack', 'SQueen', 'SKing', 'SAce',
 ];
 
-function startGame() {
-    let check = getCheckedElem(checkElem);
-    let countCard = listCard.length;
-    count = parseInt(inputCount.value);
+const listCardMore = [
+    'C2', 'C3', 'C4', 'C5',
+    'D2', 'D3', 'D4', 'D5',
+    'H2', 'H3', 'H4', 'H5',
+    'S2', 'S3', 'S4', 'S5',
+    'BlackJoker', 'RedJoker'
+];
 
+function startGame() {
+    let check = getCheckedElem(checkElem); //возвращает выбранный элемент
+    cntPlace = parseInt(inputCount.value); //размер поля
+
+    if (!cntPlace) {
+        alert('Введите размерность поля');
+        return false;
+    }
 
     if (!check) {
         alert('Выберите число карт в колоде');
         return false;
     }
 
-    if (!inputCount.value) {
-        alert('Введите размерность поля');
-        return false;
-    }
-
-    if (count % 2 > 0 || count > parseInt(check.value) * 2) {
-
+    if (cntPlace % 2 > 0 || cntPlace > parseInt(check.value) * 2) {
         alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
         return false;
     }
-    else {
-        addElementsCards(count);
-        imgBlock = tableGame.querySelectorAll('img');
-    }
-    menuGame.style.display = 'none';
+
+    addElementsCards(cntPlace);
+    imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
+
+    menuGame.style.display = 'none'; //уйдёт в отдельную функцию
     mainBlock.style.display = 'flex';
-    randomGetCard();
+
+    randomGetCard(); //получение массива случайных чисел без повторений
 }
 
-addElementsCards = (count) => {
-    for (let i = 0; i < count / (count / 4); i++) {
+getCheckedElem = (arr) => { //проверка выбранного элемента
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].checked)
+            return arr[i]
+    }
+};
+
+addElementsCards = (cnt) => { //создание структуры html игрального поля
+    for (let i = 0; i < cnt / (cnt / 4); i++) {
         let tr = document.createElement('tr');
         tr.className = 'row';
 
-        createElements(tableGame, tr);
+        createElements(tableGame, tr); //создание строки
         tr = document.getElementsByClassName('row')[i];
 
-        for (let j = 0; j < count / 4; j++) {
+        for (let j = 0; j < cnt / 4; j++) {
             let td = document.createElement('td');
             let img = document.createElement('img');
             td.className = 'col';
 
-            createElements(tr, td);
+            createElements(tr, td); //создание ячейки
             td = tr.getElementsByClassName('col')[j];
-            createElements(td, img);
+            createElements(td, img); //создание блока изображения внутри ячейки
         }
     }
-}
+};
 
-createElements = (parent, element) => {
+createElements = (parent, element) => { //созадние элемента
     parent.appendChild(element);
     console.log('Добавлен ' + element + ' класса ' + element.className + ' в элемент ' + parent + ' класса ' + parent.className)
-}
+};
 
 randomGetCard = () => {
-    let max = listCard.length; //количество карт
-    let arr = getRandomArray(max, count / 2); //массив карт для вывода
-    let arr2 = getRandomArray(count, count); //массив положения карт
+    let max = listCard.length; //количество карт в массиве
+    let arrObj = [];
 
-    for (let i = 0; i < arr2.length / 2; i++) { //заполнение карт
-        imgBlock[arr2[i]].src = 'resources/' + listCard[arr[i]] + '.png';
-        imgBlock[arr2[i + arr2.length / 2]].src = 'resources/' + listCard[arr[i]] + '.png';
+    let randomArr = getRandomArray(max, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
+    let arrPosition = getRandomArray(cntPlace, cntPlace); //массив положения карт
+
+    let cntArr = arrPosition.length;
+    for (let i = 0; i < cntArr / 2; i++) { //заполнение блоков изображений
+        let cardName = listCard[randomArr[i]];
+        arrObj.push({
+            id: arrPosition[i],
+            path: 'resources/' + cardName + '.png',
+            name: cardName
+        },{
+            id: arrPosition[i+ cntArr / 2],
+            path: 'resources/' + cardName + '.png',
+            name: cardName
+        })
     }
+
+    for (let i = 0; i < cntPlace; i++) {
+        let obj = arrObj[i];
+        imgBlock[obj.id].src = obj.path;
+    }
+
     showAllCards(imgBlock);
     flipAllCards(imgBlock);
-}
+};
 
 getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
@@ -93,25 +124,20 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
         }
     }
     return array;
-}
+};
 
 changeCheck = () => {
     let check = getCheckedElem(checkElem);
     alert('Максимум карт: ' + parseInt(check.value) * 2);
 
-}
+};
 
-getCheckedElem = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].checked)
-            return arr[i]
-    }
-}
+
 
 tableGame.onclick = (event) => {
     let target = event.target;
     flipCard(target); // переворот карты 2
-}
+};
 
 function flipCard(target) {
     changeCardVisible(target); // переворот карты
@@ -122,7 +148,7 @@ function flipCard(target) {
 changeCardVisible = (card) => {
     card.classList.toggle('hide');
     card.parentElement.classList.toggle('flipBack');
-}
+};
 
 showAllCards = (cardsList) => {
     for (let i = 0; i < cardsList.length; i++) {
@@ -130,7 +156,7 @@ showAllCards = (cardsList) => {
         cardsList[i].parentElement.classList.remove('collapse');
         cardsList[i].parentElement.classList.toggle('flipBack');
     }
-}
+};
 
 flipAllCards = (cardsList, time = 5000) => {
     setTimeout(() => {
@@ -139,4 +165,4 @@ flipAllCards = (cardsList, time = 5000) => {
         }
         wait = false;
     }, time);
-}
+};
