@@ -40,6 +40,16 @@ function startGame() {
         alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
         return false;
     }
+    let cnt = tableGame.childNodes.length;
+    if (cnt) {
+        for (let i = cnt-1; i >= 0; i--) {
+            let child = tableGame.childNodes[i];
+            tableGame.removeChild(child);
+        }
+        menuGame.style.display = 'flex'; //уйдёт в отдельную функцию
+        mainBlock.style.display = 'none';
+        return false;
+    }
 
     addElementsCards(cntPlace);
     imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
@@ -87,23 +97,17 @@ randomGetCard = () => {
     let arrObj = [];
 
     let randomArr = getRandomArray(max, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
+    let fullArray = randomArr.concat(randomArr.slice(0));
     let arrPosition = getRandomArray(cntPlace, cntPlace); //массив положения карт
 
     let cntArr = arrPosition.length;
-    for (let i = 0; i < cntArr / 2; i++) { //заполнение блоков изображений
-        let cardName = listCard[randomArr[i]];
+    for (let i = 0; i < cntArr; i++) { //заполнение блоков изображений
+        let cardName = listCard[fullArray[i]];
         arrObj.push({
             id: arrPosition[i],
             path: 'resources/' + cardName + '.png',
             name: cardName
-        },{
-            id: arrPosition[i+ cntArr / 2],
-            path: 'resources/' + cardName + '.png',
-            name: cardName
-        })
-    }
-
-    for (let i = 0; i < cntPlace; i++) {
+        });
         let obj = arrObj[i];
         imgBlock[obj.id].src = obj.path;
     }
@@ -128,11 +132,8 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
 
 changeCheck = () => {
     let check = getCheckedElem(checkElem);
-    alert('Максимум карт: ' + parseInt(check.value) * 2);
-
+    //alert('Максимум карт: ' + parseInt(check.value) * 2);
 };
-
-
 
 tableGame.onclick = (event) => {
     let target = event.target;
