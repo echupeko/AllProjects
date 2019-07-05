@@ -3,6 +3,7 @@ const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('countImage');
 const checkElem = document.getElementsByName('chck');
+const arrObj = []; //массив объектов
 let finalListCart;
 let imgBlock;
 let cntPlace;
@@ -93,22 +94,20 @@ createElements = (parent, element) => { //созадние элемента
 };
 
 randomGetCard = () => {
-    let max = listCard.length; //количество карт в массиве
-    let arrObj = [];
-
-    let randomArr = getRandomArray(max, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
-    let fullArray = randomArr.concat(randomArr.slice(0));
-    let arrPosition = getRandomArray(cntPlace, cntPlace); //массив положения карт
+    const randomArr = getRandomArray(listCard.length, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
+    const fullArray = randomArr.concat(randomArr.slice(0)); //итоговый массив
+    const arrPosition = getRandomArray(cntPlace, cntPlace); //массив положения карт
 
     let cntArr = arrPosition.length;
     for (let i = 0; i < cntArr; i++) { //заполнение блоков изображений
         let cardName = listCard[fullArray[i]];
-        arrObj.push({
+        let obj = {
             id: arrPosition[i],
+            clicked: false,
             path: 'resources/' + cardName + '.png',
             name: cardName
-        });
-        let obj = arrObj[i];
+        };
+        arrObj.push(obj);
         imgBlock[obj.id].src = obj.path;
     }
 
