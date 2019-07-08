@@ -103,12 +103,14 @@ randomGetCard = () => {
         let cardName = listCard[fullArray[i]];
         let obj = {
             id: arrPosition[i],
-            clicked: false,
+            img: imgBlock[this.id],
+            click: false,
             path: 'resources/' + cardName + '.png',
             name: cardName
         };
-        arrObj.push(obj);
         imgBlock[obj.id].src = obj.path;
+        arrObj.push(obj);
+
     }
 
     showAllCards(imgBlock);
