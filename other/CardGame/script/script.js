@@ -69,14 +69,14 @@ getCheckedElem = (arr) => { //проверка выбранного элемен
 };
 
 addElementsCards = (cnt) => { //создание структуры html игрального поля
-    for (let i = 0; i < cnt / (cnt / 4); i++) {
+    for (let i = 0; i < 3; i++) {
         let tr = document.createElement('tr');
         tr.className = 'row';
 
         createElements(tableGame, tr); //создание строки
         tr = document.getElementsByClassName('row')[i];
 
-        for (let j = 0; j < cnt / 4; j++) {
+        for (let j = 0; j < cnt / 3; j++) {
             let td = document.createElement('td');
             let img = document.createElement('img');
             td.className = 'col';
@@ -96,26 +96,28 @@ createElements = (parent, element) => { //созадние элемента
 randomGetCard = () => {
     const randomArr = getRandomArray(listCard.length, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
     const fullArray = randomArr.concat(randomArr.slice(0)); //итоговый массив
-    const arrPosition = getRandomArray(cntPlace, cntPlace); //массив положения карт
+    fullArray.sort(compareRandom);
 
-    let cntArr = arrPosition.length;
-    for (let i = 0; i < cntArr; i++) { //заполнение блоков изображений
-        let cardName = listCard[fullArray[i]];
-        let obj = {
-            id: arrPosition[i],
-            img: imgBlock[this.id],
+    for (let i = 0; i < fullArray.length; i++) { //заполнение блоков изображений
+        const cardName = listCard[fullArray[i]];
+        const obj = {
+            img: imgBlock[i],
             click: false,
             path: 'resources/' + cardName + '.png',
             name: cardName
         };
-        imgBlock[obj.id].src = obj.path;
+        obj.img.src = obj.path;
         arrObj.push(obj);
-
     }
-
     showAllCards(imgBlock);
     flipAllCards(imgBlock);
 };
+
+
+compareRandom = (a, b) => {
+    return Math.random() - 0.5;
+}
+
 
 getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
