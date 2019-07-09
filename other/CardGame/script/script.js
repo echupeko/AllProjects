@@ -4,9 +4,7 @@ const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('countImage');
 const checkElem = document.getElementsByName('chck');
 const arrObj = []; //массив объектов
-let finalListCart;
-let imgBlock;
-let cntPlace;
+let wait = true, finalListCard, imgBlock, cntPlace, changeCard, isFirstClick = true;
 
 const listCard = [
     'C6', 'C7', 'C8', 'C9', 'C10', 'CJack', 'CQueen', 'CKing', 'CAce',
@@ -43,7 +41,7 @@ function startGame() {
     }
     let cnt = tableGame.childNodes.length;
     if (cnt) {
-        for (let i = cnt-1; i >= 0; i--) {
+        for (let i = cnt - 1; i >= 0; i--) {
             let child = tableGame.childNodes[i];
             tableGame.removeChild(child);
         }
@@ -101,12 +99,14 @@ randomGetCard = () => {
     for (let i = 0; i < fullArray.length; i++) { //заполнение блоков изображений
         const cardName = listCard[fullArray[i]];
         const obj = {
+            id: i,
             img: imgBlock[i],
             click: false,
             path: 'resources/' + cardName + '.png',
             name: cardName
         };
         obj.img.src = obj.path;
+        obj.img.dataset.id = i;
         arrObj.push(obj);
     }
     showAllCards(imgBlock);
@@ -139,14 +139,32 @@ changeCheck = () => {
 };
 
 tableGame.onclick = (event) => {
-    let target = event.target;
-    flipCard(target); // переворот карты 2
+    if (!wait) {
+        let arr = arrObj.filter(obj => filterByID(obj, event.target));
+        const obj = arr[0]
+        if (isFirstClick)
+            flipCard(obj);
+        else if (changeCard.name === obj.name) {
+            flipCard(obj); // переворот карты 2
+            flipChangeCards(obj)
+        }
+    }
 };
 
-function flipCard(target) {
-    changeCardVisible(target); // переворот карты
-    target.dataset.tid = 'Card-flipped';
-    isFirstClicked = !isFirstClicked;
+function filterByID(obj, img) {
+    if (obj.id.toString() === img.dataset.id) {
+        return true;
+    }
+    return false;
+}
+
+
+function flipCard(obj) {
+    changeCardVisible(obj.img); // переворот карты
+    //obj.dataset.tid = 'Card-flipped';
+    obj.click = !obj.click;
+    isFirstClick = !isFirstClick;
+    changeCard = obj;
 }
 
 changeCardVisible = (card) => {
@@ -162,6 +180,13 @@ showAllCards = (cardsList) => {
     }
 };
 
+flipChangeCards = (card, time = 5000) => {
+    setTimeout(() => {
+            changeCardVisible(card);
+        wait = false;
+    }, time);
+}
+
 flipAllCards = (cardsList, time = 5000) => {
     setTimeout(() => {
         for (let i = 0; i < cardsList.length; i++) {
@@ -169,4 +194,5 @@ flipAllCards = (cardsList, time = 5000) => {
         }
         wait = false;
     }, time);
+
 };
