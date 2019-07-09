@@ -7,8 +7,11 @@
 }
 body {
     background: url("../resources/background.jpg");
+    display: flex;
+    justify-content: center;
 }
-#menu {
+#menuGame {
+    width: 100%;
     margin-top: 10%;
     text-align: center;
     display: flex;
@@ -16,21 +19,21 @@ body {
     align-content: center;
 }
 
-#menu > div {
+#menuGame > div {
     width: 20%;
     display: flex;
     flex-direction: column;
 }
 
-#menu p {
+#menuGame p {
     font-size: 10px;
 }
 
-#menu img {
+#menuGame img {
     width: 300px;
 }
 
-#countImage {
+#placeSize {
     border-left: 1px ;
     border-right: 1px;
     border-top:1px;
@@ -51,6 +54,9 @@ button {
 #mainBlock {
     display: none;
     width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
 }
 
 .gamePlace {

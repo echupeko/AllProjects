@@ -1,8 +1,8 @@
-const menuGame = document.getElementById('menu');
+const menuGame = document.getElementById('menuGame'); //
 const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
-const inputCount = document.getElementById('countImage');
-const checkElem = document.getElementsByName('chck');
+const inputCount = document.getElementById('placeSize');
+const arrCheck = document.getElementsByName('checkBox');
 const arrObj = []; //массив объектов
 let twainCard = []; //массив пары карт
 let wait = true, finalListCard, imgBlock, cntPlace, changeCard, isFirstClick = true;
@@ -23,7 +23,7 @@ const listCardMore = [
 ];
 
 function startGame() {
-    let check = getCheckedElem(checkElem); //возвращает выбранный элемент
+    let check = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
     cntPlace = parseInt(inputCount.value); //размер поля
 
     if (!cntPlace) {
@@ -40,12 +40,10 @@ function startGame() {
         alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
         return false;
     }
-    let cnt = tableGame.childNodes.length;
-    if (cnt) {
-        for (let i = cnt - 1; i >= 0; i--) {
-            let child = tableGame.childNodes[i];
-            tableGame.removeChild(child);
-        }
+    let cnt = tableGame.childNodes.length; //кол-во дочерних элементов
+    if (cnt) { //если не пустое
+        for (let i = cnt - 1; i >= 0; i--)
+            tableGame.removeChild(tableGame.childNodes[i]); //удаление всех дочерниъ элементов
         menuGame.style.display = 'flex'; //уйдёт в отдельную функцию
         mainBlock.style.display = 'none';
         return false;
@@ -53,7 +51,6 @@ function startGame() {
 
     addElementsCards(cntPlace);
     imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
-
     menuGame.style.display = 'none'; //уйдёт в отдельную функцию
     mainBlock.style.display = 'flex';
 
@@ -114,11 +111,9 @@ randomGetCard = () => {
     flipAllCards(imgBlock);
 };
 
-
 compareRandom = (a, b) => {
     return Math.random() - 0.5;
 }
-
 
 getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
@@ -135,7 +130,7 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
 };
 
 changeCheck = () => {
-    let check = getCheckedElem(checkElem);
+    let check = getCheckedElem(arrCheck);
     //alert('Максимум карт: ' + parseInt(check.value) * 2);
 };
 
@@ -150,6 +145,7 @@ tableGame.onclick = (event) => {
         else {
             twainCard.push(obj);
             flipCard(obj);
+            wait = false;
             if (twainCard[0].name === obj.name)
                 hideDoubleCards(twainCard)
             else {
@@ -178,7 +174,6 @@ hideDoubleCards = (arr) => {
         wait = false;
     }, 500);
 }
-
 
 function flipCard(obj) {
     changeCardVisible(obj.img); // переворот карты
