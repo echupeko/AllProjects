@@ -66,14 +66,14 @@ button {
 }
 
 
-#tableBlock td{
+#tableBlock div{
     margin-top: 25px;
     margin-right: 25px;
     border-radius: 8px;
     background: url('../resources/back.png') no-repeat;
     background-size: cover;
-    height: 151px;
-    width: 98px;
+    height: 181px;
+    width: 128px;
     opacity: 1;
     transition: opacity 250ms 200ms ease, transform 300ms 300ms ease, visibility 400ms 400ms ease;
     box-shadow: black 0 1px 5px;
@@ -84,8 +84,7 @@ button {
     display: block;
     opacity: 1;
     border-radius: 8px;
-    height: 181px;
-    width: 128px;
+    width: 100%;
     box-shadow: black 0 1px 5px;
     transition: opacity 200ms 300ms ease, transform 300ms 300ms ease;
 

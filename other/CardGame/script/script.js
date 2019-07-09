@@ -74,12 +74,15 @@ addElementsCards = (cnt) => { //создание структуры html игр�
 
         for (let j = 0; j < cnt / 3; j++) {
             let td = document.createElement('td');
+            let div = document.createElement('div');
             let img = document.createElement('img');
             td.className = 'col';
 
             createElements(tr, td); //создание ячейки
             td = tr.getElementsByClassName('col')[j];
-            createElements(td, img); //создание блока изображения внутри ячейки
+            createElements(td, div); //создание блока изображения внутри ячейки
+            div = td.querySelector('div');
+            createElements(div,img);
         }
     }
 };
