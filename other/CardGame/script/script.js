@@ -4,6 +4,7 @@ const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('countImage');
 const checkElem = document.getElementsByName('chck');
 const arrObj = []; //массив объектов
+let twainCard = []; //массив пары карт
 let wait = true, finalListCard, imgBlock, cntPlace, changeCard, isFirstClick = true;
 
 const listCard = [
@@ -141,12 +142,22 @@ changeCheck = () => {
 tableGame.onclick = (event) => {
     if (!wait) {
         let arr = arrObj.filter(obj => filterByID(obj, event.target));
-        const obj = arr[0]
-        if (isFirstClick)
+        const obj = arr[0];
+        if (isFirstClick) {
+            twainCard.push(obj);
             flipCard(obj);
-        else if (changeCard.name === obj.name) {
-            flipCard(obj); // переворот карты 2
-            flipChangeCards(obj)
+        }
+        else {
+            twainCard.push(obj);
+            flipCard(obj);
+            if (twainCard[0].name === obj.name)
+                hideDoubleCards(twainCard)
+            else {
+                twainCard.forEach(function (item) {
+                    flipChangeCards(item.img);
+                })
+            }
+            twainCard = [];
         }
     }
 };
@@ -156,6 +167,16 @@ function filterByID(obj, img) {
         return true;
     }
     return false;
+}
+
+hideDoubleCards = (arr) => {
+    setTimeout(() => {
+        arr.forEach(function (item) {
+            item.img.parentElement.classList.add('collapse');
+            item.img.parentElement.classList.toggle('flipBack');
+        });
+        wait = false;
+    }, 500);
 }
 
 
@@ -180,9 +201,9 @@ showAllCards = (cardsList) => {
     }
 };
 
-flipChangeCards = (card, time = 5000) => {
+flipChangeCards = (card, time = 1500) => {
     setTimeout(() => {
-            changeCardVisible(card);
+        changeCardVisible(card);
         wait = false;
     }, time);
 }
