@@ -1,11 +1,19 @@
+const body = document.querySelector('body');
 const menuGame = document.getElementById('menuGame'); //
 const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('placeSize');
 const arrCheck = document.getElementsByName('checkBox');
-const arrObj = []; //массив объектов
-let twainCard = []; //массив пары карт
-let wait = true, finalListCard, imgBlock, cntPlace, changeCard, isFirstClick = true;
+const paramGame = {
+    wait: true,
+    isFirstClick: true,
+    arrObj: [], //массив объектов
+    twainCard: [], //массив пары карт
+    finalListCard: [], //итоговый массив карт
+    imgBlock: [],
+    cntPlace: null,
+    changeCard: {}
+}
 
 const listCard = [
     'C6', 'C7', 'C8', 'C9', 'C10', 'CJack', 'CQueen', 'CKing', 'CAce',
@@ -22,11 +30,39 @@ const listCardMore = [
     'BlackJoker', 'RedJoker'
 ];
 
-function startGame() {
-    let check = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
-    cntPlace = parseInt(inputCount.value); //размер поля
+newGame = () => {
+    if (!paramGame.wait) {
+        for (let item in paramGame) {
+            if (paramGame.hasOwnProperty(item)) {
+                if (typeof paramGame[item] == 'object')
+                    paramGame[item] = {Object: {}, Array: []}[paramGame[item].__proto__.constructor.name];
+                else
+                    paramGame[item] = {string: '', number: 0, boolean: true}[typeof paramGame[item]]; //зануление глобальных переменных
+            }
+        }
 
-    if (!cntPlace) {
+        let cntImg = tableGame.childNodes.length;
+        if (cntImg) {
+            for (let i = cntImg - 1; i >= 0; i--) {
+                tableGame.removeChild(tableGame.childNodes[i]); //удаление всех дочерних элементов
+            }
+        }
+
+        for (let i = 0; i < arrCheck.length; i++) {
+            arrCheck[i].checked = false; //убираем выбор размерности колоды
+        }
+
+        inputCount.value = 0;
+        displayElement(menuGame.id);
+    }
+}
+
+function startGame() {
+    paramGame.arrObj = [];
+    let check = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
+    paramGame.cntPlace = parseInt(inputCount.value); //размер поля
+
+    if (!paramGame.cntPlace) {
         alert('Введите размерность поля');
         return false;
     }
@@ -36,25 +72,26 @@ function startGame() {
         return false;
     }
 
-    if (cntPlace % 2 > 0 || cntPlace > parseInt(check.value) * 2) {
+    if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(check.value) * 2) {
         alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
         return false;
     }
-    let cnt = tableGame.childNodes.length; //кол-во дочерних элементов
-    if (cnt) { //если не пустое
-        for (let i = cnt - 1; i >= 0; i--)
-            tableGame.removeChild(tableGame.childNodes[i]); //удаление всех дочерниъ элементов
-        menuGame.style.display = 'flex'; //уйдёт в отдельную функцию
-        mainBlock.style.display = 'none';
-        return false;
-    }
 
-    addElementsCards(cntPlace);
-    imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
-    menuGame.style.display = 'none'; //уйдёт в отдельную функцию
-    mainBlock.style.display = 'flex';
+    addElementsCards(paramGame.cntPlace);
+    paramGame.imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
 
     randomGetCard(); //получение массива случайных чисел без повторений
+    displayElement(mainBlock.id);
+}
+
+displayElement = (id) => {
+    let child = body.querySelectorAll('body > div');
+    child.forEach(function (item) {
+        if (item.id !== id)
+            item.style.display = 'none';
+        else
+            item.style.display = 'flex';
+    });
 }
 
 getCheckedElem = (arr) => { //проверка выбранного элемента
@@ -82,7 +119,7 @@ addElementsCards = (cnt) => { //создание структуры html игр�
             td = tr.getElementsByClassName('col')[j];
             createElements(td, div); //создание блока изображения внутри ячейки
             div = td.querySelector('div');
-            createElements(div,img);
+            createElements(div, img);
         }
     }
 };
@@ -93,7 +130,7 @@ createElements = (parent, element) => { //созадние элемента
 };
 
 randomGetCard = () => {
-    const randomArr = getRandomArray(listCard.length, cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
+    const randomArr = getRandomArray(listCard.length, paramGame.cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
     const fullArray = randomArr.concat(randomArr.slice(0)); //итоговый массив
     fullArray.sort(compareRandom);
 
@@ -101,17 +138,17 @@ randomGetCard = () => {
         const cardName = listCard[fullArray[i]];
         const obj = {
             id: i,
-            img: imgBlock[i],
+            img: paramGame.imgBlock[i],
             click: false,
             path: 'resources/' + cardName + '.png',
             name: cardName
         };
         obj.img.src = obj.path;
         obj.img.dataset.id = i;
-        arrObj.push(obj);
+        paramGame.arrObj.push(obj);
     }
-    showAllCards(imgBlock);
-    flipAllCards(imgBlock);
+    showAllCards(paramGame.imgBlock);
+    flipAllCards(paramGame.imgBlock);
 };
 
 compareRandom = (a, b) => {
@@ -138,25 +175,25 @@ changeCheck = () => {
 };
 
 tableGame.onclick = (event) => {
-    if (!wait) {
-        let arr = arrObj.filter(obj => filterByID(obj, event.target));
+    if (!paramGame.wait || paramGame.twainCard.length <= 2) {
+        let arr = paramGame.arrObj.filter(obj => filterByID(obj, event.target));
         const obj = arr[0];
-        if (isFirstClick) {
-            twainCard.push(obj);
+        if (paramGame.isFirstClick) {
+            paramGame.twainCard.push(obj);
             flipCard(obj);
         }
         else {
-            twainCard.push(obj);
+            paramGame.twainCard.push(obj);
             flipCard(obj);
-            wait = false;
-            if (twainCard[0].name === obj.name)
-                hideDoubleCards(twainCard)
+            paramGame.wait = true;
+            if (paramGame.twainCard[0].name === obj.name)
+                hideDoubleCards(paramGame.twainCard)
             else {
-                twainCard.forEach(function (item) {
+                paramGame.twainCard.forEach(function (item) {
                     flipChangeCards(item.img);
                 })
             }
-            twainCard = [];
+
         }
     }
 };
@@ -174,16 +211,16 @@ hideDoubleCards = (arr) => {
             item.img.parentElement.classList.add('collapse');
             item.img.parentElement.classList.toggle('flipBack');
         });
-        wait = false;
+        paramGame.wait = false;
+        paramGame.twainCard = [];
     }, 500);
 }
 
 function flipCard(obj) {
     changeCardVisible(obj.img); // переворот карты
-    //obj.dataset.tid = 'Card-flipped';
     obj.click = !obj.click;
-    isFirstClick = !isFirstClick;
-    changeCard = obj;
+    paramGame.isFirstClick = !paramGame.isFirstClick;
+    paramGame.changeCard = obj;
 }
 
 changeCardVisible = (card) => {
@@ -202,7 +239,8 @@ showAllCards = (cardsList) => {
 flipChangeCards = (card, time = 1500) => {
     setTimeout(() => {
         changeCardVisible(card);
-        wait = false;
+        paramGame.wait = false;
+        paramGame.twainCard = [];
     }, time);
 }
 
@@ -211,7 +249,7 @@ flipAllCards = (cardsList, time = 5000) => {
         for (let i = 0; i < cardsList.length; i++) {
             changeCardVisible(cardsList[i]);
         }
-        wait = false;
+        paramGame.wait = false;
     }, time);
 
 };
