@@ -4,6 +4,7 @@ const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('placeSize');
 const arrCheck = document.getElementsByName('checkBox');
+const msg = document.getElementById('message');
 const paramGame = {
     wait: true,
     isFirstClick: true,
@@ -12,7 +13,8 @@ const paramGame = {
     finalListCard: [], //итоговый массив карт
     imgBlock: [],
     cntPlace: null,
-    changeCard: {}
+    changeCard: {},
+    checkElem: {}
 }
 
 const listCard = [
@@ -53,29 +55,80 @@ newGame = () => {
         }
 
         inputCount.value = 0;
+        menuGame.querySelector('button').disabled = true;
         displayElement(menuGame.id);
     }
 }
 
-function startGame() {
+checkCountPlace = () => {
+    paramGame.cntPlace = parseInt(inputCount.value); //размер поля
+    setTimeout(()=>{
+        if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
+            outputMsg('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
+            return false;
+        }
+        blurInput();
+    },1000);
+}
+
+blurInput = () => {
+    let btn = menuGame.querySelector('button');
     paramGame.arrObj = [];
-    let check = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
+    paramGame.checkElem = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
     paramGame.cntPlace = parseInt(inputCount.value); //размер поля
 
     if (!paramGame.cntPlace) {
-        alert('Введите размерность поля');
+        outputMsg('Введите размерность поля')
+        btn.disabled = true;
         return false;
     }
 
-    if (!check) {
-        alert('Выберите число карт в колоде');
+    if (!paramGame.checkElem) {
+        outputMsg('Выберите число карт в колоде');
+        btn.disabled = true;
         return false;
     }
 
-    if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(check.value) * 2) {
-        alert('Введено нечетное число, либо число больше ' + parseInt(check.value) * 2);
+    if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
+        outputMsg('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
+        btn.disabled = true;
         return false;
     }
+
+    btn.disabled = false;
+}
+
+outputMsg = (text) => {
+    msg.classList.remove('hide');
+    msg.classList.add('visible');
+    msg.innerHTML = text;
+    setTimeout(() => {
+        msg.classList.remove('visible');
+        msg.classList.add('hide');
+    }, 3000);
+
+}
+
+function startGame() {
+    // paramGame.arrObj = [];
+    // paramGame.checkElem = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
+    // paramGame.cntPlace = parseInt(inputCount.value); //размер поля
+    //
+    // if (!paramGame.cntPlace) {
+    //     msg.innerHTML = 'Введите размерность поля';
+    //     //alert('Введите размерность поля');
+    //     return false;
+    // }
+    //
+    // if (!paramGame.checkElem) {
+    //     alert('Выберите число карт в колоде');
+    //     return false;
+    // }
+    //
+    // if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
+    //     alert('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
+    //     return false;
+    // }
 
     addElementsCards(paramGame.cntPlace);
     paramGame.imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
@@ -169,33 +222,30 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
     return array;
 };
 
-changeCheck = () => {
-    let check = getCheckedElem(arrCheck);
-    //alert('Максимум карт: ' + parseInt(check.value) * 2);
-};
-
 tableGame.onclick = (event) => {
-    if (!paramGame.wait || paramGame.twainCard.length <= 2) {
-        let arr = paramGame.arrObj.filter(obj => filterByID(obj, event.target));
-        const obj = arr[0];
-        if (paramGame.isFirstClick) {
-            paramGame.twainCard.push(obj);
-            flipCard(obj);
-        }
-        else {
-            paramGame.twainCard.push(obj);
-            flipCard(obj);
-            paramGame.wait = true;
-            if (paramGame.twainCard[0].name === obj.name)
-                hideDoubleCards(paramGame.twainCard)
-            else {
-                paramGame.twainCard.forEach(function (item) {
-                    flipChangeCards(item.img);
-                })
+    if (!paramGame.wait)
+        if (paramGame.twainCard.length < 2) {
+            let arr = paramGame.arrObj.filter(obj => filterByID(obj, event.target));
+            const obj = arr[0];
+            if (paramGame.isFirstClick) {
+                paramGame.twainCard.push(obj);
+                flipCard(obj);
             }
-
+            else {
+                if (paramGame.twainCard[0] !== obj) {
+                    paramGame.twainCard.push(obj);
+                    flipCard(obj);
+                    paramGame.wait = true;
+                    if (paramGame.twainCard[0].name === obj.name)
+                        hideDoubleCards(paramGame.twainCard)
+                    else {
+                        paramGame.twainCard.forEach(function (item) {
+                            flipChangeCards(item.img);
+                        })
+                    }
+                }
+            }
         }
-    }
 };
 
 function filterByID(obj, img) {

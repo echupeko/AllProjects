@@ -11,13 +11,14 @@
 <div id="menuGame">
     <div>
         <img src="resources/label.png">
-        <button onclick="startGame()">начать игру</button>
+        <button disabled="true" onclick="startGame()">начать игру</button>
         <div>
             <h3>Введите количество карт</h3>
             <p>*количество должно быть чётным</p>
-            <input id="placeSize" type="number">
-            <input type="radio" name="checkBox" value="36" onchange="changeCheck()">36
-            <input type="radio" name="checkBox" value="54" onchange="changeCheck()">54
+            <input id="placeSize" type="number"  onblur="blurInput()" onKeyUp="checkCountPlace()">
+            <input id="36" type="radio" name="checkBox" value="36" onblur="blurInput()" onclick="blurInput()">36
+            <input id="54" type="radio" name="checkBox" value="54" onblur="blurInput()" onclick="blurInput()">54
+            <p id="message"></p>
         </div>
     </div>
 </div>
