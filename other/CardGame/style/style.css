@@ -9,7 +9,9 @@ body {
     background: url("../resources/background.jpg");
     display: flex;
     justify-content: center;
+    margin: 0;
 }
+
 #menuGame {
     width: 100%;
     margin-top: 10%;
@@ -18,21 +20,17 @@ body {
     justify-content: center;
     align-content: center;
 }
-
 #menuGame > div {
     width: 20%;
     display: flex;
     flex-direction: column;
 }
-
 #menuGame p {
     font-size: 10px;
 }
-
 #menuGame img {
     width: 300px;
 }
-
 #message {
     color: #a3d381;
     font-weight: bold;
@@ -40,13 +38,11 @@ body {
     visibility: hidden;
     transition: opacity 300ms, visibility 200ms linear 100ms;
 }
-
 #menuGame .visible {
     opacity: 1;
     visibility: visible;
     transition-delay: 200ms;
 }
-
 #menuGame .hide{
     opacity: 0;
     visibility: hidden;
@@ -63,17 +59,14 @@ body {
     background:transparent;
     outline:none;
 }
-
 #placeSize::-webkit-outer-spin-button,
 #placeSize::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-
 #placeSize::-webkit-input-placeholder {
     transition: color 200ms;
     color: white;
 }
-
 #placeSize:focus::-webkit-input-placeholder {
     color: #81ab74;
 }
@@ -91,24 +84,19 @@ button {
     padding: 10px 20px;
     box-sizing: border-box;
     outline:none;
-
 }
-
 button:enabled:hover {
     background: linear-gradient(to top, white, #97dda1);
 }
-
 button:enabled:active {
     transition: transform, 300ms;
     transform: perspective(70px) rotateX(2deg) scaleX(0.99);
     background: linear-gradient(to bottom, white, #40dd69);
 }
-
 button:disabled {
     color: #cdd3c3;
     background: #1C7430;
 }
-
 button:enabled {
     transition: transform 300ms;
     transform: perspective(70px) rotateX(0) scaleX(1);
@@ -117,23 +105,24 @@ button:enabled {
 }
 
 #mainBlock {
+    margin-top: 25px;
     display: none;
     width: 70%;
     flex-direction: column;
     justify-content: center;
     align-content: center;
+    box-shadow: black 0 1px 5px;
 }
 
-.gamePlace {
+#tableBlock {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
 }
-
-
 #tableBlock div{
-    margin-top: 25px;
-    margin-right: 25px;
+    margin: 10px;
+    /*margin-top: 25px;*/
+    /*margin-right: 25px;*/
     border-radius: 8px;
     background: url('../resources/back.png') no-repeat;
     background-size: cover;
@@ -145,6 +134,9 @@ button:enabled {
     cursor: pointer;
     transform: rotateY(-180deg);
 }
+#tableBlock td:last-child div{
+    margin-right: 0;
+}
 #tableBlock img  {
     display: block;
     opacity: 1;
@@ -152,28 +144,110 @@ button:enabled {
     width: 100%;
     box-shadow: black 0 1px 5px;
     transition: opacity 200ms 300ms ease, transform 300ms 300ms ease;
-
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
 }
-
 #tableBlock div:hover {
     box-shadow: 0 0 25px black ;
 }
-
 #tableBlock .hide {
     opacity: 0;
 }
-
 #tableBlock .flipBack {
     transform: rotateY(0deg);
 }
-
 #tableBlock .collapse {
     opacity: 0;
     visibility: hidden;
 }
 
+.hud {
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+}
+.hud div:last-child {
+    width: 150px;
+    margin-left: auto;
+}
+
+#newGame {
+    padding: 5px;
+    top: 40px;
+    left: 14.9%;
+    position: absolute;
+    cursor: pointer;
+    background: #dd4140;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: -1px 2px 3px rgba(0,0,0,.3);
+}
+#newGame:before, #newGame:after {
+    content: "";
+    position: absolute;
+}
+#newGame:before {
+    width: 7px;
+    height: 100%;
+    top: 0;
+    left: -6.5px;
+    background: inherit;
+    padding: 0 0 7px;
+    border-radius: 5px 0 0 5px;
+}
+#newGame:after {
+    width: 5px;
+    height: 5px;
+    bottom: -5px;
+    left: -4.5px;
+    background: #ff7269;
+    border-radius: 5px 0 0 5px;
+}
+
+#scoreLabel {
+    text-transform: lowercase;
+    position: absolute;
+    top: 19px;
+    right: 19%;
+}
+#scoreLabel:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 53px solid transparent;
+    border-right: 53px solid transparent;
+    border-top: 10px solid #F8463F;
+}
+#scoreLabel span {
+    position: relative;
+    display: block;
+    text-align: center;
+    background: #F8463F;
+    font-size: 14px;
+    line-height: 1;
+    padding: 12px 8px 10px;
+    border-top-right-radius: 8px;
+    width: 90px;
+}
+#scoreLabel span:before, #scoreLabel span:after {
+    position: absolute;
+    content: "";
+}
+#scoreLabel span:before {
+    height: 6px;
+    width: 6px;
+    left: -6px;
+    top: 0;
+    background: #F8463F;
+}
+#scoreLabel span:after {
+    height: 6px;
+    width: 8px;
+    left: -8px;
+    top: 0;
+    border-radius: 8px 8px 0 0;
+    background: #C02031;
+}
