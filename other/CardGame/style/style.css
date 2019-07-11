@@ -222,6 +222,15 @@ button:enabled {
     border-radius: 5px 0 0 5px;
 }
 
+#stopWatch {
+    font-size: 18px;
+    background: transparent;
+    outline: 0;
+    border: 0;
+    position: relative;
+    left: 45%;
+}
+
 #scoreLabel {
     text-transform: lowercase;
     position: absolute;

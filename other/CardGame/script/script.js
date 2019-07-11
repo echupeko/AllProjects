@@ -1,4 +1,4 @@
-//Добавить таймер скрытия без нажиманий, секундомер игры, счёт и окно выигрыша/проигрыша,
+//Добавить секундомер игры, счёт и окно выигрыша/проигрыша,
 //выбор сложности, уменьшить картинки, и добавить 54 колоду
 //Лёгкий без проигрыша, нормальный с проигрышем(убывание счёта), сложный на время в зависимости от количества карт
 //вот мне конечно заняться нечем пишу всякую фигню. наверно
@@ -12,6 +12,7 @@ const arrCheck = document.getElementsByName('checkBox');
 const msg = document.getElementById('message');
 const score = document.getElementById('score');
 const paramGame = {
+    endGame: false,
     wait: true,
     isFirstClick: true,
     arrObj: [], //массив объектов
@@ -40,6 +41,10 @@ const listCardMore = [
 
 newGame = () => {
     if (!paramGame.wait) {
+        StartStop();
+        ClearСlock();
+        stopWatch.value = readout;
+
         for (let item in paramGame) {
             if (paramGame.hasOwnProperty(item)) {
                 if (typeof paramGame[item] == 'object')
@@ -60,21 +65,23 @@ newGame = () => {
             arrCheck[i].checked = false; //убираем выбор размерности колоды
         }
 
+        paramGame.endGame = false;
         inputCount.value = null;
         menuGame.querySelector('button').disabled = true;
         displayElement(menuGame.id);
+
     }
 }
 
 checkCountPlace = () => {
     paramGame.cntPlace = parseInt(inputCount.value); //размер поля
-    setTimeout(()=>{
+    setTimeout(() => {
         if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
             outputMsg('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
             return false;
         }
         blurInput();
-    },1000);
+    }, 1000);
 }
 
 blurInput = () => {
@@ -115,12 +122,13 @@ outputMsg = (text) => {
 
 }
 
-function startGame() {
+startGame = () => {
     addElementsCards(paramGame.cntPlace);
     paramGame.imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
-
     randomGetCard(); //получение массива случайных чисел без повторений
+
     displayElement(mainBlock.id);
+
 }
 
 displayElement = (id) => {
@@ -138,7 +146,7 @@ getCheckedElem = (arr) => { //проверка выбранного элемен
         if (arr[i].checked)
             return arr[i]
     }
-};
+}
 
 addElementsCards = (cnt) => { //создание структуры html игрального поля
     for (let i = 0; i < cnt; i++) {
@@ -149,32 +157,13 @@ addElementsCards = (cnt) => { //создание структуры html игр�
         createElements(tableGame, div); //создание блока изображения внутри ячейки
         div = tableGame.getElementsByClassName('cards')[i];
         createElements(div, img);
-
-        // let tr = document.createElement('tr');
-        // tr.className = 'row';
-        //
-        // createElements(tableGame, tr); //создание строки
-        // tr = document.getElementsByClassName('row')[i];
-        //
-        // for (let j = 0; j < cnt / 3; j++) {
-        //     let td = document.createElement('td');
-        //     let div = document.createElement('div');
-        //     let img = document.createElement('img');
-        //     td.className = 'col';
-        //
-        //     createElements(tr, td); //создание ячейки
-        //     td = tr.getElementsByClassName('col')[j];
-        //     createElements(td, div); //создание блока изображения внутри ячейки
-        //     div = td.querySelector('div');
-        //     createElements(div, img);
-        // }
     }
-};
+}
 
 createElements = (parent, element) => { //созадние элемента
     parent.appendChild(element);
     console.log('Добавлен ' + element + ' класса ' + element.className + ' в элемент ' + parent + ' класса ' + parent.className)
-};
+}
 
 randomGetCard = () => {
     const randomArr = getRandomArray(listCard.length, paramGame.cntPlace / 2); //массив карт для вывода размером с половину игрового поля cntPlace
@@ -196,11 +185,11 @@ randomGetCard = () => {
     }
     showAllCards(paramGame.imgBlock);
     flipAllCards(paramGame.imgBlock);
-};
+}
 
 compareRandom = (a, b) => {
     return Math.random() - 0.5;
-};
+}
 
 getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
@@ -214,11 +203,12 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
         }
     }
     return array;
-};
+}
 
 tableGame.onclick = (event) => {
     if (!paramGame.wait && event.target.localName === "img")
         if (paramGame.twainCard.length < 2) {
+            //checkClick();
             let arr = paramGame.arrObj.filter(obj => filterByID(obj, event.target));
             const obj = arr[0];
 
@@ -232,9 +222,14 @@ tableGame.onclick = (event) => {
                     flipCard(obj);
                     paramGame.wait = true;
 
-                    if (paramGame.twainCard[0].name === obj.name){
+                    if (paramGame.twainCard[0].name === obj.name) {
                         hideDoubleCards(paramGame.twainCard)
-                        score.innerText = "1000";
+                        if (tableGame.getElementsByClassName('collapse').length === paramGame.imgBlock.length - 2) {
+                            paramGame.endGame = !paramGame.endGame;
+                            score.innerText = readout;
+                            StartStop();
+                            return false;
+                        }
                     }
                     else {
                         paramGame.twainCard.forEach(function (item) {
@@ -244,7 +239,18 @@ tableGame.onclick = (event) => {
                 }
             }
         }
-};
+}
+
+/*checkClick = () => {
+    setTimeout(() => {
+        if (paramGame.twainCard.length < 2 && !paramGame.wait) {
+            flipCard(paramGame.twainCard[0]);
+            paramGame.wait = false;
+            paramGame.twainCard = [];
+            return false;
+        }
+    }, 10000);
+}*/
 
 function filterByID(obj, img) {
     if (obj.id.toString() === img.dataset.id) {
@@ -261,7 +267,7 @@ hideDoubleCards = (arr) => {
         });
         paramGame.wait = false;
         paramGame.twainCard = [];
-    }, 500);
+    }, 0);
 }
 
 function flipCard(obj) {
@@ -274,7 +280,7 @@ function flipCard(obj) {
 changeCardVisible = (card) => {
     card.classList.toggle('hide');
     card.parentElement.classList.toggle('flipBack');
-};
+}
 
 showAllCards = (cardsList) => {
     for (let i = 0; i < cardsList.length; i++) {
@@ -282,9 +288,9 @@ showAllCards = (cardsList) => {
         cardsList[i].parentElement.classList.remove('collapse');
         cardsList[i].parentElement.classList.toggle('flipBack');
     }
-};
+}
 
-flipChangeCards = (card, time = 1500) => {
+flipChangeCards = (card, time = 800) => {
     setTimeout(() => {
         changeCardVisible(card);
         paramGame.wait = false;
@@ -298,6 +304,7 @@ flipAllCards = (cardsList, time = 5000) => {
             changeCardVisible(cardsList[i]);
         }
         paramGame.wait = false;
+        StartStop();
     }, time);
 
-};
+}
