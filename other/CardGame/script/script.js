@@ -1,3 +1,7 @@
+//Добавить таймер скрытия без нажиманий, секундомер игры, счёт и окно выигрыша/проигрыша, выбор сложности
+//Лёгкий без проигрыша, нормальный с проигрышем(убывание счёта), сложный на время в зависимости от количества карт
+//вот мне конечно заняться нечем пишу всякую фигню. наверно
+
 const body = document.querySelector('body');
 const menuGame = document.getElementById('menuGame'); //
 const mainBlock = document.getElementById('mainBlock');
@@ -136,25 +140,33 @@ getCheckedElem = (arr) => { //проверка выбранного элемен
 };
 
 addElementsCards = (cnt) => { //создание структуры html игрального поля
-    for (let i = 0; i < 3; i++) {
-        let tr = document.createElement('tr');
-        tr.className = 'row';
+    for (let i = 0; i < cnt; i++) {
+        let div = document.createElement('div');
+        let img = document.createElement('img');
+        div.className = 'cards';
 
-        createElements(tableGame, tr); //создание строки
-        tr = document.getElementsByClassName('row')[i];
+        createElements(tableGame, div); //создание блока изображения внутри ячейки
+        div = tableGame.getElementsByClassName('cards')[i];
+        createElements(div, img);
 
-        for (let j = 0; j < cnt / 3; j++) {
-            let td = document.createElement('td');
-            let div = document.createElement('div');
-            let img = document.createElement('img');
-            td.className = 'col';
-
-            createElements(tr, td); //создание ячейки
-            td = tr.getElementsByClassName('col')[j];
-            createElements(td, div); //создание блока изображения внутри ячейки
-            div = td.querySelector('div');
-            createElements(div, img);
-        }
+        // let tr = document.createElement('tr');
+        // tr.className = 'row';
+        //
+        // createElements(tableGame, tr); //создание строки
+        // tr = document.getElementsByClassName('row')[i];
+        //
+        // for (let j = 0; j < cnt / 3; j++) {
+        //     let td = document.createElement('td');
+        //     let div = document.createElement('div');
+        //     let img = document.createElement('img');
+        //     td.className = 'col';
+        //
+        //     createElements(tr, td); //создание ячейки
+        //     td = tr.getElementsByClassName('col')[j];
+        //     createElements(td, div); //создание блока изображения внутри ячейки
+        //     div = td.querySelector('div');
+        //     createElements(div, img);
+        // }
     }
 };
 
@@ -187,7 +199,7 @@ randomGetCard = () => {
 
 compareRandom = (a, b) => {
     return Math.random() - 0.5;
-}
+};
 
 getRandomArray = (max = 0, length = 0) => { //получение рандомного массива
     let parseLength = Number.parseInt(length.toString());
