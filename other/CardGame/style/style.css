@@ -223,7 +223,8 @@ button:enabled {
 }
 #scoreLabel span {
     position: relative;
-    display: block;
+    display: flex;
+    flex-direction: row;
     text-align: center;
     background: #F8463F;
     font-size: 14px;
@@ -250,4 +251,7 @@ button:enabled {
     top: 0;
     border-radius: 8px 8px 0 0;
     background: #C02031;
+}
+#scoreLabel span p{
+    margin: 0;
 }

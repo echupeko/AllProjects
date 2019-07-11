@@ -5,6 +5,7 @@ const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('placeSize');
 const arrCheck = document.getElementsByName('checkBox');
 const msg = document.getElementById('message');
+const score = document.getElementById('score');
 const paramGame = {
     wait: true,
     isFirstClick: true,
@@ -218,8 +219,10 @@ tableGame.onclick = (event) => {
                     flipCard(obj);
                     paramGame.wait = true;
 
-                    if (paramGame.twainCard[0].name === obj.name)
+                    if (paramGame.twainCard[0].name === obj.name){
                         hideDoubleCards(paramGame.twainCard)
+                        score.innerText = "1000";
+                    }
                     else {
                         paramGame.twainCard.forEach(function (item) {
                             flipChangeCards(item.img);
