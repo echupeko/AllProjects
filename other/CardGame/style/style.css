@@ -1,6 +1,6 @@
 *{
     font-family: "Open Sans";
-    font-size: 13px;
+    font-size: 15px;
     font-weight: lighter;
     text-transform: uppercase;
     color: white;
@@ -34,22 +34,29 @@ body {
 }
 
 #message {
-    display: none;
     color: #a3d381;
     font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 300ms, visibility 200ms linear 100ms;
 }
 
 #menuGame .visible {
-    display: block;
-    transition: 400ms ;
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 200ms;
 }
 
 #menuGame .hide{
-    display: none;
-    transition: opacity 250ms 200ms ease, visibility 400ms 400ms ease;
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 200ms;
 }
 
 #placeSize {
+    margin-top: 15px;
+    text-transform: lowercase;
+    text-align: center;
     border-left: 1px ;
     border-right: 1px;
     border-top:1px;
@@ -62,6 +69,18 @@ body {
     -webkit-appearance: none;
 }
 
+#placeSize::-webkit-input-placeholder {
+    transition: color 200ms;
+    color: white;
+}
+
+#placeSize:focus::-webkit-input-placeholder {
+    color: #81ab74;
+}
+/*#placeSize::-ms-input-placeholder { color: white; }*/
+/*#placeSize::-ms-input-placeholder { color: white; }*/
+/*#placeSize::placeholder { color: white; }*/
+
 button {
     margin-top: 40px;
     display: inline-block;
@@ -72,6 +91,17 @@ button {
     padding: 10px 20px;
     box-sizing: border-box;
     outline:none;
+
+}
+
+button:enabled:hover {
+    background: linear-gradient(to top, white, #97dda1);
+}
+
+button:enabled:active {
+    transition: transform, 300ms;
+    transform: perspective(70px) rotateX(2deg) scaleX(0.99);
+    background: linear-gradient(to bottom, white, #40dd69);
 }
 
 button:disabled {
@@ -80,6 +110,8 @@ button:disabled {
 }
 
 button:enabled {
+    transition: transform 300ms;
+    transform: perspective(70px) rotateX(0) scaleX(1);
     color: #1C7430;
     background: #ececec;
 }

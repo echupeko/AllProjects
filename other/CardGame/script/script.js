@@ -54,7 +54,7 @@ newGame = () => {
             arrCheck[i].checked = false; //убираем выбор размерности колоды
         }
 
-        inputCount.value = 0;
+        inputCount.value = null;
         menuGame.querySelector('button').disabled = true;
         displayElement(menuGame.id);
     }
@@ -110,26 +110,6 @@ outputMsg = (text) => {
 }
 
 function startGame() {
-    // paramGame.arrObj = [];
-    // paramGame.checkElem = getCheckedElem(arrCheck); //возвращает выбранную размерность колоды
-    // paramGame.cntPlace = parseInt(inputCount.value); //размер поля
-    //
-    // if (!paramGame.cntPlace) {
-    //     msg.innerHTML = 'Введите размерность поля';
-    //     //alert('Введите размерность поля');
-    //     return false;
-    // }
-    //
-    // if (!paramGame.checkElem) {
-    //     alert('Выберите число карт в колоде');
-    //     return false;
-    // }
-    //
-    // if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
-    //     alert('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
-    //     return false;
-    // }
-
     addElementsCards(paramGame.cntPlace);
     paramGame.imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
 
@@ -223,10 +203,11 @@ getRandomArray = (max = 0, length = 0) => { //получение рандомн�
 };
 
 tableGame.onclick = (event) => {
-    if (!paramGame.wait)
+    if (!paramGame.wait && event.target.localName === "img")
         if (paramGame.twainCard.length < 2) {
             let arr = paramGame.arrObj.filter(obj => filterByID(obj, event.target));
             const obj = arr[0];
+
             if (paramGame.isFirstClick) {
                 paramGame.twainCard.push(obj);
                 flipCard(obj);
@@ -236,6 +217,7 @@ tableGame.onclick = (event) => {
                     paramGame.twainCard.push(obj);
                     flipCard(obj);
                     paramGame.wait = true;
+
                     if (paramGame.twainCard[0].name === obj.name)
                         hideDoubleCards(paramGame.twainCard)
                     else {
