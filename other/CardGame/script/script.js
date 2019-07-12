@@ -1,18 +1,8 @@
-//Добавить секундомер игры, счёт и окно выигрыша/проигрыша,
+//Добавить окно выигрыша/проигрыша,
 //выбор сложности, уменьшить картинки, и добавить 54 колоду
 //Лёгкий без проигрыша, нормальный с проигрышем(убывание счёта), сложный на время в зависимости от количества карт
 //вот мне конечно заняться нечем пишу всякую фигню. наверно
 
-const body = document.querySelector('body');
-const menuGame = document.getElementById('menuGame'); //
-const mainBlock = document.getElementById('mainBlock');
-const tableGame = document.getElementById('tableBlock');
-const inputCount = document.getElementById('placeSize');
-const arrCheck = document.getElementsByName('checkBox');
-const settingsDiv = document.getElementById('settings');
-const endGame = document.getElementById('endGame');
-const msg = document.getElementById('message');
-const scoreInput = document.getElementById('scoreInput');
 const paramGame = {
     endGame: false,
     wait: true,

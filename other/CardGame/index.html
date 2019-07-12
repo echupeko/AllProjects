@@ -7,9 +7,17 @@
     <!--<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 </head>
 <body>
-<div id="menuGame">
-    <div>
-        <div>
+<form id="loginForm">
+    <input id="loginInput" type="text" placeholder="login">
+    <input id="passInput" type="password" placeholder="password">
+    <input id="buttonSubmit" type="submit">
+</form>
+<div class="gameModule">
+    <div id="userProfile">
+        <div id="listMoveUser"></div>
+    </div>
+    <div id="menuGame">
+        <div class="headerMenu">
             <div id="labelImg"></div>
         </div>
         <div id="settings">
@@ -36,22 +44,22 @@
             <div id="loseGame"></div>
         </div>
     </div>
-</div>
-<div id="mainBlock">
-    <div class="hud">
-        <div>
-            <span id="newGameBtn" onclick="newGame()">начать заново</span>
-        </div>
-        <input id="stopWatch" size=10 value="00:00:00.00">
-        <div>
+    <div id="mainBlock">
+        <div class="hud">
+            <div>
+                <span id="newGameBtn" onclick="newGame()">начать заново</span>
+            </div>
+            <input id="stopWatch" size=10 value="00:00:00.00">
+            <div>
             <span id="scoreLabel">
                 <span><p>Счёт: </p><p id="scoreInput"></p></span>
             </span>
+            </div>
         </div>
+        <div id="tableBlock"></div>
     </div>
-    <div id="tableBlock"></div>
 </div>
-
+<script type="text/javascript" src="script/loadGame.js"></script>
 <script type="text/javascript" src="script/script.js"></script>
 <script type="text/javascript" src="script/stopWatch.js"></script>
 </body>
