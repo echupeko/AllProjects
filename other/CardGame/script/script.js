@@ -9,8 +9,10 @@ const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
 const inputCount = document.getElementById('placeSize');
 const arrCheck = document.getElementsByName('checkBox');
+const settingsDiv = document.getElementById('settings');
+const endGame = document.getElementById('endGame');
 const msg = document.getElementById('message');
-const score = document.getElementById('score');
+const scoreInput = document.getElementById('scoreInput');
 const paramGame = {
     endGame: false,
     wait: true,
@@ -19,6 +21,7 @@ const paramGame = {
     twainCard: [], //массив пары карт
     finalListCard: [], //итоговый массив карт
     imgBlock: [],
+    score: 0,
     cntPlace: null,
     changeCard: {},
     checkElem: {}
@@ -41,9 +44,12 @@ const listCardMore = [
 
 newGame = () => {
     if (!paramGame.wait) {
+        if (paramGame.endGame)
+            menuGame.querySelector('button').innerHTML = "ещё раз";
         StartStop();
         ClearСlock();
         stopWatch.value = readout;
+        scoreInput.innerText = "";
 
         for (let item in paramGame) {
             if (paramGame.hasOwnProperty(item)) {
@@ -223,15 +229,28 @@ tableGame.onclick = (event) => {
                     paramGame.wait = true;
 
                     if (paramGame.twainCard[0].name === obj.name) {
-                        hideDoubleCards(paramGame.twainCard)
+                        paramGame.score += 100;
+                        scoreInput.innerText = paramGame.score;
+                        hideDoubleCards(paramGame.twainCard);
                         if (tableGame.getElementsByClassName('collapse').length === paramGame.imgBlock.length - 2) {
+                            paramGame.wait = !paramGame.wait;
                             paramGame.endGame = !paramGame.endGame;
-                            score.innerText = readout;
                             StartStop();
+                            let messageScore = "ваш счёт: " + paramGame.score + " вы справились за: " + readout;
+                            endGame.querySelector('p').innerHTML = messageScore;
+                            endGame.style.display = 'flex';
+                            settingsDiv.style.display = 'none';
+                            setTimeout(() => {
+                                settingsDiv.style.display = 'block';
+                                endGame.style.display = 'none';
+                            }, 5000);
+                            newGame();
                             return false;
                         }
                     }
                     else {
+                        paramGame.score -= 30;
+                        scoreInput.innerText = paramGame.score;
                         paramGame.twainCard.forEach(function (item) {
                             flipChangeCards(item.img);
                         })

@@ -9,36 +9,49 @@
 <body>
 <div id="menuGame">
     <div>
-        <div id="labelImg"></div>
-        <button disabled="true" onclick="startGame()">начать игру</button>
         <div>
+            <div id="labelImg"></div>
+        </div>
+        <div id="settings">
+            <button disabled="true" onclick="startGame()">начать игру</button>
             <div>
-                <input id="placeSize" type="number" placeholder="Количество карт" onblur="blurInput()"
-                       onKeyUp="checkCountPlace()">
-                <p>*количество должно быть чётным</p>
+                <div>
+                    <input id="placeSize" type="number" placeholder="Количество карт" onblur="blurInput()"
+                           onKeyUp="checkCountPlace()">
+                    <p>*количество должно быть чётным</p>
+                </div>
+                <div>
+                    <input id="36" type="radio" name="checkBox" value="36" onblur="blurInput()" onclick="blurInput()">36
+                    <input id="54" type="radio" name="checkBox" value="54" onblur="blurInput()" onclick="blurInput()">54
+                </div>
+                <p id="message"></p>
             </div>
-            <div>
-                <input id="36" type="radio" name="checkBox" value="36" onblur="blurInput()" onclick="blurInput()">36
-                <input id="54" type="radio" name="checkBox" value="54" onblur="blurInput()" onclick="blurInput()">54
+        </div>
+        <div id="endGame">
+            <div id="winGame">
+                поздравляю
+                вы победили!!!
+                <p class="winner"></p>
             </div>
-            <p id="message"></p>
+            <div id="loseGame"></div>
         </div>
     </div>
 </div>
 <div id="mainBlock">
     <div class="hud">
         <div>
-            <span id="newGame" onclick="newGame()">начать заново</span>
+            <span id="newGameBtn" onclick="newGame()">начать заново</span>
         </div>
         <input id="stopWatch" size=10 value="00:00:00.00">
         <div>
             <span id="scoreLabel">
-                <span><p>Счёт: </p><p id="score"></p></span>
+                <span><p>Счёт: </p><p id="scoreInput"></p></span>
             </span>
         </div>
     </div>
     <div id="tableBlock"></div>
 </div>
+
 <script type="text/javascript" src="script/script.js"></script>
 <script type="text/javascript" src="script/stopWatch.js"></script>
 </body>
