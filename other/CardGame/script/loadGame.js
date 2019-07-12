@@ -17,10 +17,11 @@ body.onload = () => {
     loginForm.style.left = 'calc(50% - '+loginForm.clientWidth/2+'px)';
 }
 
-loginFormInputs.onclick = () => {
-    loginFormInputs.forEach(function (input) {
-        if(input.id === "")
-    })
-    if (log)
+logInUser = () => {
+
+}
+
+logOutUser = () => {
+
 }
 
