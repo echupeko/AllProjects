@@ -112,7 +112,7 @@
 
     /*--------Меню игры--------*/
     #labelImg {
-        width: 100%;
+        width: 500px;
         height: 0;
         background: url("../resources/label.png");
         background-size: cover;
