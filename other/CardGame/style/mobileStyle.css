@@ -1,4 +1,4 @@
-@media screen and (max-width: 650px) {
+
 
     * {
         font-family: "Open Sans";
@@ -33,8 +33,8 @@
     #loginForm {
         background-color: #fdfbff;
         position: fixed;
-        width: 250px;
-        height: 320px;
+        width: 90%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -421,4 +421,3 @@
         padding-top: 5px;
         margin: 0;
     }
-}
