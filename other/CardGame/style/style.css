@@ -1,17 +1,17 @@
-*{
+* {
     font-family: "Open Sans";
     font-size: 15px;
     font-weight: lighter;
     text-transform: uppercase;
     color: white;
 }
+
 body {
     background: url("../resources/background.jpg");
     display: flex;
     justify-content: center;
     margin: 0;
 }
-
 
 #loginModule {
     width: 100%;
@@ -38,29 +38,57 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
-#loginForm > span:after{
-    position: relative;
+#loginForm > span:before {
+    position: absolute;
+    content: "";
     width: 100%;
-    height: 25px;
+    height: 10px;
     background-color: #1C7430;
+    top: 0;
+    left: 0;
 }
 
-#loginForm p{
-color: black;
+#loginForm > span span:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 10px;
+    background-color: #1C7430;
+    top: -30px;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+#loginForm:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 30px;
+    background-color: #1C7430;
+    top: -30px;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+#loginForm p {
+    color: black;
     margin: 0;
 }
+
 #logout {
     display: none !important;
 }
+
 #loginForm div {
     display: flex;
     flex-direction: column;
 }
-#loginForm input{
+
+#loginForm input {
     min-height: 20px;
     color: #000;
     font-size: 12px;
@@ -68,7 +96,7 @@ color: black;
     margin: 10px;
 }
 
-#login p{
+#login p {
     margin-top: 5px;
     margin-left: 10px;
     font-size: 10px;
@@ -100,7 +128,6 @@ color: black;
     padding-top: 82%;
 }
 
-
 .winner {
     font-size: inherit !important;
     text-wrap: normal;
@@ -113,7 +140,7 @@ color: black;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 #menuGame > div {
@@ -128,18 +155,22 @@ color: black;
     font-weight: bold;
     flex-direction: column;
 }
+
 #menuGame p {
     font-size: 10px;
 }
+
 #menuGame img {
     width: 300px;
 }
+
 #menuGame .visible {
     opacity: 1;
     visibility: visible;
     transition-delay: 200ms;
 }
-#menuGame .hide{
+
+#menuGame .hide {
     opacity: 0;
     visibility: hidden;
     transition-delay: 200ms;
@@ -157,23 +188,27 @@ color: black;
     margin-top: 15px;
     text-transform: lowercase;
     text-align: center;
-    border-left: 1px ;
+    border-left: 1px;
     border-right: 1px;
-    border-top:1px;
-    background:transparent;
-    outline:none;
+    border-top: 1px;
+    background: transparent;
+    outline: none;
 }
+
 #placeSize::-webkit-outer-spin-button,
 #placeSize::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
+
 #placeSize::-webkit-input-placeholder {
     transition: color 200ms;
     color: white;
 }
+
 #placeSize:focus::-webkit-input-placeholder {
     color: #81ab74;
 }
+
 /*#placeSize::-ms-input-placeholder { color: white; }*/
 /*#placeSize::-ms-input-placeholder { color: white; }*/
 /*#placeSize::placeholder { color: white; }*/
@@ -187,20 +222,24 @@ button {
     border-radius: 4px;
     padding: 10px 20px;
     box-sizing: border-box;
-    outline:none;
+    outline: none;
 }
+
 button:enabled:hover {
     background: linear-gradient(to top, white, #97dda1);
 }
+
 button:enabled:active {
     transition: transform, 300ms;
     transform: perspective(70px) rotateX(2deg) scaleX(0.99);
     background: linear-gradient(to bottom, white, #40dd69);
 }
+
 button:disabled {
     color: #cdd3c3;
     background: #1C7430;
 }
+
 button:enabled {
     transition: transform 300ms;
     transform: perspective(70px) rotateX(0) scaleX(1);
@@ -223,7 +262,8 @@ button:enabled {
     flex-wrap: wrap;
     justify-content: center;
 }
-#tableBlock div{
+
+#tableBlock div {
     margin: 10px;
     /*margin-top: 25px;*/
     /*margin-right: 25px;*/
@@ -238,10 +278,12 @@ button:enabled {
     cursor: pointer;
     transform: rotateY(-180deg);
 }
-#tableBlock td:last-child div{
+
+#tableBlock td:last-child div {
     margin-right: 0;
 }
-#tableBlock img  {
+
+#tableBlock img {
     display: block;
     opacity: 1;
     border-radius: 8px;
@@ -254,15 +296,19 @@ button:enabled {
     -o-user-drag: none;
     user-drag: none;
 }
+
 #tableBlock div:hover {
-    box-shadow: 0 0 25px black ;
+    box-shadow: 0 0 25px black;
 }
+
 #tableBlock .hide {
     opacity: 0;
 }
+
 #tableBlock .flipBack {
     transform: rotateY(0deg);
 }
+
 #tableBlock .collapse {
     opacity: 0;
     visibility: hidden;
@@ -273,6 +319,7 @@ button:enabled {
     display: flex;
     flex-direction: row;
 }
+
 .hud div:last-child {
     width: 150px;
     margin-left: auto;
@@ -286,16 +333,19 @@ button:enabled {
     cursor: pointer;
     background: #dd4140;
     border-radius: 0px 5px 5px 0px;
-    box-shadow: -1px 2px 3px rgba(0,0,0,.3);
+    box-shadow: -1px 2px 3px rgba(0, 0, 0, .3);
 }
+
 #newGameBtn:active {
     transition: transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    transform:  perspective(70px) rotateY(2deg) scaleY(0.98) translateX(1px);
+    transform: perspective(70px) rotateY(2deg) scaleY(0.98) translateX(1px);
 }
+
 #newGameBtn:before, #newGameBtn:after {
     content: "";
     position: absolute;
 }
+
 #newGameBtn:before {
     width: 7px;
     height: 100%;
@@ -305,6 +355,7 @@ button:enabled {
     padding: 0 0 7px;
     border-radius: 5px 0 0 5px;
 }
+
 #newGameBtn:after {
     width: 5px;
     height: 5px;
@@ -329,6 +380,7 @@ button:enabled {
     top: 19px;
     right: 19%;
 }
+
 #scoreLabel:after {
     position: absolute;
     content: "";
@@ -338,6 +390,7 @@ button:enabled {
     border-right: 53px solid transparent;
     border-top: 10px solid #F8463F;
 }
+
 #scoreLabel span {
     position: relative;
     display: flex;
@@ -350,10 +403,12 @@ button:enabled {
     border-top-right-radius: 8px;
     width: 90px;
 }
+
 #scoreLabel span:before, #scoreLabel span:after {
     position: absolute;
     content: "";
 }
+
 #scoreLabel span:before {
     height: 6px;
     width: 6px;
@@ -361,6 +416,7 @@ button:enabled {
     top: 0;
     background: #F8463F;
 }
+
 #scoreLabel span:after {
     height: 6px;
     width: 8px;
@@ -369,7 +425,8 @@ button:enabled {
     border-radius: 8px 8px 0 0;
     background: #C02031;
 }
-#scoreLabel p{
+
+#scoreLabel p {
     padding-top: 5px;
     margin: 0;
 }

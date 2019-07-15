@@ -35,7 +35,7 @@ const listCardMore = [
 newGame = () => {
     if (!paramGame.wait) {
         if (paramGame.endGame)
-            menuGame.querySelector('button').innerHTML = "ещё раз";
+            menuGame.querySelector('button').innerHTML = "ещё раз";//
         StartStop();
         ClearСlock();
         stopWatch.value = readout;
@@ -64,7 +64,7 @@ newGame = () => {
         paramGame.endGame = false;
         inputCount.value = null;
         menuGame.querySelector('button').disabled = true;
-        displayElement(menuGame.id);
+        displayElement(menuGame);
 
     }
 }
@@ -103,7 +103,6 @@ blurInput = () => {
         btn.disabled = true;
         return false;
     }
-
     btn.disabled = false;
 }
 
@@ -122,15 +121,14 @@ startGame = () => {
     addElementsCards(paramGame.cntPlace);
     paramGame.imgBlock = tableGame.querySelectorAll('img'); //запись массива блоков изображений в html
     randomGetCard(); //получение массива случайных чисел без повторений
-
-    displayElement(mainBlock.id);
-
+    displayElement(mainBlock);
 }
 
-displayElement = (id) => {
-    let child = module.querySelectorAll('#module > div');
+displayElement = (childElement) => {
+    const parent = childElement.parentNode;
+    let child = parent.querySelectorAll('#' + parent.id +' > div');
     child.forEach(function (item) {
-        if (item.id !== id)
+        if (item.id !== childElement.id)
             item.style.display = 'none';
         else
             item.style.display = 'flex';
