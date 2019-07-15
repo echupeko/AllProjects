@@ -128,7 +128,7 @@ startGame = () => {
 }
 
 displayElement = (id) => {
-    let child = body.querySelectorAll('body > div');
+    let child = module.querySelectorAll('#module > div');
     child.forEach(function (item) {
         if (item.id !== id)
             item.style.display = 'none';

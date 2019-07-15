@@ -7,22 +7,29 @@
     <!--<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
 </head>
 <body>
+<div id="loginModule"></div>
 <form id="loginForm">
+    <span></span>
+    <div id="avatar">
+        <span></span>
+    </div>
+    <p>Добро пожаловать</p>
     <div id="logout" class="inputForm">
-        <div id="avatar">
-            <span></span>
-        </div>
         <input id="userName" type="text" placeholder="Имя пользователя">
     </div>
     <div id="login" class="inputForm">
         <input id="loginUser" type="text" placeholder="login">
         <input id="passUser" type="password" placeholder="password">
+        <div>
+            <p>забыли пароль?</p>
+            <p>зарегистрироваться</p>
+        </div>
     </div>
-    <div>
-        <input id="buttonSubmit" type="submit">
+    <div id="button">
+        <input id="buttonSubmit" type="button" onclick="logIn()" value="Вход">
     </div>
 </form>
-<div class="gameModule">
+<div id="module">
     <div id="userProfile">
         <div id="listMoveUser"></div>
     </div>
