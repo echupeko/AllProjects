@@ -1,14 +1,5 @@
-var a = 13440000;
-var b = 27.52;
-var c = 1;
-
-while(a<=50000000){
-    if(a>=10000000) {
-        b = 28;
-    }
-    a += a * b / 100;
-    //a += 5000000;
-    console.log("Заработано за " + c + " месяц: " + Math.floor(a) + " руб.");
-    c++;
+menuBar = () => {
+    const menu = document.getElementById('menu');
+    if (window.matchMedia('(max-width: 360px)').matches)
+        menu.style.display = 'block';
 }
-

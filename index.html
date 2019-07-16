@@ -3,15 +3,17 @@
 <head>
     <meta charset = "UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0," />
     <link href = "style/style.css" rel="stylesheet" >
+    <link href = "style/mobileStyle.css" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
 <header>
     <nav class="container">
         <div class="logo"><img src="source/newlogo.png"></div>
-        <div class="nav_toggle"><span></span></div>
-        <div class="menu">
+        <div class="nav_toggle" onclick="menuBar()"><span></span></div>
+        <div id="menu">
             <ul>
                 <li><a href="#">домой</a></li>
                 <li><a href="other/CardGame/index.html">галлерея</a></li>

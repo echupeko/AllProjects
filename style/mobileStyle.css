@@ -1,0 +1,89 @@
+/*@media (max-width: 960px) {*/
+    /*.container {*/
+        /*padding-left: 50px;*/
+        /*padding-right: 50px;*/
+    /*}*/
+/*}*/
+
+/*@media (max-width: 650px) {*/
+    /*.searchBox {*/
+        /*display: none;*/
+        /*visibility: hidden;*/
+    /*}*/
+/*}*/
+
+/*!*@media only screen and (min-device-width: 900px) and (max-device-width: 1080px){*!*/
+
+/*!*}*!*/
+
+@media screen and (max-width: 360px) {
+    .container {
+        width: 100%;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .logo {
+        float: none;
+        margin: 0 auto;
+    }
+
+    #menu {
+        position: absolute;
+        display: none;
+        width: 100%;
+        top: 60px;
+        background: white;
+        border: 1px solid;
+        left: 0;
+    }
+
+    #menu ul{
+        flex-direction: column;
+    }
+
+    #menu ul li{
+        margin: 10px;
+    }
+
+    .searchBlock {
+        display: none;
+        visibility: hidden;
+    }
+
+    .nav_toggle {
+        position: absolute;
+        float: right;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .nav_toggle span {
+        display: block;
+        position: absolute;
+        top: 19px;
+        left: 8px;
+        right: 8px;
+        height: 3px;
+        background: #323232;
+    }
+
+    .nav_toggle span:before, .nav_toggle span:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #323232;
+    }
+
+    .nav_toggle span:before {
+        top: -10px;
+    }
+
+    .nav_toggle span:after {
+        bottom: -10px;
+    }
+}
