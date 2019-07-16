@@ -20,7 +20,6 @@
         width: 100%;
         color: #000;
         position: absolute;
-        height: 100vh;
         background: black;
         opacity: 0.5;
     }
@@ -44,7 +43,9 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
         padding: 20px;
     }
-
+#loginForm:before {
+    display: none;
+}
 
     #loginForm p {
         color: black;

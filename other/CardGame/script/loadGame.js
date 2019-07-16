@@ -21,7 +21,7 @@ body.onload = () => {
     loginForm.style.top = 'calc(50% - ' + loginForm.clientHeight / 2 + 'px)';
     loginForm.style.left = 'calc(50% - ' + loginForm.clientWidth / 2 + 'px)';
     avatar.style.top = '-10px';
-
+    loginModule.style.height = screen.height + 'px';
 }
 
 succefulLogin = () => {
