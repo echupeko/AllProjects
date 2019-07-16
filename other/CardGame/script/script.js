@@ -78,6 +78,7 @@ checkCountPlace = () => {
         }
         if (window.matchMedia('(max-width: 360px)').matches && paramGame.cntPlace > 12) {
             outputMsg('Введено большое число для игры на смартфоне, используйте не более 12 карт');
+            return false;
         }
         blurInput();
     }, 1000);
@@ -90,7 +91,7 @@ blurInput = () => {
     paramGame.cntPlace = parseInt(inputCount.value); //размер поля
 
     if (!paramGame.cntPlace) {
-        outputMsg('Введите размерность поля')
+        outputMsg('Введите размерность поля');
         btn.disabled = true;
         return false;
     }
@@ -103,6 +104,12 @@ blurInput = () => {
 
     if (paramGame.cntPlace % 2 > 0 || paramGame.cntPlace > parseInt(paramGame.value) * 2) {
         outputMsg('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
+        btn.disabled = true;
+        return false;
+    }
+
+    if (window.matchMedia('(max-width: 360px)').matches && paramGame.cntPlace > 12) {
+        outputMsg('Введено большое число для игры на смартфоне, используйте не более 12 карт');
         btn.disabled = true;
         return false;
     }
