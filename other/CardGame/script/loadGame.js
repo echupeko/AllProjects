@@ -23,7 +23,7 @@ body.onload = () => {
     loginForm.style.left = 'calc(50% - ' + loginForm.clientWidth / 2 + 'px)';
     avatar.style.top = '-10px';
     if (window.matchMedia('(max-width: 360px)').matches) {
-        loginModule.style.height = screen.height * (window.devicePixelRatio || 1) + 'px';
+        loginModule.style.height = screen.height + 'px'; // * (window.devicePixelRatio || 1)
     }
 }
 
