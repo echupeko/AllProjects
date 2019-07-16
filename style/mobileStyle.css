@@ -25,7 +25,7 @@
 
     .logo {
         float: none;
-        margin: 0 auto;
+
     }
 
     #menu {
@@ -35,6 +35,8 @@
         top: 60px;
         background: white;
         left: 0;
+        transition: transform, 300ms;
+        transform: translateX(50);
     }
 
     #menu ul{
@@ -45,9 +47,8 @@
         margin: 10px;
     }
 
-    .searchBlock {
+    .searchBox {
         display: none;
-        visibility: hidden;
     }
 
     .nav_toggle {

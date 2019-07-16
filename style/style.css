@@ -37,6 +37,7 @@ header {
 
 #menu {
     margin-left: auto;
+
 }
 
 #menu ul {
@@ -141,14 +142,10 @@ header {
 
     .logo {
         float: none;
-        margin: 0 auto;
+        padding-left: calc(50% - 35px);
     }
 
     #menu {
-        display: none;
-    }
-
-    .searchBlock {
         display: none;
     }
 

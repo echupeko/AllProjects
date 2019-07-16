@@ -1,4 +1,3 @@
-
 @media screen and (max-width: 360px) {
     * {
         font-family: "Open Sans";
@@ -29,21 +28,13 @@
     }
 
     #loginForm {
-        background-color: #fdfbff;
-        position: fixed;
         width: 80%;
         height: 85%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-        padding: 20px;
     }
-#loginForm:before {
-    display: none;
-}
+
+    #loginForm:before {
+        display: none;
+    }
 
     #loginForm p {
         color: black;
@@ -302,7 +293,7 @@
 
     #newGameBtn:before, #newGameBtn:after,
     #scoreLabel:after, #scoreLabel span:before,
-    #scoreLabel span:after  {
+    #scoreLabel span:after {
         display: none;
     }
 
