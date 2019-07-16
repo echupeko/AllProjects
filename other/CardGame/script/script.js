@@ -76,6 +76,9 @@ checkCountPlace = () => {
             outputMsg('Введено нечетное число, либо число больше ' + parseInt(paramGame.value) * 2);
             return false;
         }
+        if (window.matchMedia('(max-width: 360px)').matches && paramGame.cntPlace > 12) {
+            outputMsg('Введено большое число для игры на смартфоне, используйте не более 12 карт');
+        }
         blurInput();
     }, 1000);
 }
