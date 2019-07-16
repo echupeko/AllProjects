@@ -37,6 +37,10 @@
         left: 0;
     }
 
+    #menu *{
+        visibility: hidden;
+    }
+
     #menu ul {
         flex-direction: column;
 
@@ -46,9 +50,7 @@
         margin: 10px;
     }
 
-    #menu ul li a {
-        visibility: hidden;
-    }
+
 
     .searchBox {
         display: none;
