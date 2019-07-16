@@ -99,4 +99,10 @@
     .nav_toggle span:after {
         bottom: -10px;
     }
+
+    .imageBig {
+        width: 75%;
+        height: 0;
+        padding-top: 75%;
+    }
 }
