@@ -7,6 +7,7 @@ const passUser = document.getElementById('passUser');
 const menuGame = document.getElementById('menuGame');
 const mainBlock = document.getElementById('mainBlock');
 const tableGame = document.getElementById('tableBlock');
+const stopWatch = document.getElementById('stopWatch');
 const inputCount = document.getElementById('placeSize');
 const arrCheck = document.getElementsByName('checkBox');
 const settingsDiv = document.getElementById('settings');

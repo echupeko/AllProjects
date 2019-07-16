@@ -1,4 +1,3 @@
-const stopWatch = document.getElementById('stopWatch');
 let time = '00:00:00.00';
 
 var base = 60;
