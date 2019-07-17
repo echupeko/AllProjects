@@ -156,16 +156,29 @@ header {
     box-shadow: 0 0 10px black;
 }
 
+#loginModule {
+    width: 100%;
+    color: #000;
+    position: fixed;
+    height: 100vh;
+    background: black;
+    opacity: 0.5;
+    display: none;
+}
+
 .imageBig {
     margin: 0 auto;
-    position: absolute;
+    position: fixed;
     display: block;
     width: 50%;
     height: 0;
     padding-top: 50%;
+    border: 2px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
     background-repeat: no-repeat;
     background-size: cover;
-    top: 80px;
+    top: 40px;
 }
 
 .imageBig span{
@@ -173,10 +186,30 @@ header {
     right: 10px;
     position: absolute;
     display: block;
-    width: 10px;
-    height: 10px;
-    background: black;
-    border: 1px solid white;
+    width: 17px;
+    height: 17px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.imageBig span:before, .imageBig span:after{
+    position: absolute;
+    content: '';
+    width: 15px;
+    height: 3px;
+    top: 7px;
+    right: 1px;
+    background-color: black;
+    outline:1px white;
+}
+
+.imageBig span:before {
+    transform: rotateZ(45deg);
+}
+
+.imageBig span:after {
+    transform: rotateZ(-45deg);
 }
 
 @media (max-width: 960px) {

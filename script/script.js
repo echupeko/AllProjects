@@ -37,8 +37,10 @@ img.onclick = (event) => {
     imgBig.classList.add('imageBig');
     imgBig.style.backgroundImage = event.target.style.backgroundImage;
     imgBig.style.left = 'calc(50% - ' + imgBig.clientWidth/2 + 'px)';
+        loginModule.style.display = 'block';
 }
 
 span.onclick = (event) => {
     imgBig.classList.toggle('imageBig');
+    loginModule.style.display = 'none';
 }
