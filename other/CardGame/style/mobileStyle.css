@@ -16,7 +16,7 @@
     #loginModule {
         width: 100%;
         color: #000;
-        position: absolute;
+        position: fixed;
         background: black;
         opacity: 0.5;
     }
@@ -76,7 +76,7 @@
     }
 
     #button {
-        position: relative;
+        position: fixed;
         bottom: -10px;
     }
 

@@ -45,18 +45,6 @@ header {
     margin-left: auto;
 }
 
-.active {
-    display: block !important;
-    transition: height 900ms ease, box-shadow 600ms ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    height: 165px !important;
-}
-
-.active * {
-    transition: visibility 900ms ease;
-    visibility: visible !important;
-}
-
 #menu ul {
     display: flex;
     flex-direction: row;
@@ -150,7 +138,7 @@ header {
     background-size: cover;
 }
 
-.content > div:hover{
+.content > div:hover {
     /*outline:1px dashed red;*/
     /*outline-offset:-4px;*/
     box-shadow: 0 0 10px black;
@@ -164,6 +152,7 @@ header {
     background: black;
     opacity: 0.5;
     display: none;
+    z-index: 1;
 }
 
 .imageBig {
@@ -179,9 +168,68 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     top: 40px;
+    z-index: 2;
 }
 
-.imageBig span{
+.imageBig > div {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 20%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    top: 0;
+}
+
+.imageBig > div:hover {
+    opacity: 0.8;
+}
+
+.imageBig > div:first-child {
+    background: linear-gradient(90deg, black, transparent);
+}
+
+.imageBig > div:first-child:before, .imageBig > div:first-child:after,
+.imageBig > div:last-child:before, .imageBig > div:last-child:after {
+    position: absolute;
+    content: '';
+    width: 15px;
+    height: 3px;
+    background-color: white;
+}
+
+.imageBig > div:first-child:before {
+    top: 50%;
+    left: 10px;
+    transform: rotateZ(-45deg);
+}
+
+.imageBig > div:first-child:after {
+    top: calc(50% + 9px);
+    left: 10px;
+    transform: rotateZ(45deg);
+}
+
+.imageBig > div:last-child:before {
+    top: 50%;
+    left: 0;
+    transform: rotateZ(-135deg);
+}
+
+.imageBig > div:last-child:after {
+    top: calc(50% + 9px);
+    right: 10px;
+    transform: rotateZ(135deg);
+}
+
+.imageBig > div:last-child {
+    right: 0;
+    background: linear-gradient(90deg, transparent, black);
+
+}
+
+.imageBig span {
     top: 10px;
     right: 10px;
     position: absolute;
@@ -191,9 +239,11 @@ header {
     background: white;
     border: 1px solid black;
     border-radius: 10px;
+    z-index: 2;
 }
 
-.imageBig span:before, .imageBig span:after{
+.imageBig span:before, .imageBig span:after {
+
     position: absolute;
     content: '';
     width: 15px;
@@ -201,7 +251,7 @@ header {
     top: 7px;
     right: 1px;
     background-color: black;
-    outline:1px white;
+    outline: 1px white;
 }
 
 .imageBig span:before {
@@ -213,7 +263,7 @@ header {
 }
 
 @media (max-width: 960px) {
-    .container {
+    nav {
         padding-left: 50px;
         padding-right: 50px;
     }
@@ -232,6 +282,9 @@ header {
 @media (max-width: 550px) {
     .container {
         width: 100%;
+    }
+
+    nav {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -242,7 +295,48 @@ header {
     }
 
     #menu {
+        position: absolute;
         display: none;
+        width: 100%;
+        top: 60px;
+        height: 0;
+        background: white;
+        left: 0;
+    }
+
+    #menu * {
+        visibility: hidden;
+    }
+
+    #menu ul {
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #menu ul li {
+        flex-direction: column;
+        display: flex;
+        width: 90%;
+        margin: 10px;
+        align-items: center;
+    }
+
+    #menu ul li a {
+        text-align: center;
+        width: 90%;
+    }
+
+    .active {
+        display: block !important;
+        transition: height 900ms ease, box-shadow 600ms ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        height: 165px !important;
+    }
+
+    .active * {
+        transition: visibility 900ms ease;
+        visibility: visible !important;
     }
 
     .nav_toggle {
