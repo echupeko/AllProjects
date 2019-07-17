@@ -269,6 +269,44 @@ footer {
     background: #5e5e5e;
 }
 
+footer span {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: block;
+    position: fixed;
+    bottom: 30px;
+    right: 100px;
+    background: white;
+    opacity: 0.3;
+}
+
+footer span:hover {
+    width: 75px;
+    opacity: 0.8;
+    box-shadow: 0 0 10px black;
+}
+
+footer span:before, footer span:after {
+    top: calc(50% - 3px);
+    width: 18px;
+    height: 3px;
+    display: block;
+    position: absolute;
+    content: '';
+    background: black;
+}
+
+footer span:before {
+    transform: rotateZ(45deg);
+    left:14px;
+}
+
+footer span:after{
+    transform: rotateZ(-45deg);
+    right: 14px;
+}
+
 @media (max-width: 960px) {
     nav {
         padding-left: 50px;
