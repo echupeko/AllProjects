@@ -1,55 +1,34 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <link href = "style/style.css" rel="stylesheet" >
-    <link href = "style/mobileStyle.css" rel="stylesheet" >
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-<div id="loginModule"></div>
-<header>
-    <nav class="container">
-        <div class="logo"><img src="source/newlogo.png"></div>
-        <div class="nav_toggle" onclick="menuBar()"><span></span></div>
-        <div id="menu">
-            <ul>
-                <li><a href="#">домой</a></li>
-                <li><a href="other/CardGame/index.html">галлерея</a></li>
-                <li><a href="#">контакты</a></li>
-            </ul>
-        </div>
-        <div class="searchBlock">
-            <form>
-                <input class="searchBox" type="text" placeholder="Искать на сайте...">
-                <button class="searchBtn" type="submit"><div></div></button>
-            </form>
-        </div>
-    </nav>
-</header>
-<div class="container">
-    <div id="imgStack" class="content">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div id="imgBig">
-        <div></div>
+<div id="menu">
+    <div id="avatarBlock"></div>
+    <div id="nav-toggle">
         <span></span>
-        <div></div>
     </div>
+
 </div>
-<footer>
-    <span></span>
-</footer>
+<section id="content">
+    <div class="panel" id="skills">
+        <img src="source/skills.jpg">
+    </div>
+    <div class="panel" id="education">
+        <img src="source/education.jpg">
+    </div>
+    <div class="panel" id="working">
+        <img src="source/development.png">
+    </div>
+    <div class="panel" id="hobby">
+        <img src="source/hobbie.jpg">
+    </div>
+    <div class="panel" id="contact">
+        <img src="source/contact.jpg">
+    </div>
+</section>
 </body>
-<script type = "text/javascript" src = "script/script.js"></script>
 </html>

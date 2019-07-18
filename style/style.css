@@ -1,422 +1,96 @@
-html {
-    color: #323232;
-}
-
 * {
-    transition: .5s ease-in-out;
+    transition: .5s ease;
 }
 
 body {
     margin: 0;
-    font-family: "Open Sans";
-}
-
-header {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    border-bottom: 2px solid #bcbcbc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-}
-
-.container {
-    width: 860px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.logo {
-    height: 40px;
-    width: 70px;
-    float: left;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.logo img {
-    width: 70px;
-    height: 40px;
 }
 
 #menu {
-    margin-left: auto;
-}
-
-#menu ul {
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-}
-
-#menu ul li {
-    list-style-type: none;
-}
-
-#menu ul li a {
-    font-size: 15px;
-    font-weight: lighter;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 6px 20px;
-    color: #323232;
-    border-bottom: 2px solid transparent;
-    transition: border-bottom-color 200ms ease;
-}
-
-#menu ul li a:hover {
-    border-bottom: 2px solid #bcbcbc;
-    color: #ff5b14;
-}
-
-.searchBlock {
-    margin-left: auto;
-}
-
-.searchBlock form {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.searchBox {
-    font-style: italic;
-    border: 0px solid;
-    width: 170px;
-    height: 40px;
-    padding: 0px 10px 0px 10px;
-    outline: none;
-    color: #323232;
-}
-
-.searchBtn {
-    position: absolute;
-    float: left;
-    right: 10px;
-    width: 18px;
-    height: 18px;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-}
-
-.searchBtn div {
-    background-image: url("../source/search.png");
-    background-size: contain;
-    width: 100%;
-    height: 100%;
-}
-
-.searchBtn div:hover {
-    background-image: url("../source/search_hover.png");
-}
-
-.content {
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.content > div {
-    width: 25%;
-    height: 0;
-    padding-top: 35%;
-    margin: 10px;
-    background-color: #323232;
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 0 2px black;
-    cursor: pointer;
-}
-
-.content > div:hover {
-    box-shadow: 0 0 10px black;
-    transform: scale(1.02);
-}
-
-#loginModule {
-    width: 100%;
     position: fixed;
-    height: 100vh;
-    background: black;
-    opacity: 0.5;
-    display: none;
-    z-index: 1;
-}
-
-.imageBig {
-    margin: 0 auto;
-    position: fixed;
-    display: block;
-    width: 50%;
-    height: 0;
-    padding-top: 50%;
-    border: 2px solid black;
-    border-radius: 10px;
-    box-shadow: 0 0 10px black;
-    background-repeat: no-repeat;
-    background-size: cover;
-    top: 40px;
-    z-index: 2;
-}
-
-.imageBig > div {
-    display: block;
-    position: absolute;
-    content: "";
-    width: 20%;
-    height: 100%;
-    background: black;
-    opacity: 0;
+    width: auto;
     top: 0;
+    bottom: 0;
+    right: 0;
+    background: #3d3d3d;
+    z-index: 999;
+}
+
+#avatarBlock {
+    background: url("../source/avatar.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 0;
+    padding-top: 100px;
+    border: 4px solid orange;
+    margin: 0 auto;
+}
+
+#nav-toggle {
+    width: 100%;
+    height: 104px;
+    display: block;
+    border-bottom: 1px solid black;
     cursor: pointer;
 }
 
-.imageBig > div:hover {
-    opacity: 0.8;
+#nav-toggle:hover {
+    background: #323232;
+    opacity: 0.5;
 }
 
-.imageBig > div:first-child {
-    background: linear-gradient(90deg, black, transparent);
+#nav-toggle span {
+    top: 156px;
+    left: 48px;
 }
 
-.imageBig > div:first-child:before, .imageBig > div:first-child:after,
-.imageBig > div:last-child:before, .imageBig > div:last-child:after {
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
     position: absolute;
     content: '';
-    width: 15px;
+    width: 20px;
     height: 3px;
-    background-color: white;
+    background-color: #838383;
+    opacity: 1;
+    border-radius: 3px;
 }
 
-.imageBig > div:first-child:before {
-    top: 50%;
-    left: 10px;
-    transform: rotateZ(-45deg);
+#nav-toggle span:before {
+    transform: translateY(-5px);
 }
 
-.imageBig > div:first-child:after {
-    top: calc(50% + 9px);
-    left: 10px;
-    transform: rotateZ(45deg);
+#nav-toggle span:after {
+    transform: translateY(5px);
 }
 
-.imageBig > div:last-child:before {
-    top: 50%;
-    right: 10px;
-    transform: rotateZ(-135deg);
+#content {
+    min-width: 100%;
+    height: 100vh;
+    padding-right: 108px;
+    display: flex;
+    overflow-x: auto;
 }
 
-.imageBig > div:last-child:after {
-    top: calc(50% + 9px);
-    right: 10px;
-    transform: rotateZ(135deg);
+html::-webkit-scrollbar{
+    display: none;
 }
 
-.imageBig > div:last-child {
-    right: 0;
-    background: linear-gradient(90deg, transparent, black);
+.panel {
+    width: 450px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.panel img {
+    margin-left: -160px;
+    height: 100%;
+    width: auto;
+}
+
+.panel:hover {
 
 }
 
-.imageBig span {
-    top: 10px;
-    right: 10px;
-    position: absolute;
-    display: block;
-    width: 17px;
-    height: 17px;
-    background: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 2;
-}
-
-.imageBig span:before, .imageBig span:after {
-
-    position: absolute;
-    content: '';
-    width: 15px;
-    height: 3px;
-    top: 7px;
-    right: 1px;
-    background-color: black;
-    outline: 1px white;
-}
-
-.imageBig span:before {
-    transform: rotateZ(45deg);
-}
-
-.imageBig span:after {
-    transform: rotateZ(-45deg);
-}
-
-footer {
-    margin-top: 20px;
-    width: 100%;
-    height: 100px;
-    background: #5e5e5e;
-}
-
-footer span {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: block;
-    position: fixed;
-    bottom: 30px;
-    right: 100px;
-    background: white;
-    opacity: 0.3;
-}
-
-footer span:hover {
-    width: 75px;
-    opacity: 0.8;
-    box-shadow: 0 0 10px black;
-}
-
-footer span:before, footer span:after {
-    top: calc(50% - 3px);
-    width: 18px;
-    height: 3px;
-    display: block;
-    position: absolute;
-    content: '';
-    background: black;
-}
-
-footer span:before {
-    transform: rotateZ(45deg);
-    left:14px;
-}
-
-footer span:after{
-    transform: rotateZ(-45deg);
-    right: 14px;
-}
-
-@media (max-width: 960px) {
-    nav {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-}
-
-@media (max-width: 650px) {
-    .searchBox {
-        display: none;
-    }
-}
-
-/*@media only screen and (min-device-width: 900px) and (max-device-width: 1080px){*/
-
-/*}*/
-
-@media (max-width: 550px) {
-    .container {
-        width: 100%;
-    }
-
-    nav {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .logo {
-        float: none;
-        padding-left: calc(50% - 35px);
-    }
-
-    #menu {
-        position: absolute;
-        display: none;
-        width: 100%;
-        top: 60px;
-        height: 0;
-        background: white;
-        left: 0;
-    }
-
-    #menu * {
-        visibility: hidden;
-    }
-
-    #menu ul {
-        margin: 0;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #menu ul li {
-        flex-direction: column;
-        display: flex;
-        width: 90%;
-        margin: 10px;
-        align-items: center;
-    }
-
-    #menu ul li a {
-        text-align: center;
-        width: 90%;
-    }
-
-    .active {
-        display: block !important;
-        transition: height 900ms ease, box-shadow 600ms ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        height: 165px !important;
-    }
-
-    .active * {
-        transition: visibility 900ms ease;
-        visibility: visible !important;
-    }
-
-    .nav_toggle {
-        position: absolute;
-        float: right;
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-    }
-
-    .nav_toggle span {
-        display: block;
-        position: absolute;
-        top: 19px;
-        left: 8px;
-        right: 8px;
-        height: 3px;
-        background: #323232;
-    }
-
-    .nav_toggle span:before, .nav_toggle span:after {
-        content: "";
-        position: absolute;
-        display: block;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: #323232;
-    }
-
-    .nav_toggle span:before {
-        top: -10px;
-    }
-
-    .nav_toggle span:after {
-        bottom: -10px;
-    }
+.panel:hover img{
+    transform: scale(1.1);
 }
