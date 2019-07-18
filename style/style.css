@@ -38,7 +38,11 @@ body {
 
 #nav-toggle:hover {
     background: #323232;
-    opacity: 0.5;
+}
+
+
+#nav-toggle:hover span{
+    opacity: 0.4;
 }
 
 #nav-toggle span {
