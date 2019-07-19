@@ -6,9 +6,11 @@
 const panelArr = [];
 const panel = {
     id: null,
+    div: {},
     description: "",
     imgPath: "",
 };
+
 const panelList = document.getElementsByClassName('panel');
 let isClicked = false;
 let wDelta = 120;
@@ -52,6 +54,9 @@ panelClick = (event) => {
 }
 
 window.onload = function () {
+
+
+
     for (let i = 0; i < panelList.length; i++) {
         panelList[i].addEventListener("click", panelClick);
     }
