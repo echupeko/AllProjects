@@ -2,18 +2,63 @@
 * выбранный раздел отображается слева при помощи добавления класса
 * скроллинг при помощи ведения мыши
 * */
-
+const contentDiv = document.getElementById('content');
+const contentArr = [
+    {id: 'skills1', desription: 'навыки'},
+    {id: 'education1', desription: 'образование'},
+    {id: 'development1', desription: 'работы'},
+    {id: 'hobby1', desription: 'увлечения'},
+    {id: 'contact1', desription: 'контакты'}];
 const panelArr = [];
-const panel = {
-    id: null,
-    div: {},
-    description: "",
-    imgPath: "",
-};
-
-const panelList = document.getElementsByClassName('panel');
 let isClicked = false;
 let wDelta = 120;
+
+window.onload = function () {
+    contentArr.forEach(function (item) {
+        let panel = {};
+        panel.id = item.id;
+        panel.desription = item.desription;
+        panel.imgPath = "source/" + item.id + ".jpg";
+        panel.div = addElementsCards(panel);
+        panelArr.push(panel);
+    });
+
+    for (let i = 0; i < panelList.length; i++) {
+        panelList[i].addEventListener("click", panelClick);
+    }
+    let html = document.documentElement;
+    if (html.attachEvent) {
+        html.attachEvent("onmousewheel", scrollDoc); // IE and Opera
+    } else {
+        html.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
+        html.addEventListener("mousewheel", scrollDoc, false); // Chrome
+    }
+}
+
+addElementsCards = (elementObj) => {
+    let divPanel = document.createElement('div');
+    let imgBackground = document.createElement('img');
+    let p = document.createElement('p');
+    let span = document.createElement('span');
+
+    divPanel.className = 'panel';
+    divPanel.id = elementObj.id;
+    divPanel.addEventListener("click", panelClick);
+    p.innerText = elementObj.desription;
+    imgBackground.src = elementObj.imgPath;
+
+    createElements(contentDiv, divPanel);
+    createElements(divPanel, p);
+    createElements(divPanel, imgBackground);
+    createElements(divPanel, span);
+
+    return divPanel;
+}
+
+createElements = (parent, element) => { //созадние элемента
+    parent.appendChild(element);
+    console.log('Добавлен ' + element + ' класса ' + element.className + ' в элемент ' + parent + ' класса ' + parent.className)
+}
 
 scrollDoc = (e) => {
     var __delta = e.wheelDelta || -e.detail;
@@ -53,19 +98,5 @@ panelClick = (event) => {
     isClicked = !isClicked
 }
 
-window.onload = function () {
 
 
-
-    for (let i = 0; i < panelList.length; i++) {
-        panelList[i].addEventListener("click", panelClick);
-    }
-    let html = document.documentElement;
-    if (html.attachEvent) {
-        html.attachEvent("onmousewheel", scrollDoc); // IE and Opera
-    } else {
-        html.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
-        html.addEventListener("mousewheel", scrollDoc, false); // Chrome
-    }
-
-}
