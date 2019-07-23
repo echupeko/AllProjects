@@ -3,12 +3,13 @@
 * скроллинг при помощи ведения мыши
 * */
 const contentDiv = document.getElementById('content');
+const descriptionDiv = document.getElementById('description')
 const contentArr = [
-    {id: 'skills1', desription: 'навыки'},
-    {id: 'education1', desription: 'образование'},
-    {id: 'development1', desription: 'работы'},
-    {id: 'hobby1', desription: 'увлечения'},
-    {id: 'contact1', desription: 'контакты'}];
+    {id: 'skills', description: 'навыки'},
+    {id: 'education', description: 'образование'},
+    {id: 'development', description: 'работы'},
+    {id: 'hobby', description: 'увлечения'},
+    {id: 'contact', description: 'контакты'}];
 const panelArr = [];
 let isClicked = false;
 let wDelta = 120;
@@ -17,22 +18,20 @@ window.onload = function () {
     contentArr.forEach(function (item) {
         let panel = {};
         panel.id = item.id;
-        panel.desription = item.desription;
+        panel.description = item.description;
         panel.imgPath = "source/" + item.id + ".jpg";
         panel.div = addElementsCards(panel);
+        panel.display = true;
         panelArr.push(panel);
     });
 
-    for (let i = 0; i < panelList.length; i++) {
-        panelList[i].addEventListener("click", panelClick);
-    }
-    let html = document.documentElement;
-    if (html.attachEvent) {
-        html.attachEvent("onmousewheel", scrollDoc); // IE and Opera
-    } else {
-        html.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
-        html.addEventListener("mousewheel", scrollDoc, false); // Chrome
-    }
+    // let html = document.documentElement;
+    // if (html.attachEvent) {
+    //     html.attachEvent("onmousewheel", scrollDoc); // IE and Opera
+    // } else {
+    //     html.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
+    //     html.addEventListener("mousewheel", scrollDoc, false); // Chrome
+    // }
 }
 
 addElementsCards = (elementObj) => {
@@ -44,20 +43,19 @@ addElementsCards = (elementObj) => {
     divPanel.className = 'panel';
     divPanel.id = elementObj.id;
     divPanel.addEventListener("click", panelClick);
-    p.innerText = elementObj.desription;
+    p.innerText = elementObj.description;
     imgBackground.src = elementObj.imgPath;
 
-    createElements(contentDiv, divPanel);
-    createElements(divPanel, p);
-    createElements(divPanel, imgBackground);
-    createElements(divPanel, span);
+    createElements(contentDiv, [divPanel]);
+    createElements(divPanel, [p, imgBackground, span]);
 
     return divPanel;
 }
 
-createElements = (parent, element) => { //созадние элемента
-    parent.appendChild(element);
-    console.log('Добавлен ' + element + ' класса ' + element.className + ' в элемент ' + parent + ' класса ' + parent.className)
+createElements = (parent, elements) => { //созадние элемента
+    for (let i = 0; i < elements.length; i++) {
+        parent.appendChild(elements[i]);
+    }
 }
 
 scrollDoc = (e) => {
@@ -69,34 +67,38 @@ scrollDoc = (e) => {
 }
 
 panelClick = (event) => {
-    if (!isClicked) {
-        document.getElementById('content-module').style.width = 'calc(100% - 400px)';
-        let panels = event.target;
-        panels.classList.remove('panel-hide');
-        panels.classList.add('panel-selection');
+    isClicked = !isClicked;
+    descriptionDiv.style.width = 'calc(100% - 400px)';
+    panelArr.forEach(function (item) {
+        if (item.div !== event.target.parentElement)
+            item.display = !item.display;
+        else
+            item.display = true;
 
-        for (let i = 0; i < panelList.length; i++) {
-            if (panelList[i].id !== panels.offsetParent.id) {
-                panelList[i].classList.remove('panel-selection');
-                panelList[i].classList.add('panel-hide');
-            }
+        classMover(item.div, item.display);
+        if (!isClicked) {
+            classRemover(item.div);
+            descriptionDiv.style.display = 'none';
         }
+    });
 
-        document.documentElement.scrollLeft = 0;
-        document.documentElement.removeEventListener("DOMMouseScroll", scrollDoc, false);
-        document.documentElement.removeEventListener("mousewheel", scrollDoc, false);
-    }
-    else {
-        for (let i = 0; i < panelList.length; i++) {
-            panelList[i].classList.remove('panel-selection');
-            panelList[i].classList.remove('panel-hide');
-        }
-        document.getElementById('content-module').style.width = '0';
-        document.documentElement.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
-        document.documentElement.addEventListener("mousewheel", scrollDoc, false); // Chrome
-    }
-    isClicked = !isClicked
+    document.documentElement.scrollLeft = 0;
+    document.documentElement.removeEventListener("DOMMouseScroll", scrollDoc, false);
+    document.documentElement.removeEventListener("mousewheel", scrollDoc, false);
 }
 
+classMover = (panel, display) => {
+    let nameClass = panel.classList[0];
+    let remove = display ? "-hide" : "-selection";
+    let add = display ? "-selection" : "-hide";
+    panel.classList.remove(nameClass + remove);
+    panel.classList.add(nameClass + add);
+}
+
+classRemover = (panel) => {
+    for (let i = 1; i < panel.classList.length; i++) {
+        panel.classList.remove(panel.classList[i]);
+    }
+}
 
 
