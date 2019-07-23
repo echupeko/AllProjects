@@ -15,7 +15,6 @@ let isClicked = false;
 let wDelta = 120;
 
 window.onload = function () {
-    contentDiv.style.height = document.body.clientHeight + 'px';
     contentArr.forEach(function (item) {
         let panel = {};
         panel.id = item.id;
@@ -77,9 +76,10 @@ panelClick = (event) => {
             item.display = true;
 
         classMover(item.div, item.display);
+        descriptionDiv.style.display = 'block';
         if (!isClicked) {
             classRemover(item.div);
-            descriptionDiv.style.width = '0';
+            descriptionDiv.style.display = 'none';
         }
     });
 
