@@ -15,6 +15,7 @@ let isClicked = false;
 let wDelta = 120;
 
 window.onload = function () {
+    contentDiv.style.height = document.body.clientHeight + 'px';
     contentArr.forEach(function (item) {
         let panel = {};
         panel.id = item.id;
