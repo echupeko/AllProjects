@@ -73,7 +73,6 @@ body {
     top: 0;
     left: 0;
     min-width: calc(100% - 108px);
-    height: 100vh;
     padding-right: 108px;
     display: inline-flex;
     overflow-x: auto;
