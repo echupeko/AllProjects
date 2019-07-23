@@ -68,7 +68,7 @@ scrollDoc = (e) => {
 
 panelClick = (event) => {
     isClicked = !isClicked;
-    descriptionDiv.style.width = 'calc(100% - 400px)';
+    descriptionDiv.style.width = 'calc(100% - ' + (+event.target.parentElement.clientWidth + 108).toString() + 'px)';
     panelArr.forEach(function (item) {
         if (item.div !== event.target.parentElement)
             item.display = !item.display;
@@ -78,7 +78,7 @@ panelClick = (event) => {
         classMover(item.div, item.display);
         if (!isClicked) {
             classRemover(item.div);
-            descriptionDiv.style.display = 'none';
+            descriptionDiv.style.width = '0';
         }
     });
 
