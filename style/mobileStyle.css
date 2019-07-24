@@ -1,6 +1,7 @@
 @media screen and (max-width: 360px) {
 
     #menu {
+        bottom: unset;
         left: 0;
         display: flex;
     }
@@ -12,5 +13,12 @@
     #nav-toggle {
         width: 108px;
         height: 108px;
+        border-bottom: 0;
+        border-right: 1px solid black;
+    }
+
+    #nav-toggle span {
+        top: 52px;
+        left: 150px;
     }
 }
