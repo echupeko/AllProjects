@@ -24,4 +24,21 @@
         left: auto;
         right: 45px;
     }
+
+    #content {
+        padding-right: 0;
+        padding-top: 108px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .panel {
+        width: 100%;
+        height: 300px;
+    }
+
+    .panel p {
+        font-size: 20px;
+        top: 25%;
+    }
 }
