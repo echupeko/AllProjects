@@ -4,6 +4,7 @@
         bottom: unset;
         left: 0;
         display: flex;
+        justify-content: space-between;
     }
 
     #avatarBlock {
@@ -11,14 +12,16 @@
     }
 
     #nav-toggle {
+        position: relative;
         width: 108px;
         height: 108px;
         border-bottom: 0;
-        border-right: 1px solid black;
+        border-left: 1px solid black;
     }
 
     #nav-toggle span {
         top: 52px;
-        left: 150px;
+        left: auto;
+        right: 45px;
     }
 }
