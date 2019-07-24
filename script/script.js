@@ -10,6 +10,12 @@ const contentArr = [
     {id: 'development', description: 'работы'},
     {id: 'hobby', description: 'увлечения'},
     {id: 'contact', description: 'контакты'}];
+const descriptionArr = [
+    {id: 'javascript', pattern: 'skills', p: null}
+]
+const descriptionTextArr = [
+    {id: 'javascript', skillLevel: 'Начинающий', description: 'Занимаюсь изучением JavaScript'}
+]
 const panelArr = [];
 let isClicked = false;
 let wDelta = 120;
@@ -77,6 +83,7 @@ panelClick = (event) => {
 
         classMover(item.div, item.display);
         descriptionDiv.style.display = 'block';
+
         if (!isClicked) {
             classRemover(item.div);
             descriptionDiv.style.display = 'none';

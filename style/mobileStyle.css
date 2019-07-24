@@ -1,0 +1,16 @@
+@media screen and (max-width: 360px) {
+
+    #menu {
+        left: 0;
+        display: flex;
+    }
+
+    #avatarBlock {
+        margin: 0;
+    }
+
+    #nav-toggle {
+        width: 108px;
+        height: 108px;
+    }
+}
