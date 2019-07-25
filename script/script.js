@@ -3,7 +3,7 @@
 * скроллинг при помощи ведения мыши
 * */
 const contentDiv = document.getElementById('content');
-const descriptionDiv = document.getElementById('description')
+const descriptionDiv = document.getElementById('description');
 const contentArr = [
     {id: 'skills', description: 'навыки'},
     {id: 'education', description: 'образование'},
@@ -51,6 +51,7 @@ const descriptionTextArr = [
     {id: 'socialnetwork', skillLevel: 'Начинающий', description: 'vk instagram whatsapp skype'}
 ]
 const panelArr = [];
+const elementArr = [];
 let isClicked = false;
 let wDelta = 120;
 
@@ -60,7 +61,7 @@ window.onload = function () {
         panel.id = item.id;
         panel.description = item.description;
         panel.imgPath = "source/" + item.id + ".jpg";
-        panel.div = addElementsCards('div:p,img,span',panel);
+        panel.div = addElementsPanel('div:p,img,span',panel);
         panel.display = true;
         panelArr.push(panel);
     });
@@ -77,7 +78,7 @@ window.onload = function () {
 }
 
 addElementsPanel = (structure, elementObj) => {
-    structure.split
+    structureSplit(structure, ':');
     let divPanel = document.createElement('div');
     let imgBackground = document.createElement('img');
     let p = document.createElement('p');
@@ -93,6 +94,22 @@ addElementsPanel = (structure, elementObj) => {
     createElements(divPanel, [p, imgBackground, span]);
 
     return divPanel;
+}
+
+structureSplit = (structure, separator) => {
+    let structArr = structure.split(separator);
+    structArr.forEach(function (item) {
+        try {
+            let element = document.createElement(item);
+            elementArr.push(element);
+        }
+        catch (e) {
+            console.log('Создаётся несуществующий элемент: ' + item);
+            structureSplit(item, ',');
+        }
+
+    })
+
 }
 
 createElements = (parent, elements) => { //созадние элемента
@@ -119,7 +136,6 @@ panelClick = (event) => {
             item.display = true;
 
         classMover(item.div, item.display);
-        addElementsCards()
         descriptionDiv.style.display = 'block';
 
         if (!isClicked) {
