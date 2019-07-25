@@ -33,25 +33,32 @@ const descriptionTextArr = [
     {id: 'html', skillLevel: 'Начинающий', description: 'Занимаюсь изучением HTML'},
     {id: 'css', skillLevel: 'Начинающий', description: 'Занимаюсь изучением CSS'},
     {id: '1C', skillLevel: 'Продвинутый', description: 'Работаю на 1С 7.7'},
-    {id: 'asu2015', skillLevel: 'Бакалавр', description: 'В 2015 году получил степень бакалавра в ' +
-        'Алтайском государственном университете'},
-    {id: 'asu2017', skillLevel: 'Магистр', description: 'В 2017 получил степень магистра в ' +
-        'Алтайском государственном университете с красным дипломом'},
+    {
+        id: 'asu2015', skillLevel: 'Бакалавр', description: 'В 2015 году получил степень бакалавра в ' +
+        'Алтайском государственном университете'
+    },
+    {
+        id: 'asu2017', skillLevel: 'Магистр', description: 'В 2017 получил степень магистра в ' +
+        'Алтайском государственном университете с красным дипломом'
+    },
     {id: 'cardgame', skillLevel: 'Начинающий', description: 'Игра на развитие зрительной памяти'},
     {id: 'psh', skillLevel: 'Начинающий', description: 'Сайт-галлерея, для демонстрации работ иллюстратора'},
     {id: 'constructor', skillLevel: 'Начинающий', description: 'Coming soon'},
     {id: 'bicycle', skillLevel: 'Опытный', description: 'Очень нравятся прогулки на велосипеде'},
     {id: 'snowboard', skillLevel: 'Начинающий', description: 'Увлекаюсь спусками с горы на сноуборде'},
-    {id: 'photoshop', skillLevel: 'Начинающий', description: 'Занимаюсь изучением Adobe Photoshop, ' +
-        'люблю создавать необычные работы'},
-    {id: 'needlework', skillLevel: 'Начинающий', description: 'Работа с деревом и металлом успокаивает, ' +
-        'а так же предоставляет возможность сделать что-то своими руками'},
+    {
+        id: 'photoshop', skillLevel: 'Начинающий', description: 'Занимаюсь изучением Adobe Photoshop, ' +
+        'люблю создавать необычные работы'
+    },
+    {
+        id: 'needlework', skillLevel: 'Начинающий', description: 'Работа с деревом и металлом успокаивает, ' +
+        'а так же предоставляет возможность сделать что-то своими руками'
+    },
     {id: 'adress', skillLevel: 'Начинающий', description: 'Алтайский край, г. Барнаул'},
     {id: 'email', skillLevel: 'Начинающий', description: 'email: echupeko@gmail.com'},
     {id: 'socialnetwork', skillLevel: 'Начинающий', description: 'vk instagram whatsapp skype'}
 ]
 const panelArr = [];
-const elementArr = [];
 let isClicked = false;
 let wDelta = 120;
 
@@ -61,11 +68,10 @@ window.onload = function () {
         panel.id = item.id;
         panel.description = item.description;
         panel.imgPath = "source/" + item.id + ".jpg";
-        panel.div = addElementsPanel('div:p,img,span',panel);
+        panel.div = addPanel(panel);
         panel.display = true;
         panelArr.push(panel);
     });
-
 
 
     // let html = document.documentElement;
@@ -76,46 +82,66 @@ window.onload = function () {
     //     html.addEventListener("mousewheel", scrollDoc, false); // Chrome
     // }
 }
-
-addElementsPanel = (structure, elementObj) => {
-    structureSplit(structure, ':');
-    let divPanel = document.createElement('div');
-    let imgBackground = document.createElement('img');
-    let p = document.createElement('p');
-    let span = document.createElement('span');
-
-    divPanel.className = 'panel';
-    divPanel.id = elementObj.id;
-    divPanel.addEventListener("click", panelClick);
-    p.innerText = elementObj.description;
-    imgBackground.src = elementObj.imgPath;
-
-    createElements(contentDiv, [divPanel]);
-    createElements(divPanel, [p, imgBackground, span]);
-
-    return divPanel;
-}
-
-structureSplit = (structure, separator) => {
-    let structArr = structure.split(separator);
-    structArr.forEach(function (item) {
-        try {
-            let element = document.createElement(item);
-            elementArr.push(element);
-        }
-        catch (e) {
-            console.log('Создаётся несуществующий элемент: ' + item);
-            structureSplit(item, ',');
-        }
-
-    })
-
-}
-
-createElements = (parent, elements) => { //созадние элемента
-    for (let i = 0; i < elements.length; i++) {
-        parent.appendChild(elements[i]);
+addPanel = (panel) => {
+    let elementObj = {
+        parent: null,
+        child: []
     }
+
+    addElements('div', 'p;img;span', elementObj);
+    elementObj.parent.className = 'panel';
+    elementObj.parent.id = panel.id;
+    elementObj.parent.addEventListener("click", panelClick);
+    elementObj.child[0].innerText = panel.description;
+    elementObj.child[1].src = panel.imgPath;
+    appendChildElements(contentDiv, elementObj.parent);
+
+    return elementObj.parent;
+}
+
+addDescription = () => {
+    let elementObj = {
+        parent: null,
+        child: []
+    }
+
+    addElements('div', 'div;div;div;div', elementObj);
+    elementObj.parent.id = 'block-module';
+    appendChildElements(descriptionDiv, elementObj.parent);
+}
+
+addElements = (parentElement, childElements, elementObj) => {
+    elementObj.parent = document.createElement(parentElement);
+    structureSplit(elementObj, childElements, ';');
+    appendChildElements(elementObj.parent, elementObj.child);
+}
+
+structureSplit = (elementObj, structureText, separator) => {
+    let structure = null;
+    if (separator) {
+        structure = structureText.split(separator);
+        structure.forEach(function (item) {
+            try {
+                elementObj.child.push(document.createElement(item));
+            }
+            catch (e) {
+                console.log('не создался: ' + e);
+            }
+        });
+    }
+}
+
+appendChildElements = (parent, childs) => { //созадние элемента
+    childs.length == undefined && parent.appendChild(childs);
+    try {
+        childs.forEach(function (item) {
+            parent.appendChild(item);
+        });
+    }
+    catch (e) {
+        console.log('child is not array error: ' + e);
+    }
+
 }
 
 scrollDoc = (e) => {
@@ -137,10 +163,11 @@ panelClick = (event) => {
 
         classMover(item.div, item.display);
         descriptionDiv.style.display = 'block';
-
+        //addDescription();
         if (!isClicked) {
             classRemover(item.div);
             descriptionDiv.style.display = 'none';
+            //descriptionDiv.children = [];
         }
     });
 
