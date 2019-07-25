@@ -141,7 +141,6 @@ appendChildElements = (parent, childs) => { //созадние элемента
     catch (e) {
         console.log('child is not array error: ' + e);
     }
-
 }
 
 scrollDoc = (e) => {
