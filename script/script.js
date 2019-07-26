@@ -105,13 +105,14 @@ addDescription = () => {
         child: []
     }
 
+    elementObj.parent = descriptionDiv;
+
     addElements('div', 'div;div;div;div', elementObj);
-    elementObj.parent.id = 'block-module';
-    appendChildElements(descriptionDiv, elementObj.parent);
 }
 
 addElements = (parentElement, childElements, elementObj) => {
-    elementObj.parent = document.createElement(parentElement);
+    if (!elementObj.parent)
+        elementObj.parent = document.createElement(parentElement);
     structureSplit(elementObj, childElements, ';');
     appendChildElements(elementObj.parent, elementObj.child);
 }
@@ -161,12 +162,12 @@ panelClick = (event) => {
             item.display = true;
 
         classMover(item.div, item.display);
-        descriptionDiv.style.display = 'block';
-        //addDescription();
+        descriptionDiv.style.display = 'flex';
+        isClicked && addDescription();
         if (!isClicked) {
             classRemover(item.div);
             descriptionDiv.style.display = 'none';
-            //descriptionDiv.children = [];
+            descriptionDiv.children = [];
         }
     });
 
