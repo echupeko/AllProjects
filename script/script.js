@@ -144,6 +144,14 @@ appendChildElements = (parent, childs) => { //созадние элемента
     }
 }
 
+descriptionMove = (id, visible) => {
+    let panelDescription = document.getElementById(id);
+    if (visible)
+        panelDescription.classList.add('description-select-panel');
+    else
+        panelDescription.classList.remove('description-select-panel');
+}
+
 scrollDoc = (e) => {
     var __delta = e.wheelDelta || -e.detail;
     __delta /= Math.abs(__delta);
@@ -161,8 +169,8 @@ panelClick = (event) => {
 
         else {
             item.display = true;
-
             //isClicked && addDescription();
+            descriptionMove(item.id, isClicked);
         }
         classMover(item.div, item.display);
         descriptionDiv.style.display = 'flex';
@@ -171,7 +179,6 @@ panelClick = (event) => {
             descriptionDiv.style.display = 'none';
             descriptionDiv.children = [];
         }
-
     });
 
     document.documentElement.scrollLeft = 0;
