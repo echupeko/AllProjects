@@ -27,7 +27,7 @@ const descriptionArr = [
     {id: 'adress', pattern: 'contact', p: null},
     {id: 'email', pattern: 'contact', p: null},
     {id: 'socialnetwork', pattern: 'contact', p: null},
-]
+];
 const descriptionTextArr = [
     {id: 'javascript', skillLevel: 'Начинающий', description: 'Занимаюсь изучением JavaScript'},
     {id: 'html', skillLevel: 'Начинающий', description: 'Занимаюсь изучением HTML'},
@@ -57,7 +57,7 @@ const descriptionTextArr = [
     {id: 'adress', skillLevel: 'Начинающий', description: 'Алтайский край, г. Барнаул'},
     {id: 'email', skillLevel: 'Начинающий', description: 'email: echupeko@gmail.com'},
     {id: 'socialnetwork', skillLevel: 'Начинающий', description: 'vk instagram whatsapp skype'}
-]
+];
 const panelArr = [];
 let isClicked = false;
 let wDelta = 120;
@@ -158,17 +158,20 @@ panelClick = (event) => {
     panelArr.forEach(function (item) {
         if (item.div !== event.target.parentElement)
             item.display = !item.display;
-        else
+
+        else {
             item.display = true;
 
+            //isClicked && addDescription();
+        }
         classMover(item.div, item.display);
         descriptionDiv.style.display = 'flex';
-        isClicked && addDescription();
         if (!isClicked) {
             classRemover(item.div);
             descriptionDiv.style.display = 'none';
             descriptionDiv.children = [];
         }
+
     });
 
     document.documentElement.scrollLeft = 0;
