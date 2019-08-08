@@ -78,12 +78,12 @@ body {
     padding-right: 108px;
     display: inline-flex;
     overflow-x: auto;
-
+    white-space: nowrap;
 }
 
-html::-webkit-scrollbar{
-    display: none;
-}
+/*html::-webkit-scrollbar{*/
+    /*display: none;*/
+/*}*/
 
 .panel {
     position: relative;
@@ -188,4 +188,35 @@ html::-webkit-scrollbar{
 
 .description-select-panel {
     display: flex !important;
+}
+
+html::-webkit-scrollbar {
+    width: 12px;
+
+}
+/* line 17, sass/page/_home.scss */
+html::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-track:vertical {
+    display: none;
+}
+/* line 24, sass/page/_home.scss */
+html::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 0, 0, 0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+html::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+/* line 30, sass/page/_home.scss */
+html::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 0, 0, 0.4);
 }
