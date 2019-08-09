@@ -3,6 +3,12 @@
 }
 
 body {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    padding: 30px;
     margin: 0;
     font-family: "Open Sans";
 }
@@ -70,9 +76,9 @@ body {
 
 #content {
     position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: -50px;
+    left: -50px;
+    right: -50px;
     min-width: calc(100% - 108px);
     height: 100vh;
     padding-right: 100px;
@@ -196,35 +202,35 @@ html {
     overflow-y: hidden;
 }
 
-html::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 5px;
-
+margin: 25px;
 }
 /* line 17, sass/page/_home.scss */
-html::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
     background: #3d3d3d;
 }
-html::-webkit-scrollbar-track:vertical  html::-webkit-scrollbar-thumb:vertical{
+body::-webkit-scrollbar-track:vertical  html::-webkit-scrollbar-thumb:vertical{
     width: 0;
     height: 0;
 }
 
 /* line 24, sass/page/_home.scss */
-html::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     background: rgba(255, 0, 0, 0.8);
 }
 
-html::-webkit-scrollbar-button {
+body::-webkit-scrollbar-button {
     height: 0;
     width: 0;
 }
 
-html::-webkit-scrollbar-corner {
+body::-webkit-scrollbar-corner {
     background: #3d3d3d;
 }
 /* line 30, sass/page/_home.scss */
-html::-webkit-scrollbar-thumb:window-inactive {
+body::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 0.4);
 }
