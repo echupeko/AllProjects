@@ -2,13 +2,11 @@
     transition: .5s ease;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    bottom: 20px;
-    right: 20px;
-    padding: 30px;
     margin: 0;
     font-family: "Open Sans";
 }
@@ -73,26 +71,32 @@ body {
 #nav-toggle span:after {
     transform: translateY(5px);
 }
-
+#wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 100px);
+    height: 100%;
+}
 #content {
     position: relative;
-    top: -50px;
-    left: -50px;
-    right: -50px;
-    min-width: calc(100% - 108px);
-    height: 100vh;
+    top: 0;
+    left: 0;
+    height: 100%;
     padding-right: 100px;
-    display: inline-flex;
+    display: block;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
 }
+
 
 /*html::-webkit-scrollbar{*/
     /*display: none;*/
 /*}*/
 
 .panel {
+    display: inline-block;
     position: relative;
     width: 400px;
     height: 100%;
@@ -164,6 +168,7 @@ body {
     bottom: 0;
     right: 0;
     transition: width 500ms ease;
+    overflow-y: auto;
 }
 
 /*#block-module{*/
@@ -197,40 +202,42 @@ body {
     display: flex !important;
 }
 
+
+
 html {
     background: #3d3d3d;
-    overflow-y: hidden;
 }
 
-body::-webkit-scrollbar {
-    width: 5px;
-margin: 25px;
+*::-webkit-scrollbar {
+    height: 10px;
+    margin: 25px;
+    position: absolute;
 }
 /* line 17, sass/page/_home.scss */
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #3d3d3d;
 }
-body::-webkit-scrollbar-track:vertical  html::-webkit-scrollbar-thumb:vertical{
+*::-webkit-scrollbar-track:vertical{
     width: 0;
     height: 0;
 }
 
 /* line 24, sass/page/_home.scss */
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     background: rgba(255, 0, 0, 0.8);
 }
 
-body::-webkit-scrollbar-button {
+*::-webkit-scrollbar-button {
     height: 0;
     width: 0;
 }
 
-body::-webkit-scrollbar-corner {
+*::-webkit-scrollbar-corner {
     background: #3d3d3d;
 }
 /* line 30, sass/page/_home.scss */
-body::-webkit-scrollbar-thumb:window-inactive {
+*::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 0, 0, 0.4);
 }

@@ -2,6 +2,7 @@
 * выбранный раздел отображается слева при помощи добавления класса
 * скроллинг при помощи ведения мыши
 * */
+const wrapDiv = document.getElementById('wrapper');
 const contentDiv = document.getElementById('content');
 const descriptionDiv = document.getElementById('description');
 const contentArr = [
@@ -73,14 +74,12 @@ window.onload = function () {
         panelArr.push(panel);
     });
 
-
-    // let html = document.documentElement;
-    // if (html.attachEvent) {
-    //     html.attachEvent("onmousewheel", scrollDoc); // IE and Opera
-    // } else {
-    //     html.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
-    //     html.addEventListener("mousewheel", scrollDoc, false); // Chrome
-    // }
+    if (wrapDiv.attachEvent) {
+        wrapDiv.attachEvent("onmousewheel", scrollDoc); // IE and Opera
+    } else {
+        wrapDiv.addEventListener("DOMMouseScroll", scrollDoc, false); // FF
+        wrapDiv.addEventListener("mousewheel", scrollDoc, false); // Chrome
+    }
 }
 addPanel = (panel) => {
     let elementObj = {
@@ -155,9 +154,9 @@ descriptionMove = (id, visible) => {
 scrollDoc = (e) => {
     var __delta = e.wheelDelta || -e.detail;
     __delta /= Math.abs(__delta);
-    document.documentElement.scrollLeft -= __delta * wDelta; // FF, Opera, IE
+    contentDiv.scrollLeft -= __delta * wDelta; // FF, Opera, IE
     if (this.attachEvent) return false;
-    document.body.scrollLeft -= __delta * wDelta; // Chrome
+    contentDiv.scrollLeft -= __delta * wDelta; // Chrome
 }
 
 panelClick = (event) => {
