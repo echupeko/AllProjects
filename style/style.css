@@ -202,26 +202,24 @@ body {
     display: flex !important;
 }
 
-
-
-html {
-
-}
-
 *::-webkit-scrollbar {
+
     height: 10px;
-    position: absolute;
 }
-/* line 17, sass/page/_home.scss */
+
 *::-webkit-scrollbar-track {
     background: #3d3d3d;
 }
-*::-webkit-scrollbar-track:vertical{
-    width: 0;
-    height: 0;
+
+
+*::-webkit-scrollbar-track{
+    background: transparent url('../source/transparent.png') repeat-y !important;
 }
 
-/* line 24, sass/page/_home.scss */
+*::-webkit-scrollbar:vertical{
+    width: 10px;
+}
+
 *::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
@@ -233,10 +231,7 @@ html {
     width: 0;
 }
 
-*::-webkit-scrollbar-corner {
-    background: #3d3d3d;
-}
-/* line 30, sass/page/_home.scss */
 *::-webkit-scrollbar-thumb:window-inactive {
-    background: #944805;
+    background-color: #a19fa2;
+    transition: background-color 3ms ease;
 }
