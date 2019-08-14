@@ -154,14 +154,14 @@ descriptionMove = (id, visible) => {
 scrollDoc = (e) => {
     var __delta = e.wheelDelta || -e.detail;
     __delta /= Math.abs(__delta);
-    contentDiv.scrollLeft -= __delta * wDelta; // FF, Opera, IE
+    contentDiv.scrollLeft -= __delta * wDelta/4; // FF, Opera, IE
     if (this.attachEvent) return false;
-    contentDiv.scrollLeft -= __delta * wDelta; // Chrome
+    contentDiv.scrollLeft -= __delta * wDelta/4; // Chrome
 }
 
 panelClick = (event) => {
     isClicked = !isClicked;
-    descriptionDiv.style.width = 'calc(100% - ' + (+event.target.parentElement.clientWidth + 108).toString() + 'px)';
+    descriptionDiv.style.width = 'calc(100% - ' + (+event.target.parentElement.clientWidth).toString() + 'px)';
     panelArr.forEach(function (item) {
         if (item.div !== event.target.parentElement)
             item.display = !item.display;

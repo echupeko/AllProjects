@@ -4,6 +4,7 @@
 
 html {
     overflow: hidden;
+    background: #3d3d3d;
 }
 
 body {
@@ -83,9 +84,8 @@ body {
     top: 0;
     left: 0;
     height: 100%;
-    padding-right: 100px;
     display: block;
-    overflow-x: auto;
+    overflow-x: overlay;
     overflow-y: hidden;
     white-space: nowrap;
 }
@@ -205,12 +205,11 @@ body {
 
 
 html {
-    background: #3d3d3d;
+
 }
 
 *::-webkit-scrollbar {
     height: 10px;
-    margin: 25px;
     position: absolute;
 }
 /* line 17, sass/page/_home.scss */
@@ -226,7 +225,7 @@ html {
 *::-webkit-scrollbar-thumb {
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    background: rgba(255, 0, 0, 0.8);
+    background: #ff7a06;
 }
 
 *::-webkit-scrollbar-button {
@@ -239,5 +238,5 @@ html {
 }
 /* line 30, sass/page/_home.scss */
 *::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255, 0, 0, 0.4);
+    background: #944805;
 }
