@@ -157,18 +157,18 @@ body {
 }
 
 #description {
+   outline: 2px solid black;
     position: absolute;
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-right: 108px;
     width: 0;
     top: 0;
     bottom: 0;
     right: 0;
     transition: width 500ms ease;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 /*#block-module{*/
@@ -213,7 +213,7 @@ body {
 
 
 *::-webkit-scrollbar-track{
-    background: transparent url('../source/transparent.png') repeat-y !important;
+    background: transparent url('../source/transparent.png') repeat-x !important;
 }
 
 *::-webkit-scrollbar:vertical{
