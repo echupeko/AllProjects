@@ -12,28 +12,30 @@ const contentArr = [
     {id: 'hobby', description: 'увлечения'},
     {id: 'contact', description: 'контакты'}];
 const descriptionArr = [
-    {id: 'javascript', pattern: 'skills', p: null},
-    {id: 'html', pattern: 'skills', p: null},
-    {id: 'css', pattern: 'skills', p: null},
-    {id: '1C', pattern: 'skills', p: null},
-    {id: 'asu2015', pattern: 'education', p: null},
-    {id: 'asu2017', pattern: 'education', p: null},
-    {id: 'cardgame', pattern: 'development', p: null},
-    {id: 'psh', pattern: 'development', p: null},
-    {id: 'constructor', pattern: 'development', p: null},
-    {id: 'bicycle', pattern: 'hobby', p: null},
-    {id: 'snowboard', pattern: 'hobby', p: null},
-    {id: 'photoshop', pattern: 'hobby', p: null},
-    {id: 'needlework', pattern: 'hobby', p: null},
-    {id: 'adress', pattern: 'contact', p: null},
-    {id: 'email', pattern: 'contact', p: null},
-    {id: 'socialnetwork', pattern: 'contact', p: null},
+    {id: 'js', pattern: 'skills', p: null, element: null},
+    {id: 'html', pattern: 'skills', p: null, element: null},
+    {id: 'css', pattern: 'skills', p: null, element: null},
+    {id: '1C', pattern: 'skills', p: null, element: null},
+    {id: 'ps', pattern: 'skills', p: null, element: null},
+    {id: 'asu2015', pattern: 'education', p: null, element: null},
+    {id: 'asu2017', pattern: 'education', p: null, element: null},
+    {id: 'cardgame', pattern: 'development', p: null, element: null},
+    {id: 'psh', pattern: 'development', p: null, element: null},
+    {id: 'constructor', pattern: 'development', p: null, element: null},
+    {id: 'bicycle', pattern: 'hobby', p: null, element: null},
+    {id: 'snowboard', pattern: 'hobby', p: null, element: null},
+    {id: 'photoshop', pattern: 'hobby', p: null, element: null},
+    {id: 'needlework', pattern: 'hobby', p: null, element: null},
+    {id: 'adress', pattern: 'contact', p: null, element: null},
+    {id: 'email', pattern: 'contact', p: null, element: null},
+    {id: 'socialnetwork', pattern: 'contact', p: null, element: null},
 ];
 const descriptionTextArr = [
-    {id: 'javascript', skillLevel: 'Начинающий', description: 'Занимаюсь изучением JavaScript'},
+    {id: 'js', skillLevel: 'Начинающий', description: 'Занимаюсь изучением JavaScript'},
     {id: 'html', skillLevel: 'Начинающий', description: 'Занимаюсь изучением HTML'},
     {id: 'css', skillLevel: 'Начинающий', description: 'Занимаюсь изучением CSS'},
     {id: '1C', skillLevel: 'Продвинутый', description: 'Работаю на 1С 7.7'},
+    {id: 'ps', skillLevel: 'Выше среднего', description: 'Неплохо владею Adobe Photoshop'},
     {
         id: 'asu2015', skillLevel: 'Бакалавр', description: 'В 2015 году получил степень бакалавра в ' +
         'Алтайском государственном университете'
@@ -173,6 +175,22 @@ panelClick = (event) => {
         }
         classMover(item.div, item.display);
         descriptionDiv.style.display = 'flex';
+        descriptionArr.forEach(function (itemChild) {
+            if(item.id === itemChild.parent) {
+                let elementObj = {
+                    parent: item.div,
+                    child: []
+                }
+                addElements(elementObj.parent,'div',elementObj);
+                elementObj.child[0].id = itemChild.id;
+                elementObj.parent = elementObj.child[0];
+                elementObj.child = [];
+                addElements(elementObj.parent,'div;div',elementObj);
+                elementObj.child[0].classList.add('preview');
+                elementObj.child[1].classList.add('dataBlock');
+            }
+        });
+
         if (!isClicked) {
             classRemover(item.div);
             descriptionDiv.style.display = 'none';
