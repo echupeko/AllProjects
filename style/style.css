@@ -98,7 +98,7 @@ body {
 .panel {
     display: inline-block;
     position: relative;
-    width: 400px;
+    width: 30%;
     height: 100%;
     overflow: hidden;
 }
