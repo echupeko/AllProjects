@@ -5,7 +5,14 @@ window.onload = function () {
 }
 
 window.onscroll = function () {
-    let menuCoords = menuElem.offsetHeight + 100;
+    if (pageYOffset > 80) {
+        headerBlock.classList.add('header-fixed');
+    }
+    else {
+        headerBlock.classList.remove('header-fixed');
+    }
+
+    let menuCoords = headerBlock.offsetHeight + 100;
 
     if (menuCoords < pageYOffset) {
         navButtonElem.style.opacity = '1';
