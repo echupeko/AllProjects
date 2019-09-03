@@ -77,7 +77,7 @@ header ul li{
     animation: shake .7s linear alternate infinite;
 }
 
-#about-me {
+#about-me, #unFocus-about-me {
     width: 100%;
     height: 700px;
     margin-bottom: 70px;
@@ -86,6 +86,11 @@ header ul li{
     background-repeat: no-repeat;
     border-bottom: 25px solid #ff7a06;
     border-radius: 0 0 30% 30%;
+    transition: border-bottom-width, border-radius 500ms ease;
+}
+
+#unFocus-about-me {
+    border-radius: 0;
 }
 
 #about-me > span, #about-me > span:before, #about-me > span:after {
@@ -138,4 +143,24 @@ header ul li{
 .container {
     width: 100%;
     height: 500px;
+    outline: 1px solid black;
+}
+
+footer {
+    width: 100%;
+    height: 200px;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(48, 48, 48, 0.9);
+}
+
+#nav-btn {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 70px;
+    left: 150px;
+    background: #888888;
+    border-radius: 50%;
+    transition: opacity 500ms ease;
 }
