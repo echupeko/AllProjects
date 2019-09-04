@@ -1,42 +1,36 @@
+'use strict'
 const headerBlock = document.querySelector('header');
 const aboutMe = document.getElementById('about-me');
+const navButton = document.getElementById('nav-btn');
+const downArrow = document.getElementById('downArrow');
+const myDescription = document.getElementById('myDescription');
+const myPhoto = document.getElementById('myPhoto');
 
 window.onload = function () {
-    const anchors = document.querySelectorAll('a[href*="#"]')
-    let myDescription = document.getElementById('myDescription');
-
-    myDescription.innerHTML += `<p>мне ${ageCalc()}</p>`;
     menuListAdd();
-
-    for (let anchor of anchors) {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault()
-
-            const blockID = anchor.getAttribute('href').substr(1)
-
-            document.getElementById(blockID).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            })
-        })
-    }
+    aboutMe.style.height = screen.height-200 + 'px';
+    downArrow.style.top = screen.height-140 + 'px';
+    myDescription.innerHTML += `<br><p>${ageCalc()}</p><h1>, г. Барнаул</h1>`;
+    scrollingTo('window',0);
 }
 
 window.onscroll = function () {
-    let navButton = document.getElementById('nav-btn');
-
     if (pageYOffset > 80) {
         headerBlock.classList.add('header-fixed');
+        myPhoto.classList.add('myPhoto-fixed');
     }
     else {
         headerBlock.classList.remove('header-fixed');
+        myPhoto.classList.remove('myPhoto-fixed');
     }
 
     if(pageYOffset > 400) {
         navButton.style.opacity = '0.5';
+
     }
     else {
         navButton.style.opacity = '0';
+
     }
 
     if(pageYOffset > 600) {
@@ -49,10 +43,11 @@ window.onscroll = function () {
 
 const ageCalc = () => {
     let age = new Date('05.08.1994');
-    let date = Math.floor((new Date() - age)/(1000*60*60*24*365)).toString();
+    let date = Math.floor((new Date() - age) / (1000 * 60 * 60 * 24 * 365)).toString();
     let split = date.split('');
-    let end = parseInt(split[split.length-1]);
-    if(end === 1){
+    let end = parseInt(split[split.length - 1]);
+
+    if (end === 1) {
         date += ' год';
     }
     else if (end > 1 && end < 5) {
@@ -67,9 +62,22 @@ const ageCalc = () => {
 const menuListAdd = () => {
     let li = "";
     contentArr.forEach(item => {
-        li += '<li><a class="linkMenu" href="#' + item.id + '">' + item.description + '</a></li>';
-        return li;
+        li += '<li><a class="linkMenu" href="#' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '\')">' + item.description + '</a></li>';
     });
     headerBlock.innerHTML = `<ul> ${li} </ul>`;
 }
 
+const scrollingTo = (type, to) => {
+    if (type == 'block'){
+        document.getElementById(to).scrollIntoView({
+            behavior: 'instant',
+            block: 'start'
+        });
+    }
+    else if (type == 'window') {
+        window.scrollTo({
+            top: to,
+            behavior: "smooth"
+        });
+    }
+}

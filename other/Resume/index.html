@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 <body>
-<header></header>
+<header>
+
+</header>
 <div id="main">
     <div id="about-me">
         <div id="myPhoto" class="about-block"></div>
@@ -18,14 +20,14 @@
             <div id="myDescription">Frontend Developer</div>
         </div>
     </div>
-    <span></span>
+    <span id="downArrow" onclick="scrollingTo('block','skills')"></span>
     <div id="skills" class="container"></div>
     <div id="education" class="container"></div>
     <div id="development" class="container"></div>
     <div id="hobby" class="container"></div>
 </div>
 <footer id="contact">
-    <span id="nav-btn"></span>
+    <span id="nav-btn" onclick="scrollingTo('window',0)"></span>
 </footer>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
