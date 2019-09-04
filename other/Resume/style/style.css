@@ -24,6 +24,7 @@ header {
 }
 
 .header-fixed {
+    z-index: 0;
     height: 80px;
     position: fixed;
     background-color: rgba(48, 48, 48, 0.9);
@@ -72,10 +73,11 @@ header ul li{
     width: 100%;
 }
 
-
-
 #about-me, #unFocus-about-me {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     /*height: 90vh;*/
     margin-bottom: 70px;
@@ -85,13 +87,6 @@ header ul li{
     border-bottom: 25px solid #ff7a06;
     border-radius: 0 0 30% 30%;
     transition: border-bottom-width, border-radius 500ms ease;
-}
-
-#about-me {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 #unFocus-about-me {
@@ -162,6 +157,7 @@ header ul li{
 }
 
 #downArrow, #downArrow:before, #downArrow:after {
+    z-index: -1;
     cursor: pointer;
     position: absolute;
     display: block;
