@@ -2,8 +2,11 @@ const headerBlock = document.querySelector('header');
 const aboutMe = document.getElementById('about-me');
 
 window.onload = function () {
-    menuListAdd();
     const anchors = document.querySelectorAll('a[href*="#"]')
+    let myDescription = document.getElementById('myDescription');
+
+    myDescription.innerHTML += `<p>мне ${ageCalc()}</p>`;
+    menuListAdd();
 
     for (let anchor of anchors) {
         anchor.addEventListener('click', function (e) {
@@ -30,7 +33,7 @@ window.onscroll = function () {
     }
 
     if(pageYOffset > 400) {
-        navButton.style.opacity = '1';
+        navButton.style.opacity = '0.5';
     }
     else {
         navButton.style.opacity = '0';
@@ -43,6 +46,23 @@ window.onscroll = function () {
         aboutMe.id = 'about-me';
     }
 };
+
+const ageCalc = () => {
+    let age = new Date('05.08.1994');
+    let date = Math.floor((new Date() - age)/(1000*60*60*24*365)).toString();
+    let split = date.split('');
+    let end = parseInt(split[split.length-1]);
+    if(end === 1){
+        date += ' год';
+    }
+    else if (end > 1 && end < 5) {
+        date += ' года';
+    }
+    else if (end > 4) {
+        date += ' лет';
+    }
+    return date;
+}
 
 const menuListAdd = () => {
     let li = "";

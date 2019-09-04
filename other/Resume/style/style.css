@@ -72,10 +72,7 @@ header ul li{
     width: 100%;
 }
 
-#main span {
-    -webkit-animation: shake .7s linear alternate infinite;
-    animation: shake .7s linear alternate infinite;
-}
+
 
 #about-me, #unFocus-about-me {
 
@@ -92,51 +89,81 @@ header ul li{
 
 #about-me {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.about-block {
-    height: 350px;
-    width: 350px;
 }
 
 #unFocus-about-me {
     border-radius: 0;
 }
 
-#about-me > span, #about-me > span:before, #about-me > span:after {
+.about-block {
+    height: 250px;
+    width: 250px;
+    margin: 25px;
+    background-color: rgba(48, 48, 48, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#myPhoto {
+    background: url("../source/avatar.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 15px black;
+    border: 1px solid #888888;
+    border-radius: 30%;
+}
+
+#descriptionBlock {
+    height: 150px;
+    min-width: 40%;
+}
+
+#myName {
+    font-weight: lighter;
+    font-size: 35px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff7a06;
+}
+
+#myDescription {
+
+}
+
+#main > span, #main > span:before, #main > span:after {
     position: absolute;
     display: block;
     content: '';
 }
 
-#about-me > span {
-    position: inherit;
+#main > span {
+    position: absolute;
     background-color: transparent;
     width: 60px;
     height: 30px;
-    top: calc(100% + 45px);
+    top: 765px;
     left: calc(50% - 30px);
     -webkit-animation: shake .7s linear alternate infinite;
     animation: shake .7s linear alternate infinite;
 }
 
-#about-me > span:before, #about-me > span:after {
-    top: calc(100% - 20px);
+#main > span:before, #main > span:after {
     width: 30px;
     height: 5px;
     background: #3c3c3c;
     border-radius: 3px 3px 0 0;
 }
 
-#about-me > span:before {
+#main > span:before {
     transform: rotateZ(-30deg);
     left: 27px;
 }
 
-#about-me > span:after {
+#main > span:after {
     transform: rotateZ(30deg);
     right: 27px;
 }
@@ -168,13 +195,18 @@ footer {
 }
 
 #nav-btn {
+    cursor: pointer;
     opacity: 0;
     width: 60px;
     height: 60px;
     position: fixed;
     bottom: 70px;
     left: 150px;
-    background: #888888;
+    background: #707070;
     border-radius: 50%;
     transition: opacity 500ms ease;
+}
+
+#nav-btn:hover {
+    opacity: 0.9 !important;
 }
