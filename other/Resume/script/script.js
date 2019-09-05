@@ -17,10 +17,12 @@ window.onload = function () {
 window.onscroll = function () {
     if (pageYOffset > 80) {
         headerBlock.classList.add('header-fixed');
+        document.getElementById('photoCompress').classList.remove('hidden');
         myPhoto.classList.add('myPhoto-fixed');
     }
     else {
         headerBlock.classList.remove('header-fixed');
+        document.getElementById('photoCompress').classList.add('hidden');
         myPhoto.classList.remove('myPhoto-fixed');
     }
 
@@ -64,7 +66,7 @@ const menuListAdd = () => {
     contentArr.forEach(item => {
         li += '<li><a class="linkMenu" href="#' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '\')">' + item.description + '</a></li>';
     });
-    headerBlock.innerHTML = `<ul> ${li} </ul>`;
+    headerBlock.innerHTML += `<ul> ${li} </ul>`;
 }
 
 const scrollingTo = (type, to) => {
