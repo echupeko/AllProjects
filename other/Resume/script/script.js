@@ -2,14 +2,18 @@
 const headerBlock = document.querySelector('header');
 const aboutMe = document.getElementById('about-me');
 const navButton = document.getElementById('nav-btn');
-const downArrow = document.getElementById('downArrow');
+const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
 
 window.onload = function () {
     menuListAdd();
     aboutMe.style.height = screen.height-200 + 'px';
-    downArrow.style.top = screen.height-140 + 'px';
+
+    for (let i=0; i<downArrow.length; i++){
+        downArrow[i].style.top = screen.height-140 + i*500 + 'px';
+    }
+
     document.getElementById('photoCompress').style.display = 'none';
     myDescription.innerHTML += `<br><p>${ageCalc()}</p><h1>, г. Барнаул</h1>`;
     scrollingTo('window',0);
