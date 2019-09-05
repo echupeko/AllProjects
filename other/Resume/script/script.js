@@ -10,6 +10,7 @@ window.onload = function () {
     menuListAdd();
     aboutMe.style.height = screen.height-200 + 'px';
     downArrow.style.top = screen.height-140 + 'px';
+    document.getElementById('photoCompress').style.display = 'none';
     myDescription.innerHTML += `<br><p>${ageCalc()}</p><h1>, г. Барнаул</h1>`;
     scrollingTo('window',0);
 }
@@ -17,20 +18,21 @@ window.onload = function () {
 window.onscroll = function () {
     if (pageYOffset > 80) {
         headerBlock.classList.add('header-fixed');
-        document.getElementById('photoCompress').classList.remove('hidden');
+        document.getElementById('photoCompress').style.display = 'block';
         myPhoto.classList.add('myPhoto-fixed');
     }
     else {
         headerBlock.classList.remove('header-fixed');
-        document.getElementById('photoCompress').classList.add('hidden');
+        document.getElementById('photoCompress').style.display = 'none';
         myPhoto.classList.remove('myPhoto-fixed');
     }
 
     if(pageYOffset > 400) {
         navButton.style.opacity = '0.5';
-
+        navButton.style.display = 'block';
     }
     else {
+        navButton.style.display = 'none';
         navButton.style.opacity = '0';
 
     }
