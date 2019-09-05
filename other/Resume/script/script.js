@@ -5,6 +5,8 @@ const navButton = document.getElementById('nav-btn');
 const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
+const qwe = document.getElementById('qwe');
+const arr = qwe.querySelectorAll('div');
 
 window.onload = function () {
     menuListAdd();
@@ -88,4 +90,16 @@ const scrollingTo = (type, to) => {
             behavior: "smooth"
         });
     }
+}
+
+const openBlock = () => {
+    for (let i=1; i<arr.length; i++){
+        arr[i].classList.add('hidden');
+    }
+
+    //document.getElementById('block').style.display = 'block';
+    qwe.style.minWidth = '60%';
+    qwe.style.width = '60%';
+    qwe.style.borderRadius = '100px';
+    qwe.style.justifyContent = 'left';
 }

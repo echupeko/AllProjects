@@ -220,7 +220,7 @@ header ul li{
 .container p {
     font-size: 30px;
     text-transform: uppercase;
-    font-weight: lighter;
+    font-weight: bold;
     color: black;
 }
 
@@ -259,13 +259,18 @@ header ul li{
 
 .container div > div{
     margin: 5px;
-    min-width: 250px;
-    width:250px;
-    height: 250px;
+    min-width: 200px;
+    width:200px;
+    height: 200px;
     border-radius: 50%;
-
 }
 
+#qwe {
+    background-color: #555555;
+    min-width: 0;
+    width: 0;
+    transition: min-width,width 500ms ease;
+}
 
 footer {
     width: 100%;
@@ -285,9 +290,31 @@ footer {
     left: 150px;
     background: #707070;
     border-radius: 50%;
-    transition: opacity, display 500ms ease;
+    transition: opacity 500ms ease;
+    content: '';
 }
+#nav-btn:before, #nav-btn:after {
+    width: 25px;
+    height: 5px;
+    background: rgb(255, 255, 255);
+    border-radius: 3px;
+    display: block;
+    top: 25px;
+    content: '';
+    position: absolute;
+}
+
+#nav-btn:before {
+    transform: rotateZ(45deg);
+    left: 25px;
+}
+#nav-btn:after {
+    transform: rotateZ(-45deg);
+    right: 25px;
+}
+
 
 #nav-btn:hover {
     opacity: 0.9 !important;
+    transition: opacity 500ms ease;
 }
