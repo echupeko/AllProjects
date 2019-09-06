@@ -85,7 +85,7 @@ const blockInformationAdd = () => {
         content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
             '<div id="' + block.id + '" class="container">' +
             '<p>' + block.description + '</p>' +
-            '<div id="qwe">';
+            '<div class="qwe" name="' + block.id + '">';
         let arr = descriptionArr.filter(item => item.pattern === block.id);
         let contentDescription = '';
         arr.forEach(item => {
@@ -113,20 +113,23 @@ const scrollingTo = (type, to) => {
 }
 
 const openBlock = (id) => {
-    const qwe = document.getElementById('qwe');
-    const arr = qwe.querySelectorAll('div');
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i].id !== id) {
-            if (!isOpenBlock)
-                arr[i].classList.add('hidden');
-            else
-                isOpenBlock & arr[i].classList.remove('hidden');
+    const qwe = document.getElementsByClassName('qwe');
+    qwe.forEach(item => {
+        const arr = qwe.querySelectorAll('div');
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].id !== id) {
+                if (!isOpenBlock)
+                    arr[i].classList.add('hidden');
+                else
+                    isOpenBlock & arr[i].classList.remove('hidden');
+            }
         }
-    }
-    if (!isOpenBlock)
-        qwe.classList.add('qwe-visible');
-    else
-        qwe.classList.remove('qwe-visible');
+        if (!isOpenBlock)
+            qwe.classList.add('qwe-visible');
+        else
+            qwe.classList.remove('qwe-visible');
 
-    isOpenBlock = !isOpenBlock;
+        isOpenBlock = !isOpenBlock;
+    })
+
 }
