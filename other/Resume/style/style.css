@@ -12,6 +12,10 @@ body {
     margin: 0;
 }
 
+#nav-toggle {
+    display: none;
+}
+
 header, header * {
     background-color: transparent;
 }
