@@ -6,8 +6,7 @@ const navButton = document.getElementById('nav-btn');
 const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
-const qwe = document.getElementById('qwe');
-//const arr = qwe.querySelectorAll('div');
+let isOpenBlock = false;
 
 window.onload = function () {
     menuListAdd();
@@ -37,7 +36,7 @@ window.onscroll = function () {
     }
 
     if (pageYOffset > 400) {
-        navButton.style.opacity = '0.5';
+        navButton.style.opacity = '1';
         navButton.style.cursor = 'pointer';
     }
     else {
@@ -74,7 +73,8 @@ const ageCalc = () => {
 const menuListAdd = () => {
     let li = "";
     contentArr.forEach(item => {
-        li += '<li><a class="linkMenu" href="#' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '\')">' + item.description + '</a></li>';
+        li += '<li><a class="linkMenu" href="#' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '\')">' +
+            item.description + '</a></li>';
     });
     headerBlock.innerHTML += `<ul> ${li} </ul>`;
 }
@@ -89,7 +89,8 @@ const blockInformationAdd = () => {
         let arr = descriptionArr.filter(item => item.pattern === block.id);
         let contentDescription = '';
         arr.forEach(item => {
-            contentDescription += '<div onclick="openBlock(\'' + item.id + '\')"></div>';
+            contentDescription += '<div id="' + item.id + '" onclick="openBlock(\'' + item.id + '\')"' +
+                'style="background: url(\'source\/' + item.id + '.png\'); background-repeat: no-repeat; background-size: cover"></div>';
         });
         content += contentDescription + '</div>';
         main.innerHTML += content;
@@ -112,14 +113,20 @@ const scrollingTo = (type, to) => {
 }
 
 const openBlock = (id) => {
-    const arr = document.querySelectorAll('div');
-    for (let i = 1; i < arr.length; i++) {
-        arr[i].classList.add('hidden');
+    const qwe = document.getElementById('qwe');
+    const arr = qwe.querySelectorAll('div');
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id !== id) {
+            if (!isOpenBlock)
+                arr[i].classList.add('hidden');
+            else
+                isOpenBlock & arr[i].classList.remove('hidden');
+        }
     }
+    if (!isOpenBlock)
+        qwe.classList.add('qwe-visible');
+    else
+        qwe.classList.remove('qwe-visible');
 
-    //document.getElementById('block').style.display = 'block';
-    qwe.style.minWidth = '60%';
-    qwe.style.width = '60%';
-    qwe.style.borderRadius = '100px';
-    qwe.style.justifyContent = 'left';
+    isOpenBlock = !isOpenBlock;
 }
