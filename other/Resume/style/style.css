@@ -236,42 +236,13 @@ header ul li {
     align-items: center;
 }
 
-.container div div:nth-child(1) {
-    background: url("../source/js.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.container div div:nth-child(2) {
-    background: url("../source/html.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.container div div:nth-child(3) {
-    background: url("../source/css.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.container div div:nth-child(4) {
-    background: url("../source/ps.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.container div div:nth-child(5) {
-    background: url("../source/1C.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 .container div > div {
     margin: 5px;
     min-width: 200px;
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    box-shadow: 0 0 15px black;
 }
 
 #qwe {
