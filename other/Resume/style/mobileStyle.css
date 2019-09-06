@@ -15,30 +15,37 @@
         box-shadow: none;
         flex-direction: column;
     }
-    .header-fixed, .header-fixed ul{
+
+    .header-fixed, .header-fixed ul {
         display: none;
     }
 
     #nav-toggle {
 
     }
+
     #about-me {
         height: 550px;
         border-radius: 0 0 10% 10%;
     }
+
     .about-block {
         width: 200px;
         height: 200px;
     }
+
     #myPhoto {
         min-height: 200px;
     }
+
     #myName {
         font-size: 3vh;
     }
+
     #myDescription p, #myDescription h1 {
         font-size: 15px;
     }
+
     .downArrow {
         top: 610px;
     }

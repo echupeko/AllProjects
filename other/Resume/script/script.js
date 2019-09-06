@@ -1,4 +1,5 @@
 'use strict'
+const main = document.getElementById('main');
 const headerBlock = document.querySelector('header');
 const aboutMe = document.getElementById('about-me');
 const navButton = document.getElementById('nav-btn');
@@ -6,19 +7,21 @@ const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
 const qwe = document.getElementById('qwe');
-const arr = qwe.querySelectorAll('div');
+//const arr = qwe.querySelectorAll('div');
 
 window.onload = function () {
     menuListAdd();
-    aboutMe.style.height = screen.height-200 + 'px';
+    aboutMe.style.height = screen.height - 200 + 'px';
+    blockInformationAdd();
 
-    for (let i=0; i<downArrow.length; i++){
-        downArrow[i].style.top = screen.height-140 + i*500 + 'px';
+
+    for (let i = 0; i < downArrow.length; i++) {
+        downArrow[i].style.top = screen.height - 140 + i * 500 + 'px';
     }
 
     document.getElementById('photoCompress').style.display = 'none';
     myDescription.innerHTML += `<br><p>${ageCalc()}</p><h1>, г. Барнаул</h1>`;
-    scrollingTo('window',0);
+    scrollingTo('window', 0);
 }
 
 window.onscroll = function () {
@@ -33,17 +36,16 @@ window.onscroll = function () {
         myPhoto.classList.remove('myPhoto-fixed');
     }
 
-    if(pageYOffset > 400) {
+    if (pageYOffset > 400) {
         navButton.style.opacity = '0.5';
-        navButton.style.display = 'block';
+        navButton.style.cursor = 'pointer';
     }
     else {
-        navButton.style.display = 'none';
         navButton.style.opacity = '0';
-
+        navButton.style.cursor = 'auto';
     }
 
-    if(pageYOffset > 600) {
+    if (pageYOffset > 600) {
         aboutMe.id = 'unFocus-about-me';
     }
     else {
@@ -77,11 +79,28 @@ const menuListAdd = () => {
     headerBlock.innerHTML += `<ul> ${li} </ul>`;
 }
 
+const blockInformationAdd = () => {
+    let content;
+    contentArr.forEach(block => {
+        content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
+            '<div id="' + block.id + '" class="container">' +
+            '<p>' + block.description + '</p>' +
+            '<div id="qwe">';
+        let arr = descriptionArr.filter(item => item.pattern === block.id);
+        let contentDescription = '';
+        arr.forEach(item => {
+            contentDescription += '<div onclick="openBlock(\'' + item.id + '\')"></div>';
+        });
+        content += contentDescription + '</div>';
+        main.innerHTML += content;
+    });
+}
+
 const scrollingTo = (type, to) => {
-    if (type == 'block'){
+    if (type == 'block') {
         document.getElementById(to).scrollIntoView({
-            behavior: 'instant',
-            block: 'start'
+            block: 'start',
+            behavior: 'instant'
         });
     }
     else if (type == 'window') {
@@ -92,8 +111,9 @@ const scrollingTo = (type, to) => {
     }
 }
 
-const openBlock = () => {
-    for (let i=1; i<arr.length; i++){
+const openBlock = (id) => {
+    const arr = document.querySelectorAll('div');
+    for (let i = 1; i < arr.length; i++) {
         arr[i].classList.add('hidden');
     }
 
