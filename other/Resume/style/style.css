@@ -250,12 +250,12 @@ header ul li {
     background-color: #555555;
     min-width: 0;
     width: 0;
-    transition: min-width, width 500ms ease;
+    transition: min-width, width  500ms ease;
 }
 
 .qwe-visible{
-    min-width: 60% !important;
-    width: 60% !important;
+    min-width: 60%;
+    width: 60%;
     border-radius: 100px;
     justify-content: left !important;
     transition: min-width, width 500ms ease;

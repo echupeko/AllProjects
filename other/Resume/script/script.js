@@ -6,11 +6,13 @@ const navButton = document.getElementById('nav-btn');
 const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
-let isOpenBlock = false;
+let listBlocks = [];
 
 window.onload = function () {
     menuListAdd();
     aboutMe.style.height = screen.height - 200 + 'px';
+    let content = '<br><p>' + ageCalc() + '</p><h1>, г. Барнаул</h1>';
+    myDescription.innerHTML += content;
     blockInformationAdd();
 
 
@@ -19,7 +21,7 @@ window.onload = function () {
     }
 
     document.getElementById('photoCompress').style.display = 'none';
-    myDescription.innerHTML += `<br><p>${ageCalc()}</p><h1>, г. Барнаул</h1>`;
+
     scrollingTo('window', 0);
 }
 
@@ -85,7 +87,7 @@ const blockInformationAdd = () => {
         content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
             '<div id="' + block.id + '" class="container">' +
             '<p>' + block.description + '</p>' +
-            '<div class="qwe" name="' + block.id + '">';
+            '<div class="qwe">';
         let arr = descriptionArr.filter(item => item.pattern === block.id);
         let contentDescription = '';
         arr.forEach(item => {
@@ -113,23 +115,29 @@ const scrollingTo = (type, to) => {
 }
 
 const openBlock = (id) => {
-    const qwe = document.getElementsByClassName('qwe');
-    qwe.forEach(item => {
-        const arr = qwe.querySelectorAll('div');
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].id !== id) {
-                if (!isOpenBlock)
-                    arr[i].classList.add('hidden');
-                else
-                    isOpenBlock & arr[i].classList.remove('hidden');
-            }
+    let block = listBlocks.find(item => item.id === id);
+    if (block === undefined) {
+        block = {};
+        block.id = id;
+        block.element = event.target.parentElement;
+        listBlocks.push(block);
+    }
+
+    const qwe = block.element;
+    const arr = qwe.querySelectorAll('div');
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].id !== id) {
+            if (!block.isOpen)
+                arr[i].classList.add('hidden');
+            else
+                arr[i].classList.remove('hidden');
         }
-        if (!isOpenBlock)
-            qwe.classList.add('qwe-visible');
-        else
-            qwe.classList.remove('qwe-visible');
-
-        isOpenBlock = !isOpenBlock;
-    })
-
+    }
+    if (!block.isOpen)
+        qwe.classList.add('qwe-visible');
+    else
+        qwe.classList.remove('qwe-visible');
+    block.isOpen = !block.isOpen;
+    ;
 }
