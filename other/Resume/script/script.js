@@ -6,18 +6,20 @@ const navButton = document.getElementById('nav-btn');
 const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
 const myPhoto = document.getElementById('myPhoto');
+const screenHeight = screen.height;
+const windowHeight = screenHeight - 200;
 let listBlocks = [];
 
 window.onload = function () {
     menuListAdd();
-    aboutMe.style.height = screen.height - 200 + 'px';
+    aboutMe.style.height = windowHeight + 'px';
     let content = '<br><p>' + ageCalc() + '</p><h1>, г. Барнаул</h1>';
     myDescription.innerHTML += content;
     blockInformationAdd();
 
 
     for (let i = 0; i < downArrow.length; i++) {
-        downArrow[i].style.top = screen.height - 140 + i * 500 + 'px';
+        downArrow[i].style.top = screenHeight - 140 + i * windowHeight + 'px';
     }
 
     document.getElementById('photoCompress').style.display = 'none';
@@ -85,7 +87,7 @@ const blockInformationAdd = () => {
     let content;
     contentArr.forEach(block => {
         content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
-            '<div id="' + block.id + '" class="container">' +
+            '<div id="' + block.id + '" class="container" style="height:' + windowHeight + 'px">' +
             '<p>' + block.description + '</p>' +
             '<div class="qwe">';
         let arr = descriptionArr.filter(item => item.pattern === block.id);
