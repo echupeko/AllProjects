@@ -1,8 +1,9 @@
 const contentArr = [
-    {id: 'skills', description: 'навыки'},
-    {id: 'education', description: 'образование'},
-    {id: 'development', description: 'работы'},
-    {id: 'hobby', description: 'увлечения'}];
+    {id: 'skills', description: 'навыки', type: 'block'},
+    {id: 'education', description: 'образование', type: 'block'},
+    {id: 'development', description: 'работы', type: 'block'},
+    {id: 'hobby', description: 'увлечения', type: 'block'},
+    {id: 'contact', description: 'контакты', type: 'footer'}];
 const descriptionArr = [
     {
         id: 'js',

@@ -83,21 +83,24 @@ const menuListAdd = () => {
     headerBlock.innerHTML += `<ul> ${li} </ul>`;
 }
 
-const blockInformationAdd = () => {
+const blockInformationAdd = () => { //проверить функцию, с ней проблемы
+
     let content;
     contentArr.forEach(block => {
-        content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
-            '<div id="' + block.id + '" class="container" style="height:' + windowHeight + 'px">' +
-            '<p>' + block.description + '</p>' +
-            '<div class="qwe">';
-        let arr = descriptionArr.filter(item => item.pattern === block.id);
-        let contentDescription = '';
-        arr.forEach(item => {
-            contentDescription += '<div id="' + item.id + '" onclick="openBlock(\'' + item.id + '\')"' +
-                'style="background: url(\'source\/' + item.id + '.png\'); background-repeat: no-repeat; background-size: cover"></div>';
-        });
-        content += contentDescription + '</div>';
-        main.innerHTML += content;
+        if (block.type === 'block') {
+            content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
+                '<div id="' + block.id + '" class="container" style="height:' + windowHeight + 'px">' +
+                '<p>' + block.description + '</p>' +
+                '<div class="qwe">';
+            let arr = descriptionArr.filter(item => item.pattern === block.id);
+            let contentDescription = '';
+            arr.forEach(item => {
+                contentDescription += '<div id="' + item.id + '" onclick="openBlock(\'' + item.id + '\')"' +
+                    'style="background: url(\'source\/' + item.id + '.png\'); background-repeat: no-repeat; background-size: cover"></div>';
+            });
+            content += contentDescription + '</div>';
+            main.innerHTML += content;
+        }
     });
 }
 
