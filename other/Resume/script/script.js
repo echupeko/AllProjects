@@ -1,4 +1,4 @@
-'use strict'
+//'use strict'
 const main = document.getElementById('main');
 const headerBlock = document.querySelector('header');
 let aboutMe = document.getElementById('about-me');
