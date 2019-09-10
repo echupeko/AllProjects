@@ -1,7 +1,7 @@
 'use strict'
 const main = document.getElementById('main');
 const headerBlock = document.querySelector('header');
-const aboutMe = document.getElementById('about-me');
+let aboutMe = document.getElementById('about-me');
 const navButton = document.getElementById('nav-btn');
 const downArrow = document.getElementsByClassName('downArrow');
 const myDescription = document.getElementById('myDescription');
@@ -102,6 +102,7 @@ const blockInformationAdd = () => { //проверить функцию, с не
             main.innerHTML += content;
         }
     });
+    aboutMe = document.getElementById('about-me');
 }
 
 const scrollingTo = (type, to) => {
@@ -139,10 +140,28 @@ const openBlock = (id) => {
                 arr[i].classList.remove('hidden');
         }
     }
-    if (!block.isOpen)
+
+    if (!block.isOpen) {
         qwe.classList.add('qwe-visible');
-    else
+        createDescriptionBlock(qwe, id);
+    }
+    else {
         qwe.classList.remove('qwe-visible');
+        removeDescriptionBlock(qwe, id);
+    }
     block.isOpen = !block.isOpen;
-    ;
+}
+
+const createDescriptionBlock = (parent, id) => {
+    let div = document.createElement('div');
+    div.className = 'blockDescription';
+    let p = document.createElement('p');
+    p.innerHTML = descriptionArr.find(item => item.id === id).description;
+    div.appendChild(p);
+    parent.appendChild(div);
+}
+
+const removeDescriptionBlock = (parent, id) => {
+    let div = parent.getElementsByClassName('blockDescription');
+    parent.removeChild(div[0]);
 }
