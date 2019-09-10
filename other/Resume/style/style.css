@@ -12,7 +12,7 @@ body {
     margin: 0;
 }
 
-#nav-toggle {
+.nav-toggle {
     display: none;
 }
 
@@ -63,12 +63,7 @@ header ul li {
     list-style-type: none;
 }
 
-#photoCompress {
-    min-height: unset !important;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-}
+
 
 .linkMenu {
     min-width: 50px;
@@ -86,14 +81,14 @@ header ul li {
     border-bottom: 2px solid #888888;
 }
 
-#main {
+main {
     width: 100%;
     background: url("../source/background.jpg");
     background-repeat: repeat;
 
 }
 
-#about-me, #unFocus-about-me {
+.starting-page, #unFocus-about-me {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -124,8 +119,8 @@ header ul li {
     transition: top, left 500ms ease;
 }
 
-#myPhoto, #photoCompress {
-    min-height: 250px;
+/*****Avatar*****/
+.avatar-img {
     background: url("../source/skills.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -134,12 +129,24 @@ header ul li {
     border-radius: 50%;
 }
 
+.avatar-small-copy {
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+#avatar {
+    min-height: 250px;
+}
+/****************/
+
+
 #descriptionBlock {
     height: 150px;
     min-width: 40%;
 }
 
-#myName {
+#my-name {
     font-weight: lighter;
     font-size: 35px;
     text-transform: uppercase;
