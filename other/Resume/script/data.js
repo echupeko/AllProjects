@@ -24,7 +24,7 @@ const descriptionArr = [
         description: 'Занимаюсь изучением CSS'
     },
     {
-        id: '1C',
+        id: '1c',
         pattern: 'skills',
         skillLevel: 'Продвинутый',
         description: 'Работаю на 1С 7.7'
