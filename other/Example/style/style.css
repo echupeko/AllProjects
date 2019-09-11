@@ -1,5 +1,5 @@
 body {
-    background-color: #3c3c3c;
+    background-color: #1c1c1c;
     perspective: 500px;
     overflow: hidden;
     display: flex;
@@ -20,6 +20,29 @@ body {
 
 }
 
+ul {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    list-style: none;
+}
+
+li{
+    margin-top: 150px;
+    margin-botom: 150px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #40dd69;
+}
+li:before {
+
+
+}
+
+li:after{
+
+}
 #ba {
     width: 200px;
     height: 100px;
