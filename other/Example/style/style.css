@@ -99,12 +99,13 @@ li:hover:before {
     left: -1px;
     width: 20px;
     height: 20px;
-    background-color: #dd5700;
+    background-color: #fff700;
     transition: all 500ms ease;
+    box-shadow: 0 0 50px #fff700;
 }
 
 li:hover:after {
-    background-color: #dd5700;
+    background-color: #fff700;
     transition: all 500ms ease;
 }
 
@@ -120,7 +121,8 @@ li p {
     font-family: 'Open Sans';
     text-transform: uppercase   ;
     font-weight: lighter;
-    color: #dd9600;
+    color: #fff700;
+    border-bottom: 1px solid #fff700;
     transition: all 500ms ease;
 }
 
