@@ -1,28 +1,26 @@
 //'use strict'
-const main = document.getElementById('main');
+const main = document.querySelector('main');
 const headerBlock = document.querySelector('header');
-let aboutMe = document.getElementById('about-me');
-const navButton = document.getElementById('nav-btn');
-const downArrow = document.getElementsByClassName('downArrow');
-const myDescription = document.getElementById('myDescription');
-const myPhoto = document.getElementById('myPhoto');
+let startingPage = main.getElementsByClassName('starting-page');
+const btnToUp = document.getElementById('btn-to-up');
+const downArrow = document.getElementsByClassName('down-arrow');
+const myDescription = document.getElementById('my-description');
 const screenHeight = screen.height;
 const windowHeight = screenHeight - 200;
 let listBlocks = [];
 
 window.onload = function () {
     menuListAdd();
-    aboutMe.style.height = windowHeight + 'px';
+    startingPage[0].style.height = windowHeight + 'px';
     let content = '<br><p>' + ageCalc() + '</p><h1>, г. Барнаул</h1>';
     myDescription.innerHTML += content;
     blockInformationAdd();
-
 
     for (let i = 0; i < downArrow.length; i++) {
         downArrow[i].style.top = screenHeight - 140 + i * windowHeight + 'px';
     }
 
-    document.getElementById('photoCompress').style.display = 'none';
+    document.getElementById('avatar-mini').style.display = 'none';
 
     scrollingTo('window', 0);
 }
@@ -30,29 +28,28 @@ window.onload = function () {
 window.onscroll = function () {
     if (pageYOffset > 80) {
         headerBlock.classList.add('header-fixed');
-        document.getElementById('photoCompress').style.display = 'block';
-        myPhoto.classList.add('myPhoto-fixed');
+        document.getElementById('avatar-mini').style.display = 'block';
     }
     else {
         headerBlock.classList.remove('header-fixed');
-        document.getElementById('photoCompress').style.display = 'none';
-        myPhoto.classList.remove('myPhoto-fixed');
+        document.getElementById('avatar-mini').style.display = 'none';
     }
 
     if (pageYOffset > 400) {
-        navButton.style.opacity = '1';
-        navButton.style.cursor = 'pointer';
+        btnToUp.style.opacity = '1';
+        btnToUp.style.cursor = 'pointer';
     }
     else {
-        navButton.style.opacity = '0';
-        navButton.style.cursor = 'auto';
+        btnToUp.style.opacity = '0';
+        btnToUp.style.cursor = 'auto';
     }
 
     if (pageYOffset > 600) {
-        aboutMe.id = 'unFocus-about-me';
+        startingPage[0].id = 'unFocus-about-me';
     }
     else {
-        aboutMe.id = 'about-me';
+        if (startingPage[0].getAttribute('id'))
+            startingPage[0].removeAttribute('id');
     }
 };
 
@@ -88,7 +85,7 @@ const blockInformationAdd = () => { //проверить функцию, с не
     let content;
     contentArr.forEach(block => {
         if (block.type === 'block') {
-            content = '<span class="downArrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
+            content = '<span class="down-arrow" onclick="scrollingTo(\'block\',\'' + block.id + '\')"></span>' +
                 '<div id="' + block.id + '" class="container" style="height:' + windowHeight + 'px">' +
                 '<p>' + block.description + '</p>' +
                 '<div class="qwe">';
@@ -102,7 +99,7 @@ const blockInformationAdd = () => { //проверить функцию, с не
             main.innerHTML += content;
         }
     });
-    aboutMe = document.getElementById('about-me');
+    startingPage = document.getElementsByClassName('starting-page');
 }
 
 const scrollingTo = (type, to) => {

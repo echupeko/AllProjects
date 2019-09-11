@@ -100,6 +100,7 @@ main {
     background-repeat: no-repeat;
     border-bottom: 25px solid #ff7a06;
     border-radius: 0 0 30% 30%;
+    animation: height .7s linear alternate infinite;
     transition: border-bottom-width, border-radius 500ms ease;
 }
 
@@ -107,7 +108,7 @@ main {
     border-radius: 0;
 }
 
-.about-block {
+.about-me-block {
     height: 250px;
     width: 250px;
     margin: 25px;
@@ -141,7 +142,7 @@ main {
 /****************/
 
 
-#descriptionBlock {
+#about-me {
     height: 150px;
     min-width: 40%;
 }
@@ -153,30 +154,30 @@ main {
     border-bottom: 3px solid #ff7a06;
 }
 
-#myDescription {
+#my-description {
     text-align: center;
 }
 
-#myDescription p {
+#my-description p {
     display: inline-block;
     margin: 0;
     font-size: 25px;
     color: #ff7a06;
 }
 
-#myDescription h1 {
+#my-description h1 {
     display: inline-block;
     font-size: 25px;
 }
 
-.downArrow, .downArrow:before, .downArrow:after {
+.down-arrow, .down-arrow:before, .down-arrow:after {
     cursor: pointer;
     position: absolute;
     display: block;
     content: '';
 }
 
-.downArrow {
+.down-arrow {
     background-color: transparent;
     width: 60px;
     height: 30px;
@@ -185,19 +186,19 @@ main {
     animation: shake .7s linear alternate infinite;
 }
 
-.downArrow:before, .downArrow:after {
+.down-arrow:before, .down-arrow:after {
     width: 30px;
     height: 5px;
     background: #3c3c3c;
     border-radius: 3px 3px 0 0;
 }
 
-.downArrow:before {
+.down-arrow:before {
     transform: rotateZ(-30deg);
     left: 27px;
 }
 
-.downArrow:after {
+.down-arrow:after {
     transform: rotateZ(30deg);
     right: 27px;
 }
@@ -286,7 +287,7 @@ footer {
     background-color: rgba(48, 48, 48, 0.9);
 }
 
-#nav-btn {
+#btn-to-up {
     display: flex;
     opacity: 0;
     width: 60px;
@@ -300,7 +301,7 @@ footer {
     content: '';
 }
 
-#nav-btn:before, #nav-btn:after {
+#btn-to-up:before, #btn-to-up:after {
     width: 25px;
     height: 5px;
     background: rgb(255, 255, 255);
@@ -310,17 +311,17 @@ footer {
     position: absolute;
 }
 
-#nav-btn:before {
+#btn-to-up:before {
     transform: rotateZ(45deg);
     left: 25px;
 }
 
-#nav-btn:after {
+#btn-to-up:after {
     transform: rotateZ(-45deg);
     right: 25px;
 }
 
-#nav-btn:hover {
+#btn-to-up:hover {
     background: rgba(112, 112, 112, 0.87);
     transition: background-color, opacity 500ms ease;
 }
