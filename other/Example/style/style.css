@@ -20,11 +20,16 @@ body {
     transition: transform 1000ms ease-out;
     background: radial-gradient(farthest-side,transparent, black);
 }
-#as {
+.black {
     background: url("../../Resume/source/back 1.png");
     background-repeat: repeat;
     background-size: 100px;
+}
 
+.white {
+    background: url("../../Resume/source/back 2.png");
+    background-repeat: repeat;
+    background-size: 100px;
 }
 #us{
     z-index: 1;
@@ -79,6 +84,13 @@ li{
     border: 1px solid white;
 }
 
+/*li.activate {*/
+    /*border: 1px solid #1c1c1c;*/
+/*}*/
+/*.activate:before .activate:after {*/
+    /*background-color: #1c1c1c;*/
+/*}*/
+
 li:before {
     top: 4px;
     left: 4px;
@@ -86,7 +98,7 @@ li:before {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: white;
+    background-color: white;
     border-radius: 50%;
     transition: all 500ms ease;
 }
@@ -146,3 +158,33 @@ li:hover p {
     height: 100px;
     background: white;
 }
+
+#btn {
+    border: 2px solid rgba(187, 187, 187, 1);
+    z-index: 3;
+    position: fixed;
+    top: 50px;
+    left: 80vw;
+    width: 60px;
+    height: 24px;
+    outline: none;
+    border-radius: 12px;
+    background: transparent;
+}
+
+#btn:before {
+    position:absolute ;
+    content: '';
+    width: 25px;
+    height: 14px;
+    background: #ff9f04;
+    border-radius: 7px;
+    top:3px;
+}
+
+.activate#btn:before {
+
+    background: #60da05;;
+    left: 3px;
+}
+
