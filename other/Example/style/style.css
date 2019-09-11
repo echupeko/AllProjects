@@ -1,19 +1,22 @@
 body {
-    background-color: #707070;
+    background-color: #3c3c3c;
     perspective: 500px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #as {
     background: url("../../Resume/source/back 1.png");
     background-repeat: repeat;
-    background-size: 50px;
+    background-size: 70px;
     width: 200%;
     position: absolute;
     left: -200px;
     top: -200px;
     opacity: 0.6;
-    transition: transform 1000ms ease;
+    transition: transform 1000ms ease-out;
 
 }
 
