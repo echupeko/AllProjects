@@ -86,7 +86,7 @@ li:before {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #abdd00;
+    background: white;
     border-radius: 50%;
     transition: all 500ms ease;
 }
@@ -98,7 +98,7 @@ li:after {
     position: absolute;
     width: 1px;
     height: 1290%;
-    background-color: #abdd00;
+    background-color: white;
     transition: all 500ms ease;
 }
 
