@@ -1,18 +1,31 @@
 let as;
 let isColor = false;
+let isScroll=true;
+
 window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
 }
+
 window.onmousemove = () => {
     as = document.getElementById('network-background');
     let y = -Math.round((event.clientX - screen.width / 2) / 270, 2);
     let x = Math.round((event.clientY - screen.height / 2) / 90, 2);
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 }
-window.onmousewheel = () => {
-   bwTheme();
 
+window.onmousewheel = () => {
+    document.getElementById(to).scrollIntoView({
+        block: 'start',
+        behavior: 'instant'
+    });
+    if (isScroll) {
+        bwTheme();
+        isScroll=!isScroll;
+    }
+    setTimeout(() => {
+        isScroll=!isScroll;
+    }, 2000);
 }
 
 const bwTheme = () => {
@@ -23,19 +36,16 @@ const bwTheme = () => {
     if (!isColor) {
         document.getElementById('switch').classList.add('activate');
         let li = document.querySelectorAll('li');
-        for (let i=0;i<li.length;i++){
+        for (let i = 0; i < li.length; i++) {
             li[i].classList.add('activate');
         }
     }
     else {
         document.getElementById('switch').classList.remove('activate');
         let li = document.querySelectorAll('li');
-        for (let i=0;i<li.length;i++){
+        for (let i = 0; i < li.length; i++) {
             li[i].classList.remove('activate');
         }
     }
-
-
     isColor = !isColor;
-
 }
