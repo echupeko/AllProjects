@@ -9,20 +9,26 @@
 </head>
 <body>
 <script type="text/javascript" src="script/script.js"></script>
-<div id="us" class="as"></div>
-
-<div id="as" class="as black">
+<div>
+    <div id="vignette-background" class="background"></div>
+    <div id="network-background" class="background black"></div>
 </div>
-
-<button id="btn" onclick="clik()"></button>
-
-<div class="wrapper">
-    <ul>
-        <li><p>навыки</p></li>
-        <li><p>образование</p></li>
-        <li><p>работы</p></li>
-        <li><p>контакты</p></li>
-    </ul>
+<div class="control">
+    <button id="switch" onclick="bwTheme()"></button>
+    <div class="wrapper">
+        <ul>
+            <li><span></span><p>навыки</p></li>
+            <li><span></span><p>образование</p></li>
+            <li><span></span><p>работы</p></li>
+            <li><p>контакты</p></li>
+        </ul>
+    </div>
 </div>
+<main>
+    <div class="content"></div>
+    <div class="content"></div>
+    <div class="content"></div>
+    <div class="content"></div>
+</main>
 </body>
 </html>
