@@ -9,7 +9,6 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
-    //document.querySelector('main').style.height = window.innerHeight + 'px';
 }
 
 window.onmousemove = () => {
@@ -20,7 +19,7 @@ window.onmousemove = () => {
 }
 
 
-window.onscroll = () => {
+window.onmousewheel = () => {
     let topMain = document.querySelector('main').offsetTop;
     if (topMain%window.innerHeight === 0) {
 

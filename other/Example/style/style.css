@@ -47,6 +47,7 @@ body {
 /**********Content**************/
 main {
     z-index: 2;
+    /*overflow: auto;*/
 }
 .activ {
     position: absolute;
@@ -92,7 +93,45 @@ main {
     top: 0;
     left: 0;
     bottom: 0;
+    perspective: none;
 }
+#wrapper > span {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: orange;
+}
+
+#wrapper > span:hover {
+    transform: translateY(15px) translateX(30px) scale(1.5);
+}
+/*#wrapper > span{*/
+    /*border: 16px solid transparent; !* Прозрачные границы *!*/
+    /*border-left: 8px solid green; !* Добавляем треугольник *!*/
+    /*padding: 0px;*/
+    /*content: '';*/
+    /*position: relative;*/
+    /*left: 50px;*/
+    /*top: -40%;*/
+    /*color: #fff;*/
+/*}*/
+/*#wrapper > span:before {*/
+    /*content: '';*/
+    /*position: absolute; !* Абсолютное позиционирование *!*/
+    /*left: -26px; bottom: -16px; !* Положение треугольника *!*/
+    /*border: 16px solid transparent; !* Прозрачные границы *!*/
+    /*border-left: 8px solid green; !* Добавляем треугольник *!*/
+/*}*/
+/*#wrapper > span:after {*/
+    /*content: '';*/
+    /*position: absolute; !* Абсолютное позиционирование *!*/
+    /*left: 10px; bottom: -16px; !* Положение треугольника *!*/
+    /*border: 16px solid transparent; !* Прозрачные границы *!*/
+    /*border-left: 8px solid green; !* Добавляем треугольник *!*/
+/*}*/
 
 ul {
     opacity: 0.2;
@@ -100,10 +139,11 @@ ul {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     height: 80%;
     width: 100%;
     top: 0;
+    transform: scale(0.8) ;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -111,13 +151,16 @@ ul {
 
 ul:hover {
     opacity: 1;
+    transform: scale(1) translateX(10px);
 }
 
 li {
     position: relative;
     height: 100%;
+    width: 1px;
     cursor: pointer;
-    border-right: 1px solid white;
+    background-color: #ffffff;
+    /*border-right: 1px solid white;*/
     margin-top: 9px;
     margin-bottom: 9px;
 }
