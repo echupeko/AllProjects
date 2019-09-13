@@ -8,6 +8,7 @@ window.onload = () => {
     blockContentAdd();
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
+    document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
     //document.querySelector('main').style.height = window.innerHeight + 'px';
 }
 
@@ -18,7 +19,8 @@ window.onmousemove = () => {
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 }
 
-window.onmousewheel = () => {
+
+window.onscroll = () => {
     let topMain = document.querySelector('main').offsetTop;
     if (topMain%window.innerHeight === 0) {
 
@@ -39,6 +41,14 @@ window.onmousewheel = () => {
                 selectBlock++;
             }
         }
+
+        contentArr.forEach(item => {
+            if(contentArr[selectBlock].id === item.id)
+                document.getElementById(item.id).querySelector('span').classList.add('selected');
+            else
+                document.getElementById(item.id).querySelector('span').classList.remove('selected');
+        })
+
         bwTheme();
     }
 
@@ -49,7 +59,7 @@ const menuListAdd = () => {
     let li = "";
     contentArr.forEach(item => {
         li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '-block\')">' +
-            '<p>' + item.description + '</p></li>';
+            '<span></span><p>' + item.description + '</p></li>';
     });
     wrapper.innerHTML += `<ul> ${li} </ul>`;
 }
