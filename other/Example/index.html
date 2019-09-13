@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0"/>
     <link rel="stylesheet" href="style/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:900&display=swap&subset=cyrillic" rel="stylesheet">
 </head>
 <body>
+
+<script type="text/javascript" src="script/data.js"></script>
 <script type="text/javascript" src="script/script.js"></script>
 <div>
     <div id="vignette-background" class="background"></div>
@@ -15,20 +18,8 @@
 </div>
 <div class="control">
     <button id="switch" onclick="bwTheme()"></button>
-    <div class="wrapper">
-        <ul>
-            <li><span></span><p>навыки</p></li>
-            <li><span></span><p>образование</p></li>
-            <li><span></span><p>работы</p></li>
-            <li><p>контакты</p></li>
-        </ul>
-    </div>
+    <div id="wrapper"></div>
 </div>
-<main>
-    <div id="skills" class="content"></div>
-    <div id="education" class="content"></div>
-    <div id="development" class="content"></div>
-    <div id="contact" class="content"></div>
-</main>
+<main class="activ"></main>
 </body>
 </html>
