@@ -1,4 +1,4 @@
-
+let main = document.querySelector('main');
 let as;
 let isColor = false;
 let selectBlock = 0;
@@ -9,6 +9,8 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
+    main = document.querySelector('main');
+    //main.addEventListener('scroll',onScroll());
 }
 
 window.onmousemove = () => {
@@ -18,8 +20,7 @@ window.onmousemove = () => {
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 }
 
-
-window.onmousewheel = () => {
+const onScroll = () => {
     let topMain = document.querySelector('main').offsetTop;
     if (topMain%window.innerHeight === 0) {
 

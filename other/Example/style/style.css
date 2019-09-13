@@ -1,5 +1,5 @@
 * {
-    transition: all 1000ms ease;
+    transition: all 1s ease;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
     left: -200px;
     top: -200px;
     opacity: 0.6;
-    transition: transform 1000ms ease-out;
+    transition: transform 1s ease-out;
     background: radial-gradient(farthest-side, transparent, black);
 }
 
@@ -47,7 +47,7 @@ body {
 /**********Content**************/
 main {
     z-index: 2;
-    /*overflow: auto;*/
+    overflow: auto;
 }
 .activ {
     position: absolute;
@@ -73,10 +73,11 @@ main {
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 50px;
+    color: white;
 }
-.content:nth-child(2n+1) p{
-    color: rgb(255, 255, 255);
-}
+/*.content:nth-child(2n+1) p{*/
+    /*color: rgb(255, 255, 255);*/
+/*}*/
 /*******************************/
 
 /**********Nav-menu*************/
@@ -203,11 +204,6 @@ li:hover span {
     background: #40dd69;
 }
 
-li:hover {
-    background-color: #40dd69;
-    transition: all 500ms ease;
-}
-
 li:last-child{
     height: 0;
 }
@@ -255,8 +251,11 @@ li:hover p {
 }
 
 .activate#switch:before {
-
     background: #60da05;;
     left: 3px;
 }
 
+*::-webkit-scrollbar, *::-webkit-scrollbar:vertical {
+    height: 0px;
+    width: 0px;
+}
