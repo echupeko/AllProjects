@@ -2,7 +2,8 @@ let main = document.querySelector('main');
 let as;
 let isColor = false;
 let selectBlock = 0;
-let scroll = 0;
+let initialPoint;
+let finalPoint;
 
 window.onload = () => {
     menuListAdd();
@@ -10,7 +11,6 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
-    window.addEventListener('mousewheel', onWheel);
 }
 
 window.onmousemove = () => {
@@ -20,24 +20,28 @@ window.onmousemove = () => {
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 }
 
-const onWheel = () => {
-    let topMain = document.querySelector('main').offsetTop;
-    if (topMain % window.innerHeight === 0) {
-        if (event.wheelDelta > 0) { //вверх
-            if (topMain === 0)
-                return;
-            else {
-                main.style.top = topMain + window.innerHeight + 'px';
-                selectBlock--;
+window.onmousewheel = () => {
+    scrollBlock(event.wheelDelta, 0, 1);
+}
+
+const scrollBlock = (startPoint, endPoint, countBlock) => {
+    let mainPosition = document.querySelector('main').offsetTop;
+    if (mainPosition % window.innerHeight === 0) {
+        if (startPoint > endPoint) { //вверх
+            if (mainPosition !== 0) {
+                selectBlock = selectBlock - countBlock;
+                scrollEngine(mainPosition, '+', countBlock);
             }
+            else
+                return;
         }
         else { //вниз
-            if (topMain === -(contentArr.length - 1) * window.innerHeight)
-                return;
-            else {
-                main.style.top = topMain - window.innerHeight + 'px';
-                selectBlock++;
+            if (mainPosition !== -(contentArr.length - 1) * window.innerHeight) {
+                selectBlock = selectBlock + countBlock;
+                scrollEngine(mainPosition, '-', countBlock);
             }
+            else
+                return;
         }
 
         contentArr.forEach(item => {
@@ -47,16 +51,24 @@ const onWheel = () => {
                 document.getElementById(item.id).querySelector('span').classList.remove('selected');
         })
 
+    }
+}
+
+const scrollEngine = (mainPosition, operand, countBlockSkip) => {
+    if (operand === '+')
+        main.style.top = mainPosition + countBlockSkip * window.innerHeight + 'px';
+    else if (operand === '-')
+        main.style.top = mainPosition - countBlockSkip * window.innerHeight + 'px';
+    for (let i = 0; i< countBlockSkip; i++) {
         bwTheme();
     }
-
 }
 
 const menuListAdd = () => {
     const wrapper = document.getElementById('wrapper');
     let li = "";
     contentArr.forEach(item => {
-        li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '-block\')">' +
+        li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id +'\')">' +
             '<span></span><p>' + item.description + '</p></li>';
     });
     wrapper.innerHTML += `<ul> ${li} </ul>`;
@@ -73,10 +85,8 @@ const blockContentAdd = () => {
 
 const scrollingTo = (type, to) => {
     if (type == 'block') {
-        document.getElementById(to).scrollIntoView({
-            block: 'start',
-            behavior: 'instant'
-        });
+        let finalBlock = contentArr.indexOf(contentArr.find(item => item.id === to));
+        scrollBlock(selectBlock,finalBlock,Math.abs(finalBlock - selectBlock));
     }
     else if (type == 'window') {
         window.scrollTo({
@@ -91,63 +101,35 @@ const bwTheme = () => {
     document.querySelector('body').style.backgroundColor = isColor ? '#1c1c1c' : 'white';
     as.classList.add(isColor ? 'black' : 'white');
     as.classList.remove(isColor ? 'white' : 'black');
+    let li = document.querySelectorAll('li');
+    let p = document.getElementById(contentArr[selectBlock].id+'-block').querySelector('p');
     if (!isColor) {
         document.getElementById('switch').classList.add('activate');
-        let li = document.querySelectorAll('li');
-        for (let i = 0; i < li.length; i++) {
+        for (let i = 0; i < contentArr.length; i++) {
             li[i].classList.add('activate');
         }
     }
     else {
         document.getElementById('switch').classList.remove('activate');
-        let li = document.querySelectorAll('li');
         for (let i = 0; i < li.length; i++) {
             li[i].classList.remove('activate');
         }
     }
+    p.style.color = isColor ? 'white' : 'black';
     isColor = !isColor;
 }
 
-
-var initialPoint;
-var finalPoint;
-document.addEventListener('touchstart', function (event) {
+window.addEventListener('touchstart', function (event) {
     initialPoint = event.changedTouches[0];
 }, false);
-document.addEventListener('touchend', function (event) {
+
+window.addEventListener('touchend', function (event) {
     finalPoint = event.changedTouches[0];
     var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
     var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
-            let topMain = document.querySelector('main').offsetTop;
-            if (topMain % window.innerHeight === 0) {
-                if (finalPoint.pageY > initialPoint.pageY) { //вверх
-                    if (topMain === 0)
-                        return;
-                    else {
-                        main.style.top = topMain + window.innerHeight + 'px';
-                        selectBlock--;
-                    }
-                }
-                else { //вниз
-                    if (topMain === -(contentArr.length - 1) * window.innerHeight)
-                        return;
-                    else {
-                        main.style.top = topMain - window.innerHeight + 'px';
-                        selectBlock++;
-                    }
-                }
-
-                contentArr.forEach(item => {
-                    if (contentArr[selectBlock].id === item.id)
-                        document.getElementById(item.id).querySelector('span').classList.add('selected');
-                    else
-                        document.getElementById(item.id).querySelector('span').classList.remove('selected');
-                })
-
-                bwTheme();
-            }
+            scrollBlock(finalPoint.pageY, initialPoint.pageY);
         }
     }
 }, false);

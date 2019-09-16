@@ -1,5 +1,12 @@
 @media screen and (max-width: 550px) {
 
+    #wrapper{
+        width: 0;
+    }
+    #wrapper > span {
+        transform: rotateZ(90deg);
+    }
+
     main {
         /*overflow: scroll;*/
     }
