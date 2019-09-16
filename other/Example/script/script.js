@@ -129,7 +129,7 @@ window.addEventListener('touchend', function (event) {
     var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
-            scrollBlock(finalPoint.pageY, initialPoint.pageY);
+            scrollBlock(finalPoint.pageY, initialPoint.pageY, 1);
         }
     }
 }, false);
