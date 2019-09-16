@@ -125,20 +125,7 @@ main {
     transform: rotateZ(45deg);
 }
 
-#wrapper > span:hover {
-    opacity: 1;
-    transform: scale(1);
-}
-#wrapper > span:hover:before, #wrapper > span:hover:after {
-    top: 10px;
-    left: 18px;
-    height: 20px;
-    transform: rotateZ(45deg);
-    transition: top 1s, left 1s, transform 1s ease;
-}
-#wrapper > span:hover:after {
-    transform: rotateZ(-45deg);
-}
+
 
 ul {
     opacity: 0.4;
@@ -207,6 +194,7 @@ li:last-child{
 }
 
 li p {
+    cursor: pointer;
     opacity: 0;
     position: absolute;
     top: -36px;

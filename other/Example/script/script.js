@@ -1,6 +1,8 @@
-let main = document.querySelector('main');
+const main = document.querySelector('main');
+const wrapper = document.getElementById('wrapper');
 let as;
 let isColor = false;
+let isOpenMenu = false;
 let selectBlock = 0;
 let initialPoint;
 let finalPoint;
@@ -11,6 +13,8 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
+    wrapper.querySelector('span').addEventListener('click',openMenu);
+
 }
 
 window.onmousemove = () => {
@@ -65,7 +69,6 @@ const scrollEngine = (mainPosition, operand, countBlockSkip) => {
 }
 
 const menuListAdd = () => {
-    const wrapper = document.getElementById('wrapper');
     let li = "";
     contentArr.forEach(item => {
         li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id +'\')">' +
@@ -81,6 +84,14 @@ const blockContentAdd = () => {
         content += '<div id="' + item.id + '-block" class="content"><p>' + item.description + '</p></div>';
     });
     main.innerHTML = content;
+}
+
+const openMenu = () => {
+    if (isOpenMenu)
+        wrapper.classList.remove('open');
+    else
+        wrapper.classList.add('open');
+    isOpenMenu = !isOpenMenu;
 }
 
 const scrollingTo = (type, to) => {

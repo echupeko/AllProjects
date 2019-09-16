@@ -1,10 +1,75 @@
 @media screen and (max-width: 550px) {
-
-    #wrapper{
-        width: 0;
+    #wrapper {
+        width: unset;
     }
-    #wrapper > span {
+
+    #wrapper.open > span:hover {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #wrapper.open > span:before, #wrapper.open > span:after {
+        top: 10px;
+        left: 18px;
+        height: 20px;
+        transform: rotateZ(45deg);
+        transition: top 1s, left 1s, transform 1s ease;
+    }
+
+    #wrapper.open > span:after {
+        transform: rotateZ(-45deg);
+    }
+
+    #wrapper.open {
+        width: 100%;
+        height: unset;
+        display: block;
+        position: unset;
+        background: black;
+    }
+
+    #wrapper.open > span {
         transform: rotateZ(90deg);
+        z-index: 4;
+    }
+
+    #wrapper.open ul {
+        opacity: 1;
+        display: block;
+        align-items: flex-end;
+        height: unset;
+    }
+
+    #wrapper.open ul:hover {
+        transform: none;
+    }
+    #wrapper.open ul li, #wrapper.open ul li:last-child {
+        height: 50px;
+        width: 100vw;
+        background: black;
+        margin: 0;
+        padding-bottom: 50px;
+    }
+
+    #wrapper.open ul li p {
+        font-size: 2.3em;
+        text-align: right;
+        opacity: 1;
+        align-items: right;
+        height: 100%;
+        width: 100%;
+        position: inherit;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+
+    #wrapper.open ul li:after, #wrapper.open ul li span {
+        display: none;
+    }
+
+    .content p {
+        font-size: 2em;
     }
 
     main {
