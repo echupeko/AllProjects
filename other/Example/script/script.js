@@ -10,6 +10,7 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
+    window.addEventListener('mousewheel', onWheel);
 }
 
 window.onmousemove = () => {
@@ -19,9 +20,9 @@ window.onmousemove = () => {
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 }
 
-window.onmousewheel = () => {
+const onWheel = () => {
     let topMain = document.querySelector('main').offsetTop;
-    if (topMain%window.innerHeight === 0) {
+    if (topMain % window.innerHeight === 0) {
         if (event.wheelDelta > 0) { //вверх
             if (topMain === 0)
                 return;
@@ -40,7 +41,7 @@ window.onmousewheel = () => {
         }
 
         contentArr.forEach(item => {
-            if(contentArr[selectBlock].id === item.id)
+            if (contentArr[selectBlock].id === item.id)
                 document.getElementById(item.id).querySelector('span').classList.add('selected');
             else
                 document.getElementById(item.id).querySelector('span').classList.remove('selected');
@@ -110,25 +111,43 @@ const bwTheme = () => {
 
 var initialPoint;
 var finalPoint;
-document.addEventListener('touchstart', function(event) {
-    initialPoint=event.changedTouches[0];
+document.addEventListener('touchstart', function (event) {
+    initialPoint = event.changedTouches[0];
 }, false);
-document.addEventListener('touchend', function(event) {
-    finalPoint=event.changedTouches[0];
+document.addEventListener('touchend', function (event) {
+    finalPoint = event.changedTouches[0];
     var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
     var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
     if (xAbs > 20 || yAbs > 20) {
-        if (xAbs > yAbs) {
-            if (finalPoint.pageX < initialPoint.pageX){
-                console.log('СВАЙП ВЛЕВО');}
-            else{
-                    console.log('СВАЙП ВПРАВО');}
-        }
-        else {
-            if (finalPoint.pageY < initialPoint.pageY){
-                console.log('СВАЙП ВВЕРХ');}
-            else{
-                console.log('СВАЙП ВНИЗ');}
+        if (xAbs < yAbs) {
+            let topMain = document.querySelector('main').offsetTop;
+            if (topMain % window.innerHeight === 0) {
+                if (finalPoint.pageY > initialPoint.pageY) { //вверх
+                    if (topMain === 0)
+                        return;
+                    else {
+                        main.style.top = topMain + window.innerHeight + 'px';
+                        selectBlock--;
+                    }
+                }
+                else { //вниз
+                    if (topMain === -(contentArr.length - 1) * window.innerHeight)
+                        return;
+                    else {
+                        main.style.top = topMain - window.innerHeight + 'px';
+                        selectBlock++;
+                    }
+                }
+
+                contentArr.forEach(item => {
+                    if (contentArr[selectBlock].id === item.id)
+                        document.getElementById(item.id).querySelector('span').classList.add('selected');
+                    else
+                        document.getElementById(item.id).querySelector('span').classList.remove('selected');
+                })
+
+                bwTheme();
+            }
         }
     }
 }, false);
