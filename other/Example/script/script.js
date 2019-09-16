@@ -105,6 +105,7 @@ const scrollingTo = (type, to) => {
             behavior: "smooth"
         });
     }
+    openMenu();
 }
 
 const bwTheme = () => {
