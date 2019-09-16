@@ -106,6 +106,7 @@ main {
     transform: scale(0.8);
     background: transparent;
     border: 1px solid white;
+    z-index: 4;
 }
 
 #wrapper > span:before, #wrapper > span:after {

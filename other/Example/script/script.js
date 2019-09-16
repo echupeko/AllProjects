@@ -13,8 +13,6 @@ window.onload = () => {
     as = document.getElementById('network-background');
     as.style.height = 2 * screen.height + 'px';
     document.getElementById(contentArr[0].id).querySelector('span').classList.add('selected');
-    wrapper.querySelector('span').addEventListener('click',openMenu);
-
 }
 
 window.onmousemove = () => {
@@ -63,7 +61,7 @@ const scrollEngine = (mainPosition, operand, countBlockSkip) => {
         main.style.top = mainPosition + countBlockSkip * window.innerHeight + 'px';
     else if (operand === '-')
         main.style.top = mainPosition - countBlockSkip * window.innerHeight + 'px';
-    for (let i = 0; i< countBlockSkip; i++) {
+    for (let i = 0; i < countBlockSkip; i++) {
         bwTheme();
     }
 }
@@ -71,7 +69,7 @@ const scrollEngine = (mainPosition, operand, countBlockSkip) => {
 const menuListAdd = () => {
     let li = "";
     contentArr.forEach(item => {
-        li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id +'\')">' +
+        li += '<li id="' + item.id + '" onclick="scrollingTo(\'block\',\'' + item.id + '\')">' +
             '<span></span><p>' + item.description + '</p></li>';
     });
     wrapper.innerHTML += `<ul> ${li} </ul>`;
@@ -97,7 +95,7 @@ const openMenu = () => {
 const scrollingTo = (type, to) => {
     if (type == 'block') {
         let finalBlock = contentArr.indexOf(contentArr.find(item => item.id === to));
-        scrollBlock(selectBlock,finalBlock,Math.abs(finalBlock - selectBlock));
+        scrollBlock(selectBlock, finalBlock, Math.abs(finalBlock - selectBlock));
     }
     else if (type == 'window') {
         window.scrollTo({
@@ -105,7 +103,8 @@ const scrollingTo = (type, to) => {
             behavior: "smooth"
         });
     }
-    openMenu();
+    if (isOpenMenu)
+        openMenu();
 }
 
 const bwTheme = () => {
@@ -114,7 +113,7 @@ const bwTheme = () => {
     as.classList.add(isColor ? 'black' : 'white');
     as.classList.remove(isColor ? 'white' : 'black');
     let li = document.querySelectorAll('li');
-    let p = document.getElementById(contentArr[selectBlock].id+'-block').querySelector('p');
+    let p = document.getElementById(contentArr[selectBlock].id + '-block').querySelector('p');
     if (!isColor) {
         document.getElementById('switch').classList.add('activate');
         for (let i = 0; i < contentArr.length; i++) {
