@@ -23,6 +23,7 @@ window.onload = () => {
         }
         else
             item.selected = false;
+        bwTheme(item.theme);
     }
 }
 
@@ -151,17 +152,14 @@ const scrollBlock = (startBlock, countBlock) => {
             else
                 return;
         }
-        block = blockArray.find(item => item.selected === true);
-        bwTheme(block.theme);
+
     }
 
 }
 
-
 const scrollEngine = (mainPosition, countBlock) => {
     main.style.top = mainPosition + (-countBlock) * window.innerHeight + 'px';
 }
-
 
 const bwTheme = (colorTheme) => {
     const reversColor = Math.abs(colorTheme - 1);
@@ -170,7 +168,6 @@ const bwTheme = (colorTheme) => {
     as.classList.remove(bwColor[reversColor]);
     document.querySelector('body').style.backgroundColor = bwColor[colorTheme];
     let p = blockArray[selectBlock].block.querySelector('p');
-
     p.style.color = bwColor[reversColor];
 }
 
