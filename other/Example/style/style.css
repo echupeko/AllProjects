@@ -31,6 +31,10 @@ body {
     width: 100vw;
 }
 
+#network-background {
+    height: 200vh;
+}
+
 .black {
     background: url("../../Resume/source/back 1.png");
     background-repeat: repeat;
@@ -195,11 +199,12 @@ li:last-child{
 }
 
 li p {
-    cursor: pointer;
     opacity: 0;
+    cursor: pointer;
     position: absolute;
     top: -36px;
-    left: 26px;
+    padding-left: 40px;
+    left: -16px;
     font-family: 'Open Sans';
     text-transform: uppercase;
     font-weight: lighter;
