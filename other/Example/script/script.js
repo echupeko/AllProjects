@@ -95,18 +95,23 @@ main.ontouchend = () => { //смотрим направление движени
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
             if (!isOpenMenu) {
-                if (finalPoint.pageY > initialPoint.pageY)
-                    preScroll(-1);
-                else if (finalPoint.pageY < initialPoint.pageY)
-                    preScroll(1);
+                if (finalPoint.pageY > initialPoint.pageY){
+                    alert('up');
+                    preScroll(-1);}
+                else if (finalPoint.pageY < initialPoint.pageY){
+                    alert('down');
+                    preScroll(1);}
             }
         }
         else {
-            if (finalPoint.pageX > initialPoint.pageX)
-                openMenu();
-            else
-                openMenu();
+            if (finalPoint.pageX > initialPoint.pageX){
+                alert('right');
+                openMenu();}
+            else{
+                alert('left');
+                openMenu();}
         }
+
     }
 }
 
