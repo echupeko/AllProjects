@@ -23,7 +23,7 @@ window.onload = () => {
         }
         else
             item.selected = false;
-        bwTheme(item.theme);
+
     }
 }
 
@@ -104,12 +104,6 @@ window.ontouchend = () => { //смотрим направление движен
     }
 }
 
-const preScroll = (countPoint) => {
-    selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
-
-    scrollBlock(selectBlock, countPoint);
-}
-
 const scrollingTo = (to) => { //скорллинг до указанного места
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
     let finalBlock = blockArray.indexOf(blockArray.find(item => item.id === to));
@@ -119,7 +113,11 @@ const scrollingTo = (to) => { //скорллинг до указанного м�
         if (isOpenMenu) //скрываем меню навигации
             openMenu();
     }
+}
 
+const preScroll = (countPoint) => {
+    selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
+    scrollBlock(selectBlock, countPoint);
 }
 
 const scrollBlock = (startBlock, countBlock) => {
@@ -140,6 +138,7 @@ const scrollBlock = (startBlock, countBlock) => {
                     blockArray[i].list.querySelector('span').classList.remove('selected');
                 }
             }
+            selectBlock = index;
         }
 
         if (countBlock < 0) { //вверх
@@ -163,6 +162,7 @@ const scrollBlock = (startBlock, countBlock) => {
 
 const scrollEngine = (mainPosition, countBlock) => {
     main.style.top = mainPosition + (-countBlock) * window.innerHeight + 'px';
+    bwTheme(blockArray[selectBlock].theme);
 }
 
 const bwTheme = (colorTheme) => {
