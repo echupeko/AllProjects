@@ -84,11 +84,11 @@ window.onkeydown = () => { //обрабатываем нажатия кнопо�
     }
 }
 
-window.ontouchstart = () => { //сохраняем точку касания на смартфоне
+main.ontouchstart = () => { //сохраняем точку касания на смартфоне
     initialPoint = event.changedTouches[0];
 }
 
-window.ontouchend = () => { //смотрим направление движения пальца
+main.ontouchend = () => { //смотрим направление движения пальца
     finalPoint = event.changedTouches[0];
     var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
     var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
