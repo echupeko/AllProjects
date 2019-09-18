@@ -94,10 +94,12 @@ window.ontouchend = () => { //смотрим направление движен
     var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
-            if (finalPoint.pageY > initialPoint.pageY)
-                preScroll(-1);
-            else if (finalPoint.pageY < initialPoint.pageY)
-                preScroll(1);
+            if (!isOpenMenu) {
+                if (finalPoint.pageY > initialPoint.pageY)
+                    preScroll(-1);
+                else if (finalPoint.pageY < initialPoint.pageY)
+                    preScroll(1);
+            }
         }
     }
 }
