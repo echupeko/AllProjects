@@ -87,6 +87,59 @@ main {
 .control {
     z-index: 3;
 }
+#navig{
+    display: none;
+    opacity: 0.8;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    flex-wrap: wrap;
+    background: #3e4040;
+    border-radius: 50%;
+    box-shadow: 0 0 15px greenyellow;
+}
+
+#navig:after {
+    z-index: 5;
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    left: 50px;
+    border-radius: 50%;
+    border: 2px solid #888888;
+    background: #3e4040;
+}
+#navig span{
+    border: 1px solid #888888;
+    width: calc(50% - 2px);
+    height: calc(50% - 2px);
+}
+#navig span:nth-child(1){
+    background: url("../source/home.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    border-radius: 100% 0 0 0;
+}
+#navig span:nth-child(2){
+    border-radius: 0 100% 0 0;
+}
+#navig span:nth-child(3){
+    border-radius: 0 0 0 100%;
+}
+#navig span:nth-child(4){
+    border-radius: 0 0 100% 0;
+}
+
+#navig span:hover{
+    background-color: #5c5e5e;
+    transform: translateX(-5px) translateY(-5px) scale(1.1);
+    transition: all 500ms ease;
+    z-index: 4;
+}
 #wrapper {
     position: fixed;
     display: flex;

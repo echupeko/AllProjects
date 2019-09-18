@@ -1,5 +1,6 @@
 const main = document.querySelector('main');
 const wrapper = document.getElementById('wrapper');
+let clock;
 let as;
 let isColor = false;
 let isOpenMenu = false;
@@ -49,6 +50,28 @@ const blockContentAdd = () => {
     main.innerHTML = content;
 }
 
+window.onmousedown = () => {
+    startTimer();
+        let nav = document.getElementById('navig');
+        nav.style.display = 'flex';
+        nav.style.top = event.clientY - 76 + 'px';
+        nav.style.left = event.clientX - 76 + 'px';
+}
+
+window.onmouseup = () => {
+    startTimer(true);
+    let nav = document.getElementById('navig');
+    nav.style.display = 'none';
+}
+
+const startTimer = (end) => {
+    if (!end) {
+        clock = setTimeout("startTimer()", 1);
+    }
+    else
+        clearTimeout(clock);
+}
+
 window.onmousemove = () => { //обработчик движения курсора, для эфекта глубины и динамичности фона
     as = document.getElementById('network-background');
     let y = -Math.round((event.clientX - screen.width / 2) / 270, 2);
@@ -95,21 +118,25 @@ main.ontouchend = () => { //смотрим направление движени
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
             if (!isOpenMenu) {
-                if (finalPoint.pageY > initialPoint.pageY){
+                if (finalPoint.pageY > initialPoint.pageY) {
                     alert('up');
-                    preScroll(-1);}
-                else if (finalPoint.pageY < initialPoint.pageY){
+                    preScroll(-1);
+                }
+                else if (finalPoint.pageY < initialPoint.pageY) {
                     alert('down');
-                    preScroll(1);}
+                    preScroll(1);
+                }
             }
         }
         else {
-            if (finalPoint.pageX > initialPoint.pageX){
+            if (finalPoint.pageX > initialPoint.pageX) {
                 alert('right');
-                openMenu();}
-            else{
+                openMenu();
+            }
+            else {
                 alert('left');
-                openMenu();}
+                openMenu();
+            }
         }
 
     }
