@@ -101,6 +101,12 @@ main.ontouchend = () => { //смотрим направление движени
                     preScroll(1);
             }
         }
+        else {
+            if (finalPoint.pageX > initialPoint.pageX)
+                openMenu();
+            else
+                openMenu();
+        }
     }
 }
 
