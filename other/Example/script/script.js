@@ -1,5 +1,7 @@
 const main = document.querySelector('main');
 const wrapper = document.getElementById('wrapper');
+const nav = document.getElementById('navig');
+const cl = document.getElementById('clicked');
 let clock;
 let as;
 let isColor = false;
@@ -41,7 +43,11 @@ const blockContentAdd = () => {
     const main = document.querySelector('main');
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
-        content += '<div id="' + contentArr[i].id + '-block" class="content"><p>' + contentArr[i].description + '</p></div>';
+        content += '<div id="' + contentArr[i].id + '-block" class="content"><p class="title-page">' + contentArr[i].description + '</p>' +
+            '<div class="container">\n' +
+            '<div class="header-block"><p>чупеко евгений</p></div>\n' +
+            '<div class="about-me"><div class="photo"></div><div class="description"><p>Frontend Developer</p><p>' + ageCalc() + '</p><h1>, г. Барнаул</h1>' +
+            '</div></div></div></div>';
         block = {};
         block.id = contentArr[i].id;
         block.theme = i % 2; //выбор цветовой темы для блока 0 - черный, 1 - белый
@@ -50,27 +56,57 @@ const blockContentAdd = () => {
     main.innerHTML = content;
 }
 
-window.onmousedown = () => {
-    startTimer();
-        let nav = document.getElementById('navig');
-        nav.style.display = 'flex';
-        nav.style.top = event.clientY - 76 + 'px';
-        nav.style.left = event.clientX - 76 + 'px';
-}
+const ageCalc = () => {
+    let age = new Date('05.08.1994');
+    let date = Math.floor((new Date() - age) / (1000 * 60 * 60 * 24 * 365)).toString();
+    let split = date.split('');
+    let end = parseInt(split[split.length - 1]);
 
-window.onmouseup = () => {
-    startTimer(true);
-    let nav = document.getElementById('navig');
-    nav.style.display = 'none';
-}
-
-const startTimer = (end) => {
-    if (!end) {
-        clock = setTimeout("startTimer()", 1);
+    if (end === 1) {
+        date += ' год';
     }
-    else
-        clearTimeout(clock);
+    else if (end > 1 && end < 5) {
+        date += ' года';
+    }
+    else if (end > 4) {
+        date += ' лет';
+    }
+    return date;
 }
+
+// main.onmousedown = () => {
+//     startTimer();
+//
+//     cl.style.top = event.clientY - 76 + 'px';
+//     cl.style.left = event.clientX - 76 + 'px';
+//     cl.style.display = 'block';
+//     cl.style.transform = 'scale(1)';
+// }
+//
+// window.onmouseup = () => {
+//     if (clock>200) {
+//         nav.style.top = event.clientY - 76 + 'px';
+//         nav.style.left = event.clientX - 76 + 'px';
+//         nav.style.display = 'flex';
+//         cl.style.transform = 'scale(0)';
+//         cl.style.display = 'none';
+//     }
+//     startTimer(true);
+// }
+//
+// nav.onmouseleave = () => {
+//     nav.style.display = 'none';
+// }
+//
+// const startTimer = (end) => {
+//     if (!end) {
+//         clock = setTimeout("startTimer(end)", 1);
+//     }
+//     else {
+//         clock = 0;
+//
+//     }
+// }
 
 window.onmousemove = () => { //обработчик движения курсора, для эфекта глубины и динамичности фона
     as = document.getElementById('network-background');

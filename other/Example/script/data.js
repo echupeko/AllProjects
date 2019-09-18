@@ -1,4 +1,5 @@
 const contentArr = [
+    {id: 'about', description: 'о себе', type: 'block'},
     {id: 'skills', description: 'навыки', type: 'block'},
     {id: 'education', description: 'образование', type: 'block'},
     {id: 'development', description: 'работы', type: 'block'},

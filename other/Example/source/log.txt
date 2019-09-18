@@ -9,3 +9,7 @@
 Стилизация стилей CSS
 +/-Зависимость цвета от темы в CSS
 Навигация по кнопкам
+
+<div class="container">
+<div class="header"><p>чупеко евгений</p></div>
+<div><div class="photo"></div><div class="description"></div></div></div>

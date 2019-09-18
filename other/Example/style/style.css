@@ -63,20 +63,45 @@ main {
 }
 
 .content {
+    position: relative;
     height: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
-.content p{
+.title-page{
     margin: 0;
-    position: inherit;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    text-align: right;
     text-transform: uppercase;
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 50px;
     color: white;
+}
+.header-block p{
+    margin: 0 0 50px 0;
+    font-size: 60px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    color: white;
+}
+.photo{
+    background: url(../../Resume/source/avatar.jpg);
+    width: 250px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    box-shadow: 0 0 15px #9d9e9e;
+    border: 3px solid white;
+}
+.about-me{
+    display: flex;
+    color: #ffffff;
 }
 /*.content:nth-child(2n+1) p{*/
     /*color: rgb(255, 255, 255);*/
@@ -86,6 +111,16 @@ main {
 /**********Nav-menu*************/
 .control {
     z-index: 3;
+}
+#clicked{
+    width: 150px;
+    height: 150px;
+    transform: scale(0);
+    opacity: 0.1;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    transition: all 2000ms ease;
 }
 #navig{
     display: none;
@@ -124,19 +159,29 @@ main {
     background-position-y: center;
     border-radius: 100% 0 0 0;
 }
+#navig span:nth-child(1):hover{
+    transform: translateX(-5px) translateY(-5px) scale(1.1);
+}
 #navig span:nth-child(2){
     border-radius: 0 100% 0 0;
+}
+#navig span:nth-child(2):hover{
+    transform: translateX(5px) translateY(-5px) scale(1.1);
 }
 #navig span:nth-child(3){
     border-radius: 0 0 0 100%;
 }
+#navig span:nth-child(3):hover{
+    transform: translateX(-5px) translateY(5px) scale(1.1);
+}
 #navig span:nth-child(4){
     border-radius: 0 0 100% 0;
 }
-
+#navig span:nth-child(4):hover{
+    transform: translateX(5px) translateY(5px) scale(1.1);
+}
 #navig span:hover{
     background-color: #5c5e5e;
-    transform: translateX(-5px) translateY(-5px) scale(1.1);
     transition: all 500ms ease;
     z-index: 4;
 }
@@ -257,6 +302,7 @@ li p {
     position: absolute;
     top: -36px;
     padding-left: 40px;
+    white-space: nowrap;
     left: -16px;
     font-family: 'Open Sans';
     text-transform: uppercase;
