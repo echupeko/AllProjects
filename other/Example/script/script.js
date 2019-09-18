@@ -5,7 +5,7 @@ let isColor = false;
 let isOpenMenu = false;
 let selectBlock, initialPoint, finalPoint;
 
-const bwColor = ['black', 'white'];
+const bwColor = ['#1c1c1c', 'white'];
 let block = {};
 const blockArray = [];
 
@@ -76,7 +76,7 @@ window.onkeydown = () => { //обрабатываем нажатия кнопо�
     }
     else if (event.code === 'Home') {
         //scrollBlock(countBlock - 1, 0, countBlock - 1); //скроллим в начало
-        preScroll(-(countBlock - selectBlock - 1));
+        preScroll(0 - selectBlock);
     }
     else if (event.code === 'End') {
         //scrollBlock(selectBlock, countBlock - 1, countBlock - selectBlock - 1); //скроллим в конец
@@ -104,6 +104,7 @@ window.ontouchend = () => { //смотрим направление движен
 
 const preScroll = (countPoint) => {
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
+
     scrollBlock(selectBlock, countPoint);
 }
 
@@ -111,7 +112,7 @@ const scrollingTo = (to) => { //скорллинг до указанного м�
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
     let finalBlock = blockArray.indexOf(blockArray.find(item => item.id === to));
 
-    if(finalBlock !== selectBlock){
+    if (finalBlock !== selectBlock) {
         preScroll(finalBlock - selectBlock);
         if (isOpenMenu) //скрываем меню навигации
             openMenu();
@@ -121,20 +122,21 @@ const scrollingTo = (to) => { //скорллинг до указанного м�
 
 const scrollBlock = (startBlock, countBlock) => {
     //1 параметр начальная точка/текущий блок
-    //2 параметр конечная точка/выбранный блок
+    //2 параметр количество блоков
     let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
 
     if (mainPosition % window.innerHeight === 0) {
         index = startBlock + countBlock;
-
-        for (let i = 0; i < blockArray.length; i++) {
-            if ((index) === i) {
-                blockArray[i].selected = true; //делаем пометку
-                blockArray[i].list.querySelector('span').classList.add('selected');
-            }
-            else {
-                blockArray[i].selected = false; //остальные снимаем
-                blockArray[i].list.querySelector('span').classList.remove('selected');
+        if (index >= 0 && index < blockArray.length) {
+            for (let i = 0; i < blockArray.length; i++) {
+                if ((index) === i) {
+                    blockArray[i].selected = true; //делаем пометку
+                    blockArray[i].list.querySelector('span').classList.add('selected');
+                }
+                else {
+                    blockArray[i].selected = false; //остальные снимаем
+                    blockArray[i].list.querySelector('span').classList.remove('selected');
+                }
             }
         }
 
@@ -145,7 +147,7 @@ const scrollBlock = (startBlock, countBlock) => {
             else
                 return;
         }
-        else { //вниз
+        else if (countBlock > 0) { //вниз
             if (mainPosition !== -(contentArr.length - 1) * window.innerHeight) { //если не в конце
                 scrollEngine(mainPosition, countBlock);
             }

@@ -58,6 +58,7 @@
         align-items: right;
         height: 100%;
         width: 100%;
+        padding-left: 0;
         position: inherit;
         top: 0;
         left: 0;
