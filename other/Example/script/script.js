@@ -23,8 +23,8 @@ window.onload = () => {
         }
         else
             item.selected = false;
-
     }
+    //document.body.requestFullScreen();
 }
 
 const menuListAdd = () => {
