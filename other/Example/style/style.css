@@ -46,12 +46,14 @@ body {
     background-repeat: repeat;
     background-size: 100px;
 }
+
 /*******************************/
 
 /**********Content**************/
 main {
     z-index: 2;
 }
+
 .activ {
     position: absolute;
     top: 0;
@@ -69,9 +71,29 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
-.title-page{
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container > div {
+    margin: 0 20px;
+    min-width: 270px;
+    width: 30%;
+}
+
+.about > .description-block{
+    justify-content: center;
+    min-width: 100%;
+}
+
+.title-page {
     margin: 0;
     position: absolute;
     top: 0;
@@ -83,14 +105,26 @@ main {
     font-size: 50px;
     color: white;
 }
-.header-block p{
-    margin: 0 0 50px 0;
+.header-block h1 {
+    margin: 5px;
     font-size: 60px;
+    text-align: right;
     text-transform: uppercase;
     font-family: Roboto;
     color: white;
 }
-.photo{
+.header-block p {
+    margin: 5px;
+    font-size: 25px;
+    text-align: right;
+    text-transform: uppercase;
+    font-family: Roboto;
+    color: white;
+}
+
+.photo {
+    min-height: 50vh;
+    max-width: 400px;
     background: url(../../Resume/source/avatar.jpg);
     width: 250px;
     background-repeat: no-repeat;
@@ -99,12 +133,96 @@ main {
     box-shadow: 0 0 15px #9d9e9e;
     border: 3px solid white;
 }
-.about-me{
+
+.description-block {
     display: flex;
     color: #ffffff;
 }
+
+.description {
+
+    width: 100%;
+    height: 100%;
+}
+
+.description ul{
+    position: relative;
+list-style-type: none;
+    direction: rtl;
+    float: right;
+}
+.description li{
+    text-align: right;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+.description li span, li:after {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border-radius: 50%;
+    transition: all 500ms ease;
+}
+
+.description li span {
+    left: -5px;
+    top: -14px;
+    width: 10px;
+    height: 10px;
+}
+
+.description li:after {
+    top: 2px;
+    right: -26px;
+    width: 16px;
+    height: 16px;
+    border: 1px solid white;
+}
+
+.description li p {
+    font-family: 'Open Sans';
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: #ffffff;
+    transition: all 500ms ease;
+}
+.about .description {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.about .description ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    direction: ltr;
+    float: left;
+}
+.about .description ul li{
+margin: 0 10px;
+}
+.about .description ul li p{
+    font-size: 30px;
+    height: 45px;
+    padding: 0 15px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #3d3d3d;
+}
+
+.about .description ul li:after{
+    display: none;
+}
+
+
+
 /*.content:nth-child(2n+1) p{*/
-    /*color: rgb(255, 255, 255);*/
+/*color: rgb(255, 255, 255);*/
 /*}*/
 /*******************************/
 
@@ -112,7 +230,8 @@ main {
 .control {
     z-index: 3;
 }
-#clicked{
+
+#clicked {
     width: 150px;
     height: 150px;
     transform: scale(0);
@@ -122,7 +241,8 @@ main {
     border-radius: 50%;
     transition: all 2000ms ease;
 }
-#navig{
+
+#navig {
     display: none;
     opacity: 0.8;
     width: 150px;
@@ -146,12 +266,14 @@ main {
     border: 2px solid #888888;
     background: #3e4040;
 }
-#navig span{
+
+#navig span {
     border: 1px solid #888888;
     width: calc(50% - 2px);
     height: calc(50% - 2px);
 }
-#navig span:nth-child(1){
+
+#navig span:nth-child(1) {
     background: url("../source/home.png");
     background-size: 50%;
     background-repeat: no-repeat;
@@ -159,32 +281,41 @@ main {
     background-position-y: center;
     border-radius: 100% 0 0 0;
 }
-#navig span:nth-child(1):hover{
+
+#navig span:nth-child(1):hover {
     transform: translateX(-5px) translateY(-5px) scale(1.1);
 }
-#navig span:nth-child(2){
+
+#navig span:nth-child(2) {
     border-radius: 0 100% 0 0;
 }
-#navig span:nth-child(2):hover{
+
+#navig span:nth-child(2):hover {
     transform: translateX(5px) translateY(-5px) scale(1.1);
 }
-#navig span:nth-child(3){
+
+#navig span:nth-child(3) {
     border-radius: 0 0 0 100%;
 }
-#navig span:nth-child(3):hover{
+
+#navig span:nth-child(3):hover {
     transform: translateX(-5px) translateY(5px) scale(1.1);
 }
-#navig span:nth-child(4){
+
+#navig span:nth-child(4) {
     border-radius: 0 0 100% 0;
 }
-#navig span:nth-child(4):hover{
+
+#navig span:nth-child(4):hover {
     transform: translateX(5px) translateY(5px) scale(1.1);
 }
-#navig span:hover{
+
+#navig span:hover {
     background-color: #5c5e5e;
     transition: all 500ms ease;
     z-index: 4;
 }
+
 #wrapper {
     position: fixed;
     display: flex;
@@ -197,6 +328,7 @@ main {
     bottom: 0;
     perspective: none;
 }
+
 #wrapper > span {
     position: absolute;
     opacity: 0.4;
@@ -222,15 +354,14 @@ main {
     background: #40dd69;
     transition: top 1s, left 1s, transform 1s ease;
 }
+
 #wrapper > span:after {
     top: 17px;
     left: 20px;
     transform: rotateZ(45deg);
 }
 
-
-
-ul {
+#wrapper > ul {
     opacity: 0.4;
     position: relative;
     display: flex;
@@ -245,12 +376,12 @@ ul {
     margin: 0;
 }
 
-ul:hover {
+#wrapper > ul:hover {
     opacity: 1;
-    transform:  translateX(10px);
+    transform: translateX(10px);
 }
 
-li {
+#wrapper li {
     position: relative;
     height: 100%;
     width: 1px;
@@ -261,7 +392,7 @@ li {
     margin-bottom: 9px;
 }
 
-li span, li:after{
+#wrapper li span, li:after {
     content: '';
     position: absolute;
     background: transparent;
@@ -269,14 +400,14 @@ li span, li:after{
     transition: all 500ms ease;
 }
 
-li span {
+#wrapper li span {
     left: -5px;
     top: -14px;
     width: 10px;
     height: 10px;
 }
 
-li:after{
+#wrapper li:after {
     top: -18px;
     left: -9px;
     width: 16px;
@@ -284,19 +415,19 @@ li:after{
     border: 1px solid white;
 }
 
-.selected {
+#wrapper .selected {
     background: #ff363a;
 }
 
-li:hover span {
+#wrapper li:hover span {
     background: #40dd69;
 }
 
-li:last-child{
+#wrapper li:last-child {
     height: 0;
 }
 
-li p {
+#wrapper li p {
     opacity: 0;
     cursor: pointer;
     position: absolute;
@@ -311,12 +442,11 @@ li p {
     transition: all 500ms ease;
 }
 
-li:hover p {
+#wrapper li:hover p {
     display: block;
     opacity: 1;
     transition: all 500ms ease;
 }
-
 
 #switch {
     display: none;

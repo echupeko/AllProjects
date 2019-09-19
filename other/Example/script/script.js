@@ -43,10 +43,15 @@ const blockContentAdd = () => {
     const main = document.querySelector('main');
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
-        content += '<div id="' + contentArr[i].id + '-block" class="content"><p class="title-page">' + contentArr[i].description + '</p>' +
-            '<div class="container">\n' +
-            '<div class="header-block"><p>чупеко евгений</p></div>\n' +
-            '<div class="about-me"><div class="photo"></div><div class="description"><p>Frontend Developer</p><p>' + ageCalc() + '</p><h1>, г. Барнаул</h1>' +
+        content += '<div id="' + contentArr[i].id + '-block" class="content"><p class="title-page">' +
+            contentArr[i].description + '</p>' +
+            '<div class="container ' + contentArr[i].id + '">\n' +
+            '<div class="header-block"><h1>чупеко евгений</h1>' +
+            '<p>Frontend Developer</p><p>' + ageCalc() + '</p><p>г. Барнаул</p></div>\n' +
+            '<div class="photo"></div>' +
+            '<div class="description-block">' +
+            '<div class="description">' +
+            contentDescriptionList(contentArr[i].id) +
             '</div></div></div></div>';
         block = {};
         block.id = contentArr[i].id;
@@ -54,6 +59,21 @@ const blockContentAdd = () => {
         blockArray.push(block);
     }
     main.innerHTML = content;
+}
+
+const contentDescriptionList = (parrent) => {
+    let descriptionBlock = descriptionArr.filter(item => item.parrent === parrent);
+    let htmlElement = '<ul>';
+    descriptionBlock.forEach(item => {
+        let text = "";
+        if(item.parrent === 'about')
+            text = item.id;
+        else
+            text = item.description;
+        htmlElement += '<li name="' + item.id + '"><p>' + text + '</p></li>';
+    });
+    htmlElement += '</ul>';
+    return htmlElement;
 }
 
 const ageCalc = () => {
