@@ -34,7 +34,7 @@ const menuListAdd = () => {
     let li = "";
     contentArr.forEach(item => {
         li += '<li id="' + item.id + '" onclick="scrollingTo(\'' + item.id + '\')">' +
-            '<span></span><p>' + item.description + '</p></li>';
+            '<span></span><p>' + item.title + '</p></li>';
     });
     wrapper.innerHTML += `<ul> ${li} </ul>`;
 }
@@ -43,18 +43,19 @@ const blockContentAdd = () => {
     const main = document.querySelector('main');
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
-        content += '<div id="' + contentArr[i].id + '-block" class="content"><p class="title-page">' +
-            contentArr[i].description + '</p>' +
-            '<div class="container ' + contentArr[i].id + '">\n' +
-            '<div class="header-block"><h1>чупеко евгений</h1>' +
-            '<p>Frontend Developer</p><p>' + ageCalc() + '</p><p>г. Барнаул</p></div>\n' +
+        let item = contentArr[i];
+        content += '<div id="' + item.id + '-block" class="content"><p class="title-page">' +
+            item.title + '</p>' +
+            '<div class="container ' + item.id + '">\n' +
+            '<div class="header-block">' + item.description +
+            '<p>' + ageCalc() + '</p></div>\n' +
             '<div class="photo"></div>' +
             '<div class="description-block">' +
             '<div class="description">' +
-            contentDescriptionList(contentArr[i].id) +
+            contentDescriptionList(item.id) +
             '</div></div></div></div>';
         block = {};
-        block.id = contentArr[i].id;
+        block.id = item.id;
         block.theme = i % 2; //выбор цветовой темы для блока 0 - черный, 1 - белый
         blockArray.push(block);
     }

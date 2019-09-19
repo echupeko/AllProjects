@@ -1,9 +1,9 @@
 const contentArr = [
-    {id: 'about', description: 'о себе', type: 'block'},
-    {id: 'education', description: 'образование', type: 'block'},
-    {id: 'development', description: 'работы', type: 'block'},
-    {id: 'hobby', description: 'увлечения', type: 'block'},
-    {id: 'contact', description: 'контакты', type: 'footer'}];
+    {id: 'about', title: 'о себе', description: '<h1>чупеко евгений</h1><p>Frontend Developer</p><p>г. Барнаул</p>', type: 'block'},
+    {id: 'education', title: 'образование', description: '', type: 'block'},
+    {id: 'development', title: 'работы', description: '', type: 'block'},
+    {id: 'hobby', title: 'увлечения', description: '', type: 'block'},
+    {id: 'contact', title: 'контакты', description: '', type: 'footer'}];
 const descriptionArr = [
     {
         id: 'js',
