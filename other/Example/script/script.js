@@ -27,6 +27,7 @@ window.onload = () => {
         else
             item.selected = false;
     }
+    bwTheme(0);
     //document.body.requestFullScreen();
 }
 
@@ -267,6 +268,7 @@ const bwTheme = (colorTheme) => {
     as.classList.remove(bwColor[reversColor]);
     document.querySelector('body').style.backgroundColor = bwColor[colorTheme];
     let p = blockArray[selectBlock].block.querySelector('p');
+    blockArray[selectBlock].block.getElementsByClassName('container')[0].style.color = bwColor[reversColor];
     p.style.color = bwColor[reversColor];
 }
 

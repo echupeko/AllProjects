@@ -1,5 +1,6 @@
 * {
     transition: all 1s ease;
+
 }
 
 body {
@@ -52,6 +53,7 @@ body {
 /**********Content**************/
 main {
     z-index: 2;
+    color: white;
 }
 
 .activ {
@@ -85,12 +87,16 @@ main {
 .container > div {
     margin: 0 20px;
     min-width: 270px;
-    width: 30%;
+    width: 400px;
 }
 
 .about > .description-block{
     justify-content: center;
     min-width: 100%;
+}
+
+.white-text{
+    color: white;
 }
 
 .title-page {
@@ -103,7 +109,7 @@ main {
     font-family: 'Roboto';
     font-weight: bold;
     font-size: 50px;
-    color: white;
+    /*color: white;*/
 }
 .header-block h1 {
     margin: 5px;
@@ -111,7 +117,7 @@ main {
     text-align: right;
     text-transform: uppercase;
     font-family: Roboto;
-    color: white;
+    /*color: white;*/
 }
 .header-block p {
     margin: 5px;
@@ -119,13 +125,13 @@ main {
     text-align: right;
     text-transform: uppercase;
     font-family: Roboto;
-    color: white;
+    /*color: white;*/
 }
 
 .photo {
     min-height: 50vh;
     max-width: 400px;
-    background: url(../../Resume/source/avatar.jpg);
+    background: url(../source/avatar.png);
     width: 250px;
     background-repeat: no-repeat;
     background-size: cover;
@@ -136,7 +142,7 @@ main {
 
 .description-block {
     display: flex;
-    color: #ffffff;
+    /*color: #ffffff;*/
 }
 
 .description {
@@ -165,7 +171,6 @@ list-style-type: none;
     position: absolute;
     background: transparent;
     border-radius: 50%;
-    transition: all 500ms ease;
 }
 
 .description li span {
@@ -187,8 +192,7 @@ list-style-type: none;
     font-family: 'Open Sans';
     text-transform: uppercase;
     font-weight: lighter;
-    color: #ffffff;
-    transition: all 500ms ease;
+    /*color: #ffffff;*/
 }
 .about .description {
     width: 50%;
@@ -207,9 +211,9 @@ list-style-type: none;
 margin: 0 10px;
 }
 .about .description ul li p{
+    font-family: Roboto;
     font-size: 30px;
-    height: 45px;
-    padding: 0 15px;
+    padding: 5px 15px;
     text-align: center;
     border-radius: 5px;
     background-color: #3d3d3d;
