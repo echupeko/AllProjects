@@ -46,14 +46,14 @@ const blockContentAdd = () => {
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
         let age = new Date('05.08.1994');
-        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i%2)? 'black-text' : 'white-text') + '"><p class="title-page">' +
+        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i % 2) ? 'black-text' : 'white-text') + '"><p class="title-page">' +
             item.title + '</p>' +
             '<div class="container ' + item.id + ' flex-block ">\n' +
             '<div class="header-block">' + item.description +
-            '<p>' + ((i===0)? ageCalc(age) : '') + '</p></div>\n' +
+            '<p>' + ((i === 0) ? ageCalc(age) : '') + '</p></div>\n' +
             '<div class="photo" style="background-image: url(source/' + item.id + '.png);"></div>' +
             '<div class="description-block flex-block">' +
-            '<div class="description flex-block">' + ((i===0)? '<p>навыки:</p>' : '') +
+            '<div class="description flex-block">' + ((i === 0) ? '<p>навыки:</p>' : '') +
             contentDescriptionList(item.id) +
             '</div></div></div></div>';
         block = {};
@@ -69,11 +69,11 @@ const contentDescriptionList = (parrent) => {
     let htmlElement = '<ul class="flex-block">';
     descriptionBlock.forEach(item => {
         let text = "";
-        if(item.parrent === 'about')
+        if (item.parrent === 'about')
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor+ '; color: ' + item.color + '">' + text + '</p></li>';
+        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor + '; color: ' + item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';
     return htmlElement;
