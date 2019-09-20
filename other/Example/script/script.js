@@ -45,12 +45,13 @@ const blockContentAdd = () => {
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
+        let age = new Date('05.08.1994');
         content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i%2)? 'black-text' : 'white-text') + '"><p class="title-page">' +
             item.title + '</p>' +
             '<div class="container ' + item.id + ' flex-block ">\n' +
             '<div class="header-block">' + item.description +
-            '<p>' + ageCalc() + '</p></div>\n' +
-            '<div class="photo"></div>' +
+            '<p>' + ((i===0)? ageCalc(age) : '') + '</p></div>\n' +
+            '<div class="photo" style="background-image: url(source/' + item.id + '.png);"></div>' +
             '<div class="description-block flex-block">' +
             '<div class="description flex-block">' + ((i===0)? '<p>навыки:</p>' : '') +
             contentDescriptionList(item.id) +
@@ -78,8 +79,8 @@ const contentDescriptionList = (parrent) => {
     return htmlElement;
 }
 
-const ageCalc = () => {
-    let age = new Date('05.08.1994');
+const ageCalc = (age) => {
+
     let date = Math.floor((new Date() - age) / (1000 * 60 * 60 * 24 * 365)).toString();
     let split = date.split('');
     let end = parseInt(split[split.length - 1]);

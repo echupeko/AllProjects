@@ -87,6 +87,7 @@ main {
     margin: 0 20px;
     min-width: 270px;
     width: 400px;
+    max-width: 500px;
 }
 
 .about > .description-block{
@@ -110,25 +111,38 @@ main {
     font-weight: bold;
     font-size: 50px;
 }
-.header-block h1 {
+.about .header-block h1 {
     margin: 5px;
     font-size: 60px;
 }
-.header-block p {
+.about .header-block p {
     margin: 5px;
     font-size: 25px;
+}
+
+.header-block:nth-child(1) h1 {
+    margin: 5px;
+    font-size: 2.7vw;
+}
+.header-block h1 {
+    margin: 5px;
+    font-size: 3.7vw;
+}
+.header-block p {
+    margin: 5px;
+    font-size: 20px;
 }
 
 .photo {
     min-height: 50vh;
     max-width: 400px;
-    background: url(../source/avatar.png);
+
     width: 250px;
     background-repeat: no-repeat;
     background-size: cover;
     height: 250px;
-    box-shadow: 0 0 15px #9d9e9e;
-    border: 3px solid white;
+    /*box-shadow: 0 0 15px #9d9e9e;*/
+    /*border: 3px solid white;*/
 }
 
 .description {
@@ -177,7 +191,7 @@ main {
 .description li p {
     font-family: 'Open Sans';
     text-transform: uppercase;
-    font-weight: lighter;
+    font-weight: bold;
 }
 .about .description {
     width: 50%;
