@@ -7,15 +7,31 @@ const contentArr = [
 const descriptionArr = [
     {
         id: 'js',
-        backgroundColor: 'orange',
+        backgroundColor: '#f7df1e',
         color: 'black',
         parrent: 'about',
         skillLevel: 'Начинающий',
         description: 'Занимаюсь изучением JavaScript'
     },
     {
+        id: 'reactJS',
+        backgroundColor: '#61dafb',
+        color: '#494949',
+        parrent: 'about',
+        skillLevel: 'Начинающий',
+        description: 'Занимаюсь изучением JavaScript'
+    },
+    {
+        id: 'nodeJS',
+        backgroundColor: '#8bc500',
+        color: '#666861',
+        parrent: 'about',
+        skillLevel: 'Начинающий',
+        description: 'Занимаюсь изучением JavaScript'
+    },
+    {
         id: 'html',
-        backgroundColor: 'orange',
+        backgroundColor: '#e44d26',
         color: 'white',
         parrent: 'about',
         skillLevel: 'Начинающий',
@@ -23,7 +39,7 @@ const descriptionArr = [
     },
     {
         id: 'css',
-        backgroundColor: 'blue',
+        backgroundColor: '#379ad6',
         color: 'white',
         parrent: 'about',
         skillLevel: 'Начинающий',
@@ -31,16 +47,16 @@ const descriptionArr = [
     },
     {
         id: '1c',
-        backgroundColor: 'yellow',
-        color: 'blue',
+        backgroundColor: '#efd930',
+        color: '#ff1a00',
         parrent: 'about',
         skillLevel: 'Продвинутый',
         description: 'Работаю на 1С 7.7'
     },
     {
-        id: 'ps',
-        backgroundColor: 'blue',
-        color: 'lightblue',
+        id: 'Photoshop',
+        backgroundColor: '#2a2a43',
+        color: '#31c5f0',
         parrent: 'about',
         skillLevel: 'Выше среднего',
         description: 'Неплохо владею Adobe Photoshop'

@@ -45,14 +45,14 @@ const blockContentAdd = () => {
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
-        content += '<div id="' + item.id + '-block" class="content"><p class="title-page">' +
+        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i%2)? 'black-text' : 'white-text') + '"><p class="title-page">' +
             item.title + '</p>' +
-            '<div class="container ' + item.id + '">\n' +
+            '<div class="container ' + item.id + ' flex-block ">\n' +
             '<div class="header-block">' + item.description +
             '<p>' + ageCalc() + '</p></div>\n' +
             '<div class="photo"></div>' +
-            '<div class="description-block">' +
-            '<div class="description">' +
+            '<div class="description-block flex-block">' +
+            '<div class="description flex-block">' + ((i===0)? '<p>навыки:</p>' : '') +
             contentDescriptionList(item.id) +
             '</div></div></div></div>';
         block = {};
@@ -65,14 +65,14 @@ const blockContentAdd = () => {
 
 const contentDescriptionList = (parrent) => {
     let descriptionBlock = descriptionArr.filter(item => item.parrent === parrent);
-    let htmlElement = '<ul>';
+    let htmlElement = '<ul class="flex-block">';
     descriptionBlock.forEach(item => {
         let text = "";
         if(item.parrent === 'about')
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li name="' + item.id + '"><p>' + text + '</p></li>';
+        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor+ '; color: ' + item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';
     return htmlElement;
@@ -267,9 +267,10 @@ const bwTheme = (colorTheme) => {
     as.classList.add(bwColor[colorTheme]);
     as.classList.remove(bwColor[reversColor]);
     document.querySelector('body').style.backgroundColor = bwColor[colorTheme];
-    let p = blockArray[selectBlock].block.querySelector('p');
-    blockArray[selectBlock].block.getElementsByClassName('container')[0].style.color = bwColor[reversColor];
-    p.style.color = bwColor[reversColor];
+    //blockArray[selectBlock].block.style.color = bwColor[reversColor];
+    //let p = blockArray[selectBlock].block.querySelector('p');
+    //blockArray[selectBlock].block.getElementsByClassName('container')[0].style.color = bwColor[reversColor];
+    //p.style.color = bwColor[reversColor];
 }
 
 const openMenu = () => {
