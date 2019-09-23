@@ -230,7 +230,6 @@ const scrollBlock = (startBlock, countBlock) => {
         let quietPeriod = 500;
 
         if(timeNow - lastAnimation < quietPeriod) {
-            //event.preventDefault();
             return;
         }
 
