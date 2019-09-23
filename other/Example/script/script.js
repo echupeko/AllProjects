@@ -7,6 +7,7 @@ let as;
 let isColor = false;
 let isOpenMenu = false;
 let selectBlock, initialPoint, finalPoint;
+let lastAnimation = 0;
 
 const bwColor = ['#1c1c1c', 'white'];
 let block = {};
@@ -37,16 +38,17 @@ const menuListAdd = () => {
         li += '<li id="' + item.id + '" onclick="scrollingTo(\'' + item.id + '\')">' +
             '<span></span><p>' + item.title + '</p></li>';
     });
-    wrapper.innerHTML += `<ul> ${li} </ul>`;
+    wrapper.innerHTML += `<div class="flex-block"><ul class="list-menu"> ${li} </ul></div>`;
 }
 
 const blockContentAdd = () => {
     const main = document.querySelector('main');
+    main.style.height = contentArr.length * 100 + 'vh';
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
         let age = new Date('05.08.1994');
-        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i % 2) ? 'black-text' : 'white-text') + '"><p class="title-page">' +
+        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i % 2) ? 'black-text' : 'white-text') + '" style="height: 100vh"><p class="title-page">' +
             item.title + '</p>' +
             '<div class="container ' + item.id + ' flex-block ">\n' +
             '<div class="header-block">' + item.description +
@@ -73,7 +75,8 @@ const contentDescriptionList = (parrent) => {
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor + '; color: ' + item.color + '">' + text + '</p></li>';
+        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor + '; color: ' +
+            item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';
     return htmlElement;
@@ -212,9 +215,9 @@ const scrollingTo = (to) => { //скорллинг до указанного м�
     }
 }
 
-const preScroll = (countPoint) => {
+const preScroll = (countBlock) => {
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
-    scrollBlock(selectBlock, countPoint);
+    scrollBlock(selectBlock, countBlock);
 }
 
 const scrollBlock = (startBlock, countBlock) => {
@@ -223,6 +226,14 @@ const scrollBlock = (startBlock, countBlock) => {
     let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
 
     if (mainPosition % window.innerHeight === 0) {
+        let timeNow = new Date().getTime();
+        let quietPeriod = 500;
+
+        if(timeNow - lastAnimation < quietPeriod) {
+            //event.preventDefault();
+            return;
+        }
+
         index = startBlock + countBlock;
         if (index >= 0 && index < blockArray.length) {
             for (let i = 0; i < blockArray.length; i++) {
@@ -237,6 +248,7 @@ const scrollBlock = (startBlock, countBlock) => {
             }
             selectBlock = index;
         }
+
 
         if (countBlock < 0) { //вверх
             if (mainPosition !== 0) { //если не вверху
@@ -253,6 +265,7 @@ const scrollBlock = (startBlock, countBlock) => {
                 return;
         }
 
+        lastAnimation = timeNow;
     }
 
 }
@@ -260,6 +273,7 @@ const scrollBlock = (startBlock, countBlock) => {
 const scrollEngine = (mainPosition, countBlock) => {
     main.style.top = mainPosition + (-countBlock) * window.innerHeight + 'px';
     bwTheme(blockArray[selectBlock].theme);
+    console.log('scrolled ' + ((countBlock>0) ? 'down' : 'up'));
 }
 
 const bwTheme = (colorTheme) => {

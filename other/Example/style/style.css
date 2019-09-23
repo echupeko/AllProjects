@@ -139,7 +139,7 @@ main {
 
     width: 250px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     height: 250px;
     /*box-shadow: 0 0 15px #9d9e9e;*/
     /*border: 3px solid white;*/
@@ -319,6 +319,7 @@ main {
 }
 
 #wrapper {
+    flex-direction: column;
     position: fixed;
     width: 70px;
     height: 100vh;
@@ -328,8 +329,16 @@ main {
     perspective: none;
 }
 
-#wrapper > span {
-    position: absolute;
+#wrapper > div:nth-child(1) {
+    width: 100%;
+    height: 10%;
+}
+#wrapper > div:nth-child(2) {
+    width: 100%;
+    height: 90%;
+}
+
+#wrapper > div > span {
     opacity: 0.4;
     top: 15px;
     left: 15px;
@@ -342,7 +351,7 @@ main {
     z-index: 4;
 }
 
-#wrapper > span:before, #wrapper > span:after {
+#wrapper > div > span:before, #wrapper > div > span:after {
     content: '';
     position: absolute;
     width: 3px;
@@ -354,13 +363,13 @@ main {
     transition: top 1s, left 1s, transform 1s ease;
 }
 
-#wrapper > span:after {
+#wrapper > div > span:after {
     top: 17px;
     left: 20px;
     transform: rotateZ(45deg);
 }
 
-#wrapper > ul {
+.list-menu {
     opacity: 0.4;
     position: relative;
     display: flex;
@@ -375,12 +384,12 @@ main {
     margin: 0;
 }
 
-#wrapper > ul:hover {
+.list-menu:hover {
     opacity: 1;
     transform: translateX(10px);
 }
 
-#wrapper li {
+.list-menu li {
     position: relative;
     height: 100%;
     width: 1px;
@@ -391,7 +400,7 @@ main {
     margin-bottom: 9px;
 }
 
-#wrapper li span, li:after {
+.list-menu li span, .list-menu li:after {
     content: '';
     position: absolute;
     background: transparent;
@@ -399,14 +408,14 @@ main {
     transition: all 500ms ease;
 }
 
-#wrapper li span {
+.list-menu li span {
     left: -5px;
     top: -14px;
     width: 10px;
     height: 10px;
 }
 
-#wrapper li:after {
+.list-menu li:after {
     top: -18px;
     left: -9px;
     width: 16px;
@@ -414,19 +423,19 @@ main {
     border: 1px solid white;
 }
 
-#wrapper .selected {
+.list-menu .selected {
     background: #ff363a;
 }
 
-#wrapper li:hover span {
+.list-menu li:hover span {
     background: #40dd69;
 }
 
-#wrapper li:last-child {
+.list-menu li:last-child {
     height: 0;
 }
 
-#wrapper li p {
+.list-menu li p {
     opacity: 0;
     cursor: pointer;
     position: absolute;
@@ -441,7 +450,7 @@ main {
     transition: all 500ms ease;
 }
 
-#wrapper li:hover p {
+.list-menu li:hover p {
     display: block;
     opacity: 1;
     transition: all 500ms ease;
