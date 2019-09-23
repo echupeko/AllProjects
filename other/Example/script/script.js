@@ -1,10 +1,9 @@
 const main = document.querySelector('main');
 const wrapper = document.getElementById('wrapper');
 const nav = document.getElementById('navig');
-const cl = document.getElementById('clicked');
-let clock;
+//const cl = document.getElementById('clicked');
+//let clock;
 let as;
-let isColor = false;
 let isOpenMenu = false;
 let selectBlock, initialPoint, finalPoint;
 let lastAnimation = 0;
@@ -30,7 +29,7 @@ window.onload = () => {
     }
     bwTheme(0);
     //document.body.requestFullScreen();
-}
+};
 
 const menuListAdd = () => {
     let li = "";
@@ -39,7 +38,7 @@ const menuListAdd = () => {
             '<span></span><p>' + item.title + '</p></li>';
     });
     wrapper.innerHTML += `<div class="flex-block"><ul class="list-menu"> ${li} </ul></div>`;
-}
+};
 
 const blockContentAdd = () => {
     const main = document.querySelector('main');
@@ -64,7 +63,7 @@ const blockContentAdd = () => {
         blockArray.push(block);
     }
     main.innerHTML = content;
-}
+};
 
 const contentDescriptionList = (parrent) => {
     let descriptionBlock = descriptionArr.filter(item => item.parrent === parrent);
@@ -75,12 +74,12 @@ const contentDescriptionList = (parrent) => {
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li name="' + item.id + '"><p style="background-color:' + item.backgroundColor + '; color: ' +
+        htmlElement += '<li><p style="background-color:' + item.backgroundColor + '; color: ' + // name="' + item.id + '"
             item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';
     return htmlElement;
-}
+};
 
 const ageCalc = (age) => {
 
@@ -98,7 +97,7 @@ const ageCalc = (age) => {
         date += ' лет';
     }
     return date;
-}
+};
 
 // main.onmousedown = () => {
 //     startTimer();
@@ -136,17 +135,17 @@ const ageCalc = (age) => {
 
 window.onmousemove = () => { //обработчик движения курсора, для эфекта глубины и динамичности фона
     as = document.getElementById('network-background');
-    let y = -Math.round((event.clientX - screen.width / 2) / 270, 2);
-    let x = Math.round((event.clientY - screen.height / 2) / 90, 2);
+    let y = -Math.round((event.clientX - screen.width / 2) / 270);
+    let x = Math.round((event.clientY - screen.height / 2) / 90);
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
-}
+};
 
 window.onmousewheel = () => { //обрабатываем события для колёсика мыши
     if (event.wheelDelta > 0)
         preScroll(-1);
     else if (event.wheelDelta < 0)
         preScroll(1);
-}
+};
 
 window.onkeydown = () => { //обрабатываем нажатия кнопок
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
@@ -167,16 +166,16 @@ window.onkeydown = () => { //обрабатываем нажатия кнопо�
         //scrollBlock(selectBlock, countBlock - 1, countBlock - selectBlock - 1); //скроллим в конец
         preScroll(countBlock - selectBlock - 1);
     }
-}
+};
 
 main.ontouchstart = () => { //сохраняем точку касания на смартфоне
     initialPoint = event.changedTouches[0];
-}
+};
 
 main.ontouchend = () => { //смотрим направление движения пальца
     finalPoint = event.changedTouches[0];
-    var xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
-    var yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+    let xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+    let yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
     if (xAbs > 20 || yAbs > 20) {
         if (xAbs < yAbs) {
             if (!isOpenMenu) {
@@ -202,7 +201,7 @@ main.ontouchend = () => { //смотрим направление движени
         }
 
     }
-}
+};
 
 const scrollingTo = (to) => { //скорллинг до указанного места
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
@@ -213,23 +212,24 @@ const scrollingTo = (to) => { //скорллинг до указанного м�
         if (isOpenMenu) //скрываем меню навигации
             openMenu();
     }
-}
+};
 
 const preScroll = (countBlock) => {
     selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
     scrollBlock(selectBlock, countBlock);
-}
+};
 
 const scrollBlock = (startBlock, countBlock) => {
     //1 параметр начальная точка/текущий блок
     //2 параметр количество блоков
     let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
+    let index;
 
     if (mainPosition % window.innerHeight === 0) {
         let timeNow = new Date().getTime();
         let quietPeriod = 500;
 
-        if(timeNow - lastAnimation < quietPeriod) {
+        if (timeNow - lastAnimation < quietPeriod) {
             return;
         }
 
@@ -267,13 +267,13 @@ const scrollBlock = (startBlock, countBlock) => {
         lastAnimation = timeNow;
     }
 
-}
+};
 
 const scrollEngine = (mainPosition, countBlock) => {
     main.style.top = mainPosition + (-countBlock) * window.innerHeight + 'px';
     bwTheme(blockArray[selectBlock].theme);
     console.log('scrolled ' + ((countBlock>0) ? 'down' : 'up'));
-}
+};
 
 const bwTheme = (colorTheme) => {
     const reversColor = Math.abs(colorTheme - 1);
@@ -285,7 +285,7 @@ const bwTheme = (colorTheme) => {
     //let p = blockArray[selectBlock].block.querySelector('p');
     //blockArray[selectBlock].block.getElementsByClassName('container')[0].style.color = bwColor[reversColor];
     //p.style.color = bwColor[reversColor];
-}
+};
 
 const openMenu = () => {
     if (isOpenMenu)
@@ -293,5 +293,5 @@ const openMenu = () => {
     else
         wrapper.classList.add('open');
     isOpenMenu = !isOpenMenu;
-}
+};
 
