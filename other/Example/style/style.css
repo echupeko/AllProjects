@@ -101,15 +101,15 @@ main > div { /*блоки категорий*/
 }
 
 /********** Первый блок **************/
-main > div:nth-child(1) .header-block h1 {
-    margin: 5px;
-    font-size: 3vw;
-}
+/*main > div:nth-child(1) .header-block h1 {*/
+    /*margin: 5px;*/
+    /*font-size: 50px;*/
+/*}*/
 
-main > div:nth-child(1) .header-block p {
-    margin: 5px;
-    font-size: 1.5vw;
-}
+/*main > div:nth-child(1) .header-block p {*/
+    /*margin: 5px;*/
+    /*font-size: 20px;*/
+/*}*/
 
 main > div:nth-child(1) .description-block {
     justify-content: center;
@@ -146,7 +146,7 @@ main > div:nth-child(1) .description ul li:after {
 
 .header-block h1 {
     margin: 5px;
-    font-size: 3.7vw;
+    font-size: 50px;
 }
 
 .header-block p {
@@ -172,7 +172,7 @@ main > div:nth-child(1) .description ul li:after {
 
 .description ul {
     position: relative;
-align-items: left;
+    align-items: left;
     flex-wrap: wrap;
     list-style-type: none;
     direction: rtl;
