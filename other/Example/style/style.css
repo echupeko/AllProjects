@@ -1,6 +1,5 @@
 * {
     transition: all 1s ease;
-
 }
 
 body {
@@ -17,7 +16,7 @@ body {
     align-items: center;
 }
 
-/***********Background***********/
+/*********** Фон ***********/
 .background {
     width: 200%;
     height: 200vh;
@@ -26,7 +25,6 @@ body {
     top: -200px;
     opacity: 0.6;
     transition: transform 1s ease-out;
-
 }
 
 #vignette-background {
@@ -37,7 +35,7 @@ body {
     background: radial-gradient(farthest-side, transparent, black);
 }
 
-.black{
+.black {
     background: url("../../Resume/source/white.png");
 }
 
@@ -50,18 +48,19 @@ body {
     background-size: 100px;
 }
 
-
 /*******************************/
 
-/**********Content**************/
-main {
-    z-index: 2;
-    text-align: right;
-    text-transform: uppercase;
-    font-family: Roboto;
+/********** Контент **************/
+.black-text {
+    color: #1c1c1c;
 }
 
-.activ {
+.white-text {
+    color: white;
+}
+
+main { /*главный блок*/
+    z-index: 2;
     position: absolute;
     top: 0;
     left: 0;
@@ -69,65 +68,87 @@ main {
     height: 100vh;
     width: 100%;
     background: transparent;
+    text-align: right;
+    text-transform: uppercase;
+    font-family: Roboto, serif;
 }
 
-.content {
+main > div { /*блоки категорий*/
     position: relative;
     height: 100%;
     flex-direction: column;
 }
 
-.container {
+.container { /*блок наполнения*/
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.container > div {
+.container > div { /*подблоки наполнения*/
     margin: 0 20px;
     min-width: 270px;
     width: 30%;
-    max-width: 500px;
 }
 
-.about > .description-block{
-    justify-content: center;
-    min-width: 100%;
-}
-
-.black-text{
-    color: #1c1c1c;
-}
-
-.white-text{
-    color: white;
-}
-
-.title-page {
+.title-page { /*заголовок блока*/
     margin: 0;
     position: absolute;
     top: 0;
     right: 10px;
     font-weight: bold;
-    font-size: 50px;
-}
-.about .header-block h1 {
-    margin: 5px;
-    font-size: 60px;
-}
-.about .header-block p {
-    margin: 5px;
-    font-size: 25px;
+    font-size: 3vw;
 }
 
-.header-block:nth-child(1) h1 {
+/********** Первый блок **************/
+main > div:nth-child(1) .header-block h1 {
     margin: 5px;
-    font-size: 2.7vw;
+    font-size: 3vw;
 }
+
+main > div:nth-child(1) .header-block p {
+    margin: 5px;
+    font-size: 1.5vw;
+}
+
+main > div:nth-child(1) .description-block {
+    justify-content: center;
+    width: 100%;
+    min-width: 100%;
+}
+
+main > div:nth-child(1) .description {
+    width: 50%;
+    flex-direction: column;
+}
+
+main > div:nth-child(1) .description ul {
+    margin: 0;
+    padding: 0;
+    direction: ltr;
+    flex-direction: row;
+}
+
+main > div:nth-child(1) .description ul li p {
+    margin: 0;
+    padding: 5px 15px;
+    font-size: 30px;
+    font-family: Roboto, serif;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #3d3d3d;
+}
+
+main > div:nth-child(1) .description ul li:after {
+    display: none;
+}
+/*******************************/
+
 .header-block h1 {
     margin: 5px;
     font-size: 3.7vw;
 }
+
 .header-block p {
     margin: 5px;
     font-size: 20px;
@@ -135,11 +156,10 @@ main {
 
 .photo {
     min-height: 50vh;
-    max-width: 400px;
-
     width: 250px;
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
     height: 250px;
     /*box-shadow: 0 0 15px #9d9e9e;*/
     /*border: 3px solid white;*/
@@ -150,18 +170,21 @@ main {
     height: 100%;
 }
 
-.description ul{
+.description ul {
     position: relative;
+align-items: left;
     flex-wrap: wrap;
     list-style-type: none;
     direction: rtl;
     float: right;
 }
-.description li{
+
+.description li {
+    margin: 5px;
+    width: auto;
     text-align: right;
     position: relative;
     height: 100%;
-    width: 100%;
     margin-top: 9px;
     margin-bottom: 9px;
 }
@@ -192,36 +215,8 @@ main {
     font-family: 'Open Sans';
     text-transform: uppercase;
     font-weight: bold;
-}
-.about .description {
-    width: 50%;
-    flex-direction: column;
-}
-.about .description ul {
-    margin: 0;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    direction: ltr;
-    float: left;
-}
-.about .description ul li{
-    margin: 0 10px;
-}
-.about .description ul li p{
-    margin: 0;
-    font-family: 'Roboto';
-    font-size: 30px;
-    padding: 5px 15px;
-    text-align: center;
-    border-radius: 5px;
-    background-color: #3d3d3d;
-}
 
-.about .description ul li:after{
-    display: none;
 }
-
-
 
 /*.content:nth-child(2n+1) p{*/
 /*color: rgb(255, 255, 255);*/
@@ -332,7 +327,9 @@ main {
 #wrapper > div:nth-child(1) {
     width: 100%;
     height: 10%;
+    display: none;
 }
+
 #wrapper > div:nth-child(2) {
     width: 100%;
     height: 90%;

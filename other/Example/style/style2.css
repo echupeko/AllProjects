@@ -1,0 +1,10 @@
+@media screen and (max-width: 1000px) {
+
+    .description-block {
+        width: 90% !important;
+    }
+
+    .description ul {
+        flex-direction: column;
+    }
+}

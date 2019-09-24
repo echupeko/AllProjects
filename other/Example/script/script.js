@@ -47,8 +47,8 @@ const blockContentAdd = () => {
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
         let age = new Date('05.08.1994');
-        content += '<div id="' + item.id + '-block" class="content flex-block ' + ((i % 2) ? 'black-text' : 'white-text') + '" style="height: 100vh"><p class="title-page">' +
-            item.title + '</p>' +
+        content += '<div id="' + item.id + '-block" class="flex-block ' + ((i % 2) ? 'black-text' : 'white-text') +
+            '" style="height: 100vh"><p class="title-page">' + item.title + '</p>' +
             '<div class="container ' + item.id + ' flex-block ">\n' +
             '<div class="header-block">' + item.description +
             '<p>' + ((i === 0) ? ageCalc(age) : '') + '</p></div>\n' +
@@ -272,7 +272,7 @@ const scrollBlock = (startBlock, countBlock) => {
 const scrollEngine = (mainPosition, countBlock) => {
     main.style.top = mainPosition + (-countBlock) * window.innerHeight + 'px';
     bwTheme(blockArray[selectBlock].theme);
-    console.log('scrolled ' + ((countBlock>0) ? 'down' : 'up'));
+    console.log('scrolled ' + ((countBlock > 0) ? 'down' : 'up'));
 };
 
 const bwTheme = (colorTheme) => {
