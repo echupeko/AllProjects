@@ -1,4 +1,30 @@
 @media screen and (max-width: 740px) {
+    .header-block:nth-child(1) h1 {
+        font-size: 30px;
+    }
+
+    .about .header-block p {
+        font-size: 15px;
+    }
+
+    .header-block h1 {
+        font-size: 20px;
+    }
+
+    .header-block p {
+        font-size: 15px;
+    }
+
+    .photo {
+        min-height: 33vh;
+    }
+    .description ul {
+        padding-right: unset;
+    }
+    .description li p {
+        font-size: 15px;
+    }
+
     #wrapper {
         width: unset;
     }
@@ -43,6 +69,7 @@
     #wrapper.open ul:hover {
         transform: none;
     }
+
     #wrapper.open ul li, #wrapper.open ul li:last-child {
         height: 50px;
         width: 100vw;

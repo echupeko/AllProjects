@@ -180,22 +180,22 @@ main.ontouchend = () => { //смотрим направление движени
         if (xAbs < yAbs) {
             if (!isOpenMenu) {
                 if (finalPoint.pageY > initialPoint.pageY) {
-                    alert('up');
+                    //alert('up');
                     preScroll(-1);
                 }
                 else if (finalPoint.pageY < initialPoint.pageY) {
-                    alert('down');
+                    //alert('down');
                     preScroll(1);
                 }
             }
         }
         else {
             if (finalPoint.pageX > initialPoint.pageX) {
-                alert('right');
+                //alert('right');
                 openMenu();
             }
             else {
-                alert('left');
+                //alert('left');
                 openMenu();
             }
         }
