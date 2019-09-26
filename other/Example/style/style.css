@@ -65,17 +65,16 @@ main { /*главный блок*/
     top: 0;
     left: 0;
     bottom: 0;
-    height: 100vh;
     width: 100%;
     background: transparent;
     text-align: right;
     text-transform: uppercase;
     font-family: Roboto, serif;
+    flex-direction: column;
 }
 
 main > div { /*блоки категорий*/
     position: relative;
-    height: 100%;
     flex-direction: column;
 }
 
@@ -224,10 +223,8 @@ main > div:nth-child(1) .description ul li:after {
 /*******************************/
 
 /**********Nav-menu*************/
-.control {
-    z-index: 3;
-}
 
+/*
 #clicked {
     width: 150px;
     height: 150px;
@@ -311,6 +308,10 @@ main > div:nth-child(1) .description ul li:after {
     background-color: #5c5e5e;
     transition: all 500ms ease;
     z-index: 4;
+}*/
+
+.control {
+    z-index: 3;
 }
 
 #wrapper {
@@ -452,7 +453,7 @@ main > div:nth-child(1) .description ul li:after {
     opacity: 1;
     transition: all 500ms ease;
 }
-
+/*
 #switch {
     display: none;
     border: 2px solid rgba(187, 187, 187, 1);
@@ -480,7 +481,7 @@ main > div:nth-child(1) .description ul li:after {
     background: #60da05;;
     left: 3px;
 }
-
+*/
 *::-webkit-scrollbar, *::-webkit-scrollbar:vertical {
     height: 0px;
     width: 0px;

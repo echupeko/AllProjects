@@ -140,6 +140,15 @@ window.onmousemove = () => { //обработчик движения курсо�
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 };
 
+window.onresize = () => { //обработчик изменения размера окна
+    main.style.height = contentArr.length * window.innerHeight + 'px';
+    let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
+    main.style.top = window.innerHeight * selectBlock + 'px';
+        if (mainPosition<0)
+            main.style.top = -(window.innerHeight * selectBlock)+ 'px';
+
+}
+
 window.onmousewheel = () => { //обрабатываем события для колёсика мыши
     if (event.wheelDelta > 0)
         preScroll(-1);
