@@ -74,7 +74,7 @@ const contentDescriptionList = (parrent) => {
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li><p style="background-color:' + item.backgroundColor + '; color: ' + // name="' + item.id + '"
+        htmlElement += '<li><h1>' + item.header + '</h1><p>'+item.detail+'</p><p style="background-color:' + item.backgroundColor + '; color: ' + // name="' + item.id + '"
             item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';
@@ -144,8 +144,8 @@ window.onresize = () => { //обработчик изменения размер
     main.style.height = contentArr.length * window.innerHeight + 'px';
     let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
     main.style.top = window.innerHeight * selectBlock + 'px';
-        if (mainPosition<0)
-            main.style.top = -(window.innerHeight * selectBlock)+ 'px';
+    if (mainPosition < 0)
+        main.style.top = -(window.innerHeight * selectBlock) + 'px';
 
 }
 

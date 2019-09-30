@@ -31,35 +31,35 @@ const descriptionArr = [
     {id: 'socialnetwork', pattern: 'contact', p: null, element: null},
 ];
 const descriptionTextArr = [
-    {id: 'js', skillLevel: 'Начинающий', description: 'Занимаюсь изучением JavaScript'},
-    {id: 'html', skillLevel: 'Начинающий', description: 'Занимаюсь изучением HTML'},
-    {id: 'css', skillLevel: 'Начинающий', description: 'Занимаюсь изучением CSS'},
-    {id: '1C', skillLevel: 'Продвинутый', description: 'Работаю на 1С 7.7'},
-    {id: 'ps', skillLevel: 'Выше среднего', description: 'Неплохо владею Adobe Photoshop'},
+    {id: 'js', header: 'Начинающий', description: 'Занимаюсь изучением JavaScript'},
+    {id: 'html', header: 'Начинающий', description: 'Занимаюсь изучением HTML'},
+    {id: 'css', header: 'Начинающий', description: 'Занимаюсь изучением CSS'},
+    {id: '1C', header: 'Продвинутый', description: 'Работаю на 1С 7.7'},
+    {id: 'ps', header: 'Выше среднего', description: 'Неплохо владею Adobe Photoshop'},
     {
-        id: 'asu2015', skillLevel: 'Бакалавр', description: 'В 2015 году получил степень бакалавра в ' +
+        id: 'asu2015', header: 'Бакалавр', description: 'В 2015 году получил степень бакалавра в ' +
         'Алтайском государственном университете'
     },
     {
-        id: 'asu2017', skillLevel: 'Магистр', description: 'В 2017 получил степень магистра в ' +
+        id: 'asu2017', header: 'Магистр', description: 'В 2017 получил степень магистра в ' +
         'Алтайском государственном университете с красным дипломом'
     },
-    {id: 'cardgame', skillLevel: 'Начинающий', description: 'Игра на развитие зрительной памяти'},
-    {id: 'psh', skillLevel: 'Начинающий', description: 'Сайт-галлерея, для демонстрации работ иллюстратора'},
-    {id: 'constructor', skillLevel: 'Начинающий', description: 'Coming soon'},
-    {id: 'bicycle', skillLevel: 'Опытный', description: 'Очень нравятся прогулки на велосипеде'},
-    {id: 'snowboard', skillLevel: 'Начинающий', description: 'Увлекаюсь спусками с горы на сноуборде'},
+    {id: 'cardgame', header: 'Начинающий', description: 'Игра на развитие зрительной памяти'},
+    {id: 'psh', header: 'Начинающий', description: 'Сайт-галлерея, для демонстрации работ иллюстратора'},
+    {id: 'constructor', header: 'Начинающий', description: 'Coming soon'},
+    {id: 'bicycle', header: 'Опытный', description: 'Очень нравятся прогулки на велосипеде'},
+    {id: 'snowboard', header: 'Начинающий', description: 'Увлекаюсь спусками с горы на сноуборде'},
     {
-        id: 'photoshop', skillLevel: 'Начинающий', description: 'Занимаюсь изучением Adobe Photoshop, ' +
+        id: 'photoshop', header: 'Начинающий', description: 'Занимаюсь изучением Adobe Photoshop, ' +
         'люблю создавать необычные работы'
     },
     {
-        id: 'needlework', skillLevel: 'Начинающий', description: 'Работа с деревом и металлом успокаивает, ' +
+        id: 'needlework', header: 'Начинающий', description: 'Работа с деревом и металлом успокаивает, ' +
         'а так же предоставляет возможность сделать что-то своими руками'
     },
-    {id: 'adress', skillLevel: 'Начинающий', description: 'Алтайский край, г. Барнаул'},
-    {id: 'email', skillLevel: 'Начинающий', description: 'email: echupeko@gmail.com'},
-    {id: 'socialnetwork', skillLevel: 'Начинающий', description: 'vk instagram whatsapp skype'}
+    {id: 'adress', header: 'Начинающий', description: 'Алтайский край, г. Барнаул'},
+    {id: 'email', header: 'Начинающий', description: 'email: echupeko@gmail.com'},
+    {id: 'socialnetwork', header: 'Начинающий', description: 'vk instagram whatsapp skype'}
 ];
 const panelArr = [];
 let isClicked = false;
