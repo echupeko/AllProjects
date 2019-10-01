@@ -19,6 +19,11 @@ window.onload = () => {
         let item = blockArray[i];
         item.list = document.getElementById(item.id);
         item.block = document.getElementById(item.id + '-block');
+        let a = item.block.querySelectorAll('a');
+        if (a.length > 0) {
+            a.forEach(link => {link.addEventListener('mouseover', hover)});
+            a.forEach(link => {link.addEventListener('mouseout', hout)});
+        }
         if (i === 0) {
             item.selected = true;
             item.list.querySelector('span').classList.add('selected'); //указываем начальный элемент текущим
@@ -30,6 +35,14 @@ window.onload = () => {
     bwTheme(0);
     //document.body.requestFullScreen();
 };
+
+const hover = () => {
+    event.target.style.color = bwColor[blockArray[selectBlock].theme];
+};
+
+const hout = () => {
+    event.target.style.color = "";
+}
 
 const menuListAdd = () => {
     let li = "";

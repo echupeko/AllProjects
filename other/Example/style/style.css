@@ -134,6 +134,7 @@ main > div:nth-child(1) .description ul li p {
     padding: 5px 15px;
     font-size: 30px;
     font-family: Roboto, serif;
+    font-weight: bold;
     text-align: center;
     border-radius: 5px;
     background-color: #3d3d3d;
@@ -172,11 +173,9 @@ main > div:nth-child(1) .description ul li:after {
 
 .description ul {
     position: relative;
-    align-items: left;
+    justify-content: flex-end;
     flex-wrap: wrap;
     list-style-type: none;
-    direction: rtl;
-    float: right;
 }
 
 .description li {
@@ -214,6 +213,11 @@ main > div:nth-child(1) .description ul li:after {
 .description li a {
     text-decoration: none;
     color: #1c1c1c;
+}
+
+.description li a:hover {
+    text-shadow: #1c1c1c 0 0 5px;
+    transform: scaleX(1.5);
 }
 
 .description li p {
