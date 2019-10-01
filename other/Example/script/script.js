@@ -33,7 +33,6 @@ window.onload = () => {
             item.selected = false;
     }
     bwTheme(0);
-    //document.body.requestFullScreen();
 };
 
 const hover = () => {
