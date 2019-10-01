@@ -74,7 +74,7 @@ const contentDescriptionList = (parrent) => {
             text = item.id;
         else
             text = item.description;
-        htmlElement += '<li><h1>' + item.header + '</h1><p>'+item.detail+'</p><p style="background-color:' + item.backgroundColor + '; color: ' + // name="' + item.id + '"
+        htmlElement += '<li><p style="background-color:' + item.backgroundColor + '; color: ' +
             item.color + '">' + text + '</p></li>';
     });
     htmlElement += '</ul>';

@@ -74,6 +74,7 @@ main { /*главный блок*/
 }
 
 main > div { /*блоки категорий*/
+    width: 100%;
     position: relative;
     flex-direction: column;
 }
@@ -210,10 +211,15 @@ main > div:nth-child(1) .description ul li:after {
     border: 1px solid white;
 }
 
+.description li a {
+    text-decoration: none;
+    color: #1c1c1c;
+}
+
 .description li p {
     font-family: 'Open Sans';
     text-transform: uppercase;
-    font-weight: bold;
+    /*/font-weight: bold;*/
 
 }
 
