@@ -4,8 +4,16 @@
 
 body {
     background-color: #1c1c1c;
-    perspective: 500px;
     overflow: hidden;
+}
+
+#animationBg {
+    position: fixed;
+    width: 100%;
+    height: 200vh;
+    left: 0;
+
+    perspective: 500px;
     margin: 0;
     transition: all 1s ease;
 }
@@ -19,8 +27,8 @@ body {
 /*********** Фон ***********/
 .background {
     width: 200%;
-    height: 200vh;
-    position: absolute;
+    height: 300vh;
+    position: fixed;
     left: -200px;
     top: -200px;
     opacity: 0.6;
@@ -29,7 +37,7 @@ body {
 
 #vignette-background {
     z-index: 1;
-    top: -50vh;
+    top: 0;
     left: 0;
     width: 100vw;
     background: radial-gradient(farthest-side, transparent, black);
@@ -492,7 +500,7 @@ main > div:nth-child(1) .description ul li:after {
     left: 3px;
 }
 */
-*::-webkit-scrollbar, *::-webkit-scrollbar:vertical {
-    height: 0px;
-    width: 0px;
-}
+/**::-webkit-scrollbar, *::-webkit-scrollbar:vertical {*/
+    /*height: 0px;*/
+    /*width: 0px;*/
+/*}*/

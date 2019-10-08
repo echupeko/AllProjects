@@ -1,11 +1,12 @@
-const main = document.querySelector('main');
+let main = document.querySelector('main');
 const wrapper = document.getElementById('wrapper');
 const nav = document.getElementById('navig');
 //const cl = document.getElementById('clicked');
 //let clock;
+selectBlock = 0;
 let as;
 let isOpenMenu = false;
-let selectBlock, initialPoint, finalPoint;
+let initialPoint, finalPoint;
 let lastAnimation = 0;
 
 const bwColor = ['#1c1c1c', 'white'];
@@ -54,7 +55,7 @@ const menuListAdd = () => {
 
 const blockContentAdd = () => {
     const main = document.querySelector('main');
-    main.style.height = contentArr.length * 100 + 'vh';
+    main.style.height = contentArr.length * window.innerHeight + 'px';
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
         let item = contentArr[i];
@@ -74,7 +75,8 @@ const blockContentAdd = () => {
         block.theme = i % 2; //выбор цветовой темы для блока 0 - черный, 1 - белый
         blockArray.push(block);
     }
-    main.innerHTML = content;
+    main.innerHTML += content;
+
 };
 
 const contentDescriptionList = (parrent) => {
