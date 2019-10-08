@@ -159,11 +159,11 @@ window.onmousemove = () => { //обработчик движения курсо�
 };
 
 window.onresize = () => { //обработчик изменения размера окна
-    main.style.height = contentArr.length * window.innerHeight + 'px';
-    let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
-    main.style.top = window.innerHeight * selectBlock + 'px';
-    if (mainPosition < 0)
-        main.style.top = -(window.innerHeight * selectBlock) + 'px';
+     main.style.height = contentArr.length * window.innerHeight + 'px';
+    // let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
+    // main.style.top = window.innerHeight * selectBlock + 'px';
+    // if (mainPosition < 0)
+    //     main.style.top = -(window.innerHeight * selectBlock) + 'px';
 
 }
 
@@ -171,7 +171,7 @@ const scrollingTo = (to) => {
     selectBlock = blockArray.indexOf(blockArray.find(item => item.id === to)); //текущий блок
     document.getElementById(to + '-block').scrollIntoView({
         block: 'start',
-        behavior: 'instant'
+        behavior: 'smooth'
     });
     bwTheme(blockArray[selectBlock].theme);
 }
@@ -181,6 +181,40 @@ window.onmousewheel = () => { //обрабатываем события для �
     else if (event.wheelDelta < 0)//скроллим вниз
         selectBlock++;
     scrollingTo(blockArray[selectBlock].id);
+};
+
+main.ontouchstart = () => { //сохраняем точку касания на смартфоне
+    initialPoint = event.changedTouches[0];
+};
+
+main.ontouchend = () => { //смотрим направление движения пальца
+    finalPoint = event.changedTouches[0];
+    let xAbs = Math.abs(initialPoint.pageX - finalPoint.pageX);
+    let yAbs = Math.abs(initialPoint.pageY - finalPoint.pageY);
+    if (xAbs > 20 || yAbs > 20) {
+        if (xAbs < yAbs) {
+            if (!isOpenMenu) {
+                if (finalPoint.pageY > initialPoint.pageY) {
+                    selectBlock--;
+                }
+                else if (finalPoint.pageY < initialPoint.pageY) {
+                    selectBlock++;
+                }
+                scrollingTo(blockArray[selectBlock].id);
+            }
+        }
+        else {
+            if (finalPoint.pageX > initialPoint.pageX) {
+                //alert('right');
+                openMenu();
+            }
+            else {
+                //alert('left');
+                openMenu();
+            }
+        }
+
+    }
 };
 
 const bwTheme = (colorTheme) => {
