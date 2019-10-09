@@ -159,7 +159,10 @@ window.onmousemove = () => { //обработчик движения курсо�
 };
 
 window.onresize = () => { //обработчик изменения размера окна
-     main.style.height = contentArr.length * window.innerHeight + 'px';
+
+    main.style.height = contentArr.length * window.innerHeight + 'px';
+    scrollingTo(blockArray[selectBlock].id);
+
     // let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
     // main.style.top = window.innerHeight * selectBlock + 'px';
     // if (mainPosition < 0)
@@ -173,13 +176,33 @@ const scrollingTo = (to) => {
         block: 'start',
         behavior: 'smooth'
     });
+    selectedBlock(selectBlock);
     bwTheme(blockArray[selectBlock].theme);
 }
+
 window.onmousewheel = () => { //обрабатываем события для колёсика мыши
     if (event.wheelDelta > 0)//скроллим вверх
         selectBlock--;
     else if (event.wheelDelta < 0)//скроллим вниз
         selectBlock++;
+    scrollingTo(blockArray[selectBlock].id);
+};
+
+window.onkeydown = () => { //обрабатываем нажатия кнопок
+    selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
+    let countBlock = blockArray.length; //кол-во блоков всего
+    if (event.code === 'PageUp') {
+        selectBlock--;
+    }
+    else if (event.code === 'PageDown') {
+        selectBlock++;
+    }
+    else if (event.code === 'Home') {
+        selectBlock = 0;
+    }
+    else if (event.code === 'End') {
+        selectBlock = countBlock - 1;
+    }
     scrollingTo(blockArray[selectBlock].id);
 };
 
@@ -204,18 +227,25 @@ main.ontouchend = () => { //смотрим направление движени
             }
         }
         else {
-            if (finalPoint.pageX > initialPoint.pageX) {
-                //alert('right');
-                openMenu();
-            }
-            else {
-                //alert('left');
+            if (finalPoint.pageX > initialPoint.pageX || finalPoint.pageX < initialPoint.pageX) {
                 openMenu();
             }
         }
-
     }
 };
+
+const selectedBlock = (index) => {
+    for (let i = 0; i < blockArray.length; i++) {
+        if ((index) === i) {
+            blockArray[i].selected = true; //делаем пометку
+            blockArray[i].list.querySelector('span').classList.add('selected');
+        }
+        else {
+            blockArray[i].selected = false; //остальные снимаем
+            blockArray[i].list.querySelector('span').classList.remove('selected');
+        }
+    }
+}
 
 const bwTheme = (colorTheme) => {
     const reversColor = Math.abs(colorTheme - 1);
@@ -223,10 +253,6 @@ const bwTheme = (colorTheme) => {
     as.classList.add(bwColor[colorTheme]);
     as.classList.remove(bwColor[reversColor]);
     document.querySelector('body').style.backgroundColor = bwColor[colorTheme];
-    //blockArray[selectBlock].block.style.color = bwColor[reversColor];
-    //let p = blockArray[selectBlock].block.querySelector('p');
-    //blockArray[selectBlock].block.getElementsByClassName('container')[0].style.color = bwColor[reversColor];
-    //p.style.color = bwColor[reversColor];
 };
 
 const openMenu = () => {
