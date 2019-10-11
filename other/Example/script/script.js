@@ -3,15 +3,13 @@ const wrapper = document.getElementById('wrapper');
 const nav = document.getElementById('navig');
 //const cl = document.getElementById('clicked');
 //let clock;
-selectBlock = 0;
 let as;
 let isOpenMenu = false;
 let initialPoint, finalPoint;
 let lastAnimation = 0;
-
 const bwColor = ['#1c1c1c', 'white'];
-
 let changeColorTheme = sessionStorage.getItem('colorTheme');
+let selectBlock = sessionStorage.getItem('selectBlock');
 let block = {};
 const blockArray = [];
 
@@ -32,7 +30,7 @@ window.onload = () => {
             });
         }
 
-        if (i === 0) {
+        if (i === selectBlock) {
             item.selected = true;
             item.list.querySelector('span').classList.add('selected'); //указываем начальный элемент текущим
             selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
@@ -40,7 +38,8 @@ window.onload = () => {
         else
             item.selected = false;
     }
-    bwTheme(changeColorTheme);
+    bwTheme(parseInt(changeColorTheme));
+    selectedBlock(parseInt(selectBlock));
 };
 
 const hover = () => {
@@ -161,11 +160,13 @@ window.onmousemove = () => { //обработчик движения курсо�
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 };
 
-window.onresize = () => { //обработчик изменения размера окна
+window.onreset = () => {
 
+}
+
+window.onresize = () => { //обработчик изменения размера окна
     main.style.height = contentArr.length * window.innerHeight + 'px';
     scrollingTo(blockArray[selectBlock].id);
-
     // let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
     // main.style.top = window.innerHeight * selectBlock + 'px';
     // if (mainPosition < 0)
