@@ -10,6 +10,8 @@ let initialPoint, finalPoint;
 let lastAnimation = 0;
 
 const bwColor = ['#1c1c1c', 'white'];
+
+let changeColorTheme = sessionStorage.getItem('colorTheme');
 let block = {};
 const blockArray = [];
 
@@ -29,6 +31,7 @@ window.onload = () => {
                 link.addEventListener('mouseout', hout)
             });
         }
+
         if (i === 0) {
             item.selected = true;
             item.list.querySelector('span').classList.add('selected'); //указываем начальный элемент текущим
@@ -37,7 +40,7 @@ window.onload = () => {
         else
             item.selected = false;
     }
-    bwTheme(0);
+    bwTheme(changeColorTheme);
 };
 
 const hover = () => {
@@ -181,11 +184,19 @@ const scrollingTo = (to) => {
 }
 
 window.onmousewheel = () => { //обрабатываем события для колёсика мыши
-    if (event.wheelDelta > 0)//скроллим вверх
+    let timeNow = new Date().getTime();
+    let quietPeriod = 500;
+
+    if (timeNow - lastAnimation < quietPeriod)
+        return;
+
+    if (event.wheelDelta > 0 && selectBlock > 0)//скроллим вверх
         selectBlock--;
-    else if (event.wheelDelta < 0)//скроллим вниз
+    else if (event.wheelDelta < 0 && selectBlock < blockArray.length - 1)//скроллим вниз
         selectBlock++;
     scrollingTo(blockArray[selectBlock].id);
+
+    lastAnimation = timeNow;
 };
 
 window.onkeydown = () => { //обрабатываем нажатия кнопок
@@ -239,6 +250,7 @@ const selectedBlock = (index) => {
         if ((index) === i) {
             blockArray[i].selected = true; //делаем пометку
             blockArray[i].list.querySelector('span').classList.add('selected');
+            sessionStorage.setItem('selectBlock',index);
         }
         else {
             blockArray[i].selected = false; //остальные снимаем
@@ -248,6 +260,8 @@ const selectedBlock = (index) => {
 }
 
 const bwTheme = (colorTheme) => {
+    changeColorTheme = colorTheme;
+    sessionStorage.setItem('colorTheme', changeColorTheme);
     const reversColor = Math.abs(colorTheme - 1);
     as = document.getElementById('network-background');
     as.classList.add(bwColor[colorTheme]);
