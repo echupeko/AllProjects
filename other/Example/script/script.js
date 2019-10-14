@@ -1,54 +1,45 @@
-let main = document.querySelector('main');
 const wrapper = document.getElementById('wrapper');
 const nav = document.getElementById('navig');
-//const cl = document.getElementById('clicked');
-//let clock;
-let as;
-let isOpenMenu = false;
-let initialPoint, finalPoint;
-let lastAnimation = 0;
+let main = document.querySelector('main');
+
+let initialPoint, finalPoint, lastAnimation = 0, isOpenMenu = false;
+let changeColorTheme = sessionStorage.getItem('colorTheme'); //id цвета темы из массива bwColor
+let selectBlock = sessionStorage.getItem('selectBlock'); //id выбранного объекта
+
 const bwColor = ['#1c1c1c', 'white'];
-let changeColorTheme = sessionStorage.getItem('colorTheme');
-let selectBlock = sessionStorage.getItem('selectBlock');
-let block = {};
 const blockArray = [];
+let block = {};
 
 window.onload = () => {
     menuListAdd(); //добавление меню навигации
     blockContentAdd(); //добавление блоков
+
     for (let i = 0; i < blockArray.length; i++) { //запись в массив блоков
         let item = blockArray[i];
-        item.list = document.getElementById(item.id);
-        item.block = document.getElementById(item.id + '-block');
-        let a = item.block.querySelectorAll('a');
+        item.list = document.getElementById(item.id); //ячейка в меню навигации
+        item.block = document.getElementById(item.id + '-block'); //блок данных
+
+        let a = item.block.querySelectorAll('a'); //список всех ссылок в блоке данных
         if (a.length > 0) {
             a.forEach(link => {
-                link.addEventListener('mouseover', hover)
-            });
-            a.forEach(link => {
-                link.addEventListener('mouseout', hout)
+                link.addEventListener('mouseover', linkMouseMove);
+                link.addEventListener('mouseout', unlinkMouseMove);
+                /*при наведении на ссылки они должны менять цвет на отличный от темы блока*/
             });
         }
 
-        if ((i === selectBlock) || (selectBlock == null && i === 0)) {
+        if (i === parseInt(selectBlock))
             item.selected = true;
-            item.list.querySelector('span').classList.add('selected'); //указываем начальный элемент текущим
-            selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
-        }
         else
             item.selected = false;
+
+        if (!selectBlock) {
+            selectBlock = 0;
+        }
     }
     bwTheme(parseInt(changeColorTheme));
     selectedBlock(parseInt(selectBlock));
     scrollingTo(blockArray[selectBlock].id);
-};
-
-const hover = () => {
-    event.target.style.color = bwColor[blockArray[selectBlock].theme];
-};
-
-const hout = () => {
-    event.target.style.color = "";
 };
 
 const menuListAdd = () => {
@@ -61,7 +52,7 @@ const menuListAdd = () => {
 };
 
 const blockContentAdd = () => {
-    const main = document.querySelector('main');
+    let main = document.querySelector('main');
     main.style.height = contentArr.length * window.innerHeight + 'px';
     let content = "";
     for (let i = 0; i < contentArr.length; i++) {
@@ -83,23 +74,6 @@ const blockContentAdd = () => {
         blockArray.push(block);
     }
     main.innerHTML += content;
-
-};
-
-const contentDescriptionList = (parrent) => {
-    let descriptionBlock = descriptionArr.filter(item => item.parrent === parrent);
-    let htmlElement = '<ul class="flex-block">';
-    descriptionBlock.forEach(item => {
-        let text = "";
-        if (item.parrent === 'about')
-            text = item.id;
-        else
-            text = item.description;
-        htmlElement += '<li><p style="background-color:' + item.backgroundColor + '; color: ' +
-            item.color + '">' + text + '</p></li>';
-    });
-    htmlElement += '</ul>';
-    return htmlElement;
 };
 
 const ageCalc = (age) => {
@@ -120,39 +94,29 @@ const ageCalc = (age) => {
     return date;
 };
 
-// main.onmousedown = () => {
-//     startTimer();
-//
-//     cl.style.top = event.clientY - 76 + 'px';
-//     cl.style.left = event.clientX - 76 + 'px';
-//     cl.style.display = 'block';
-//     cl.style.transform = 'scale(1)';
-// }
-//
-// window.onmouseup = () => {
-//     if (clock>200) {
-//         nav.style.top = event.clientY - 76 + 'px';
-//         nav.style.left = event.clientX - 76 + 'px';
-//         nav.style.display = 'flex';
-//         cl.style.transform = 'scale(0)';
-//         cl.style.display = 'none';
-//     }
-//     startTimer(true);
-// }
-//
-// nav.onmouseleave = () => {
-//     nav.style.display = 'none';
-// }
-//
-// const startTimer = (end) => {
-//     if (!end) {
-//         clock = setTimeout("startTimer(end)", 1);
-//     }
-//     else {
-//         clock = 0;
-//
-//     }
-// }
+const contentDescriptionList = (parrent) => {
+    let descriptionBlock = descriptionArr.filter(item => item.parrent === parrent);
+    let htmlElement = '<ul class="flex-block">';
+    descriptionBlock.forEach(item => {
+        let text = "";
+        if (item.parrent === 'about')
+            text = item.id;
+        else
+            text = item.description;
+        htmlElement += '<li><p style="background-color:' + item.backgroundColor + '; color: ' +
+            item.color + '">' + text + '</p></li>';
+    });
+    htmlElement += '</ul>';
+    return htmlElement;
+};
+
+const linkMouseMove = () => { //
+    event.target.style.color = bwColor[blockArray[selectBlock].theme];
+};
+
+const unlinkMouseMove = () => {
+    event.target.style.color = '';
+}
 
 window.onmousemove = () => { //обработчик движения курсора, для эфекта глубины и динамичности фона
     as = document.getElementById('network-background');
@@ -161,18 +125,10 @@ window.onmousemove = () => { //обработчик движения курсо�
     as.style.transform = 'rotateY(' + y + 'deg) rotateX(' + x + 'deg)';
 };
 
-window.onreset = () => {
-
-}
-
 window.onresize = () => { //обработчик изменения размера окна
-    main.innerHeight = contentArr.length * window.innerHeight + 'px';
-    scrollingTo(blockArray[selectBlock].id);
-    // let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
-    // main.style.top = window.innerHeight * selectBlock + 'px';
-    // if (mainPosition < 0)
-    //     main.style.top = -(window.innerHeight * selectBlock) + 'px';
-
+    document.querySelector('body').style.height = contentArr.length * window.innerHeight + 'px';
+    // main.innerHeight = contentArr.length * window.innerHeight + 'px';
+    // scrollingTo(blockArray[selectBlock].id);
 }
 
 const scrollingTo = (to) => {
@@ -252,7 +208,7 @@ const selectedBlock = (index) => {
         if ((index) === i) {
             blockArray[i].selected = true; //делаем пометку
             blockArray[i].list.querySelector('span').classList.add('selected');
-            sessionStorage.setItem('selectBlock',index);
+            sessionStorage.setItem('selectBlock', index);
         }
         else {
             blockArray[i].selected = false; //остальные снимаем
