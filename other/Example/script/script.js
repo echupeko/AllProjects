@@ -30,7 +30,7 @@ window.onload = () => {
             });
         }
 
-        if (i === selectBlock) {
+        if ((i === selectBlock) || (selectBlock == null && i === 0)) {
             item.selected = true;
             item.list.querySelector('span').classList.add('selected'); //указываем начальный элемент текущим
             selectBlock = blockArray.indexOf(blockArray.find(item => item.selected === true)); //текущий блок
@@ -40,6 +40,7 @@ window.onload = () => {
     }
     bwTheme(parseInt(changeColorTheme));
     selectedBlock(parseInt(selectBlock));
+    scrollingTo(blockArray[selectBlock].id);
 };
 
 const hover = () => {
@@ -48,7 +49,7 @@ const hover = () => {
 
 const hout = () => {
     event.target.style.color = "";
-}
+};
 
 const menuListAdd = () => {
     let li = "";
@@ -165,7 +166,7 @@ window.onreset = () => {
 }
 
 window.onresize = () => { //обработчик изменения размера окна
-    main.style.height = contentArr.length * window.innerHeight + 'px';
+    main.innerHeight = contentArr.length * window.innerHeight + 'px';
     scrollingTo(blockArray[selectBlock].id);
     // let mainPosition = document.querySelector('main').offsetTop; //позиция главного блока
     // main.style.top = window.innerHeight * selectBlock + 'px';
