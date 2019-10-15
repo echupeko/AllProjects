@@ -1,168 +1,81 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(55713358, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter -->
     <title>Title</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style/style.css">
-    <!--<link rel="stylesheet" href="style/style2.css">-->
     <link rel="stylesheet" href="style/mobileStyle.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:900&amp;display=swap&amp;subset=cyrillic"
           rel="stylesheet">
 </head>
 <body class="flex-block" style="background-color: white;">
-
-<div>
-    <div id="vignette-background" class="background"></div>
-    <div id="network-background" class="background black white" style="transform: rotateY(1deg) rotateX(-2deg);"></div>
-</div>
-<div class="control">
-    <button id="switch" onclick="bwTheme()"></button>
-    <div id="wrapper" class="flex-block">
-        <div class="flex-block"><span onclick="openMenu()"></span></div>
-        <div class="flex-block">
-            <ul class="list-menu">
-                <li id="about" onclick="scrollingTo('about')"><span class=""></span>
-                    <p>о себе</p></li>
-                <li id="education" onclick="scrollingTo('education')"><span class="selected"></span>
-                    <p>образование</p></li>
-                <li id="work" onclick="scrollingTo('work')"><span></span>
-                    <p>работа</p></li>
-                <li id="development" onclick="scrollingTo('development')"><span></span>
-                    <p>работы</p></li>
-                <li id="hobby" onclick="scrollingTo('hobby')"><span></span>
-                    <p>увлечения</p></li>
-                <li id="contact" onclick="scrollingTo('contact')"><span></span>
-                    <p>контакты</p></li>
-            </ul>
-        </div>
-    </div>
-    <!--<span id="clicked"></span>-->
-    <!--<div id="navig">-->
-    <!--<span></span>-->
-    <!--<span></span>-->
-    <!--<span></span>-->
-    <!--<span></span>-->
-    <!--</div>-->
-</div>
-<main style="height: 600vh; top: -789px;">
-    <div id="about-block" class="content flex-block white-text" style="height: 100vh">
-        <p class="title-page">о себе</p>
-        <div class="container about flex-block ">
-            <div class="header-block"><h1>чупеко евгений</h1>
-                <p>Frontend Developer</p>
-                <p>г. Барнаул</p>
-                <p>25 лет</p></div>
-            <div class="photo" style="background-image: url(source/about.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block"><p>навыки:</p>
-                    <ul class="flex-block">
-                        <li><p style="background-color:#f7df1e; color: black">js</p></li>
-                        <li><p style="background-color:#e44d26; color: white">html</p></li>
-                        <li><p style="background-color:#379ad6; color: white">css</p></li>
-                        <li><p style="background-color:#efd930; color: #ff1a00">1c</p></li>
-                        <li><p style="background-color:#2a2a43; color: #31c5f0">Photoshop</p></li>
-                    </ul>
-                </div>
+<!-- Yandex.Metrika counter -->
+<noscript>
+    <div><img src="source/bochka.png" src="https://mc.yandex.ru/watch/55713358" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+<header>
+    <div class="logo"></div>
+    <nav>
+        <ul>
+            <li><p>О нас</p></li>
+            <li><p>Каталог</p></li>
+            <li><p>Контакты</p></li>
+        </ul>
+    </nav>
+    <div class="basket"></div>
+</header>
+<main>
+    <section>О нас</section>
+    <section>
+        <h1></h1>
+        <div class="container">
+            <div>
+                <div><img src="source/bochka.png" src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><h3>Мёд гречичный 1л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 1000 руб.</p></div>
+            </div>
+            <div>
+                <div><img src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><h3>Мёд гречичный 0,3л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 500 руб.</p></div>
+            </div>
+            <div>
+                <div><img src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><h3>Мёд гречичный 3л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 3000 руб.</p></div>
+            </div>
+            <div>
+                <div><img src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><h3>Мёд гречичный 2л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 1500 руб.</p></div>
+            </div>
+            <div>
+                <div><img src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><h3>Мёд гречичный 0,5л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 700 руб.</p></div>
             </div>
         </div>
-    </div>
-    <div id="education-block" class="content flex-block black-text" style="height: 100vh"><p class="title-page">
-        образование</p>
-        <div class="container education flex-block ">
-            <div class="header-block"><h1>Алтайский<br>Государственный<br>Университет</h1>
-                <p>ФМиИТ</p>
-                <p>г. Барнаул</p>
-                <p></p></div>
-            <div class="photo" style="background-image: url(source/education.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block">
-                    <ul class="flex-block">
-                        <li><p style="background-color:inherit; color: inherit">В 2015 году получил степень
-                            бакалавра</p></li>
-                        <li><p style="background-color:inherit; color: inherit">В 2017 получил степень магистра с
-                            красным дипломом</p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="work-block" class="content flex-block white-text" style="height: 100vh"><p class="title-page">работа</p>
-        <div class="container work flex-block ">
-            <div class="header-block"><h1>Программист</h1>
-                <p>i категории</p>
-                <p>г. Барнаул</p>
-                <p></p></div>
-            <div class="photo" style="background-image: url(source/work.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block">
-                    <ul class="flex-block">
-                        <li><p style="background-color:inherit; color: inherit">НУЗ ОКБ на станции Барнаул ОАО РЖД</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="development-block" class="content flex-block black-text" style="height: 100vh"><p class="title-page">
-        работы</p>
-        <div class="container development flex-block ">
-            <div class="header-block"><h1>Web site</h1>
-                <p>frontend</p>
-                <p>practice</p>
-                <p></p></div>
-            <div class="photo" style="background-image: url(source/development.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block">
-                    <ul class="flex-block">
-                        <li><p style="background-color:inherit; color: inherit">Игра на развитие зрительной памяти</p>
-                        </li>
-                        <li><p style="background-color:inherit; color: inherit">Сайт-галлерея, для демонстрации работ
-                            иллюстратора</p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="hobby-block" class="content flex-block white-text" style="height: 100vh"><p class="title-page">
-        увлечения</p>
-        <div class="container hobby flex-block ">
-            <div class="header-block"><h1>leisure<br>photo<br>diy</h1>
-                <p>leisure</p>
-                <p>photo</p>
-                <p></p></div>
-            <div class="photo" style="background-image: url(source/hobby.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block">
-                    <ul class="flex-block">
-                        <li><p style="background-color:inherit; color: inherit">Очень нравятся прогулки на
-                            велосипеде</p></li>
-                        <li><p style="background-color:inherit; color: inherit">Увлекаюсь спусками с горы на
-                            сноуборде</p></li>
-                        <li><p style="background-color:inherit; color: inherit">Занимаюсь изучением Adobe Photoshop,
-                            люблю создавать необычные работы, обрабатывать фотографии</p></li>
-                        <li><p style="background-color:inherit; color: inherit">Работа с деревом и металлом успокаивает,
-                            а так же предоставляет возможность сделать что-то своими руками</p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="contact-block" class="content flex-block black-text" style="height: 100vh"><p class="title-page">
-        контакты</p>
-        <div class="container contact flex-block ">
-            <div class="header-block"><p></p></div>
-            <div class="photo" style="background-image: url(source/contact.png);"></div>
-            <div class="description-block flex-block">
-                <div class="description flex-block">
-                    <ul class="flex-block"></ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
+    <section>Контакты</section>
 </main>
+<footer></footer>
 
 <script type="text/javascript" src="script/data.js"></script>
 <script type="text/javascript" src="script/script.js"></script>

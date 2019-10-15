@@ -1,0 +1,30 @@
+img {
+    width: 100px;
+}
+
+.container {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container > div {
+    width: 300px;
+    margin: 10px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+}
+
+.container > div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+.container > div h3, .container > div p {
+    margin: 2px;
+}
