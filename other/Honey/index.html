@@ -24,7 +24,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/mobileStyle.css">
+    <!--<link rel="stylesheet" href="style/mobileStyle.css">-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:900&amp;display=swap&amp;subset=cyrillic"
           rel="stylesheet">
@@ -35,6 +35,7 @@
     <div><img src="source/bochka.png" src="https://mc.yandex.ru/watch/55713358" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
+<script type="text/javascript" src="script/script.js"></script>
 <header>
     <div class="logo"><img src="source/logo.png"></div>
     <nav>
@@ -44,7 +45,7 @@
             <li><p>Контакты</p></li>
         </ul>
     </nav>
-    <div class="basket"><img src="source/basket.png"></div>
+    <div class="basket"><img src="source/basket.png"><span id="numberProduct"></span></div>
 </header>
 <main>
     <section>О нас</section>
@@ -52,7 +53,7 @@
         <h1></h1>
         <div class="container">
             <div>
-                <div><img src="source/bochka.png"><input type="submit" value="купить"></div>
+                <div><img src="source/bochka.png"><input type="submit" value="купить" onclick="addOrder"></div>
                 <div><h3>Мёд гречичный 1л.</h3><p>Описание описание описание описание описание описание описание описание</p><p>цена: 1000 руб.</p></div>
             </div>
             <div>
@@ -77,7 +78,7 @@
 </main>
 <footer></footer>
 <!--<script type="text/javascript" src="xlsx.full.min.js"></script>-->
-<script type="text/javascript" src="script/script.js"></script>
+
 
 </body>
 </html>
