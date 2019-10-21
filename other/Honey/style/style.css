@@ -108,8 +108,8 @@ main {
 
 .button {
     font-size: 17px;
-    background: linear-gradient(black, orange);
-    border: 3px solid #ff7a06;
+    outline: none;
+    border: 0;
     border-radius: 5px;
     height: 20px;
     width: 100%;
