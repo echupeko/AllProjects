@@ -36,6 +36,7 @@
               alt=""/></div>
 </noscript>
 <!-- /Yandex.Metrika counter -->
+<script type="text/javascript" src="script/data.js"></script>
 <script type="text/javascript" src="script/script.js"></script>
 <header>
     <div class="logo"><img src="source/logo.png"></div>
@@ -52,53 +53,87 @@
     <section>О нас</section>
     <section>
         <h1></h1>
-        <div class="container">
-            <div>
-                <div>
-                    <img src="source/bochka.png">
-                    <div class="description-honey">
-                        <h3>Мёд гречичный 1л.</h3>
-                        <p>Описание описание описание описание описание описание описание описание</p>
-                    </div>
-                    <p>цена: 1000 руб.</p>
-                </div>
-                <div>
-                    <div>
-                        <input type="submit" class="miniBtn" value="-">
-                        <input step="1" min="1" max="27" type="number" placeholder="1">
-                        <input type="submit" class="miniBtn" value="+" onclick="addOrder()">
-                    </div>
-                    <input class="button" type="submit" value="добавить к заказу" onclick="addOrder()"></div>
-                <div></div>
-            </div>
-            <div>
-                <div><img src="source/bochka.png"><input class="button" type="submit" value="купить"
-                                                         onclick="addOrder()"></div>
-                <div><h3>Мёд гречичный 0,3л.</h3>
-                    <p>Описание описание описание описание описание описание описание описание</p>
-                    <p>цена: 500 руб.</p></div>
-            </div>
-            <div>
-                <div><img src="source/bochka.png"><input class="button" type="submit" value="купить"
-                                                         onclick="addOrder()"></div>
-                <div><h3>Мёд гречичный 3л.</h3>
-                    <p>Описание описание описание описание описание описание описание описание</p>
-                    <p>цена: 3000 руб.</p></div>
-            </div>
-            <div>
-                <div><img src="source/bochka.png"><input class="button" type="submit" value="купить"
-                                                         onclick="addOrder()"></div>
-                <div><h3>Мёд гречичный 2л.</h3>
-                    <p>Описание описание описание описание описание описание описание описание</p>
-                    <p>цена: 1500 руб.</p></div>
-            </div>
-            <div>
-                <div><img src="source/bochka.png"><input class="button" type="submit" value="купить"
-                                                         onclick="addOrder()"></div>
-                <div><h3>Мёд гречичный 0,5л.</h3>
-                    <p>Описание описание описание описание описание описание описание описание</p>
-                    <p>цена: 700 руб.</p></div>
-            </div>
+        <div id="contentBlock" class="container">
+            <!--<div class="block">-->
+                <!--<div class="info">-->
+                    <!--<h3>Мёд гречичный 1л.</h3>-->
+                    <!--<img src="source/bochka.png">-->
+                    <!--<p class="description-honey">Описание описание описание описание описание описание описание описание</p>-->
+                    <!--<p>цена: 1000 руб.</p>-->
+                <!--</div>-->
+                <!--<div class="control">-->
+                    <!--<div>-->
+                        <!--<input name="grech-1l" type="submit" class="miniBtn" value="-" onclick="countHoney(-1)">-->
+                        <!--<input id="grech-1l" name="grech-1l" step="1" min="1" max="100" onkeyup="countHoney(0)" type="number" placeholder="1">-->
+                        <!--<input name="grech-1l" type="submit" class="miniBtn" value="+" onclick="countHoney(1)">-->
+                    <!--</div>-->
+                    <!--<input class="button" type="submit" value="Добавить к заказу" onclick="addOrder()">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="block">-->
+                <!--<div class="info">-->
+                    <!--<h3>Мёд гречичный 0.5л.</h3>-->
+                    <!--<img src="source/bochka.png">-->
+                    <!--<p class="description-honey">Описание описание описание описание описание описание описание описание</p>-->
+                    <!--<p>цена: 500 руб.</p>-->
+                <!--</div>-->
+                <!--<div class="control">-->
+                    <!--<div>-->
+                        <!--<input type="submit" class="miniBtn" value="-">-->
+                        <!--<input step="1" min="1" max="27" type="number" placeholder="1">-->
+                        <!--<input type="submit" class="miniBtn" value="+" onclick="addOrder()">-->
+                    <!--</div>-->
+                    <!--<input class="button" type="submit" value="добавить к заказу" onclick="addOrder()">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="block">-->
+                <!--<div class="info">-->
+                    <!--<h3>Мёд гречичный 3л.</h3>-->
+                    <!--<img src="source/bochka.png">-->
+                    <!--<p class="description-honey">Описание описание описание описание описание описание описание описание</p>-->
+                    <!--<p>цена: 2980 руб.</p>-->
+                <!--</div>-->
+                <!--<div class="control">-->
+                    <!--<div>-->
+                        <!--<input type="submit" class="miniBtn" value="-">-->
+                        <!--<input step="1" min="1" max="27" type="number" placeholder="1">-->
+                        <!--<input type="submit" class="miniBtn" value="+" onclick="addOrder()">-->
+                    <!--</div>-->
+                    <!--<input class="button" type="submit" value="добавить к заказу" onclick="addOrder()">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="block">-->
+                <!--<div class="info">-->
+                    <!--<h3>Мёд гречичный 2л.</h3>-->
+                    <!--<img src="source/bochka.png">-->
+                    <!--<p class="description-honey">Описание описание описание описание описание описание описание описание</p>-->
+                    <!--<p>цена: 1900 руб.</p>-->
+                <!--</div>-->
+                <!--<div class="control">-->
+                    <!--<div>-->
+                        <!--<input type="submit" class="miniBtn" value="-">-->
+                        <!--<input step="1" min="1" max="27" type="number" placeholder="1">-->
+                        <!--<input type="submit" class="miniBtn" value="+" onclick="addOrder()">-->
+                    <!--</div>-->
+                    <!--<input class="button" type="submit" value="добавить к заказу" onclick="addOrder()">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="block">-->
+                <!--<div class="info">-->
+                    <!--<h3>Мёд гречичный 0.3л.</h3>-->
+                    <!--<img src="source/bochka.png">-->
+                    <!--<p class="description-honey">Описание описание описание описание описание описание описание описание</p>-->
+                    <!--<p>цена: 320 руб.</p>-->
+                <!--</div>-->
+                <!--<div class="control">-->
+                    <!--<div>-->
+                        <!--<input type="submit" class="miniBtn" value="-">-->
+                        <!--<input step="1" min="1" max="27" type="number" placeholder="1">-->
+                        <!--<input type="submit" class="miniBtn" value="+" onclick="addOrder()">-->
+                    <!--</div>-->
+                    <!--<input class="button" type="submit" value="добавить к заказу" onclick="addOrder()">-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </section>
     <section>Контакты</section>
