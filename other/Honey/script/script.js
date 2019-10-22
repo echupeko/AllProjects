@@ -24,6 +24,7 @@ let ct = 0;
 
 const addOrder = () => {
     ct++;
+
     document.getElementById('numberProduct').style.opacity = 1;
     document.getElementById('numberProduct').innerText = ct;
 }

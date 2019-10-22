@@ -14,17 +14,24 @@ header {
     display: inline-flex;
     width: 60%;
     justify-content: space-between;
-    box-shadow: 0 0 10px #5c5e5e;
-    border: 2px solid #ff7a06;
+    box-shadow: 0 0 10px #454747;
+    /*border: 2px solid #ff7a06;*/
     border-radius: 5px;
     padding: 5px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 nav {
     width: 50%;
 }
 img {
-    width: 50px;
+    width: 70px;
 }
 
 .logo, li p, .basket, .container > div div > input{
