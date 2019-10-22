@@ -27,6 +27,17 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
+.container > div > div {
+    position: relative;
+}
+
+.description-honey {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 nav {
     width: 50%;
 }
