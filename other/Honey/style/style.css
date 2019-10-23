@@ -124,8 +124,17 @@ main {
     min-width: 200px;
     display: flex;
     flex-direction: column;
+    border: 2px solid #e8ebeb;
+    border-radius:7px;
 }
 
+.block:hover{
+    border-color: #ff7a06;
+}
+
+.horizontal {
+    flex-direction: row;
+}
 
 
 .control div {
@@ -147,8 +156,13 @@ main {
     outline: none;
 }
 
+.control > div:hover input, .button:hover, .block:hover .button  {
+    color: white;
+    background-color: #ff7a06;
+}
 
 .button {
+    background-color: #e8ebeb;
     font-size: 15px;
     outline: none;
     border: 0;
@@ -157,7 +171,9 @@ main {
     width: 100%;
 }
 
-
+#basket {
+    display: none;
+}
 
 .container > div h3, .container > div p {
     margin: 2px;

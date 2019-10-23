@@ -1,29 +1,8 @@
-// function handleFileSelect(evt) {
-//     let workbook = XLSX.read(data, {type: 'binary'});
-//     //Get the files from Upload control
-//     let first_sheet_name = workbook.SheetNames[0];
-//     let files = evt.target.files;
-//     let i, f;
-//     //Loop through files
-//     for (let i = 0, f = files[i]; i != files.length; ++i) {
-//         let reader = new FileReader();
-//         let name = f.name;
-//         reader.onload = function (evt) {
-//             let data = evt.target.result;
-//
-//             let result;
-//             /* convert from workbook to array of arrays */
-//             let first_worksheet = data.Sheets[data.SheetNames[0]];
-//             data = XLSX.utils.sheet_to_json(first_worksheet, {header:1});
-//             alert(result[0].Column1);
-//         };
-//         reader.readAsArrayBuffer(f);
-//     }
-// }
-let ct = 0;
+let countOrder = 0;
 let orderList = [];
 let order = {};
-
+let openBasketFlag = false;
+const sectionList = document.getElementsByTagName('section');
 
 window.onload = () => {
     const mainBlock = document.getElementById('contentBlock');
@@ -40,36 +19,66 @@ window.onload = () => {
             '   <div>' +
             '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="-" ' +
             '           onclick="countHoney(-1,\'' + item.id + item.count + '\')">' +
-            '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" ' +
-            '           min="' + item.min + '" max="' + item.max + '" onkeyup="countHoney(0)" type="number" placeholder="1">' +
+            '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" value="1"' +
+            '           min="' + item.min + '" max="' + item.max + '" onkeyup="countHoney(0)" type="number">' +
             '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="+" ' +
             '           onclick="countHoney(1,\'' + item.id + item.count + '\')">' +
             '   </div>' +
-            '   <input class="button" type="submit" value="Добавить к заказу" onclick="addOrder()">' +
+            '   <input class="button" type="submit" value="Добавить к заказу" onclick="addOrder(\'' + item.id + item.count + '\')">' +
             '</div></div>';
 
     });
     mainBlock.innerHTML += content;
 }
+
+
 const countHoney = (pre, id) => {
     let element = document.getElementById(id);
     let selected = orderList.indexOf(orderList.find(item => item.id.toString() === id.toString()));
-    if (selected >= 0){
-        order = orderList[selected];
-        order.count += pre;
-        element.value = order.count;
+
+    if (selected >= 0) {
+        orderList[selected].count += pre;
+        element.value = orderList[selected].count;
     }
     else {
+        order = {};
         order.id = id;
-        order.count = pre;
+        order.count = +element.value + pre;
+        order.buy = false;
         orderList.push(order);
         element.value = order.count;
     }
 };
 
-const addOrder = () => {
-    // ct++;
-    //
-    // document.getElementById('numberProduct').style.opacity = 1;
-    // document.getElementById('numberProduct').innerText = ct;
+const addOrder = (id) => {
+    let element = document.getElementById(id);
+    let selected = orderList.indexOf(orderList.find(item => item.id.toString() === id.toString()));
+
+    if (!orderList[selected].buy) {
+        countOrder++;
+        document.getElementById('numberProduct').style.opacity = 1;
+        document.getElementById('numberProduct').innerText = countOrder;
+        orderList[selected].buy = !orderList[selected].buy;
+    }
+    else {
+        element.value = 1;
+    }
 };
+
+const openBasket = () => {
+    for (let i = 0; i < sectionList.length; i++) {
+        if (!openBasketFlag) {
+            if (sectionList[i].id === 'basket')
+                sectionList[i].style.display = 'flex';
+            else
+                sectionList[i].style.display = 'none';
+        }
+        else {
+            if (sectionList[i].id === 'basket')
+                sectionList[i].style.display = 'none';
+            else
+                sectionList[i].style.display = 'flex';
+        }
+    }
+    openBasketFlag = !openBasketFlag;
+}
