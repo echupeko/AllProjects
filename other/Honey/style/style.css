@@ -1,4 +1,5 @@
 * {
+    font-family: Roboto;
     margin: 0;
     padding: 0;
     transition: all 500ms ease;
@@ -137,7 +138,7 @@ main {
 }
 
 
-.control div {
+.count-control {
 
     height: 30px;
     display: flex;
@@ -146,7 +147,9 @@ main {
     margin: 5px;
 }
 
-.control > div input {
+.count-control input {
+    height: 30px;
+    width: 30px;
     font-family: Roboto;
     font-size: 15px;
     font-weight: bold;
@@ -156,7 +159,7 @@ main {
     outline: none;
 }
 
-.control > div:hover input, .button:hover, .block:hover .button  {
+.count-control:hover input, .button:hover, .block:hover .button  {
     color: white;
     background-color: #ff7a06;
 }
@@ -173,6 +176,13 @@ main {
 
 #basket {
     display: none;
+    justify-content: center;
+}
+
+#basket div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .container > div h3, .container > div p {

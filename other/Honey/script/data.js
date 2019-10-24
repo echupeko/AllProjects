@@ -7,7 +7,8 @@ const honeyList = [
         unit: 'литр',
         price: 2980,
         min: 1,
-        max: 14 //остаток
+        max: 14, //остаток
+        buy: false //флаг для заказа
     },
     {
         id: 'buckwheat', //гречичный
@@ -17,7 +18,8 @@ const honeyList = [
         unit: 'литр',
         price: 1950,
         min: 1,
-        max: 20 //остаток
+        max: 20, //остаток
+        buy: false //флаг для заказа
     },
     {
         id: 'buckwheat', //гречичный
@@ -27,7 +29,8 @@ const honeyList = [
         unit: 'литр',
         price: 980,
         min: 1,
-        max: 57 //остаток
+        max: 57, //остаток
+        buy: false //флаг для заказа
     },
     {
         id: 'buckwheat', //гречичный
@@ -37,7 +40,8 @@ const honeyList = [
         unit: 'литр',
         price: 540,
         min: 1,
-        max: 50 //остаток
+        max: 50, //остаток
+        buy: false //флаг для заказа
     },
     {
         id: 'buckwheat', //гречичный
@@ -47,7 +51,8 @@ const honeyList = [
         unit: 'литр',
         price: 320,
         min: 1,
-        max: 31 //остаток
+        max: 31, //остаток
+        buy: false //флаг для заказа
     }
 ];
 

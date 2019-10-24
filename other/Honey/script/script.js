@@ -11,12 +11,12 @@ window.onload = () => {
         content += '<div class="block">' +
             '<div class="info">' +
             '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
-            '   <img src="source/bochka.png">' +
+            '   <img class="maximaze-img" src="source/bochka.png">' +
             '   <p class="description-honey">' + item.description + '</p>' +
             '   <p>цена: ' + item.price + ' руб.</p>' +
             '</div>' +
             '<div class="control">' +
-            '   <div>' +
+            '   <div class="count-control">' +
             '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="-" ' +
             '           onclick="countHoney(-1,\'' + item.id + item.count + '\')">' +
             '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" value="1"' +
