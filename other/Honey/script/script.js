@@ -8,29 +8,52 @@ window.onload = () => {
     const mainBlock = document.getElementById('contentBlock');
     let content = "";
     honeyList.forEach(item => {
-        content += '<div class="block">' +
-            '<div class="info">' +
-            '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
-            '   <img class="maximaze-img" src="source/bochka.png">' +
-            '   <p class="description-honey">' + item.description + '</p>' +
-            '   <p>цена: ' + item.price + ' руб.</p>' +
-            '</div>' +
-            '<div class="control">' +
-            '   <div class="count-control">' +
-            '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="-" ' +
-            '           onclick="countHoney(-1,\'' + item.id + item.count + '\')">' +
-            '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" value="1"' +
-            '           min="' + item.min + '" max="' + item.max + '" onkeyup="countHoney(0)" type="number">' +
-            '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="+" ' +
-            '           onclick="countHoney(1,\'' + item.id + item.count + '\')">' +
-            '   </div>' +
-            '   <input class="button" type="submit" value="Добавить к заказу" onclick="addOrder(\'' + item.id + item.count + '\')">' +
-            '</div></div>';
-
+        content += addBlockItem(item);
     });
     mainBlock.innerHTML += content;
 }
 
+const addBlockItem = (item) => {
+    let content = '<div class="block">' +
+        '<div class="info">' +
+        '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
+        '   <img class="maximaze-img" src="source/bochka.png">' +
+        '   <p class="description-honey">' + item.description + '</p>' +
+        '   <p>цена: ' + item.price + ' руб.</p>' +
+        '</div>' +
+        '<div class="control">' +
+        '   <div class="count-control">' +
+        '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="-" ' +
+        '           onclick="countHoney(-1,\'' + item.id + item.count + '\')">' +
+        '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" value="1"' +
+        '           min="' + item.min + '" max="' + item.max + '" onkeyup="countHoney(0)" type="number">' +
+        '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="+" ' +
+        '           onclick="countHoney(1,\'' + item.id + item.count + '\')">' +
+        '   </div>' +
+        '   <input class="button" type="submit" value="Добавить к заказу" onclick="addOrder(\'' + item.id + item.count + '\')">' +
+        '</div></div>';
+}
+
+const addBlockOrderItem = (item) => {
+    let content = '<div>' +
+        '   <img class="minimize-img" src="source/bochka.png">' +
+        '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
+        '   <div class="count-control">' +
+        '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="-" ' +
+        '           onclick="countHoney(-1,\'' + item.id + item.count + '\')">' +
+        '       <input id="' + item.id + item.count + '" name="' + item.name + item.count + '" step="1" value="1"' +
+        '           min="' + item.min + '" max="' + item.max + '" onkeyup="countHoney(0)" type="number">' +
+        '       <input name="' + item.name + item.count + '" type="submit" class="miniBtn" value="+" ' +
+        '           onclick="countHoney(1,\'' + item.id + item.count + '\')">' +
+        '   </div>' +
+        // '   <div class="count-control">' +
+        // '       <input type="submit" class="miniBtn" value="-">' +
+        // '       <input step="1" value="1" type="number">' +
+        // '       <input type="submit" class="miniBtn" value="+">' +
+        // '   </div>' +
+        '   <p>12500 руб.</p>' +
+        '</div>';
+}
 
 const countHoney = (pre, id) => {
     let element = document.getElementById(id);
