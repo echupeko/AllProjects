@@ -14,7 +14,7 @@ window.onload = () => {
 }
 
 const addBlockItem = (item) => {
-    let content = '<div class="block">' +
+    return content = '<div class="block">' +
         '<div class="info">' +
         '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
         '   <img class="maximaze-img" src="source/bochka.png">' +
@@ -35,7 +35,7 @@ const addBlockItem = (item) => {
 }
 
 const addBlockOrderItem = (item) => {
-    let content = '<div>' +
+    return content = '<div>' +
         '   <img class="minimize-img" src="source/bochka.png">' +
         '   <h3>Мёд ' + item.name + ' ' + item.count + 'л.</h3>' +
         '   <div class="count-control">' +
