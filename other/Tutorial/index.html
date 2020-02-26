@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,10 +7,18 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<div id="app" >
-    <p>{{title}}</p>
-<button @click="nameFunction"></button>
-    <div style="display: block; height: 24px; background-color: #1C7430" :style="{ width: width + 'px'}"></div>
+<div id="navBar" >
+   <nav v-bind:class="">
+       <a href="#" v-on:click=""><img></a>
+       <a href="#" v-on:click="">О нас</a>
+       <a href="#" v-on:click="">Каталог</a>
+       <a href="#" v-on:click="">Контакты</a>
+       <a href="#" v-on:click=""><div><span></span></div></a>
+   </nav>
+</div>
+
+<div id="contentBlock">
+
 </div>
 <script src="script/script.js"></script>
 </body>

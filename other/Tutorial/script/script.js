@@ -1,13 +1,19 @@
 new Vue({
-    el: "#app",
+    el: "#navBar",
     data: {
         title: "Hello World!",
-        width: 0
+        countOrder: 0
     },
     methods: {
-        nameFunction: function () {
-            for (let i=0; i< 20; i++)
-                this.width += 5;
-        }
+        widthUp: function () {
+            this.width += 5;
+        },
+
     }
 });
+
+Vue.component('todo-item', {
+    template: '<li>Задача 1</li>'
+})
+
+var app = new Vue
