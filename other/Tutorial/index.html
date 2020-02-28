@@ -10,11 +10,11 @@
 
 <div id="navBar" >
    <nav>
-       <a href="#" v-on:click="revers"><img src="resource/logo.png"></a>
-       <a href="#" v-on:click="">О нас</a>
-       <a href="#" v-on:click="">Каталог</a>
-       <a href="#" v-on:click="">Контакты</a>
-       <a href="#" v-on:click=""><div><span>{{countOrder}}</span></div></a>
+       <a href="#" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img v-bind:src="imageSrc"></a>
+       <a href="#" @click="">О нас</a>
+       <a href="#" @click="">Каталог</a>
+       <a href="#" @click="">Контакты</a>
+       <a href="#" @click=""><div><span>{{countOrder}}</span></div></a>
    </nav>
 </div>
 
