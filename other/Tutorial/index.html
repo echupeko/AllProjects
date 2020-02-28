@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,12 +9,12 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="navBar" >
-   <nav v-bind:class="">
-       <a href="#" v-on:click=""><img></a>
+   <nav>
+       <a href="#" v-on:click="revers"><img src="resource/logo.png"></a>
        <a href="#" v-on:click="">О нас</a>
        <a href="#" v-on:click="">Каталог</a>
        <a href="#" v-on:click="">Контакты</a>
-       <a href="#" v-on:click=""><div><span></span></div></a>
+       <a href="#" v-on:click=""><div><span>{{countOrder}}</span></div></a>
    </nav>
 </div>
 

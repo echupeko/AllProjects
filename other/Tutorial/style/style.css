@@ -20,6 +20,10 @@ nav {
     align-items: center;
 }
 
+nav img {
+    height: 100%;
+}
+
 nav a {
     margin: 0 10px 0 10px;
     text-decoration: none;
@@ -27,7 +31,45 @@ nav a {
     border-bottom: transparent solid 2px;
 }
 
+nav a:first-child, nav a:last-child, nav a:first-child:hover, nav a:last-child:hover{
+    border: none;
+}
+
+nav a:first-child{
+    height: 50px;
+}
+
 nav a:hover {
     color: #eb942a;
-    border-bottom: 2px solid rgba(0,0,0,0.41);
+    border-bottom: 2px solid #A7A7A7;
+}
+
+/*nav a:last-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: unset;
+}*/
+
+nav div {
+    width: 25px;
+    height: 25px;
+    background: url("../resource/basket.png");
+    background-size: 100%;
+}
+
+nav div span {
+    display: block;
+    position: relative;
+    left: 15px;
+    top: 15px;
+    font-size: 10px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #A7A7A7;
+    border-radius: 50%;
+    text-align: center;
+    background-color: white;
 }
