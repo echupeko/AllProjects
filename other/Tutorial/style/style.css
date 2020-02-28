@@ -12,14 +12,19 @@
     justify-content: center;
 }
 
-nav {
-    width: 80%;
+nav, nav ul{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
-
+nav ul li {
+    text-align: center;
+    width: 150px;
+    list-style-type: none;
+}
 nav img {
     height: 100%;
 }
@@ -29,14 +34,6 @@ nav a {
     text-decoration: none;
     text-transform: uppercase;
     border-bottom: transparent solid 2px;
-}
-
-nav a:first-child, nav a:last-child, nav a:first-child:hover, nav a:last-child:hover{
-    border: none;
-}
-
-nav a:first-child{
-    height: 50px;
 }
 
 nav a:hover {
@@ -53,18 +50,21 @@ nav a:hover {
     font-weight: unset;
 }*/
 
-nav div {
-    width: 25px;
-    height: 25px;
-    background: url("../resource/basket.png");
-    background-size: 100%;
+.logo {
+    width: 50px;
+    height: 50px;
+
 }
 
-nav div span {
+.nav-toggle {
+    display: none;
+}
+
+.counter {
     display: block;
     position: relative;
     left: 15px;
-    top: 15px;
+    top: -15px;
     font-size: 10px;
     width: 15px;
     height: 15px;
@@ -72,4 +72,9 @@ nav div span {
     border-radius: 50%;
     text-align: center;
     background-color: white;
+}
+
+.basket{
+    width: 25px;
+    height: 25px;
 }
