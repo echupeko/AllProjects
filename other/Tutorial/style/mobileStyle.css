@@ -28,6 +28,7 @@
         height: 2px;
         width: 100%;
         background-color: #A7A7A7;
+        transition: 1s;
     }
 
     .nav-toggle span {
@@ -40,6 +41,11 @@
 
     .nav-toggle span:after {
         top: 5px;
+    }
+
+    .nav-toggle:hover span, .nav-toggle:hover span:before, .nav-toggle:hover span:after {
+        background-color: #eb942a;
+        transition: 1s;
     }
 
     nav ul li {
