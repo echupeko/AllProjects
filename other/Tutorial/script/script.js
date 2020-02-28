@@ -16,10 +16,10 @@ let navBarApp = new Vue({
             this.countOrder++;
         },
         imgOver: function () {
-            this.imageSrc = "resource/logo_hover.png"
+            this.logoSrc = "resource/logo_hover.png"
         },
         imgOut: function () {
-            this.imageSrc = "resource/logo.png"
+            this.logoSrc = "resource/logo.png"
         }
     }
 });
