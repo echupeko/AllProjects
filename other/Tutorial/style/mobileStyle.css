@@ -5,12 +5,8 @@
 }
 
 @media screen and (max-width: 540px) {
-nav {
-    background-color: green;
-}
-}
 
-@media screen and (max-width: 360px) {
+
     nav {
         width: 100%;
     }
