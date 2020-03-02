@@ -1,3 +1,15 @@
+@media screen and (max-width: 960px) {
+    nav {
+        background-color: red;
+    }
+}
+
+@media screen and (max-width: 540px) {
+nav {
+    background-color: green;
+}
+}
+
 @media screen and (max-width: 360px) {
     nav {
         width: 100%;
