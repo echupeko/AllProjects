@@ -3,31 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link href="style/style.css" rel="stylesheet">
-    <link href = "style/mobileStyle.css" rel="stylesheet" >
+    <link href="style/mobileStyle.css" rel="stylesheet">
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<div id="navBar" >
-   <nav>
-       <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img v-bind:src="logoSrc"></div>
-       <ul>
-           <li v-for="navItem in navItems">
-               <a v-bind:href="navItem.href">{{ navItem.text }}</a>
-           </li>
-       </ul>
-       <div class="nav-toggle"><span></span></div>
-       <div class="basket"><img v-bind:src="basketSrc"><span class="counter">{{countOrder}}</span></div>
-   </nav>
+<div id="navBar">
+    <nav>
+        <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img v-bind:src="logoSrc"></div>
+        <ul>
+            <li v-for="navItem in navItems">
+                <a v-bind:href="navItem.href">{{ navItem.text }}</a>
+            </li>
+        </ul>
+        <div class="nav-toggle"><span></span></div>
+        <div class="basket"><img v-bind:src="basketSrc"><span class="counter">{{countOrder}}</span></div>
+    </nav>
 </div>
 
 <div id="contentBlock">
     <div>
         <h1>О нас</h1>
         <div class="container">
-            <section id="descriptionBlock"></section>
+            <section id="descriptionBlock">
+                <p style="text-align: center">
+                    "Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце
+                    июня - июле месяце, самый разгар медосбора длится примерно две-три недели. Пчелы активно летают на
+                    обильно выделяющие нектар белые и розовые цветы."
+                </p>
+                <!--<p>-->
+                    <!--К сбору гречишного меда многие пасечники готовятся заранее, и к моменту цветения стараются вывести-->
+                    <!--улья с пчелами поближе к полям цветущей гречихи. Вообще, считается что гречиха – очень-->
+                    <!--медопродуктивное растение. С одного гектара поля при хорошей погоде пчеловоды могут получить до-->
+                    <!--восьмидесяти килограмм меда. К тому же гречиха сейчас в большом количестве высаживается в ряде-->
+                    <!--областей центральной России (Орловской, Курской области), а также в южных регионах, на Алтае и в-->
+                    <!--Башкирии. Гречишный мед любим многими. Только что скаченный гречишный мед имеет темный, иногда даже-->
+                    <!--черный цвет. По мере хранения, он начинает оседать, то есть кристаллизоваться и светлеть. Из-за-->
+                    <!--особого состава процесс этот происходит достаточно быстро, гораздо быстрее многих других сортов-->
+                    <!--меда. Уже к октябрю-ноябрю месяцу (в зависимости от условий хранения) гречишный мед становится-->
+                    <!--плотным, при этом у него образуются кристаллы, которые бывают и крупными и мелкими (связано с-->
+                    <!--преобладанием тех или иных элементов в меде).-->
+                <!--</p>-->
+                <p style="text-align: center">
+                    Гречишный мед имеет насыщенный густой аромат цветов гречихи, и терпкий вкус. Его нельзя спутать ни с
+                    каким другим сортом меда. Очень часто, снимая пробу, можно ощутить небольшое жжение (першение) в
+                    нёбе. Такой эффект объясняется ярко выраженными антибактериальными свойствами мед
+                </p>
+            </section>
             <section id="licenseBlock"></section>
         </div>
     </div>
