@@ -2,6 +2,7 @@ html {
     background-color: #eb942a;
 }
 body {
+    height: 1080px;
     background-image: url("../resource/hex.png");
     background-size: 200px;
     background-repeat: repeat;
