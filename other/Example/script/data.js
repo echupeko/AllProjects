@@ -99,6 +99,38 @@ const descriptionArr = [
         '<p>Сайт-галлерея, для демонстрации работ иллюстратора</p>'
     },
     {
+        id: 'honey',
+        backgroundColor: 'inherit',
+        color: 'inherit',
+        parrent: 'development',
+        description: '<a href="../../other/Honey/index.html"><h1>Продажа мёда</h1></a>' +
+            '<p>Сайт по продаже мёда</p>'
+    },
+    {
+        id: 'honey2',
+        backgroundColor: 'inherit',
+        color: 'inherit',
+        parrent: 'development',
+        description: '<a href="../../other/Tutorial/index.html"><h1>Продажа мёда2</h1></a>' +
+            '<p>Сайт по продаже мёда</p>'
+    },
+    {
+        id: 'resume',
+        backgroundColor: 'inherit',
+        color: 'inherit',
+        parrent: 'development',
+        description: '<a href="../../other/Resume/index.html"><h1>Сайт-резюме 1</h1></a>' +
+            '<p>Сайт-резюме</p>'
+    },
+    {
+        id: 'resume',
+        backgroundColor: 'inherit',
+        color: 'inherit',
+        parrent: 'development',
+        description: '<a href="../../index.html"><h1>Сайт-резюме 2</h1></a>' +
+            '<p>Сайт-резюме</p>'
+    },
+    {
         id: 'snowboard',
         backgroundColor: 'inherit',
         color: 'inherit',

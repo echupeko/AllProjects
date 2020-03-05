@@ -33,6 +33,7 @@ succefulLogin = () => {
 }
 
 logIn = () => {
+    succefulLogin();
     if (loginUser.value == 'user')
         if (passUser.value == 'user') {
             succefulLogin();
