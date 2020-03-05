@@ -29,16 +29,12 @@ let contentBlockApp = new Vue({
     data: {
         resource: '',
         licenses: [
-            {href:'#',text:'О нас',visible:1},
-            {href:'#',text:'Каталог',visible:1},
-            {href:'#',text:'Контакты',visible:1}
+            {src: 'resource/1.jpg'},
+            {src: 'resource/2.jpg'},
+            {src: 'resource/3.jpg'}
         ]
     },
     methods: {
-        loadLicense: function () {
-            for (let i=0; i<this.licenses.length;i++){
-                this.resource = 'resource/' + i + '.jpg';
-            }
-        }
+
     }
 });

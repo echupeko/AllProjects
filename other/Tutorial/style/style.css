@@ -128,3 +128,12 @@ nav a:hover {
     border-left: 1px solid #A7A7A7;
     width: 40%;
 }
+
+#licenseBlock li {
+    position: relative;
+
+}
+
+#licenseBlock img{
+    width: 100%;
+}

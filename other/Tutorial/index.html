@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,9 +40,9 @@
                 </p>
             </section>
             <section id="licenseBlock">
-                <ul v-on:onload="">
+                <ul>
                     <li v-for="license in licenses">
-                        <img v-bind:src="resource">
+                        <img v-bind:src="license.src">
                     </li>
                 </ul>
             </section>
