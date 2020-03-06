@@ -5,6 +5,10 @@
 }
 
 @media screen and (max-width: 540px) {
+    #navBar {
+        height: 50px;
+    }
+
     nav {
         width: 100%;
     }
@@ -12,6 +16,11 @@
     nav div:last-child {
         position: absolute;
         left: 85%;
+    }
+
+    .logo {
+        width: 35px;
+        height: 35px;
     }
 
     nav ul {
