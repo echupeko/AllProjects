@@ -1,9 +1,15 @@
+const logoIcon = "resource/logo.png";
+const logoHoverIcon = "resource/logo_hover.png";
+const licenseMain = "resource/1.png";
+const licenseFirst = "resource/2.png";
+const licenseSecond = "resource/3.png";
+
 let navBarApp = new Vue({
     el: "#navBar",
     data: {
         title: "Hello World!",
         countOrder: 0,
-        logoSrc: "resource/logo.png",
+        logoSrc: logoIcon,
         basketSrc: "resource/basket.png",
         navItems: [
             {href:'#',text:'О нас',visible:1},
@@ -16,10 +22,10 @@ let navBarApp = new Vue({
             this.countOrder++;
         },
         imgOver: function () {
-            this.logoSrc = "resource/logo_hover.png"
+            this.logoSrc = logoHoverIcon;
         },
         imgOut: function () {
-            this.logoSrc = "resource/logo.png"
+            this.logoSrc = logoIcon;
         }
     }
 });
@@ -34,9 +40,9 @@ let contentBlockApp = new Vue({
         clicked: false,
         textBtn: 'Показать больше',
         licenses: [
-            {class: 'licenseItem', src: 'resource/1.jpg', display: 'block', description: 'Лицензия 1'},
-            {class: 'licenseItem', src: 'resource/2.jpg', display: 'block', description: 'Лицензия 2'},
-            {class: 'licenseItem', src: 'resource/3.jpg', display: 'block', description: 'Лицензия 3'}
+            {class: 'licenseItem', src: licenseMain, display: 'block', description: 'Лицензия 1'},
+            {class: 'licenseItem', src: licenseFirst, display: 'block', description: 'Лицензия 2'},
+            {class: 'licenseItem', src: licenseSecond, display: 'block', description: 'Лицензия 3'}
         ]
     },
     methods: {
