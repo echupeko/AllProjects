@@ -28,9 +28,9 @@
         <div class="container">
             <section id="descriptionBlock">
                 <p style="text-align: center">
-                    "Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце
+                    Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце
                     июня - июле месяце, самый разгар медосбора длится примерно две-три недели. Пчелы активно летают на
-                    обильно выделяющие нектар белые и розовые цветы."
+                    обильно выделяющие нектар белые и розовые цветы.
                 </p>
 
                 <p style="text-align: center">
@@ -40,11 +40,12 @@
                 </p>
             </section>
             <section id="licenseBlock">
-                <ul>
-                    <li v-for="license in licenses">
-                        <img v-bind:src="license.src">
-                    </li>
-                </ul>
+                <div>
+                    <div v-bind:class="license.class" v-for="license in licenses" v-bind:style="{display: license.display}" v-bind:alt="license.description">
+                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src" >
+                    </div>
+                </div>
+                <button @click="viewMore">{{textBtn}}</button>
             </section>
         </div>
     </div>

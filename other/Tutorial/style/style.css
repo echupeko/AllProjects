@@ -123,17 +123,34 @@ nav a:hover {
     padding: 10px;
     width: 60%;
 }
-
 #licenseBlock {
     border-left: 1px solid #A7A7A7;
     width: 40%;
 }
 
+#licenseBlock > div{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 #licenseBlock li {
     position: relative;
-
 }
 
 #licenseBlock img{
     width: 100%;
+}
+
+.licenseItem {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.minimal {
+    width: 150px;
+    margin: 5px;
 }
