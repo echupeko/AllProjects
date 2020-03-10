@@ -154,3 +154,20 @@ nav a:hover {
     width: 150px;
     margin: 5px;
 }
+
+#formViewer {
+    position: absolute;
+    height: 800px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8)!important;
+    width: 100%!important;
+}
+
+
+#formViewer img{
+    height: 80%;
+}

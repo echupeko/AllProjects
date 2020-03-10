@@ -23,6 +23,9 @@
 </div>
 
 <div id="contentBlock">
+    <div id="formViewer" v-if="seen" @click="viewMore">
+        <img v-bind:src="licenses[id].src" v-bind:alt="licenses[id].description">
+    </div>
     <div>
         <h1>О нас</h1>
         <div class="container">
@@ -41,8 +44,8 @@
             </section>
             <section id="licenseBlock">
                 <div>
-                    <div v-bind:class="license.class" v-for="license in licenses" v-bind:style="{display: license.display}" v-bind:alt="license.description">
-                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src" >
+                    <div v-bind:class="license.class" class="minimal" v-for="license in licenses" v-bind:style="{display: license.display}" >
+                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src" v-bind:alt="license.description">
                     </div>
                 </div>
                 <button @click="viewMore">{{textBtn}}</button>

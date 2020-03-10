@@ -24,46 +24,28 @@ let navBarApp = new Vue({
     }
 });
 
+
 let contentBlockApp = new Vue({
     el: "#contentBlock",
     data: {
         resource: '',
+        id: 0,
+        seen: false,
         clicked: false,
         textBtn: 'Показать больше',
         licenses: [
             {class: 'licenseItem', src: 'resource/1.jpg', display: 'block', description: 'Лицензия 1'},
-            {class: 'licenseItem', src: 'resource/2.jpg', display: 'none', description: 'Лицензия 2'},
-            {class: 'licenseItem', src: 'resource/3.jpg', display: 'none', description: 'Лицензия 3'}
+            {class: 'licenseItem', src: 'resource/2.jpg', display: 'block', description: 'Лицензия 2'},
+            {class: 'licenseItem', src: 'resource/3.jpg', display: 'block', description: 'Лицензия 3'}
         ]
     },
     methods: {
         viewMore: function () {
-            if(!this.clicked) {
-                for (let i=0;i<this.licenses.length;i++){
-                    this.licenses[i].class += ' minimal';
-                    this.licenses[i].display = 'block';
-                    this.textBtn = 'Скрыть';
-                }
-            }
-            else {
-                for (let i=0;i<this.licenses.length;i++){
-                    this.licenses[i].class += 'licenseItem';
-                    if(i) this.licenses[i].display = 'none';
-                    else  this.licenses[i].display = 'block';
-                    this.textBtn = 'Показать больше';
-                }
-            }
-            this.clicked = !this.clicked;
+            this.seen = !this.seen;
         },
         openLicense: function (cnt) {
-            for (let i = 0; i < this.licenses.length; i++) {
-                this.licenses[i].class = 'licenseItem';
-                if (i != cnt) {
-                    this.licenses[i].display = 'none';
-                    this.textBtn = 'Показать больше';
-                    this.clicked = !this.clicked;
-                }
-            }
+            this.id = cnt;
+            this.seen = true;
         }
     }
 });
