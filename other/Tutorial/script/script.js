@@ -1,8 +1,8 @@
 const logoIcon = "resource/logo.png";
 const logoHoverIcon = "resource/logo_hover.png";
-const licenseMain = "resource/1.png";
-const licenseFirst = "resource/2.png";
-const licenseSecond = "resource/3.png";
+const licenseMain = "resource/1.jpg";
+const licenseFirst = "resource/2.jpg";
+const licenseSecond = "resource/3.jpg";
 
 let navBarApp = new Vue({
     el: "#navBar",
@@ -30,7 +30,6 @@ let navBarApp = new Vue({
     }
 });
 
-
 let contentBlockApp = new Vue({
     el: "#contentBlock",
     data: {
@@ -54,4 +53,32 @@ let contentBlockApp = new Vue({
             this.seen = true;
         }
     }
+});
+
+Vue.component('item',{
+    props: ['cat'],
+    template:  '' +
+    '<div>' +
+    '   <h3>Мёд {{cat.text}} л.</h3>' +
+    '   <p>цена: 3500 руб.</p>' +
+    '   <div>' +
+    '       <input type="submit" value="-">' +
+    '       <input step="1" value="1" type="number">' +
+    '       <input type="submit" value="+">' +
+    '   </div>' +
+    '   <input type="submit" value="Добавить к заказу">' +
+    '</div>'
+})
+
+let catalogBlockApp = new Vue({
+    el: "#catalogBlock",
+    data: {
+
+        catalogs: [
+            {id:0,text: '1'},
+            {id:1,text: '2'},
+            {id:2,text: '3'}
+        ]
+    },
+    methods: {}
 });

@@ -53,6 +53,10 @@
         </div>
     </div>
 </div>
+
+<div id="catalogBlock">
+    <item v-for="catalog in catalogs" v-bind:cat="catalog" v-bind:key="catalog.id"></item>
+</div>
 <script src="script/script.js"></script>
 </body>
 </html>
