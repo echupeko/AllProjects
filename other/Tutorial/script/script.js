@@ -58,9 +58,10 @@ let contentBlockApp = new Vue({
 Vue.component('item',{
     props: ['cat'],
     template:  '' +
-    '<div>' +
-    '   <h3>Мёд {{cat.text}} л.</h3>' +
-    '   <p>цена: 3500 руб.</p>' +
+    '<div class="catalogItem">' +
+    '   <h3>Мёд {{cat.volume}} л.</h3>' +
+    '   <img src="resource/bochka.png">' +
+    '   <p>цена: {{cat.price}} руб.</p>' +
     '   <div>' +
     '       <input type="submit" value="-">' +
     '       <input step="1" value="1" type="number">' +
@@ -75,9 +76,9 @@ let catalogBlockApp = new Vue({
     data: {
 
         catalogs: [
-            {id:0,text: '1'},
-            {id:1,text: '2'},
-            {id:2,text: '3'}
+            {id:0, volume: '1', price: '1500'},
+            {id:1, volume: '2', price: '2900'},
+            {id:2, volume: '3', price: '4000'}
         ]
     },
     methods: {}

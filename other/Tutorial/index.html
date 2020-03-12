@@ -9,10 +9,10 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<div id="navBar">
+<div id="navBar" class="flex-display">
     <nav>
         <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img v-bind:src="logoSrc"></div>
-        <ul>
+        <ul class="flex-display">
             <li v-for="navItem in navItems">
                 <a v-bind:href="navItem.href">{{ navItem.text }}</a>
             </li>
@@ -22,13 +22,13 @@
     </nav>
 </div>
 
-<div id="contentBlock">
-    <div id="formViewer" v-if="seen" @click="viewMore">
+<div id="contentBlock" class="block-element  flex-display">
+    <div id="formViewer" class="flex-display" v-if="seen" @click="viewMore">
         <img v-bind:src="licenses[id].src" v-bind:alt="licenses[id].description">
     </div>
     <div>
         <h1>О нас</h1>
-        <div class="container">
+        <div class="container flex-display">
             <section id="descriptionBlock">
                 <p style="text-align: center">
                     Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце
@@ -43,9 +43,11 @@
                 </p>
             </section>
             <section id="licenseBlock">
-                <div>
-                    <div v-bind:class="license.class" class="minimal" v-for="license in licenses" v-bind:style="{display: license.display}" >
-                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src" v-bind:alt="license.description">
+                <div class="flex-display">
+                    <div v-bind:class="license.class" class="flex-display minimal" v-for="license in licenses"
+                         v-bind:style="{display: license.display}">
+                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src"
+                             v-bind:alt="license.description">
                     </div>
                 </div>
                 <button @click="viewMore">{{textBtn}}</button>
@@ -54,8 +56,13 @@
     </div>
 </div>
 
-<div id="catalogBlock">
-    <item v-for="catalog in catalogs" v-bind:cat="catalog" v-bind:key="catalog.id"></item>
+<div id="catalogBlock" class="block-element flex-display">
+    <div>
+        <h1>Каталог</h1>
+        <div id="containerBlockCatalog" class="container flex-display">
+            <item v-for="catalog in catalogs" v-bind:cat="catalog" v-bind:key="catalog.id"></item>
+        </div>
+    </div>
 </div>
 <script src="script/script.js"></script>
 </body>
