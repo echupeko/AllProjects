@@ -21,6 +21,7 @@ body {
 }
 
 nav, nav ul{
+    display: contents;
     margin: 0;
     padding: 0;
 }
