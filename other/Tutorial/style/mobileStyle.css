@@ -66,4 +66,29 @@
     nav ul li {
         display: none;
     }
+
+    .container {
+        flex-direction: column;
+    }
+
+    #descriptionBlock, #licenseBlock {
+        width: 90%;
+    }
+
+    #descriptionBlock {
+        padding: 0;
+    }
+
+    #licenseBlock {
+        border-left: 0;
+        border-top: 1px solid #A7A7A7;
+    }
+
+    .minimal {
+        width: 100px;
+    }
+
+    #catalogBlock > div {
+        width: 100%;
+    }
 }
