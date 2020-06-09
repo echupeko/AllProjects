@@ -9,52 +9,52 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-<!--<div id="navBar" class="flex-display">-->
-<!--    <nav>-->
-<!--        <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img :src="logoSrc"></div>-->
-<!--        <ul class="flex-display">-->
-<!--            <li v-for="navItem in navItems">-->
-<!--                <a :href="navItem.href">{{ navItem.text }}</a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--        <div class="nav-toggle"><span></span></div>-->
-<!--        <div class="basket"><img :src="basketSrc"><span class="counter">{{countOrder}}</span></div>-->
-<!--    </nav>-->
-<!--</div>-->
+<div id="navBar" class="flex-display">
+    <nav>
+        <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img :src="logoSrc"></div>
+        <ul class="flex-display">
+            <li v-for="navItem in navItems">
+                <a :href="navItem.href">{{ navItem.text }}</a>
+            </li>
+        </ul>
+        <div class="nav-toggle"><span></span></div>
+        <div class="basket"><img :src="basketSrc"><span class="counter">{{countOrder}}</span></div>
+    </nav>
+</div>
 
-<!--<div id="contentBlock" class="block-element  flex-display">-->
-<!--    <div id="formViewer" class="flex-display" v-if="seen" @click="viewMore">-->
-<!--        <img :src="licenses[id].src" :alt="licenses[id].description">-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <h1><?php echo($title); ?></h1>-->
-<!--        <div class="container flex-display">-->
-<!--            <section id="descriptionBlock">-->
-<!--                <p style="text-align: center">-->
-<!--                    Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце-->
-<!--                    июня - июле месяце, самый разгар медосбора длится примерно две-три недели. Пчелы активно летают на-->
-<!--                    обильно выделяющие нектар белые и розовые цветы.-->
-<!--                </p>-->
+<div id="contentBlock" class="block-element  flex-display">
+    <div id="formViewer" class="flex-display" v-if="seen" @click="viewMore">
+        <img :src="licenses[id].src" :alt="licenses[id].description">
+    </div>
+    <div>
+        <h1><?php echo($title); ?></h1>
+        <div class="container flex-display">
+            <section id="descriptionBlock">
+                <p style="text-align: center">
+                    Гречиху биологи относят к растениям семейства гречишных. Цветение начинается, как правило, в конце
+                    июня - июле месяце, самый разгар медосбора длится примерно две-три недели. Пчелы активно летают на
+                    обильно выделяющие нектар белые и розовые цветы.
+                </p>
 
-<!--                <p style="text-align: center">-->
-<!--                    Гречишный мед имеет насыщенный густой аромат цветов гречихи, и терпкий вкус. Его нельзя спутать ни с-->
-<!--                    каким другим сортом меда. Очень часто, снимая пробу, можно ощутить небольшое жжение (першение) в-->
-<!--                    нёбе. Такой эффект объясняется ярко выраженными антибактериальными свойствами мед-->
-<!--                </p>-->
-<!--            </section>-->
-<!--            <section id="licenseBlock">-->
-<!--                <div class="flex-display">-->
-<!--                    <div :class="license.class" class="flex-display minimal" v-for="license in licenses"-->
-<!--                         :style="{display: license.display}">-->
-<!--                        <img @click="openLicense(licenses.indexOf(license))" :src="license.src"-->
-<!--                             :alt="license.description">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button @click="viewMore">{{textBtn}}</button>-->
-<!--            </section>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
+                <p style="text-align: center">
+                    Гречишный мед имеет насыщенный густой аромат цветов гречихи, и терпкий вкус. Его нельзя спутать ни с
+                    каким другим сортом меда. Очень часто, снимая пробу, можно ощутить небольшое жжение (першение) в
+                    нёбе. Такой эффект объясняется ярко выраженными антибактериальными свойствами мед
+                </p>
+            </section>
+            <section id="licenseBlock">
+                <div class="flex-display">
+                    <div :class="license.class" class="flex-display minimal" v-for="license in licenses"
+                         :style="{display: license.display}">
+                        <img @click="openLicense(licenses.indexOf(license))" :src="license.src"
+                             :alt="license.description">
+                    </div>
+                </div>
+                <button @click="viewMore">{{textBtn}}</button>
+            </section>
+        </div>
+    </div>
+</div>
 
 
 <div id="catalogBlock" class="block-element flex-display" >
