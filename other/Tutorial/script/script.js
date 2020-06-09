@@ -12,9 +12,9 @@ let navBarApp = new Vue({
         logoSrc: logoIcon,
         basketSrc: "resource/basket.png",
         navItems: [
-            {href:'#',text:'О нас',visible:1},
-            {href:'#',text:'Каталог',visible:1},
-            {href:'#',text:'Контакты',visible:1}
+            {href: '#', text: 'О нас', visible: 1},
+            {href: '#', text: 'Каталог', visible: 1},
+            {href: '#', text: 'Контакты', visible: 1}
         ]
     },
     methods: {
@@ -55,31 +55,35 @@ let contentBlockApp = new Vue({
     }
 });
 
-Vue.component('item',{
+Vue.component('item', {
     props: ['cat'],
-    template:  '' +
+    template: '' +
     '<div class="catalogItem">' +
     '   <h3>Мёд {{cat.volume}} л.</h3>' +
     '   <img src="resource/bochka.png">' +
     '   <p>цена: {{cat.price}} руб.</p>' +
     '   <div>' +
-    '       <input type="submit" value="-">' +
-    '       <input step="1" value="1" type="number">' +
-    '       <input type="submit" value="+">' +
+    '       <input type="submit" value="-" @click="tre">' +
+    '       <input step="1" v-model="cat.count" type="number">' +
+    '       <input type="submit" value="+" @click="tre">' +
     '   </div>' +
     '   <input type="submit" value="Добавить к заказу">' +
     '</div>'
 })
 
 let catalogBlockApp = new Vue({
-    el: "#catalogBlock",
-    data: {
-
-        catalogs: [
-            {id:0, volume: '1', price: '1500'},
-            {id:1, volume: '2', price: '2900'},
-            {id:2, volume: '3', price: '4000'}
-        ]
-    },
-    methods: {}
-});
+        el: "#catalogBlock",
+        data: {
+            catalogs: [
+                {id: 0, volume: '1', price: 1500, count: 0},
+                {id: 1, volume: '2', price: 2900, count: 0},
+                {id: 2, volume: '3', price: 4000, count: 0}
+            ]
+        },
+        methods: {
+            tre: function () {
+                db = openDatabase("ToDo", "0.1", "A list of to do items.", 200000);
+            }
+        }
+    })
+;

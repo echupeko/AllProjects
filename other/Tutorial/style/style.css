@@ -92,6 +92,7 @@ nav a:hover {
     background-color: black;
     border-radius: 8px 8px 0px 0px;
     color: white;
+    font-size: 20px;
     margin: 0;
     text-align: center;
 }

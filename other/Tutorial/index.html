@@ -11,23 +11,23 @@
 
 <div id="navBar" class="flex-display">
     <nav>
-        <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img v-bind:src="logoSrc"></div>
+        <div class="logo" @click="revers" @mouseover="imgOver" @mouseout="imgOut"><img :src="logoSrc"></div>
         <ul class="flex-display">
             <li v-for="navItem in navItems">
-                <a v-bind:href="navItem.href">{{ navItem.text }}</a>
+                <a :href="navItem.href">{{ navItem.text }}</a>
             </li>
         </ul>
         <div class="nav-toggle"><span></span></div>
-        <div class="basket"><img v-bind:src="basketSrc"><span class="counter">{{countOrder}}</span></div>
+        <div class="basket"><img :src="basketSrc"><span class="counter">{{countOrder}}</span></div>
     </nav>
 </div>
 
 <div id="contentBlock" class="block-element  flex-display">
     <div id="formViewer" class="flex-display" v-if="seen" @click="viewMore">
-        <img v-bind:src="licenses[id].src" v-bind:alt="licenses[id].description">
+        <img :src="licenses[id].src" :alt="licenses[id].description">
     </div>
     <div>
-        <h1>О нас</h1>
+        <h1><?php echo($title); ?></h1>
         <div class="container flex-display">
             <section id="descriptionBlock">
                 <p style="text-align: center">
@@ -44,10 +44,10 @@
             </section>
             <section id="licenseBlock">
                 <div class="flex-display">
-                    <div v-bind:class="license.class" class="flex-display minimal" v-for="license in licenses"
-                         v-bind:style="{display: license.display}">
-                        <img @click="openLicense(licenses.indexOf(license))" v-bind:src="license.src"
-                             v-bind:alt="license.description">
+                    <div :class="license.class" class="flex-display minimal" v-for="license in licenses"
+                         :style="{display: license.display}">
+                        <img @click="openLicense(licenses.indexOf(license))" :src="license.src"
+                             :alt="license.description">
                     </div>
                 </div>
                 <button @click="viewMore">{{textBtn}}</button>
@@ -56,14 +56,19 @@
     </div>
 </div>
 
-<div id="catalogBlock" class="block-element flex-display">
+
+<div id="catalogBlock" class="block-element flex-display" >
     <div>
         <h1>Каталог</h1>
+
         <div id="containerBlockCatalog" class="container flex-display">
-            <item v-for="catalog in catalogs" v-bind:cat="catalog" v-bind:key="catalog.id"></item>
+            <item v-for="catalog in catalogs" :cat="catalog" :key="catalog.id">
+
+            </item>
         </div>
     </div>
 </div>
+
 <script src="script/script.js"></script>
 </body>
 </html>
