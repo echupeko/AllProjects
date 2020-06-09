@@ -2,115 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0" />
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/mobileStyle.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
+    <title>Site list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link href="style/style.css" rel="stylesheet">
+    <link href="style/mobileStyle.css" rel="stylesheet">
 </head>
 <body>
-<div id="menu">
-    <div id="avatarBlock"></div>
-    <div id="nav-toggle">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div class="content">
+    <div id="siteBlock">
+        <item v-for="site in sites" :site="site" :key="site.id">
 
-        <span></span>
+        </item>
     </div>
 </div>
-<div id="wrapper">
-<section id="content">
-    <div id="description">
-        <div id="skills">
-            <div id="html">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="css">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="js">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="1C">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="ps"> <div class="preview"></div>
-                <div class="dataBlock"></div>
-
-            </div>
-        </div>
-        <div id="education">
-            <div id="asu2015">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="asu2017">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-        </div>
-        <div id="development">
-
-                <div id="cardgame">
-                    <div class="preview">
-                        <img src="other/CardGame/resources/label.png">
-                    </div>
-                    <div class="dataBlock">
-                        <a href="https://echupeko.github.io/other/CardGame/index.html">Сайт-игра</a>
-                    </div>
-                </div>
-                <div id="psh">
-                    <div class="preview">
-                        <img src="other/PSH/source/newlogo.png">
-                    </div>
-                    <div class="dataBlock">
-                        <a href="https://echupeko.github.io/other/PSH/index.html">Сайт-галлерея</a>
-                    </div>
-                </div>
-
-        </div>
-        <div id="hobby">
-            <div id="bicycle">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="snowboard">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="photoshop">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="needlework">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-        </div>
-        <div id="contact">
-            <div id="adress">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="email">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-            <div id="socialnetwork">
-                <div class="preview"></div>
-                <div class="dataBlock"></div>
-            </div>
-        </div>
-    </div>
-</section>
-</div>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-<script type="text/javascript" src="script/script.js"></script>
+<script src="script/script.js"></script>
 </body>
 </html>

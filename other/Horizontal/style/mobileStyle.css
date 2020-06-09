@@ -1,0 +1,90 @@
+@media screen and (max-width: 550px) {
+
+    #menu {
+        bottom: unset;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #avatarBlock {
+        margin: 0;
+    }
+
+    #nav-toggle {
+        position: relative;
+        width: 108px;
+        height: 108px;
+        border-bottom: 0;
+        border-left: 1px solid black;
+    }
+
+    #wrapper {
+        width: 100%;
+    }
+
+    #nav-toggle span {
+        top: 52px;
+        left: auto;
+        right: 45px;
+    }
+
+    #content {
+        width: 100%;
+        min-width: auto;
+        min-height: 100vh;
+        padding-right: 0;
+        padding-top: 108px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .panel {
+        width: 100%;
+        height: 120px;
+    }
+
+    .panel img {
+        width: 100%;
+        height: auto;
+    }
+
+    .panel p {
+        font-size: 20px;
+        top: 25%;
+    }
+
+    .panel-selection {
+        position: absolute;
+        top: 108px;
+    }
+
+    .panel-hide {
+        display: none;
+    }
+
+    #description {
+        width: 100% !important;
+        height: 100%;
+        padding-right: 0;
+        padding-top: 120px;
+        position: relative;
+    }
+
+    #description > div > div{
+        height: 150px;
+    }
+
+    .preview {
+        display: none;
+    }
+
+    .dataBlock {
+        width: 100%;
+    }
+
+    #block-module div {
+        width: 100px;
+        height: 100px;
+    }
+}

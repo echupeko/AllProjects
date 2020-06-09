@@ -1,0 +1,259 @@
+* {
+    transition: .5s ease;
+}
+
+html {
+    overflow: hidden;
+    background: #3d3d3d;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans";
+}
+
+#menu {
+    position: fixed;
+    width: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #3d3d3d;
+    z-index: 999;
+}
+
+#avatarBlock {
+    background: url("../source/avatar.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 0;
+    padding-top: 100px;
+    border: 4px solid #ff7a06;
+    margin: 0 auto;
+}
+
+#nav-toggle {
+    width: 100%;
+    height: 108px;
+    display: block;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+#nav-toggle:hover {
+    background: #323232;
+}
+
+
+#nav-toggle:hover span{
+    opacity: 0.4;
+}
+
+#nav-toggle span {
+    top: 156px;
+    left: 48px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 3px;
+    background-color: #838383;
+    opacity: 1;
+    border-radius: 3px;
+}
+
+#nav-toggle span:before {
+    transform: translateY(-5px);
+}
+
+#nav-toggle span:after {
+    transform: translateY(5px);
+}
+#wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 100px);
+    height: 100%;
+}
+#content {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: block;
+    overflow-x: overlay;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+
+/*html::-webkit-scrollbar{*/
+    /*display: none;*/
+/*}*/
+
+.panel {
+    display: inline-block;
+    position: relative;
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.panel-selection {
+    position: absolute;
+    left: 0;
+}
+
+.panel-hide {
+    display: none;
+}
+
+.panel p{
+    width: 100%;
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: bold;
+    z-index: 5;
+    top: 45%;
+    text-align: center;
+}
+.panel a{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 6;
+}
+
+.panel img {
+    height: 100%;
+    width: auto;
+}
+
+.panel span{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0.75;
+    background: #333333;
+    display: block;
+}
+
+.panel:hover span{
+    opacity: 0.9;
+    background: #ff7a06;
+}
+
+.panel:hover img{
+    transform: scale(1.1);
+}
+
+#description {
+   outline: 2px solid black;
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    transition: width 500ms ease;
+    overflow-y: scroll;
+}
+
+/*#block-module{*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+/*}*/
+
+#description > div{
+    width: 100%;
+    height: 100%;
+    background: #555555;
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#description > div > div{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    background: #ff7a06;
+    margin: 25px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#description > div > div > div > img{
+    width: 100%;
+}
+
+.description-select-panel {
+    display: flex !important;
+}
+
+#description > div > div > div{
+    border-radius: 10px;
+    height: 90%;
+}
+
+.preview {
+    background-color: white;
+    width: 240px;
+}
+.dataBlock {
+    background-color: gray;
+    width: 615px;
+}
+
+*::-webkit-scrollbar {
+
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #3d3d3d;
+}
+
+
+*::-webkit-scrollbar-track{
+    background: transparent url('../source/transparent.png') repeat-x !important;
+}
+
+*::-webkit-scrollbar:vertical{
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #ff7a06;
+}
+
+*::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+
+*::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #a19fa2;
+    transition: background-color 3ms ease;
+}
