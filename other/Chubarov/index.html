@@ -9,7 +9,7 @@
 <script src="script/script.js"></script>
 <header>
     <nav id="navBar">
-        <div class="logo" ><img :src="logoSrc"></div>
+        <div class="logo" ><img :src="logoSrc" @click="addedAmount"></div>
         <ul class="flex-display">
             <li v-for="navItem in navItems">
                 <a :href="navItem.href">{{navItem.title}}</a>
