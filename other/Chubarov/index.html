@@ -6,20 +6,25 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="script/script.js"></script>
 <header>
     <nav id="navBar">
         <div class="logo" ><img :src="logoSrc"></div>
         <ul class="flex-display">
             <li v-for="navItem in navItems">
-                <a :href="navItem.href">{{ navItem.text }}</a>
+                <a :href="navItem.href">{{navItem.title}}</a>
             </li>
         </ul>
-        <div class="basket"><img :src="basketSrc"><span class="counter">1</span></div>
+        <div class="basket flex-display">
+            <p :style="{visibility: visibleAmount}">{{amount}} руб.</p>
+            <img :src="basketSrc">
+            <span class="quantity">{{quantity}}</span>
+        </div>
         <div class="nav-toggle"><span></span></div>
     </nav>
 </header>
 <main></main>
 <footer></footer>
-<script src="script/script.js"></script>
+<script src="script/vue.js"></script>
 </body>
 </html>
