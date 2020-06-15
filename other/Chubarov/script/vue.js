@@ -8,10 +8,10 @@ let navBar = new Vue({
     data: {
         amount: 'Корзина пуста',
         quantity: 0,
-        visibleAmount: 'hidden',
+        visibleQuantity: 'hidden',
         sizeQuantity: '14px',
-        topQuantity: '-19px',
-        leftQuantity: '2px',
+        topQuantity: '-16px',
+        leftQuantity: '4px',
         logoSrc: 'resource/logo.png',
         basketSrc: 'resource/basket.png',
         navItems: [
@@ -27,7 +27,7 @@ let navBar = new Vue({
             this.quantity++;
             this.amount = 'Заказ на ' + this.quantity * 50 + 'руб.';
             if (this.amount) {
-                this.visibleAmount = 'visible'
+                this.visibleQuantity = 'visible'
             }
             if(this.quantity > 9){
                 this.sizeQuantity = '12px';
