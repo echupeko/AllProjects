@@ -19,9 +19,11 @@
             </li>
         </ul>
         <div class="basket flex-display">
-            <p :style="{visibility: visibleAmount}">{{amount}} руб.</p>
-            <img :src="basketSrc">
-            <span class="quantity"><p>{{quantity}}</p></span>
+            <p class="amount">{{amount}}</p>
+            <img :src="basketSrc" @click="addedAmount">
+            <span class="quantity" :style="{visibility: visibleAmount}">
+                <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
+            </span>
         </div>
         <div class="nav-toggle"><span></span></div>
     </nav>

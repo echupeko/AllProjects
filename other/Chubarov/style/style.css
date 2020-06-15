@@ -68,7 +68,20 @@ a:hover {
     width: 50px;
 }
 
+.amount {
+    width: 63px;
+    margin: 10px;
+    text-align: right;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: bold;
+    color: #4e4c4c;
+}
+
 .quantity {
+    position: relative;
+    top: 25px;
+    left: -15px;
     width: 16px;
     height: 16px;
     background-color: #ffab19;
