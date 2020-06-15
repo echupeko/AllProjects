@@ -4,16 +4,44 @@ img {
 
 }
 * {
+    transition: height 0.2s ease-out 0.2s;
     color: black;
     text-decoration: none;
+}
+
+.blocks{
+    width:300px;
+    height: 250px;
+    margin: 20px;
+    background-size: cover;
+    background-position: center;
+    border: 3px black solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blocks:hover input{
+    display: block;
+    height: 50px;
 }
 
 a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 300px;
+    height: 100%;
+}
+
+h3 {
+    width: 80%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.83);
+    color: #e7e9eb;
+    text-shadow: 0 0 2px #555555;
+    border-radius: 10px;
 }
 
 #siteBlock {
@@ -22,3 +50,20 @@ a {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+input {
+    height: 0;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
+    border: 0;
+    padding: 0;
+    outline: none;
+    border-radius: 0 0 5px 5px;
+    background-color: #323232;
+    color: rgb(235, 148, 42);
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Open Sans";
+}
+

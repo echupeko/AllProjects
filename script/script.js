@@ -27,11 +27,12 @@
 Vue.component('item', {
     props: ['site'],
     template: '' +
-        '<a :href="site.url" class="siteItem">' +
-        '   <h3>{{site.title}}</h3>' +
-        '   <img :src="site.src">' +
+        '<div class="blocks" :style="{ backgroundImage: \'url(\'+ site.src +\')\'}">'+
+        '   <a :href="site.url" class="siteItem">' +
+        '       <h3>{{site.title}}</h3>' +
+        '   </a>'+
         '   <input type="submit" value="Открыть">' +
-        '</a>'
+        '</div>'
 })
 
 let siteBlock = new Vue({
