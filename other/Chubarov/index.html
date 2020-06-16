@@ -15,7 +15,7 @@
         <div class="logo"></div>
         <ul class="flex-display row">
             <li v-for="navItem in navItems">
-                <a :href="navItem.href">{{navItem.title}}</a>
+                <a @click="scrollingTo(navItem.href)">{{navItem.title}}</a>
             </li>
         </ul>
         <div class="basket flex-display">
@@ -28,7 +28,7 @@
         <div class="nav-toggle"><span></span></div>
     </nav>
 </header>
-<main>
+<main id="main">
     <section id="slider">
         <!--<img src="resource/slider_1.png">-->
         <!--<div style="width: 100%; height:500px; background-color: #1c1c1c"></div>-->
@@ -37,7 +37,7 @@
         <!--<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>-->
         <!--<img src="resource/contact.png">-->
     </section>
-    <section id="hot">
+    <section id="bestseller">
         <h2>Хит продаж</h2>
         <img src="resource/hotHoney2.png">
         <div id="hotBlock">
