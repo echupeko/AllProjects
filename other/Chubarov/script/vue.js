@@ -1,3 +1,5 @@
+let quantityGlobal = 0;
+
 Vue.component('item', {
     props: [],
     template: ''
@@ -23,9 +25,10 @@ let navBar = new Vue({
         ]
     },
     methods: {
-        addedAmount() {
-            this.quantity++;
-            this.amount = 'Заказ на ' + this.quantity * 50 + 'руб.';
+        addedAmount(sal) {
+            quantityGlobal++;
+            this.quantity = quantityGlobal;
+            this.amount = 'Заказ на ' + this.quantity * sal + 'руб.';
             if (this.amount) {
                 this.visibleQuantity = 'visible'
             }
@@ -34,6 +37,19 @@ let navBar = new Vue({
                 this.topQuantity = '-13px';
                 this.leftQuantity = '1px';
             }
+        }
+    }
+});
+
+
+let hotBlock = new Vue({
+    el: "#hotBlock",
+    data: {
+        sale: 1630
+    },
+    methods: {
+        addedQuantity() {
+            navBar.addedAmount(this.sale);
         }
     }
 });
