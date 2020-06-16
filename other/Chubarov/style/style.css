@@ -1,5 +1,7 @@
 *{
     transition: all 0.2s ease-out;
+    font-family: "Open Sans";
+    font-weight: bold;
 }
 
 body {
@@ -52,7 +54,6 @@ a {
     color: #ffab19;
     font-weight: bolder;
     font-size: 18px;
-    font-family: "Open Sans";
     text-decoration: none;
     text-shadow: #4e4c4c 1px 1px 3px, #4e4c4c -1px -1px 3px,
     #4e4c4c -1px 1px 3px, #4e4c4c 1px -1px 3px;
@@ -69,12 +70,10 @@ a:hover {
 }
 
 .amount {
-    width: 63px;
+    width: 74px;
     margin: 10px;
     text-align: right;
-    font-family: "Open Sans";
     font-size: 14px;
-    font-weight: bold;
     color: #4e4c4c;
 }
 
@@ -88,8 +87,6 @@ a:hover {
     border: 1px #4e4c4c solid;
     border-radius: 50%;
     color: #4e4c4c;
-    font-family: "Open Sans";
-    font-weight: bold;
 }
 
 .quantity p {
@@ -116,4 +113,66 @@ section {
 
 #contact {
     background-image: url("../resource/contact.png");
+}
+#hot {
+    height: 500px;
+}
+#hot img {
+    width: 100%;
+}
+
+#hotBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -750px;
+    left: 50px;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(249, 249, 249, 0.70);
+    box-shadow: 0 0 40px rgb(249, 249, 249);
+    border-radius: 30px;
+
+}
+
+#hotBlock div{
+    display: flex;
+    flex-direction: row;
+}
+
+#hotBlock div h3{
+    margin: 10px;
+}
+
+#hotBlock div h3:nth-child(2){
+    font-weight: lighter;
+}
+
+#hotBlock div span{
+    width: 100px;
+    height: 2px;
+    background-color: #4e4c4c;
+    transform: rotateZ(15deg);
+    position: absolute;
+    top: 143px;
+    left: 47px;
+}
+
+#hotBlock input {
+    background-color: #ffab19;
+    border-radius: 5px;
+    border: 2px #4e4c4c solid;
+    width: 85%;
+    height: 35px;
+    font-size: 15px;
+}
+
+#hotBlock p {
+    font-size: 12px;
+    font-weight: lighter;
+}
+main {
+    background-image: url("../resource/bg.png");
 }
