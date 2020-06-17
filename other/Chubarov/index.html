@@ -13,15 +13,15 @@
 <script src="script/data.js"></script>
 <header class="flex-display">
     <nav id="navBar" class="flex-display row">
-        <div class="logo"></div>
+        <div id="logo"></div>
         <ul class="flex-display row">
             <li v-for="navItem in navItems">
                 <a @click="scrollingTo(navItem.href)">{{navItem.title}}</a>
             </li>
         </ul>
-        <div class="basket flex-display">
+        <div class="flex-display">
             <p class="amount">{{amount}}</p>
-            <img :src="basketSrc" @click="addedAmount">
+            <img id="basketIco" :src="basketSrc">
             <span class="quantity" :style="{visibility: visibleQuantity}">
                 <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
             </span>
@@ -41,18 +41,24 @@
     <section id="bestseller">
         <h2>Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
-        <!--<img src="resource/hotHoney2.png">-->
+<!--        <img src="resource/hotHoney2.png">-->
         <div id="hotBlock">
             <h3>Мёд {{title}} {{count}}л.</h3>
             <div>
-
                 <div><span></span><h3>{{oldPrice}} руб.</h3></div>
                 <h3>{{sale}} руб.</h3>
             </div>
-            <input type="button" value="Добавить в корзину" @click="addedQuantity">
+            <input class="btn" type="button" value="Добавить в корзину" @click="addedQuantity">
             <p>прочитать об этом виде мёда</p>
         </div>
     </section>
+    <section id="catalog">
+        <h2>Каталог</h2>
+        <div id="catalogBlock">
+            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>
+        </div>
+    </section>
+    <section id="certificate"></section>
 </main>
 <footer></footer>
 <script src="script/vue.js"></script>

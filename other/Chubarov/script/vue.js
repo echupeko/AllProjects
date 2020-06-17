@@ -2,10 +2,6 @@ let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
 
-Vue.component('item', {
-    props: [],
-    template: ''
-});
 
 let navBar = new Vue({
     el: "#navBar",
@@ -42,8 +38,9 @@ let navBar = new Vue({
             }
         },
         scrollingTo(to) {
-            document.getElementById(to).scrollIntoView({
-                block: 'start',
+            let topElem = document.getElementById(to).offsetTop-((pageYOffset > 100)? 70 : 142);
+            window.scrollTo({
+                top: topElem,
                 behavior: 'smooth'
             });
         }
@@ -66,13 +63,36 @@ let hotBlock = new Vue({
     }
 });
 
-window.onload = function () {
-    honeyList.forEach(item => {
-        if(item.sale) {
-            hotBlock.title = item.name;
-            hotBlock.oldPrice = item.price;
-            hotBlock.sale = item.salePrice;
-            hotBlock.count = item.count;
+Vue.component('item', {
+    props: ['cat'],
+    template: '' +
+        '<div class="catalogItem">' +
+        '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
+        '   <img src="resource/bochka.png">' +
+        '   <p>цена: {{cat.price}} руб.</p>' +
+        '   <div>' +
+        '       <input type="submit" value="-">' +
+        '       <input step="1"  type="number">' +
+        '       <input type="submit" value="+">' +
+        '   </div>' +
+        '   <input class="btn" type="submit" value="Добавить к заказу" @click="handleClick">' +
+        '</div>',
+    methods: {
+        handleClick() {
+            this.$emit('click');
         }
-    })
-}
+    }
+})
+
+let catalogBlock = new Vue({
+    el: "#catalogBlock",
+    data: {
+        honeyVueList: honeyList
+    },
+    methods: {
+        orderAdd: function(id) {
+            navBar.addedAmount(honeyList[id].price);
+        }
+    }
+});
+

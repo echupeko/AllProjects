@@ -23,10 +23,22 @@ body {
 }
 
 header {
-    /*background-image: url("../resource/headerWood.png");*/
-    max-height: 10vh;
-    min-height: 78px;
+    background-image: url("../resource/headerWood.png");
+    max-height: 7vh;
+    min-height: 70px;
     border-bottom: 2px #dcdcdc solid;
+}
+
+.unDisplay {
+    display: none;
+}
+
+.header-fixed {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 #navBar {
@@ -34,15 +46,20 @@ header {
     justify-content: space-between;
 }
 
-.logo {
+#logo {
     position: relative;
+    top: 12px;
     max-width: 10.8vw;
     min-width: 160px;
     min-height: 93px;
     border: 2px solid #4e4c4c;
-    /*background-image: url("../resource/logo.jpg");*/
+    background-image: url("../resource/logo.jpg");
     background-size: cover;
     box-shadow: 0 -20px 20px #5f5f5f;
+}
+
+ul {
+    margin: 0;
 }
 
 li {
@@ -65,7 +82,7 @@ a:hover {
     #ffab19 -1px 1px 3px, #ffab19 1px -1px 3px;
 }
 
-.basket img {
+#basketIco {
     width: 50px;
 }
 
@@ -101,24 +118,48 @@ a:hover {
 
 section {
     width: 100%;
-    height: 300px;
+    max-height: 70vh;
+    min-height: 435px;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    outline: 3px #4e4c4c solid;
 }
 
 #slider {
     box-shadow: 0 0 40px black inset;
-    /*background-image: url("../resource/slider_1.png");*/
+    background-image: url("../resource/slider_1.png");
 }
 
 #contact {
-    /*background-image: url("../resource/contact.png");*/
+    background-image: url("../resource/contact.png");
 }
-#hot {
-    height: 500px;
+
+#bestseller {
+    max-height: unset;
+    min-height: unset;
+
 }
-#hot img {
+
+section h2 {
+    text-align: center;
+    width: 80%;
+    color: #ffab19;
+    text-shadow: #4e4c4c 1px 1px 3px, #4e4c4c -1px -1px 3px,
+    #4e4c4c -1px 1px 3px, #4e4c4c 1px -1px 3px;
+}
+
+#bestsellerHoney{
     width: 100%;
+    height: 800px;
+    background-image: url("../resource/hotHoney2.png");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 100px black inset;
+    outline: 3px #4e4c4c solid;
 }
 
 #hotBlock {
@@ -127,8 +168,9 @@ section {
     justify-content: space-around;
     align-items: center;
     position: relative;
-    top: 100px;
-    left: 100px;
+    margin-top: -700px;
+    margin-bottom: 400px;
+    left: -30%;
     width: 300px;
     height: 300px;
     background-color: rgba(249, 249, 249, 0.70);
@@ -161,7 +203,7 @@ section {
     content: '';
 }
 
-#hotBlock input {
+.btn {
     background-color: #ffab19;
     border-radius: 5px;
     border: 2px #4e4c4c solid;
@@ -175,5 +217,22 @@ section {
     font-weight: lighter;
 }
 main {
-    /*background-image: url("../resource/bg.png");*/
+    background-image: url("../resource/bg.png");
+}
+
+#catalogBlock {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 80%;
+}
+
+.catalogItem img {
+    width: 200px;
+}
+
+#certificate {
+    max-height: 700px;
+    min-height: 700px;
 }
