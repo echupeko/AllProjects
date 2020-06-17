@@ -5,10 +5,12 @@ const honeyList = [
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
         count: '3',
         unit: 'литр',
-        price: 2980,
+        price: 1980,
+        salePrice: 1630,
         min: 1,
         max: 14, //остаток
-        buy: false //флаг для заказа
+        buy: false, //флаг для заказа
+        sale: false //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный
@@ -16,10 +18,12 @@ const honeyList = [
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
         count: '2',
         unit: 'литр',
-        price: 1950,
+        price: 1300,
+        salePrice: 1150,
         min: 1,
         max: 20, //остаток
-        buy: false //флаг для заказа
+        buy: false, //флаг для заказа
+        sale: true //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный
@@ -27,10 +31,12 @@ const honeyList = [
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
         count: '1',
         unit: 'литр',
-        price: 980,
+        price: 600,
+        salePrice: 550,
         min: 1,
         max: 57, //остаток
-        buy: false //флаг для заказа
+        buy: false, //флаг для заказа
+        sale: false //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный
@@ -38,10 +44,12 @@ const honeyList = [
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
         count: '0,5',
         unit: 'литр',
-        price: 540,
+        price: 450,
+        salePrice: 400,
         min: 1,
         max: 50, //остаток
-        buy: false //флаг для заказа
+        buy: false, //флаг для заказа
+        sale: false //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный
@@ -50,8 +58,10 @@ const honeyList = [
         count: '0,3',
         unit: 'литр',
         price: 320,
+        salePrice: 250,
         min: 1,
         max: 31, //остаток
-        buy: false //флаг для заказа
+        buy: false, //флаг для заказа
+        sale: false //участвует в распродаже
     }
 ];

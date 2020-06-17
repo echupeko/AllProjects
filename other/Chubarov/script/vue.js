@@ -1,4 +1,6 @@
 let quantityGlobal = 0;
+let amountGlobal = 0;
+let clientHeight = window.innerHeight;
 
 Vue.component('item', {
     props: [],
@@ -27,8 +29,9 @@ let navBar = new Vue({
     methods: {
         addedAmount(sal) {
             quantityGlobal++;
+            amountGlobal += sal;
             this.quantity = quantityGlobal;
-            this.amount = 'Заказ на ' + this.quantity * sal + 'руб.';
+            this.amount = 'Заказ на ' + amountGlobal + 'руб.';
             if (this.amount) {
                 this.visibleQuantity = 'visible'
             }
@@ -51,7 +54,9 @@ let navBar = new Vue({
 let hotBlock = new Vue({
     el: "#hotBlock",
     data: {
-        sale: 1630
+        title: '',
+        sale: 0,
+        count: 0
     },
     methods: {
         addedQuantity() {
@@ -59,3 +64,13 @@ let hotBlock = new Vue({
         }
     }
 });
+
+window.onload = function () {
+    honeyList.forEach(item => {
+        if(item.sale) {
+            hotBlock.title = item.name;
+            hotBlock.sale = item.salePrice;
+            hotBlock.count = item.count;
+        }
+    })
+}
