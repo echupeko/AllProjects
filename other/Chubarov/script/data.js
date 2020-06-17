@@ -23,7 +23,7 @@ const honeyList = [
         min: 1,
         max: 20, //остаток
         buy: false, //флаг для заказа
-        sale: true //участвует в распродаже
+        sale: false //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный
@@ -36,7 +36,7 @@ const honeyList = [
         min: 1,
         max: 57, //остаток
         buy: false, //флаг для заказа
-        sale: false //участвует в распродаже
+        sale: true //участвует в распродаже
     },
     {
         id: 'buckwheat', //гречичный

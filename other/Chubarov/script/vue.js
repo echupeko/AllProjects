@@ -55,6 +55,7 @@ let hotBlock = new Vue({
     el: "#hotBlock",
     data: {
         title: '',
+        oldPrice: 0,
         sale: 0,
         count: 0
     },
@@ -69,6 +70,7 @@ window.onload = function () {
     honeyList.forEach(item => {
         if(item.sale) {
             hotBlock.title = item.name;
+            hotBlock.oldPrice = item.price;
             hotBlock.sale = item.salePrice;
             hotBlock.count = item.count;
         }
