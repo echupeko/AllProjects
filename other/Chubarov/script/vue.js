@@ -9,7 +9,7 @@ let navBar = new Vue({
         quantity: 0,
         visibleQuantity: 'hidden',
         sizeQuantity: '14px',
-        topQuantity: '-16px',
+        topQuantity: '-2px',
         leftQuantity: '4px',
         logoSrc: 'resource/logo.png',
         basketSrc: 'resource/basket.png',
@@ -66,14 +66,14 @@ let hotBlock = new Vue({
 Vue.component('item', {
     props: ['cat'],
     template: '' +
-        '<div class="catalogItem">' +
+        '<div class="catalogItem flex-display col">' +
         '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
         '   <img src="resource/bochka.png">' +
         '   <p>цена: {{cat.price}} руб.</p>' +
-        '   <div>' +
-        '       <input type="submit" value="-">' +
-        '       <input step="1"  type="number">' +
-        '       <input type="submit" value="+">' +
+        '   <div class="flex-display row">' +
+        '       <input class="input" type="submit" value="-">' +
+        '       <input class="input" step="1"  type="number">' +
+        '       <input class="input" type="submit" value="+">' +
         '   </div>' +
         '   <input class="btn" type="submit" value="Добавить к заказу" @click="handleClick">' +
         '</div>',

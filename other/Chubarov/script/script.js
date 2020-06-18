@@ -33,11 +33,11 @@ window.onscroll = function () {
     }
 }
 
-window.onmousemove = () => {
-    as = document.getElementById('qa');
-    let y = event.clientX;
-    let x = event.clientY;
-    as.style.top = x +'px';
-    as.style.left = y +'px';
-}
+// window.onmousemove = () => {
+//     as = document.getElementById('qa');
+//     let y = event.clientX;
+//     let x = event.clientY;
+//     as.style.top = x +'px';
+//     as.style.left = y +'px';
+// }
 

@@ -2,6 +2,8 @@
     transition: all 0.2s ease-out;
     font-family: "Open Sans";
     font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -108,8 +110,6 @@ a:hover {
 
 .quantity p {
     position: relative;
-    top: -19px;
-    left: 4px;
 }
 
 .nav-toggle {
@@ -134,7 +134,7 @@ section {
     background-image: url("../resource/slider_1.png");
 }
 
-#contact {
+#contactBlock {
     background-image: url("../resource/contact.png");
 }
 
@@ -145,6 +145,7 @@ section {
 }
 
 section h2 {
+    margin: 20px 0;
     text-align: center;
     width: 80%;
     color: #ffab19;
@@ -198,7 +199,7 @@ section h2 {
     background-color: #4e4c4c;
     transform: rotateZ(15deg);
     position: absolute;
-    top: 128px;
+    top: 115px;
     left: 47px;
     content: '';
 }
@@ -232,8 +233,34 @@ main {
     width: 80%;
 }
 
+.input {
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border: 0;
+    background-color: #e8ebeb;
+    outline: none;
+}
+
+.input:nth-child(2) {
+    width: 50px;
+}
+
+.catalogItem:hover .input {
+    color: white;
+    background-color: #ff7a06;
+}
+
 .catalogItem img {
     width: 200px;
+}
+
+.catalogItem > div {
+    margin: 10px;
 }
 
 #certificate {
@@ -316,10 +343,10 @@ main {
     transition: background-color 3ms ease;
 }
 
-#qa {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    background-image: url("../resource/y4.gif");
-    background-size: cover;
-}
+/*#qa {*/
+    /*position: absolute;*/
+    /*width: 200px;*/
+    /*height: 200px;*/
+    /*background-image: url("../resource/y4.gif");*/
+    /*background-size: cover;*/
+/*}*/
