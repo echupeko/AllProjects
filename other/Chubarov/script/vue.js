@@ -37,7 +37,7 @@ let navBar = new Vue({
                 this.leftQuantity = '1px';
             }
         },
-        scrollingToVue(to) {
+        scrollingTo(to) {
             let topElem = document.getElementById(to).offsetTop-((pageYOffset > 100)? 70 : 142);
             window.scrollTo({
                 top: topElem,
