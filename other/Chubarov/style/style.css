@@ -220,6 +220,10 @@ main {
     background-image: url("../resource/bg.png");
 }
 
+#catalog {
+    max-height: unset;
+}
+
 #catalogBlock {
     display: flex;
     flex-direction: row;
