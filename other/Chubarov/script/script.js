@@ -1,4 +1,4 @@
-let navBarElem = '';
+const btnToUp = document.getElementById('btn-to-up');
 
 window.onload = function () {
     honeyList.forEach(item => {
@@ -21,5 +21,14 @@ window.onscroll = function () {
         document.querySelector('header').classList.remove('header-fixed');
         // document.getElementById('basketIco').style.width = '50px';
         // document.getElementById('logo').style.top = '0';
+    }
+
+    if (pageYOffset > 400) {
+        btnToUp.style.opacity = '1';
+        btnToUp.style.cursor = 'pointer';
+    }
+    else {
+        btnToUp.style.opacity = '0';
+        btnToUp.style.cursor = 'auto';
     }
 }

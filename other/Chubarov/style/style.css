@@ -42,7 +42,7 @@ header {
 }
 
 #navBar {
-    width: 70%;
+    width: 80%;
     justify-content: space-between;
 }
 
@@ -70,7 +70,7 @@ li {
 a {
     color: #ffab19;
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 15px;
     text-decoration: none;
     text-shadow: #4e4c4c 1px 1px 3px, #4e4c4c -1px -1px 3px,
     #4e4c4c -1px 1px 3px, #4e4c4c 1px -1px 3px;
@@ -239,4 +239,43 @@ main {
 #certificate {
     max-height: 700px;
     min-height: 700px;
+}
+
+#btn-to-up {
+    display: flex;
+    opacity: 0;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 70px;
+    right: 150px;
+    background: rgba(112, 112, 112, 0.42);
+    border-radius: 50%;
+    transition: background-color, opacity 500ms ease;
+    content: '';
+}
+
+#btn-to-up:before, #btn-to-up:after {
+    width: 25px;
+    height: 5px;
+    background: rgb(255, 255, 255);
+    border-radius: 3px;
+    top: 25px;
+    content: '';
+    position: absolute;
+}
+
+#btn-to-up:before {
+    transform: rotateZ(45deg);
+    left: 25px;
+}
+
+#btn-to-up:after {
+    transform: rotateZ(-45deg);
+    right: 25px;
+}
+
+#btn-to-up:hover {
+    background: rgba(112, 112, 112, 0.87);
+    transition: background-color, opacity 500ms ease;
 }

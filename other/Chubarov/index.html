@@ -9,7 +9,6 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="script/script.js"></script>
 <script src="script/data.js"></script>
 <header class="flex-display">
     <nav id="navBar" class="flex-display row">
@@ -59,10 +58,15 @@
         </div>
     </section>
     <section id="certificate"></section>
+    <section id="about"></section>
 </main>
 <footer id="contact">
-    <span id="btn-to-up" onclick="scrollingTo('window',0)"></span>
+    <span id="btn-to-up" onclick=" window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });"></span>
 </footer>
+<script src="script/script.js"></script>
 <script src="script/vue.js"></script>
 </body>
 </html>

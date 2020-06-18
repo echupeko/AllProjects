@@ -2,7 +2,6 @@ let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
 
-
 let navBar = new Vue({
     el: "#navBar",
     data: {
@@ -38,7 +37,7 @@ let navBar = new Vue({
                 this.leftQuantity = '1px';
             }
         },
-        scrollingTo(to) {
+        scrollingToVue(to) {
             let topElem = document.getElementById(to).offsetTop-((pageYOffset > 100)? 70 : 142);
             window.scrollTo({
                 top: topElem,
@@ -96,4 +95,3 @@ let catalogBlock = new Vue({
         }
     }
 });
-
