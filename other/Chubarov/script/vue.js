@@ -1,6 +1,12 @@
 let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
+let order = {
+    id: 0,
+    honey: 0,
+    count: 0
+};
+let basketOrder = [];
 
 let navBar = new Vue({
     el: "#navBar",
@@ -65,21 +71,29 @@ let hotBlock = new Vue({
 
 Vue.component('item', {
     props: ['cat'],
+    data: {
+        countHoney: 0
+    },
     template: '' +
         '<div class="catalogItem flex-display col">' +
         '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
         '   <img src="resource/bochka.png">' +
         '   <p>цена: {{cat.price}} руб.</p>' +
         '   <div class="flex-display row">' +
-        '       <input class="input" type="submit" value="-">' +
-        '       <input class="input" step="1"  type="number">' +
-        '       <input class="input" type="submit" value="+">' +
+        '       <input class="input" type="submit" value="-" @click="handleClick(-1)">' +
+        '       <input class="input" step="1" value="1" min="1" max="20" type="number">' +
+        '       <input class="input" type="submit" value="+" @click="handleClick(1)">' +
         '   </div>' +
-        '   <input class="btn" type="submit" value="Добавить к заказу" @click="handleClick">' +
+        '   <input class="btn" type="submit" value="Добавить к заказу" @click="addedOrder(\'{{countHoney}}\')">' +
         '</div>',
     methods: {
         handleClick() {
             this.$emit('click');
+        },
+        addedOrder(cnt) {
+            order.id++;
+            order.honey = cat.id;
+            order.count = cnt;
         }
     }
 })

@@ -170,10 +170,10 @@ section h2 {
     align-items: center;
     position: relative;
     margin-top: -700px;
-    margin-bottom: 400px;
+    margin-bottom: 510px;
     left: -30%;
     width: 300px;
-    height: 300px;
+    height: 190px;
     background-color: rgba(249, 249, 249, 0.70);
     box-shadow: 0 0 40px rgb(249, 249, 249);
     border-radius: 30px;
@@ -199,8 +199,8 @@ section h2 {
     background-color: #4e4c4c;
     transform: rotateZ(15deg);
     position: absolute;
-    top: 115px;
-    left: 47px;
+    top: 75px;
+    left: 53px;
     content: '';
 }
 
@@ -233,6 +233,13 @@ main {
     width: 80%;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
 .input {
     margin: 0;
     padding: 0;
@@ -252,7 +259,7 @@ main {
 
 .catalogItem:hover .input {
     color: white;
-    background-color: #ff7a06;
+    background-color: #ffab19;
 }
 
 .catalogItem img {

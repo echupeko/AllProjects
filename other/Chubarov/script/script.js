@@ -12,7 +12,7 @@ window.onload = function () {
 }
 
 window.onscroll = function () {
-    if (pageYOffset > 100) {
+    if (pageYOffset > 80) {
         document.querySelector('header').classList.add('header-fixed');
         // document.getElementById('basketIco').style.width = '30px';
         // document.getElementById('logo').style.top = '22px';
