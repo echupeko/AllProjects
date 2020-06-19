@@ -5,6 +5,7 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link href="style/style.css" rel="stylesheet">
+    <link href="style/style_mini.css" rel="stylesheet">
     <!--<link href="style/mobileStyle.css" rel="stylesheet">-->
 </head>
 <body>
@@ -13,19 +14,19 @@
 <header class="flex-display">
     <nav id="navBar" class="flex-display row">
         <div id="logo"></div>
-        <ul class="flex-display row">
+        <ul id="menu" class="flex-display row">
             <li v-for="navItem in navItems">
                 <a @click="scrollingTo(navItem.href)">{{navItem.title}}</a>
             </li>
         </ul>
-        <div class="flex-display">
+        <div class="flex-display" @click="openBasket">
             <p class="amount">{{amount}}</p>
             <img id="basketIco" :src="basketSrc">
             <span class="quantity" :style="{visibility: visibleQuantity}">
                 <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
             </span>
         </div>
-        <div class="nav-toggle"><span></span></div>
+        <div class="nav-toggle" onclick="menuBar()"><span></span></div>
     </nav>
 </header>
 <main id="main">
@@ -61,6 +62,11 @@
     <section id="certificate"></section>
     <section id="about"></section>
 </main>
+<div id="basketForm">
+    <div>
+        <item v-for="list in honeyVueList" :cat="list" :key="list.id"></item>
+    </div>
+</div>
 <footer id="contact">
     <span id="btn-to-up" onclick=" window.scrollTo({
                 top: 0,

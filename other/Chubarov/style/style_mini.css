@@ -1,0 +1,77 @@
+@media screen and (max-width: 1270px) {
+    #navBar {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1010px) {
+
+    header {
+        min-width: 100%;
+    }
+    #menu {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    #logo {
+        margin-left: calc(50% - 82px);
+    }
+
+    #menu.active {
+        visibility: visible;
+        content: unset;
+        position: absolute;
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        top: 70px;
+        transition: height 900ms ease, box-shadow 600ms ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+        background-image: url("../resource/bg.png");
+        font-size: 25px !important;
+    }
+
+    .active * {
+        transition: visibility 900ms ease;
+        visibility: visible !important;
+    }
+
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        float: right;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        display: block;
+        position: absolute;
+        top: 19px;
+        left: 8px;
+        right: 8px;
+        height: 3px;
+        background: #323232;
+    }
+
+    .nav-toggle span:before, .nav-toggle span:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #323232;
+    }
+
+    .nav-toggle span:before {
+        top: -10px;
+    }
+
+    .nav-toggle span:after {
+        bottom: -10px;
+    }
+}
