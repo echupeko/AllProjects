@@ -1,3 +1,4 @@
+let visibleMenu = 1;
 const btnToUp = document.getElementById('btn-to-up');
 
 window.onload = function () {
@@ -9,6 +10,9 @@ window.onload = function () {
             hotBlock.count = item.count;
         }
     })
+
+    document.getElementById('basketForm').style.display = 'none';
+    document.getElementById('basketForm').style.minHeight = clientHeight - 72 + 'px';
 }
 
 window.onscroll = function () {
@@ -30,6 +34,21 @@ window.onscroll = function () {
     else {
         btnToUp.style.opacity = '0';
         btnToUp.style.cursor = 'auto';
+    }
+}
+
+menuBar = () => {
+
+    const menu = document.getElementById('menu');
+    if (window.matchMedia('(max-width: 1010px)').matches) {
+        if (visibleMenu) {
+            menu.classList.add('active');
+            visibleMenu--;
+        }
+        else {
+            menu.classList.toggle('active');
+            visibleMenu++;
+        }
     }
 }
 

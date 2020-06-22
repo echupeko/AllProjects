@@ -257,6 +257,10 @@ input::-webkit-inner-spin-button {
     width: 50px;
 }
 
+.catalogItem{
+    flex-direction: column;
+}
+
 .catalogItem:hover .input {
     color: white;
     background-color: #ffab19;
@@ -269,6 +273,7 @@ input::-webkit-inner-spin-button {
 .catalogItem > div {
     margin: 10px;
 }
+
 
 #certificate {
     max-height: 700px;
@@ -357,3 +362,35 @@ input::-webkit-inner-spin-button {
     /*background-image: url("../resource/y4.gif");*/
     /*background-size: cover;*/
 /*}*/
+
+#basketForm {
+    width: 100%;
+    background-image: url("../resource/bg.png");
+    justify-content: center;
+    align-items: center;
+}
+
+#basketForm .catalogItem:hover .input {
+    color: white;
+    background-color: #ffab19;
+}
+
+#basketForm > div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#basketForm .catalogItem{
+    flex-direction: row;
+}
+
+#basketForm .catalogItem img {
+    width: 200px;
+}
+
+#basketForm .catalogItem > div {
+    margin: 10px;
+}

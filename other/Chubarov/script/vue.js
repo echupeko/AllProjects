@@ -11,6 +11,7 @@ let basketOrder = [];
 let navBar = new Vue({
     el: "#navBar",
     data: {
+        visibleForm: false,
         amount: 'Корзина пуста',
         quantity: 0,
         visibleQuantity: 'hidden',
@@ -49,6 +50,11 @@ let navBar = new Vue({
                 top: topElem,
                 behavior: 'smooth'
             });
+        },
+        openBasket() {
+            this.visibleForm = !this.visibleForm;
+            document.getElementById('basketForm').style.display = (this.visibleForm)? 'flex' : 'none';
+            document.getElementById('main').style.display = (!this.visibleForm)? 'block' : 'none';
         }
     }
 });
@@ -71,29 +77,21 @@ let hotBlock = new Vue({
 
 Vue.component('item', {
     props: ['cat'],
-    data: {
-        countHoney: 0
-    },
     template: '' +
-        '<div class="catalogItem flex-display col">' +
+        '<div class="catalogItem flex-display">' +
         '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
         '   <img src="resource/bochka.png">' +
         '   <p>цена: {{cat.price}} руб.</p>' +
         '   <div class="flex-display row">' +
-        '       <input class="input" type="submit" value="-" @click="handleClick(-1)">' +
+        '       <input class="input" type="submit" value="-" @click="handleClick">' +
         '       <input class="input" step="1" value="1" min="1" max="20" type="number">' +
-        '       <input class="input" type="submit" value="+" @click="handleClick(1)">' +
+        '       <input class="input" type="submit" value="+" @click="handleClick">' +
         '   </div>' +
-        '   <input class="btn" type="submit" value="Добавить к заказу" @click="addedOrder(\'{{countHoney}}\')">' +
+        '   <input class="btn" type="submit" value="Добавить к заказу"  @click="handleClick">' +
         '</div>',
     methods: {
         handleClick() {
             this.$emit('click');
-        },
-        addedOrder(cnt) {
-            order.id++;
-            order.honey = cat.id;
-            order.count = cnt;
         }
     }
 })
@@ -101,11 +99,21 @@ Vue.component('item', {
 let catalogBlock = new Vue({
     el: "#catalogBlock",
     data: {
+        title: 'catalogItem',
         honeyVueList: honeyList
     },
     methods: {
         orderAdd: function(id) {
             navBar.addedAmount(honeyList[id].price);
+            basketOrder.push(honeyList[id]);
         }
     }
 });
+
+let basketCatalog = new Vue({
+    el: "#basketForm",
+    data: {
+        title: 'basketItem',
+        honeyVueList: basketOrder
+    }
+})
