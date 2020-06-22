@@ -53,6 +53,10 @@ let siteBlock = new Vue({
     })
 ;
 
+window.onload=function() {
+    document.getElementById("ifr").style.height=window.innerHeight+"px";
+}
+
 window.onmousewheel = () => {
     if (event.wheelDelta > 0) {//скроллим вверх
         document.getElementById('glavVideo').classList.remove('invisible');

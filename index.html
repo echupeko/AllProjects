@@ -10,14 +10,23 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <div id="glavVideo">
-    <video id="videoBlock" style="
+    <!--    <video id="videoBlock" style="-->
+    <!--        z-index: -2;-->
+    <!--        padding: 0;-->
+    <!--        position: absolute;-->
+    <!--        top: 0;-->
+    <!--        " width="100%" preload="auto" loop autoplay >-->
+    <!--        <source src="resource/lofi.mp4" type="video/mp4">-->
+    <!--    </video>-->
+    <iframe id="ifr" src="https://www.youtube.com/embed/YOJsKatW-Ts?autoplay=1"
+        style="
+            min-width: 100%;
         z-index: -2;
-        padding: 0;
+        padding: 0px;
         position: absolute;
-        top: 0;
-        " width="100%" preload="auto" loop autoplay >
-        <source src="resource/lofi.mp4" type="video/mp4">
-    </video>
+        bottom: -2px;
+        left: -2px;
+        min-height: 100%;"></iframe>
     <div id="glav"><h1>by EVGENY CHUPEKO</h1></div>
 </div>
 <div id="main">
