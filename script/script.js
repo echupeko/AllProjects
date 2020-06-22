@@ -27,12 +27,12 @@
 Vue.component('item', {
     props: ['site'],
     template: '' +
-        '<div class="blocks" :style="{ backgroundImage: \'url(\'+ site.src +\')\'}">'+
-        '   <a :href="site.url" class="siteItem">' +
-        '       <h3>{{site.title}}</h3>' +
-        '   </a>'+
-        '   <input type="submit" value="Открыть">' +
-        '</div>'
+    '<div class="blocks" :style="{ backgroundImage: \'url(\'+ site.src +\')\'}">' +
+    '   <a :href="site.url" class="siteItem">' +
+    '       <h3>{{site.title}}</h3>' +
+    '   </a>' +
+    '   <input type="submit" value="Открыть">' +
+    '</div>'
 })
 
 let siteBlock = new Vue({
@@ -53,6 +53,11 @@ let siteBlock = new Vue({
     })
 ;
 
-window.onload = () => {
-    document.getElementById('main').style.width = window.clientHeight + 'px';
+window.onmousewheel = () => {
+    if (event.wheelDelta > 0) {//скроллим вверх
+        document.getElementById('glavVideo').classList.remove('invisible');
+    }
+    else if (event.wheelDelta < 0) {//скроллим вниз
+        document.getElementById('glavVideo').classList.add('invisible');
+    }
 }
