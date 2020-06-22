@@ -9,7 +9,18 @@
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<div class="content">
+<div id="glavVideo">
+    <video id="videoBlock" style="
+        z-index: -2;
+        padding: 0;
+        position: absolute;
+        top: -50%;
+        " preload="auto" height="200%" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="resource/bg.mp4" type="video/mp4">
+    </video>
+    <div id="glav"><h1>by EVGENY CHUPEKO</h1></div>
+</div>
+<div id="main">
     <div id="siteBlock">
         <item v-for="site in sites" :site="site" :key="site.id">
 
