@@ -8,6 +8,7 @@ window.onload = function () {
             hotBlock.oldPrice = item.price;
             hotBlock.sale = item.salePrice;
             hotBlock.count = item.count;
+            hotBlock.honey = item.id;
         }
     })
 

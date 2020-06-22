@@ -8,6 +8,7 @@ let order = {
 };
 let basketOrder = [];
 
+
 let navBar = new Vue({
     el: "#navBar",
     data: {
@@ -60,13 +61,15 @@ let navBar = new Vue({
 });
 
 
+
 let hotBlock = new Vue({
     el: "#hotBlock",
     data: {
         title: '',
         oldPrice: 0,
         sale: 0,
-        count: 0
+        count: 0,
+        id: 0
     },
     methods: {
         addedQuantity() {
@@ -103,7 +106,7 @@ let catalogBlock = new Vue({
         honeyVueList: honeyList
     },
     methods: {
-        orderAdd: function(id) {
+        orderAdd : function(id) {
             navBar.addedAmount(honeyList[id].price);
             basketOrder.push(honeyList[id]);
         }
