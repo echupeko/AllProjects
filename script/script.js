@@ -52,3 +52,7 @@ let siteBlock = new Vue({
         }
     })
 ;
+
+window.onload = () => {
+    document.getElementById('main').style.width = window.clientHeight + 'px';
+}
