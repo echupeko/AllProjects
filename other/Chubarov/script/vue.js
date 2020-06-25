@@ -120,3 +120,20 @@ let basketCatalog = new Vue({
         honeyVueList: basketOrder
     }
 })
+
+let myMixin = {
+    created: function () {
+        this.hello()
+    },
+    methods: {
+        hello: function () {
+            console.log('привет из примеси!')
+        }
+    }
+}
+
+let Component = Vue.extend({
+    mixins: [myMixin]
+});
+
+let component = new Component();
