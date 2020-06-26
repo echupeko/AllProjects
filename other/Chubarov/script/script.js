@@ -1,5 +1,12 @@
 let visibleMenu = 1;
 const btnToUp = document.getElementById('btn-to-up');
+let orderItem = {
+    id: 0,
+    honey: 0,
+    count: 0,
+    inBasket: false
+};
+let basketOrder = [];
 
 window.onload = function () {
     honeyList.forEach(item => {
@@ -38,8 +45,7 @@ window.onscroll = function () {
     }
 }
 
-menuBar = () => {
-
+let menuBar = () => {
     const menu = document.getElementById('menu');
     if (window.matchMedia('(max-width: 1010px)').matches) {
         if (visibleMenu) {
@@ -61,3 +67,14 @@ menuBar = () => {
 //     as.style.left = y +'px';
 // }
 
+let addedOrder = (id) => {
+    orderItem.id = basketOrder.length;
+    orderItem.honey = id;
+    orderItem.count = document.getElementById('honey' + id).value;
+    orderItem.inBasket = !orderItem.inBasket;
+    basketOrder.push(orderItem);
+}
+
+let addedInBasket = (order) => {
+
+}

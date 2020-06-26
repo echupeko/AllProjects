@@ -1,13 +1,23 @@
 let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
-let order = {
-    id: 0,
-    honey: 0,
-    count: 0
-};
-let basketOrder = [];
 
+
+// let myMixin = {
+//     created: function () {
+//         this.addedOrder();
+//         this.addedInBasket();
+//     },
+//     methods: {
+//         addedOrder: function (id, count) {
+//             orderItem.honey = id;
+//             orderItem.count = count;
+//         },
+//         addedInBasket: function (order) {
+//             basketOrder.push(order)
+//         }
+//     }
+// }
 
 let navBar = new Vue({
     el: "#navBar",
@@ -21,14 +31,7 @@ let navBar = new Vue({
         leftQuantity: '4px',
         logoSrc: 'resource/logo.png',
         basketSrc: 'resource/basket.png',
-        navItems: [
-            {id: 0, title: 'Главная', href: 'main'},
-            {id: 1, title: 'Хит', href: 'bestseller'},
-            {id: 2, title: 'Каталог', href: 'catalog'},
-            {id: 3, title: 'Сертификаты', href: 'certificate'},
-            {id: 4, title: 'О пасеке', href: 'about'},
-            {id: 5, title: 'Контакты', href: 'contact'}
-        ]
+        navItems: navList
     },
     methods: {
         addedAmount(sal) {
@@ -87,10 +90,10 @@ Vue.component('item', {
         '   <p>цена: {{cat.price}} руб.</p>' +
         '   <div class="flex-display row">' +
         '       <input class="input" type="submit" value="-" @click="handleClick">' +
-        '       <input class="input" step="1" value="1" min="1" max="20" type="number">' +
+        '       <input v-bind:id="\'honey\' + cat.id" class="input" step="1" v-model="count" min="1" max="20" type="number">' +
         '       <input class="input" type="submit" value="+" @click="handleClick">' +
         '   </div>' +
-        '   <input class="btn" type="submit" value="Добавить к заказу"  @click="handleClick">' +
+        '   <input class="btn" type="submit" value="Добавить к заказу"  v-bind:onclick="addedOrder(cat.id)">' +
         '</div>',
     methods: {
         handleClick() {
@@ -103,7 +106,8 @@ let catalogBlock = new Vue({
     el: "#catalogBlock",
     data: {
         title: 'catalogItem',
-        honeyVueList: honeyList
+        honeyVueList: honeyList,
+        count: 0
     },
     methods: {
         orderAdd : function(id) {
@@ -120,20 +124,10 @@ let basketCatalog = new Vue({
         honeyVueList: basketOrder
     }
 })
-
-let myMixin = {
-    created: function () {
-        this.hello()
-    },
-    methods: {
-        hello: function () {
-            console.log('привет из примеси!')
-        }
-    }
-}
-
-let Component = Vue.extend({
-    mixins: [myMixin]
-});
-
-let component = new Component();
+//
+//
+// let Component = Vue.extend({
+//     mixins: [myMixin]
+// });
+//
+// let component = new Component();
