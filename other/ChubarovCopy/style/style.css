@@ -1,0 +1,17 @@
+* {
+    font-family: "Open Sans";
+    font-size: 15px;
+}
+
+#navbarSupportedContent {
+    font-weight: bold;
+    color: #ffab19;
+}
+
+#logo {
+    min-width: 160px;
+    min-height: 93px;
+    border: 2px solid #4e4c4c;
+    background-image: url("../resource/logo.jpg");
+    background-size: cover;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <link href="style/style.css" rel="stylesheet">
+    <link href="style/style_mini.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="script/data.js"></script>
+<header class="d-flex justify-content-center align-items-center">
+    <nav id="navBar" class="navbar navbar-expand-lg">
+        <div id="logo"></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li v-for="navItem in navItems" class="nav-item">
+                    <a class="nav-link" @click="scrollingTo(navItem.href)">{{navItem.title}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="d-flex justify-contnent-center align-items-center" @click="openBasket">
+            <p class="p-0 m-0">{{amount}}</p>
+            <img id="basketIco" :src="basketSrc">
+            <span class="quantity" :style="{visibility: visibleQuantity}">
+            <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
+            </span>
+        </div>
+    </nav>
+
+    <!--<nav id="navBar" class="flex-display row">-->
+    <!--<div id="logo"></div>-->
+    <!--<ul id="menu" class="flex-display row">-->
+
+    <!--</ul>-->
+    <!--<div class="flex-display" @click="openBasket">-->
+    <!--<p class="amount">{{amount}}</p>-->
+    <!--<img id="basketIco" :src="basketSrc">-->
+    <!--<span class="quantity" :style="{visibility: visibleQuantity}">-->
+    <!--<p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>-->
+    <!--</span>-->
+    <!--</div>-->
+    <!--<div class="nav-toggle" onclick="menuBar()"><span></span></div>-->
+    <!--</nav>-->
+</header>
+<main id="main">
+    <section id="slider">
+        <!--<img src="resource/slider_1.png">-->
+        <!--<div style="width: 100%; height:500px; background-color: #1c1c1c"></div>-->
+    </section>
+    <section id="contactBlock">
+        <!--<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>-->
+        <!--<img src="resource/contact.png">-->
+    </section>
+    <section id="bestseller">
+        <h2>Хит продаж</h2>
+        <div class="bckg" id="bestsellerHoney"></div>
+        <!--        <img src="resource/hotHoney2.png">-->
+        <div id="hotBlock">
+            <h3>Мёд {{title}} {{count}}л.</h3>
+            <div>
+                <div><span></span>
+                    <h3>{{oldPrice}} руб.</h3></div>
+                <h3>{{sale}} руб.</h3>
+            </div>
+            <input class="btn" type="button" value="Добавить в корзину" @click="orderAdd(id)">
+            <p>прочитать об этом виде мёда</p>
+        </div>
+    </section>
+    <section id="catalog">
+        <h2>Каталог</h2>
+        <div id="catalogBlock">
+            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>
+        </div>
+    </section>
+    <section id="certificate"></section>
+    <section id="about"></section>
+</main>
+<div id="basketForm">
+    <div>
+        <item v-for="list in honeyVueList" :cat="list" :key="list.id"></item>
+    </div>
+</div>
+<footer id="contact">
+    <span id="btn-to-up" onclick=" window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });"></span>
+</footer>
+<!--<div id="qa"></div>-->
+<script src="script/script.js"></script>
+<script src="script/vue.js"></script>
+</body>
+</html>
