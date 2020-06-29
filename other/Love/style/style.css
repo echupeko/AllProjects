@@ -1,0 +1,33 @@
+* {
+    transition: all 0.3s ease-in-out;
+}
+body {
+    background-image: url("../../PSH/source/image_stack/4.jpg");
+    background-position: 0px -300px;
+}
+h1 {
+    text-align: center;
+    background-color:#fff;
+    padding:10px;
+    font-weight:bold;
+    font-family:arial;
+    color:transparent;
+    font-size:230px;
+    border-radius: 25px;
+}
+span {
+     background: url("../../PSH/source/image_stack/4.jpg");
+    background-size: cover;
+     -webkit-text-fill-color: transparent;
+     -webkit-background-clip: text;
+     display:block;
+ }
+
+ h1:hover {
+     background-color: transparent;
+     color: white;
+ }
+
+ h1:hover span {
+     -webkit-text-fill-color: unset;
+ }
