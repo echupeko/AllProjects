@@ -37,30 +37,68 @@
         </div>
     </nav>
 
-    <!--<nav id="navBar" class="flex-display row">-->
-    <!--<div id="logo"></div>-->
-    <!--<ul id="menu" class="flex-display row">-->
-
-    <!--</ul>-->
-    <!--<div class="flex-display" @click="openBasket">-->
-    <!--<p class="amount">{{amount}}</p>-->
-    <!--<img id="basketIco" :src="basketSrc">-->
-    <!--<span class="quantity" :style="{visibility: visibleQuantity}">-->
-    <!--<p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>-->
-    <!--</span>-->
-    <!--</div>-->
-    <!--<div class="nav-toggle" onclick="menuBar()"><span></span></div>-->
-    <!--</nav>-->
 </header>
 <main id="main">
-    <section id="slider">
-        <!--<img src="resource/slider_1.png">-->
-        <!--<div style="width: 100%; height:500px; background-color: #1c1c1c"></div>-->
-    </section>
-    <section id="contactBlock">
-        <!--<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>-->
-        <!--<img src="resource/contact.png">-->
-    </section>
+    <!--<section id="slider">-->
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel" >
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="resource/slider_1.png" class="d-block w-100" alt="наша семья">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Наша большая семья</h5>
+                    <p>Количество семейств насчитывает больше десятка</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="resource/slider_2.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Алтайские пейзажи</h5>
+                    <p>Горная местность позволяет получать наивкуснейший и разнообразный мёд</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="resource/slider_3.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Сотовый мёд</h5>
+                    <p>Мы следим за своей продукцией</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="resource/slider_4.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Наша пасека</h5>
+                    <p>Даже медведи непрочь посетить нашу пасеку, но увы для них мёд не собираем</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!--</section>-->
+    <!--<section id="contactBlock">-->
+        <!--&lt;!&ndash;<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<img src="resource/contact.png">&ndash;&gt;-->
+    <!--</section>-->
+    <div class="card bg-dark text-white">
+        <img src="resource/contact.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <h5 class="card-title">Название карточки</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
+        </div>
+    </div>
     <section id="bestseller">
         <h2>Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
@@ -99,5 +137,14 @@
 <!--<div id="qa"></div>-->
 <script src="script/script.js"></script>
 <script src="script/vue.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
 </body>
 </html>

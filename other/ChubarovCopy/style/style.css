@@ -3,9 +3,26 @@
     font-size: 15px;
 }
 
+body {
+    background-image: url("../resource/bg.png");
+}
+
 #navbarSupportedContent {
     font-weight: bold;
-    color: #ffab19;
+    color: #4e4c4c;
+}
+
+#carouselExampleCaptions {
+    border: 2px solid #4e4c4c;
+}
+
+.carousel-caption {
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    padding-top: 60px !important;
+    width: 100%;
 }
 
 #logo {
@@ -14,4 +31,41 @@
     border: 2px solid #4e4c4c;
     background-image: url("../resource/logo.jpg");
     background-size: cover;
+}
+
+*::-webkit-scrollbar {
+
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #3d3d3d;
+}
+
+
+*::-webkit-scrollbar-track{
+    /*background: transparent url('../resource/transparent.png') repeat-y !important;*/
+    background-color: rgb(133, 130, 133);
+    /*border-radius: 5px;*/
+}
+
+*::-webkit-scrollbar:vertical{
+    width: 15px;
+}
+
+*::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px;
+    /*border-radius: 5px;*/
+    background: #eba64a;
+    border: 1px solid #3b3b3b;
+}
+
+*::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+}
+
+*::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #a19fa2;
+    transition: background-color 3ms ease;
 }
