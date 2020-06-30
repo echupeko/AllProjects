@@ -10,27 +10,28 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
+
 </head>
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="script/data.js"></script>
 <header class="d-flex justify-content-center align-items-center">
-    <nav id="navBar" class="navbar navbar-expand-lg">
-        <div id="logo"></div>
+    <nav id="navBar" class="w-100 navbar navbar-expand-lg navbar-light justify-content-sm-between">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div id="logo"></div>
+        <div class=" collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li v-for="navItem in navItems" class="nav-item">
                     <a class="nav-link" @click="scrollingTo(navItem.href)">{{navItem.title}}</a>
                 </li>
             </ul>
         </div>
-        <div class="d-flex justify-contnent-center align-items-center" @click="openBasket">
+        <div id="basketBar" class="d-flex justify-contnent-center align-items-center" @click="openBasket">
             <p class="p-0 m-0">{{amount}}</p>
-            <img id="basketIco" :src="basketSrc">
+            <img id="basketIcon" :src="basketSrc">
             <span class="quantity" :style="{visibility: visibleQuantity}">
             <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
             </span>
@@ -40,7 +41,7 @@
 </header>
 <main id="main">
     <!--<section id="slider">-->
-    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel" >
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
             <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -78,7 +79,7 @@
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fa fa-navicon"></i></span>
             <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
@@ -88,14 +89,15 @@
     </div>
     <!--</section>-->
     <!--<section id="contactBlock">-->
-        <!--&lt;!&ndash;<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<img src="resource/contact.png">&ndash;&gt;-->
+    <!--&lt;!&ndash;<div style="width: 100%; height:300px; background-color: #4a4a4a"></div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<img src="resource/contact.png">&ndash;&gt;-->
     <!--</section>-->
     <div class="card bg-dark text-white">
         <img src="resource/contact.png" class="card-img" alt="...">
         <div class="card-img-overlay">
             <h5 class="card-title">Название карточки</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
             <p class="card-text">Last updated 3 mins ago</p>
         </div>
     </div>

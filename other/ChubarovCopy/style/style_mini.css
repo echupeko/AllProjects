@@ -1,6 +1,21 @@
 @media screen and (max-width: 1270px) {
 }
 
-@media screen and (max-width: 1010px) {
+@media screen and (max-width: 992px) {
+    #logo {
+        margin: auto;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: max-content;
+        height: max-content;
+    }
 
+    #basketBar {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }

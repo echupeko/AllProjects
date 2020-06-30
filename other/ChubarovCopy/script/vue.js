@@ -31,6 +31,7 @@ let navBar = new Vue({
         leftQuantity: '4px',
         logoSrc: 'resource/logo.png',
         basketSrc: 'resource/basket.png',
+        // basketSrc: '../../node_modules/bootstrap-icons/icons/basket.svg',
         navItems: navList
     },
     methods: {
