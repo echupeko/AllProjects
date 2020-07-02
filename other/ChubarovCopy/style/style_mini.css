@@ -1,7 +1,28 @@
+@media screen and (max-width: 450px) {
+    .carousel-item h5 {
+        font-size: unset !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #basketBar {
+        top: 5px;
+    }
+
+    #basketBar > p {
+        display: none;
+    }
+
+    #basketIcon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
 @media screen and (max-width: 630px) {
     .carousel-caption p{
         width: 70% !important;
-        font-size: small !important;
+        font-size: x-small !important;
     }
 }
 
@@ -26,7 +47,6 @@
 
     #basketBar {
         position: absolute;
-        top: 0;
         right: 0;
     }
 }
