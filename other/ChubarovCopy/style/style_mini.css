@@ -2,6 +2,10 @@
     .carousel-item h5 {
         font-size: unset !important;
     }
+
+    .carousel-control-prev, .carousel-control-next {
+        width: 40% !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
