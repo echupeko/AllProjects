@@ -104,7 +104,7 @@ let hotBlock = new Vue({
 Vue.component('item', {
     props: ['cat'],
     template: '' +
-    '<div class="catalogItem flex-display">' +
+    '<div class="d-flex flex-column w-20 cat">' +
     '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
     '   <img src="resource/bochka.png">' +
     '   <p>цена: {{cat.price}} руб.</p>' +

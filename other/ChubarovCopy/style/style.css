@@ -93,6 +93,11 @@ body {
     margin-right: 8px !important;
 }
 
+.cat {
+    width: 100px !important;
+}
+
+
 *::-webkit-scrollbar {
 
     height: 10px;
