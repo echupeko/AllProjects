@@ -6,17 +6,19 @@
 
 body {
     background-image: url("../resource/bg.jpg");
+    background-size: 50%;
 }
 
 #navBar li {
     border-radius: 10px;
-    margin: 0 5px;
-    background-color:white;
+    margin: 0 10px;
+    background-color: rgba(255, 255, 255, 0.64);
 }
 
 #navBar a {
-    padding: 0 5px;
-    background-color: #ff7702;
+    font-weight: 1000px;
+    padding: 5px 10px;
+    background-color: #61341f;
     font-size: 20px;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
