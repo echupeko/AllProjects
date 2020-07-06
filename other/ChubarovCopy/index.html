@@ -71,19 +71,34 @@
         <!--</div>-->
     <!--</div>-->
 
-    <section id="bestseller">
+    <section id="bestseller" class="d-flex flex-column justify-content-center align-items-center">
         <h2>Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
         <!--        <img src="resource/hotHoney2.png">-->
         <div id="hotBlock">
-            <h3>Мёд {{title}} {{count}}л.</h3>
-            <div>
-                <div><span></span>
-                    <h3>{{oldPrice}} руб.</h3></div>
-                <h3>{{sale}} руб.</h3>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div id="hotItem" class="col-md-4">
+                        <img src="resource/hot.JPG" class="card-img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Мёд {{title}} {{count}}л.</h5>
+                            <div>
+                                <div class="crossOut"><span></span>
+                                    <h4>{{oldPrice}} руб.</h4></div>
+                                <h3>{{sale}} руб.</h3>
+                            </div>
+                            <a href="#" class="btn btn-primary" @click="orderAdd(id)">Добавить в корзину</a>
+                            <p  class="card-text"><small class="text-muted">прочитать об этом виде мёда</small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input class="btn" type="button" value="Добавить в корзину" @click="orderAdd(id)">
-            <p>прочитать об этом виде мёда</p>
+
+            <h3></h3>
+
+
         </div>
     </section>
     <!--<section id="catalog">-->

@@ -51,7 +51,7 @@ let navBar = new Vue({
         },
         scrollingTo(to) {
             document.getElementById('navbarSupportedContent').classList.remove('show');
-            let topElem = document.getElementById(to).offsetTop - ((pageYOffset > 100) ? 70 : 142);
+            let topElem = document.getElementById(to).offsetTop; //- ((pageYOffset > 100) ? 70 : 142);
             window.scrollTo({
                 top: topElem,
                 behavior: 'smooth'

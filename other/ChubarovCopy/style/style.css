@@ -38,7 +38,17 @@ body {
     color: #4e4c4c;
 }
 
-.navbar-collapse{
+#hotItem {
+    background-image: url("../resource/hot.JPG");
+    background-size: cover;
+    background-position: right;
+}
+
+#hotItem img {
+    visibility: hidden;
+}
+
+.navbar-collapse {
     flex-grow: 0 !important;
 }
 
@@ -104,6 +114,28 @@ body {
     width: 100px !important;
 }
 
+.card {
+    background-color: transparent !important;
+}
+
+.card-body {
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+.crossOut span{
+    width: 100px;
+    height: 2px;
+    background-color: #4e4c4c;
+    transform: rotateZ(15deg);
+    position: absolute;
+    top: 67px;
+    left: 10px;
+    content: '';
+}
+
+.crossOut h2{
+    font-weight: lighter;
+}
 
 *::-webkit-scrollbar {
 
