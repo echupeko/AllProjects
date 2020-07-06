@@ -39,6 +39,11 @@
         margin-top: 15px;
     }
 
+    #basketIcon {
+        width: 40px;
+        height: 40px;
+    }
+
     #logo {
         margin: auto;
         position: absolute;
@@ -52,7 +57,7 @@
 
     #basketBar {
         position: absolute;
-        top: 5px;
+        top: 0;
         right: 0;
     }
 
