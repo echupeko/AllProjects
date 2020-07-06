@@ -9,9 +9,6 @@
 }
 
 @media screen and (max-width: 500px) {
-    #basketBar {
-        top: 5px;
-    }
 
     #basketBar > p {
         display: none;
@@ -24,7 +21,7 @@
 }
 
 @media screen and (max-width: 630px) {
-    .carousel-caption p{
+    .carousel-caption p {
         width: 70% !important;
         font-size: x-small !important;
     }
@@ -38,6 +35,10 @@
 }
 
 @media screen and (max-width: 992px) {
+    #navbarSupportedContent {
+        margin-top: 15px;
+    }
+
     #logo {
         margin: auto;
         position: absolute;
@@ -51,6 +52,17 @@
 
     #basketBar {
         position: absolute;
+        top: 5px;
         right: 0;
+    }
+
+    #navBar li {
+        border: 1px solid black;
+        margin: 0 !important;
+        border-radius: unset;
+    }
+
+    #navBar li:hover {
+        background-color: #e6e6e6;
     }
 }
