@@ -32,10 +32,11 @@
         </div>
         <div id="basketBar" class="d-flex flex-column justify-contnent-center align-items-center" @click="openBasket">
             <!--<p class="p-0 m-0"></p>-->
-            <span class="quantity" :style="{visibility: visibleQuantity}">
+
+            <img id="basketIcon" :src="basketSrc">
+            <span class="quantity" :style="{display: visibleQuantity}">
                 <p :style="{fontSize: sizeQuantity}">{{amount}}</p>
             </span>
-            <img id="basketIcon" :src="basketSrc">
 
         </div>
     </nav>

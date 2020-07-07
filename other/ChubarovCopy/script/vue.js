@@ -58,7 +58,7 @@ let navBar = new Vue({
         openBasket() {
             this.visibleForm = !this.visibleForm;
             document.getElementById('basketForm').style.display = (this.visibleForm) ? 'flex' : 'none';
-             // document.getElementById('main').style.display = (!this.visibleForm) ? 'block' : 'none';
+            // document.getElementById('main').style.display = (!this.visibleForm) ? 'block' : 'none';
         }
     }
 });
@@ -66,13 +66,13 @@ let navBar = new Vue({
 Vue.component('slider-item', {
     props: ['slide'],
     template: '' +
-    '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
-    '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
-    '   <div class="carousel-caption d-flex flex-column align-items-center">' +
-    '       <h5>{{slide.title}}</h5>' +
-    '       <p>{{slide.description}}</p>' +
-    '   </div>' +
-    '</div>'
+        '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
+        '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
+        '   <div class="carousel-caption d-flex flex-column align-items-center">' +
+        '       <h5>{{slide.title}}</h5>' +
+        '       <p>{{slide.description}}</p>' +
+        '   </div>' +
+        '</div>'
 })
 
 let carousel = new Vue({
@@ -103,19 +103,21 @@ let hotBlock = new Vue({
 Vue.component('item', {
     props: ['cat'],
     template: '' +
-    '<div class="card" style="width: 18rem;">' +
-    '   <h5 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h5>' +
-    '   <img src="resource/bochka.png" class="card-img-top" alt="...">' +
-    '   <div class="card-body">' +
-    '       <p class="card-text">цена: {{cat.price}} руб.</p>'+
-    '       <div class="d-flex flex-row">' +
-    '           <input class="input" type="submit" value="-" @click="handleClick">' +
-    '          <input v-bind:id="\'honey\' + cat.id" class="input" step="1"  min="1" max="20" type="number">' +
-    '          <input class="input" type="submit" value="+" @click="handleClick">' +
-    '       </div>' +
-    '      <a href="#" class="btn btn-primary">Добавить к заказу</a>' +
-    '   </div>' +
-    '</div>',
+        '<div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">' +
+        '   <h4 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h4>' +
+        '   <img src="resource/bochka.png" class="card-img-top" v-bind:alt="\'Мёд \' + cat.name">' +
+        '   <div class="card-body d-flex flex-column justify-content-center align-items-center">' +
+        '       <p class="card-text">цена: {{cat.price}} руб.</p>' +
+        '       <div class="d-flex flex-column">' +
+        '           <div class="d-flex flex-row w-100">' +
+        '               <input class="input" type="submit" value="-" @click="handleClick">' +
+        '               <input v-bind:id="\'honey\' + cat.id" class="input" step="1"  min="1" max="20" type="number">' +
+        '               <input class="input" type="submit" value="+" @click="handleClick">' +
+        '           </div>' +
+        '           <a href="#" class="btn btn-warning">Добавить к заказу</a>' +
+        '       </div>' +
+        '   </div>' +
+        '</div>',
     methods: {
         handleClick() {
             this.$emit('click');
