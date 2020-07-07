@@ -92,7 +92,7 @@
                                     <h4>{{oldPrice}} руб.</h4></div>
                                 <h3>{{sale}} руб.</h3>
                             </div>
-                            <a href="#" class="btn btn-primary" @click="orderAdd(id)">Добавить в корзину</a>
+                            <a class="btn btn-primary" @click="orderAdd(id)">Добавить в корзину</a>
                             <p class="card-text">
                                 <small class="text-muted">прочитать об этом виде мёда</small>
                             </p>
@@ -100,17 +100,13 @@
                     </div>
                 </div>
             </div>
-
-            <h3></h3>
-
-
         </div>
     </section>
 
     <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
-            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>
+            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd" v-on:up-down="upDownCount"></item>
         </div>
     </section>
 
