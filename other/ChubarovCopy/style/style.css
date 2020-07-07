@@ -10,6 +10,12 @@ body {
     background-size: 50%;
 }
 
+header {
+    background-image: url("../resource/bg.jpg");
+    background-size: 50%;
+    border-bottom: 2px #4e4c4c solid;
+}
+
 #navBar li {
     border-radius: 10px;
     margin: 0 10px;
@@ -39,25 +45,26 @@ body {
     color: #4e4c4c;
 }
 
-.header-fixed {
-    width: 100%;
-    background-image: url("../resource/bg.jpg");
-    background-size: 50%;
-    border-bottom: 2px #4e4c4c solid;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-}
-
-#hotItem {
-    background-image: url("../resource/hot.JPG");
+#logo {
+    min-width: 160px;
+    min-height: 93px;
+    border: 2px solid #4e4c4c;
+    background-image: url("../resource/logo.jpg");
     background-size: cover;
-    background-position: right;
 }
 
-#hotItem img {
-    visibility: hidden;
+#basketIcon {
+    width: 60px;
+    height: 60px;
+}
+#basketBar {
+    margin-right: 30px;
+}
+#basketBar > p {
+    margin-right: 8px !important;
+    padding: 5px !important;
+    background-color: rgba(255, 255, 255, 0.64);
+    border-radius: 5px;
 }
 
 .navbar-collapse {
@@ -66,6 +73,25 @@ body {
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.quantity {
+    position: relative;
+    top: 25px;
+    right: -50%;
+    height: 20px;
+    background-color: rgba(255, 171, 25, 0.8);
+    border: 1px #4e4c4c solid;
+    border-radius: 10px;
+    color: #4e4c4c;
+}
+
+.quantity p {
+    margin: 0 5px;
+    font-size: 15px !important;
+    font-weight: bold;
+    text-align: center;
+    line-height: 18px;
 }
 
 #carouselExampleCaptions {
@@ -102,30 +128,6 @@ body {
     background-color: #FF9715 !important;
 }
 
-#logo {
-    min-width: 160px;
-    min-height: 93px;
-    border: 2px solid #4e4c4c;
-    background-image: url("../resource/logo.jpg");
-    background-size: cover;
-}
-
-#basketIcon {
-    width: 60px;
-    height: 60px;
-}
-
-#basketBar p {
-    margin-right: 8px !important;
-    padding: 5px !important;
-    background-color: rgba(255, 255, 255, 0.64);
-    border-radius: 5px;
-}
-
-.cat {
-    width: 100px !important;
-}
-
 .title-block {
     margin: 25px;
     background-color: rgba(255, 255, 255, 0.5);
@@ -135,7 +137,17 @@ body {
     line-height: 50px;
 }
 
-.card {
+#hotItem {
+    background-image: url("../resource/hot.JPG");
+    background-size: cover;
+    background-position: right;
+}
+
+#hotItem img {
+    visibility: hidden;
+}
+
+#hotBlock > .card {
     max-width: 60% !important;
     margin: 0 auto !important;
     background-color: transparent !important;
@@ -144,6 +156,12 @@ body {
 .card-body {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+#catalogBlock > .card {
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px;
+    margin: 20px !important;
 }
 
 .crossOut span{

@@ -18,22 +18,26 @@ window.onload = function () {
             hotBlock.honey = item.id;
         }
     })
-
+    document.getElementById('carouselExampleCaptions').style.marginTop = document.querySelector('header').clientHeight + 'px';
     document.getElementById('basketForm').style.display = 'none';
     document.getElementById('basketForm').style.minHeight = clientHeight - 72 + 'px';
 }
 
+window.onresize = function () {
+    document.getElementById('carouselExampleCaptions').style.marginTop = document.querySelector('header').clientHeight + 'px';
+}
+
 window.onscroll = function () {
-    if (pageYOffset > 80) {
-        document.querySelector('header').classList.add('header-fixed');
-        // document.getElementById('basketIco').style.width = '30px';
-        // document.getElementById('logo').style.top = '22px';
-    }
-    else {
-        document.querySelector('header').classList.remove('header-fixed');
-        // document.getElementById('basketIco').style.width = '50px';
-        // document.getElementById('logo').style.top = '0';
-    }
+    // if (pageYOffset > 180) {
+    //     document.querySelector('header').classList.add('header-fixed');
+    //     // document.getElementById('basketIco').style.width = '30px';
+    //     // document.getElementById('logo').style.top = '22px';
+    // }
+    // else {
+    //     document.querySelector('header').classList.remove('header-fixed');
+    //     // document.getElementById('basketIco').style.width = '50px';
+    //     // document.getElementById('logo').style.top = '0';
+    // }
 
     if (pageYOffset > 400) {
         btnToUp.style.opacity = '1';

@@ -15,7 +15,7 @@
 <body>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="script/data.js"></script>
-<header class="d-flex justify-content-center align-items-center">
+<header class="d-flex justify-content-center align-items-center w-100 fixed-top">
     <nav id="navBar" class="w-100 navbar navbar-expand-lg navbar-light justify-content-sm-between">
         <button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent"
@@ -30,12 +30,13 @@
                 </li>
             </ul>
         </div>
-        <div id="basketBar" class="d-flex justify-contnent-center align-items-center" @click="openBasket">
-            <p class="p-0 m-0">{{amount}}</p>
-            <img id="basketIcon" :src="basketSrc">
+        <div id="basketBar" class="d-flex flex-column justify-contnent-center align-items-center" @click="openBasket">
+            <!--<p class="p-0 m-0"></p>-->
             <span class="quantity" :style="{visibility: visibleQuantity}">
-            <p :style="{fontSize: sizeQuantity, top: topQuantity, left: leftQuantity}">{{quantity}}</p>
+                <p :style="{fontSize: sizeQuantity}">{{amount}}</p>
             </span>
+            <img id="basketIcon" :src="basketSrc">
+
         </div>
     </nav>
 
@@ -104,15 +105,18 @@
 
         </div>
     </section>
+
     <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Каталог</h2>
-        <div id="catalogBlock" class="d-flex flex-column w-100 justify-content-center flex-wrap">
+        <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
             <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>
         </div>
     </section>
+
     <section id="certificate" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Сертификаты</h2>
     </section>
+
     <section id="about" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Прочее</h2>
     </section>

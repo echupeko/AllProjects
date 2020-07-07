@@ -6,6 +6,11 @@
     .carousel-control-prev, .carousel-control-next {
         width: 40% !important;
     }
+
+    #catalogBlock > .card {
+        width: 100% !important;
+        margin: 0 !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -73,5 +78,13 @@
 
     #navBar li:hover {
         background-color: #e6e6e6;
+    }
+
+    .quantity {
+        top: 15px;
+    }
+
+    .quantity p {
+        font-size: 13px !important;
     }
 }

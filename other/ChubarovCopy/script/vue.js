@@ -23,12 +23,10 @@ let navBar = new Vue({
     el: "#navBar",
     data: {
         visibleForm: false,
-        amount: 'Корзина пуста',
+        amount: '',
         quantity: 0,
-        visibleQuantity: 'hidden',
-        sizeQuantity: '14px',
-        topQuantity: '-2px',
-        leftQuantity: '4px',
+        visibleQuantity: 'none',
+        sizeQuantity: '15px',
         logoSrc: 'resource/logo.png',
         basketSrc: 'resource/basket.png',
         // basketSrc: '../../node_modules/bootstrap-icons/icons/basket.svg',
@@ -39,19 +37,19 @@ let navBar = new Vue({
             quantityGlobal++;
             amountGlobal += sal;
             this.quantity = quantityGlobal;
-            this.amount = 'Заказ на ' + amountGlobal + 'руб.';
+            this.amount = amountGlobal + ' руб.';
             if (this.amount) {
-                this.visibleQuantity = 'visible'
+                this.visibleQuantity = 'block'
             }
-            if (this.quantity > 9) {
+            if (amountGlobal > 9999) {
                 this.sizeQuantity = '12px';
-                this.topQuantity = '-13px';
-                this.leftQuantity = '1px';
+                this.topQuantity = '0px';
+                this.leftQuantity = '2px';
             }
         },
         scrollingTo(to) {
             document.getElementById('navbarSupportedContent').classList.remove('show');
-            let topElem = document.getElementById(to).offsetTop; //- ((pageYOffset > 100) ? 70 : 142);
+            let topElem = document.getElementById(to).offsetTop - ((pageYOffset > 100) ? document.querySelector('header').clientHeight : document.querySelector('header').clientHeight);
             window.scrollTo({
                 top: topElem,
                 behavior: 'smooth'
@@ -105,16 +103,18 @@ let hotBlock = new Vue({
 Vue.component('item', {
     props: ['cat'],
     template: '' +
-    '<div class="d-flex flex-column w-20 cat">' +
-    '   <h3>Мёд {{cat.name}} {{cat.count}} л.</h3>' +
-    '   <img src="resource/bochka.png">' +
-    '   <p>цена: {{cat.price}} руб.</p>' +
-    '   <div class="flex-display row">' +
-    '       <input class="input" type="submit" value="-" @click="handleClick">' +
-    '       <input v-bind:id="\'honey\' + cat.id" class="input" step="1"  min="1" max="20" type="number">' +
-    '       <input class="input" type="submit" value="+" @click="handleClick">' +
+    '<div class="card" style="width: 18rem;">' +
+    '   <h5 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h5>' +
+    '   <img src="resource/bochka.png" class="card-img-top" alt="...">' +
+    '   <div class="card-body">' +
+    '       <p class="card-text">цена: {{cat.price}} руб.</p>'+
+    '       <div class="d-flex flex-row">' +
+    '           <input class="input" type="submit" value="-" @click="handleClick">' +
+    '          <input v-bind:id="\'honey\' + cat.id" class="input" step="1"  min="1" max="20" type="number">' +
+    '          <input class="input" type="submit" value="+" @click="handleClick">' +
+    '       </div>' +
+    '      <a href="#" class="btn btn-primary">Добавить к заказу</a>' +
     '   </div>' +
-    '   <input class="btn" type="submit" value="Добавить к заказу">' +
     '</div>',
     methods: {
         handleClick() {
