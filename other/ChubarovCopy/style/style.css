@@ -4,10 +4,6 @@
     font-size: 15px;
 }
 
-html {
-    min-width: 400px;
-}
-
 body {
     min-width: 400px;
     background-image: url("../resource/bg.jpg");
@@ -41,6 +37,17 @@ body {
 #navbarSupportedContent {
     font-weight: bold;
     color: #4e4c4c;
+}
+
+.header-fixed {
+    width: 100%;
+    background-image: url("../resource/bg.jpg");
+    background-size: 50%;
+    border-bottom: 2px #4e4c4c solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 #hotItem {
@@ -119,8 +126,17 @@ body {
     width: 100px !important;
 }
 
+.title-block {
+    margin: 25px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
 .card {
-    max-width: 90% !important;
+    max-width: 60% !important;
     margin: 0 auto !important;
     background-color: transparent !important;
 }
@@ -145,29 +161,66 @@ body {
     font-weight: lighter;
 }
 
-*::-webkit-scrollbar {
+#btn-to-up {
+    display: flex;
+    opacity: 0;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 70px;
+    right: 150px;
+    background: rgba(112, 112, 112, 0.42);
+    border-radius: 50%;
+    transition: background-color, opacity 500ms ease;
+    content: '';
+}
 
+#btn-to-up:before, #btn-to-up:after {
+    width: 25px;
+    height: 5px;
+    background: rgb(255, 255, 255);
+    border-radius: 3px;
+    top: 25px;
+    content: '';
+    position: absolute;
+}
+
+#btn-to-up:before {
+    transform: rotateZ(45deg);
+    left: 25px;
+}
+
+#btn-to-up:after {
+    transform: rotateZ(-45deg);
+    right: 25px;
+}
+
+#btn-to-up:hover {
+    background: rgba(112, 112, 112, 0.87);
+    transition: background-color, opacity 500ms ease;
+}
+
+
+
+*::-webkit-scrollbar {
     height: 10px;
 }
 
-*::-webkit-scrollbar-track {
-    background: #3d3d3d;
-}
 
 *::-webkit-scrollbar-track {
     /*background: transparent url('../resource/transparent.png') repeat-y !important;*/
-    background-color: rgb(133, 130, 133);
+    background-color: rgba(235, 166, 74, 0.48);
 }
 
 *::-webkit-scrollbar:vertical {
-    width: 15px;
+    width: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 5px;
+    -webkit-border-radius: 2px;
     /*border-radius: 5px;*/
     background: #eba64a;
-    border: 1px solid #3b3b3b;
+    /*border: 1px solid #3b3b3b;*/
 }
 
 *::-webkit-scrollbar-button {

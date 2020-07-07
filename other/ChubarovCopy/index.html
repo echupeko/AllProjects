@@ -17,7 +17,8 @@
 <script src="script/data.js"></script>
 <header class="d-flex justify-content-center align-items-center">
     <nav id="navBar" class="w-100 navbar navbar-expand-lg navbar-light justify-content-sm-between">
-        <button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        <button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,17 +63,17 @@
     </div>
 
     <!--<div class="card bg-dark text-white">-->
-        <!--<img src="resource/contact.jpg" class="card-img" alt="...">-->
-        <!--<div class="card-img-overlay">-->
-            <!--<h5 class="card-title">Название карточки</h5>-->
-            <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional-->
-                <!--content. This content is a little bit longer.</p>-->
-            <!--<p class="card-text">Last updated 3 mins ago</p>-->
-        <!--</div>-->
+    <!--<img src="resource/contact.jpg" class="card-img" alt="...">-->
+    <!--<div class="card-img-overlay">-->
+    <!--<h5 class="card-title">Название карточки</h5>-->
+    <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional-->
+    <!--content. This content is a little bit longer.</p>-->
+    <!--<p class="card-text">Last updated 3 mins ago</p>-->
+    <!--</div>-->
     <!--</div>-->
 
     <section id="bestseller" class="d-flex flex-column justify-content-center align-items-center">
-        <h2>Хит продаж</h2>
+        <h2 class="title-block">Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
         <!--        <img src="resource/hotHoney2.png">-->
         <div id="hotBlock">
@@ -90,7 +91,9 @@
                                 <h3>{{sale}} руб.</h3>
                             </div>
                             <a href="#" class="btn btn-primary" @click="orderAdd(id)">Добавить в корзину</a>
-                            <p  class="card-text"><small class="text-muted">прочитать об этом виде мёда</small></p>
+                            <p class="card-text">
+                                <small class="text-muted">прочитать об этом виде мёда</small>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -101,14 +104,18 @@
 
         </div>
     </section>
-    <!--<section id="catalog">-->
-        <!--<h2>Каталог</h2>-->
-        <!--<div id="catalogBlock" class="d-flex flex-column w-100 justify-content-center flex-nowrap">-->
-            <!--<item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>-->
-        <!--</div>-->
-    <!--</section>-->
-    <!--<section id="certificate"></section>-->
-    <!--<section id="about"></section>-->
+    <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="title-block">Каталог</h2>
+        <div id="catalogBlock" class="d-flex flex-column w-100 justify-content-center flex-wrap">
+            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd(catalog.id)"></item>
+        </div>
+    </section>
+    <section id="certificate" class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="title-block">Сертификаты</h2>
+    </section>
+    <section id="about" class="d-flex flex-column justify-content-center align-items-center">
+        <h2 class="title-block">Прочее</h2>
+    </section>
 </main>
 <div id="basketForm">
     <div>

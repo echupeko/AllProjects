@@ -60,7 +60,7 @@ let navBar = new Vue({
         openBasket() {
             this.visibleForm = !this.visibleForm;
             document.getElementById('basketForm').style.display = (this.visibleForm) ? 'flex' : 'none';
-            document.getElementById('main').style.display = (!this.visibleForm) ? 'block' : 'none';
+             // document.getElementById('main').style.display = (!this.visibleForm) ? 'block' : 'none';
         }
     }
 });
