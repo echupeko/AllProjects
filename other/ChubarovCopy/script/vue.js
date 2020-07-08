@@ -127,10 +127,8 @@ let basketCatalog = new Vue({
         isActive: visibleMenu,
         honeyVueList: basketOrder
     },
-    mounted() {
-        update: function () {
+    created() {
             updateTopHeader();
             console.log('11');
-        }
     }
 })
