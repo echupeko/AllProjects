@@ -64,16 +64,6 @@
         </a>
     </div>
 
-    <!--<div class="card bg-dark text-white">-->
-    <!--<img src="resource/contact.jpg" class="card-img" alt="...">-->
-    <!--<div class="card-img-overlay">-->
-    <!--<h5 class="card-title">Название карточки</h5>-->
-    <!--<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional-->
-    <!--content. This content is a little bit longer.</p>-->
-    <!--<p class="card-text">Last updated 3 mins ago</p>-->
-    <!--</div>-->
-    <!--</div>-->
-
     <section id="bestseller" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
@@ -106,7 +96,8 @@
     <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
-            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd" v-on:up-down="upDownCount"></item>
+            <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd"
+                  v-on:up-down="upDownCount"></item>
         </div>
     </section>
 
@@ -119,9 +110,7 @@
     </section>
 </main>
 <div id="basketForm">
-    <div>
-        <item v-for="list in honeyVueList" :cat="list" :key="list.id"></item>
-    </div>
+    <item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id" ></item>
 </div>
 <footer id="contact">
     <span id="btn-to-up" onclick=" window.scrollTo({

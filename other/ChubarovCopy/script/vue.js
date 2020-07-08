@@ -1,24 +1,3 @@
-let quantityGlobal = 0;
-let amountGlobal = 0;
-let clientHeight = window.innerHeight;
-
-
-// let myMixin = {
-//     created: function () {
-//         this.addedOrder();
-//         this.addedInBasket();
-//     },
-//     methods: {
-//         addedOrder: function (id, count) {
-//             orderItem.honey = id;
-//             orderItem.count = count;
-//         },
-//         addedInBasket: function (order) {
-//             basketOrder.push(order)
-//         }
-//     }
-// }
-
 let navBar = new Vue({
     el: "#navBar",
     data: {
@@ -49,7 +28,7 @@ let navBar = new Vue({
         },
         scrollingTo(to) {
             document.getElementById('navbarSupportedContent').classList.remove('show');
-            let topElem = document.getElementById(to).offsetTop - ((pageYOffset > 100) ? document.querySelector('header').clientHeight : document.querySelector('header').clientHeight);
+            let topElem = document.getElementById(to).offsetTop - header.clientHeight;
             window.scrollTo({
                 top: topElem,
                 behavior: 'smooth'
@@ -58,7 +37,6 @@ let navBar = new Vue({
         openBasket() {
             this.visibleForm = !this.visibleForm;
             document.getElementById('basketForm').style.display = (this.visibleForm) ? 'flex' : 'none';
-            // document.getElementById('main').style.display = (!this.visibleForm) ? 'block' : 'none';
         }
     }
 });
@@ -66,13 +44,13 @@ let navBar = new Vue({
 Vue.component('slider-item', {
     props: ['slide'],
     template: '' +
-        '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
-        '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
-        '   <div class="carousel-caption d-flex flex-column align-items-center">' +
-        '       <h5>{{slide.title}}</h5>' +
-        '       <p>{{slide.description}}</p>' +
-        '   </div>' +
-        '</div>'
+    '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
+    '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
+    '   <div class="carousel-caption d-flex flex-column align-items-center">' +
+    '       <h5>{{slide.title}}</h5>' +
+    '       <p>{{slide.description}}</p>' +
+    '   </div>' +
+    '</div>'
 })
 
 let carousel = new Vue({
@@ -142,18 +120,17 @@ let catalogBlock = new Vue({
         }
     }
 });
-//
-// let basketCatalog = new Vue({
-//     el: "#basketForm",
-//     data: {
-//         title: 'basketItem',
-//         honeyVueList: basketOrder
-//     }
-// })
-//
-//
-// let Component = Vue.extend({
-//     mixins: [myMixin]
-// });
-//
-// let component = new Component();
+
+let basketCatalog = new Vue({
+    el: "#basketForm",
+    data: {
+        isActive: visibleMenu,
+        honeyVueList: basketOrder
+    },
+    mounted() {
+        update: function () {
+            updateTopHeader();
+            console.log('11');
+        }
+    }
+})
