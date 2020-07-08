@@ -171,6 +171,10 @@ header {
     margin: 20px !important;
 }
 
+.basket {
+    width: 70% !important;
+}
+
 .basket > img {
     display: none !important;
 }

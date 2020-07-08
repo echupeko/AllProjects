@@ -109,7 +109,7 @@
         <h2 class="title-block">Прочее</h2>
     </section>
 </main>
-<div id="basketForm">
+<div id="basketForm" class="d-flex flex-column justify-content-center align-items-center">
     <item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id" ></item>
 </div>
 <footer id="contact">
