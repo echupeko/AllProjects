@@ -24,10 +24,12 @@ window.onload = function () {
         }
     })
     document.getElementById('carouselExampleCaptions').style.marginTop = header.clientHeight + 'px';
+    basketForm.style.top = header.clientHeight + 'px';
 }
 
 window.onresize = function () {
     document.getElementById('carouselExampleCaptions').style.marginTop = header.clientHeight + 'px';
+    basketForm.style.top = header.clientHeight + 'px';
 }
 
 window.onscroll = function () {

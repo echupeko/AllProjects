@@ -126,9 +126,5 @@ let basketCatalog = new Vue({
     data: {
         isActive: visibleMenu,
         honeyVueList: basketOrder
-    },
-    created() {
-            updateTopHeader();
-            console.log('11');
     }
 })
