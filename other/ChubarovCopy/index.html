@@ -109,8 +109,11 @@
         <h2 class="title-block">Прочее</h2>
     </section>
 </main>
-<div id="basketForm" class="d-flex flex-column justify-content-center align-items-center">
-    <item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id" ></item>
+<div id="basketForm" v-bind:style="styleObject">
+    <span class="closeBtn" v-on:click="openBasket"></span>
+    <h4>Ваша корзина пока пуста</h4>
+    <basket-item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id" v-on:up-down="upDownCount"></basket-item>
+    <p>Сумма заказа: {{amount}}</p>
 </div>
 <footer id="contact">
     <span id="btn-to-up" onclick=" window.scrollTo({

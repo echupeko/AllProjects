@@ -44,13 +44,13 @@ let navBar = new Vue({
 Vue.component('slider-item', {
     props: ['slide'],
     template: '' +
-    '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
-    '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
-    '   <div class="carousel-caption d-flex flex-column align-items-center">' +
-    '       <h5>{{slide.title}}</h5>' +
-    '       <p>{{slide.description}}</p>' +
-    '   </div>' +
-    '</div>'
+        '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
+        '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
+        '   <div class="carousel-caption d-flex flex-column align-items-center">' +
+        '       <h5>{{slide.title}}</h5>' +
+        '       <p>{{slide.description}}</p>' +
+        '   </div>' +
+        '</div>'
 })
 
 let carousel = new Vue({
@@ -112,7 +112,14 @@ let catalogBlock = new Vue({
     },
     methods: {
         orderAdd: function (id) {
-            navBar.addedAmount(honeyList[id].price * honeyList[id].order);
+            for (let i = 0; i < basketOrder.length; i++) {
+                if (basketOrder[i].id == id) {
+                    navBar.addedAmount(honeyList[id].price * honeyList[id].order);
+                    return;
+                }
+            }
+
+
             basketOrder.push(honeyList[id]);
         },
         upDownCount: function (id, c) {
@@ -121,10 +128,44 @@ let catalogBlock = new Vue({
     }
 });
 
+Vue.component('basket-item', {
+    props: ['cat'],
+    template: `
+        <div class="card d-flex flex-row justify-content-center align-items-center" style="width: 18rem;">
+           <h4 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h4>
+           <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
+           <div class="card-body d-flex flex-row justify-content-center align-items-center">
+               
+                   <div class="d-flex flex-row ">
+                       <input class="input" type="submit" value="-" @click="uppp(cat.id,-1)">
+                       <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="cat.order">
+                       <input class="input" type="submit" value="+"  @click="uppp(cat.id, 1)">
+                   </div>
+                   <p class="card-text">{{cat.price * cat.order}} руб.</p>
+           </div>
+        </div>`,
+    methods: {
+        uppp: function (id, count) {
+            this.$emit('up-down', id, count)
+        }
+    }
+})
 let basketCatalog = new Vue({
     el: "#basketForm",
     data: {
+        styleObject: {
+            top: header.clientHeight + 20 + 'px'
+        },
+        amount: navBar.amount,
         isActive: visibleMenu,
         honeyVueList: basketOrder
+    },
+    methods: {
+        openBasket() {
+            navBar.openBasket()
+        },
+        upDownCount: function (id, c) {
+            catalogBlock.upDownCount(id, c)
+        }
     }
 })
