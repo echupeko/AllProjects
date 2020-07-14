@@ -114,12 +114,13 @@ let catalogBlock = new Vue({
         orderAdd: function (id) {
             for (let i = 0; i < basketOrder.length; i++) {
                 if (basketOrder[i].id == id) {
+                    honeyList[id].order += basketOrder[i].order;
                     navBar.addedAmount(honeyList[id].price * honeyList[id].order);
                     return;
                 }
             }
 
-
+            navBar.addedAmount(honeyList[id].price * honeyList[id].order);
             basketOrder.push(honeyList[id]);
         },
         upDownCount: function (id, c) {
