@@ -322,6 +322,30 @@ input::-webkit-inner-spin-button {
     transition: background-color, opacity 500ms ease;
 }
 
+.slide-bar {
+    position: relative;
+    height: 36px;
+    border-radius: 100px;
+    border: 1px solid #4e4c4c;
+}
+
+.slide-point {
+    position: absolute;
+    border-radius: 100px;
+    background-color: rgba(64,64,64,0.4);
+    width: 25%;
+    height: 100%;
+    z-index: 0;
+}
+
+.slide-item {
+    background-color: transparent;
+    z-index: 1;
+    width: 25%;
+    text-align: center;
+    cursor: pointer;
+}
+
 *::-webkit-scrollbar {
     height: 10px;
 }

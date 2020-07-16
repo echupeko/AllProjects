@@ -97,7 +97,8 @@
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
             <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd"
-                  v-on:up-down="upDownCount"></item>
+                  v-on:up-down="upDownCount" v-on:slide-to="slideTo">
+            </item>
         </div>
     </section>
 
@@ -112,7 +113,8 @@
 <div id="basketForm" v-bind:style="styleObject">
     <span class="closeBtn" v-on:click="openBasket"></span>
     <h4>Ваша корзина пока пуста</h4>
-    <basket-item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id" v-on:up-down="upDownCount"></basket-item>
+    <basket-item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id"
+                 v-on:up-down="upDownCount"></basket-item>
     <p>Сумма заказа: {{amount}}</p>
 </div>
 <footer id="contact">
