@@ -137,11 +137,9 @@ Vue.component('item', {
                 this.cntVisibleProd++;
             }
         })
-
     },
     mounted: function () {
         var slideBar = document.getElementsByClassName('slide-bar')[this.cat.id];
-
         slideBar.getElementsByClassName('slide-point')[0].style.width = 100 / this.cntVisibleProd + "%";
         let itemList = slideBar.getElementsByClassName('slide-item');
         for (let i = 0; i < itemList.length; i++) {
@@ -189,8 +187,6 @@ let catalogBlock = new Vue({
                 if (item.visible && item.id <= count) cntVisibleProd++;
             })
             document.getElementsByClassName('slide-point')[id].style.transform = "translatex(" + (100 * (cntVisibleProd - 1)) + "%)";
-            console.log(this.$children[id]);
-            console.log(this.$children[id].products[0].price);
             this.$children[id].product = this.$children[id].products[count];
         },
         openDescription: function (id) {
