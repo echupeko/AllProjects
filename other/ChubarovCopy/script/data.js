@@ -100,10 +100,34 @@ const catalogList = [
         id: 0, //гречичный
         name: 'гречичный',
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
-        count: [3, 2, 1, 0.5],
+        products: [
+            {
+                id: 0,
+                count: 3,
+                price: 1900,
+                visible: true
+            },
+            {
+                id: 1,
+                count: 2,
+                price: 1600,
+                visible: true
+            },
+            {
+                id: 2,
+                count: 1,
+                price: 750,
+                visible: true
+            },
+            {
+                id: 3,
+                count: 0.5,
+                price: 320,
+                visible: true
+            },
+        ],
         order: 1,
         unit: 'л.',
-        price: 1980,
         salePrice: 1630,
         min: 1,
         max: 14, //остаток
@@ -114,10 +138,34 @@ const catalogList = [
         id: 1, //гречичный
         name: 'горно-таёжный',
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
-        count: [3, 2, 1, 0.5],
+        products: [
+            {
+                id: 0,
+                count: 3,
+                price: 1930,
+                visible: true
+            },
+            {
+                id: 1,
+                count: 2,
+                price: 1620,
+                visible: false
+            },
+            {
+                id: 2,
+                count: 1,
+                price: 790,
+                visible: true
+            },
+            {
+                id: 3,
+                count: 0.5,
+                price: 350,
+                visible: true
+            },
+        ],
         order: 1,
         unit: 'л.',
-        price: 1980,
         salePrice: 1630,
         min: 1,
         max: 14, //остаток
@@ -128,10 +176,34 @@ const catalogList = [
         id: 2, //гречичный
         name: 'луговой',
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
-        count: [3, 2, 0.5],
+        products: [
+            {
+                id: 0,
+                count: 3,
+                price: 2000,
+                visible: true
+            },
+            {
+                id: 1,
+                count: 2,
+                price: 1650,
+                visible: true
+            },
+            {
+                id: 2,
+                count: 1,
+                price: 780,
+                visible: true
+            },
+            {
+                id: 3,
+                count: 0.5,
+                price: 360,
+                visible: false
+            },
+        ],
         order: 1,
         unit: 'л.',
-        price: 1980,
         salePrice: 1630,
         min: 1,
         max: 14, //остаток
@@ -142,10 +214,34 @@ const catalogList = [
         id: 3, //гречичный
         name: 'васильковый',
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
-        count: [3, 2, 1, 0.5],
+        products: [
+            {
+                id: 0,
+                count: 3,
+                price: 1980,
+                visible: false
+            },
+            {
+                id: 1,
+                count: 2,
+                price: 1700,
+                visible: true
+            },
+            {
+                id: 2,
+                count: 1,
+                price: 800,
+                visible: false
+            },
+            {
+                id: 3,
+                count: 0.5,
+                price: 400,
+                visible: true
+            },
+        ],
         order: 1,
         unit: 'л.',
-        price: 1980,
         salePrice: 1630,
         min: 1,
         max: 14, //остаток
@@ -156,10 +252,34 @@ const catalogList = [
         id: 4, //гречичный
         name: 'луговое разнотравие',
         description: 'Много описания мёда, какой он хороший и прочее, но вообще я не очень его ем, так изредка',
-        count: [3, 0.5],
+        products: [
+            {
+                id: 0,
+                count: 3,
+                price: 2100,
+                visible: true
+            },
+            {
+                id: 1,
+                count: 2,
+                price: 1800,
+                visible: false
+            },
+            {
+                id: 2,
+                count: 1,
+                price: 900,
+                visible: false
+            },
+            {
+                id: 3,
+                count: 0.5,
+                price: 450,
+                visible: true
+            },
+        ],
         order: 1,
         unit: 'л.',
-        price: 1980,
         salePrice: 1630,
         min: 1,
         max: 14, //остаток
