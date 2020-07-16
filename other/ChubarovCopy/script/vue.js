@@ -204,13 +204,12 @@ Vue.component('basket-item', {
            <h4 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h4>
            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
            <div class="card-body d-flex flex-row justify-content-center align-items-center">
-               
-                   <div class="d-flex flex-row ">
-                       <input class="input" type="submit" value="-" @click="uppp(cat.id,-1)">
-                       <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="cat.order">
-                       <input class="input" type="submit" value="+"  @click="uppp(cat.id, 1)">
-                   </div>
-                   <p class="card-text">{{cat.price * cat.order}} руб.</p>
+               <div class="d-flex flex-row ">
+                   <input class="input" type="submit" value="-" @click="uppp(cat.id,-1)">
+                   <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="cat.order">
+                   <input class="input" type="submit" value="+"  @click="uppp(cat.id, 1)">
+               </div>
+               <p class="card-text">{{cat.price * cat.order}} руб.</p>
            </div>
         </div>`,
     methods: {
