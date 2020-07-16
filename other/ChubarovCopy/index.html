@@ -97,7 +97,7 @@
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
             <item v-for="catalog in honeyVueList" :cat="catalog" :key="catalog.id" @click="orderAdd"
-                  v-on:up-down="upDownCount" v-on:slide-to="slideTo">
+                  v-on:up-down="upDownCount" v-on:slide-to="slideTo" v-on:open-description="openDescription">
             </item>
         </div>
     </section>

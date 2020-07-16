@@ -106,22 +106,24 @@ let hotBlock = new Vue({
 Vue.component('item', {
     props: ['cat'],
     template: `
-        <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
-           <h4 class="card-title">Мёд {{cat.name}}</h4>
-           <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
-           <div class="card-body d-flex flex-column justify-content-center align-items-center">
-                <div class="slide-bar w-100 d-flex flex-row justify-content-sm-between align-items-center" >
-                    <div class="slide-point" ></div>
-                    <div v-for="slideItem in cat.count" class="slide-item" @click="sliders(cat.id, cat.count.indexOf(slideItem))">
-                        {{slideItem}} л.
-                    </div>
+    <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
+        <h4 class="card-title">Мёд {{cat.name}}</h4>
+        <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
+        <div class="info-icon" @click="openDescription(cat.id)"></div>
+        <p class="info-text">{{cat.description}}</p>
+        <div class="card-body d-flex flex-column justify-content-center align-items-center pb-0">
+            <div class="slide-bar w-100 d-flex flex-row justify-content-sm-between align-items-center" >
+                <div class="slide-point"></div>
+                <div v-for="slideItem in cat.count" class="slide-item" @click="sliders(cat.id, cat.count.indexOf(slideItem))">
+                    {{slideItem}} л.
                 </div>
-                <div class="d-flex flex-row">
-                    <p class="card-text">{{cat.price}} Р.</p>
-                    <a class="btn btn-warning" @click="$emit('click', cat.id)">В корзину</a>
-                </div>
-           </div>
-        </div>`,
+            </div>
+            <div class="w-100 p-3 d-flex flex-row justify-content-around">
+                <h5 class="card-text">{{cat.price}} Р.</h5>
+                <a class="btn btn-warning" @click="$emit('click', cat.id)">В корзину</a>
+            </div>
+        </div>
+    </div>`,
     mounted: function() {
         var slideBar = document.getElementsByClassName('slide-bar')[this.cat.id];
         slideBar.getElementsByClassName('slide-point')[0].style.width = 100/this.cat.count.length + "%";
@@ -136,6 +138,9 @@ Vue.component('item', {
         // },
         sliders: function (id, count) {
             this.$emit('slide-to', id, count)
+        },
+        openDescription: function (id) {
+            this.$emit('open-description', id)
         }
     }
 })
@@ -145,6 +150,7 @@ let catalogBlock = new Vue({
     data: {
         title: 'catalogItem',
         honeyVueList: catalogList,
+        visibleDescription: false
     },
     methods: {
         orderAdd: function (id) {
@@ -163,6 +169,11 @@ let catalogBlock = new Vue({
         },
         slideTo: function (id, count) {
             document.getElementsByClassName('slide-point')[id].style.transform = "translatex("+(100*count)+"%)";
+        },
+        openDescription: function(id) {
+            this.visibleDescription = !this.visibleDescription;
+            infoText = this.$el.children[id].getElementsByClassName('info-text')[0];
+            infoText.style.display = this.visibleDescription? 'block' : 'none';
         }
     }
 });
