@@ -5,12 +5,12 @@ let visibleMenu = 1;
 let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
-let orderItem = {
-    id: 0,
-    honey: 0,
-    count: 0,
-    inBasket: false
-};
+// let orderItem = {
+//     id: 0,
+//     honey: 0,
+//     count: 0,
+//     inBasket: false
+// };
 let basketOrder = [];
 
 window.onload = function () {

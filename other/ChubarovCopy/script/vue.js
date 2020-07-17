@@ -12,13 +12,13 @@ let navBar = new Vue({
         navItems: navList
     },
     methods: {
-        addedAmount(sal) {
+        addedAmount: function (sal) {
             quantityGlobal++;
             amountGlobal += sal;
             this.quantity = quantityGlobal;
             this.amount = amountGlobal + ' руб.';
             if (this.amount) {
-                this.visibleQuantity = 'block'
+                this.visibleQuantity = 'block';
             }
             if (amountGlobal > 9999) {
                 this.sizeQuantity = '12px';
@@ -44,13 +44,13 @@ let navBar = new Vue({
 Vue.component('slider-item', {
     props: ['slide'],
     template: '' +
-        '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
-        '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
-        '   <div class="carousel-caption d-flex flex-column align-items-center">' +
-        '       <h5>{{slide.title}}</h5>' +
-        '       <p>{{slide.description}}</p>' +
-        '   </div>' +
-        '</div>'
+    '<div class="carousel-item h-100" :class="{\'active\': !slide.id}">' +
+    '   <img :src="\'resource/slider_\'+slide.id+\'.png\'" class="d-block h-100" :alt="slide.title">' +
+    '   <div class="carousel-caption d-flex flex-column align-items-center">' +
+    '       <h5>{{slide.title}}</h5>' +
+    '       <p>{{slide.description}}</p>' +
+    '   </div>' +
+    '</div>'
 })
 
 let carousel = new Vue({
@@ -126,14 +126,14 @@ Vue.component('item', {
             </div>
             <div class="w-100 p-3 d-flex flex-row justify-content-around">
                 <h5 class="card-text">{{product.price}} Р.</h5>
-                <a class="btn btn-warning" @click="$emit('click', cat.id)">В корзину</a>
+                <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1)">В корзину</a>
             </div>
         </div>
     </div>`,
     created: function () {
         this.products.forEach(item => {
             if (item.visible) {
-                if(this.cntVisibleProd<1) this.product = this.products[item.id];
+                if (this.cntVisibleProd < 1) this.product = this.products[item.id];
                 this.cntVisibleProd++;
             }
         })
@@ -165,21 +165,32 @@ let catalogBlock = new Vue({
         title: 'catalogItem',
         honeyVueList: catalogList,
         visibleDescription: false,
+        basketCat: basketOrder
     },
     methods: {
-        orderAdd: function (id) {
-            for (let i = 0; i < basketOrder.length; i++) {
-                if (basketOrder[i].id == id) {
-                    honeyList[id].order += basketOrder[i].order;
-                    navBar.addedAmount(honeyList[id].price * honeyList[id].order);
+        orderAdd: function (id, idProd, c) {
+            let producte = this.honeyVueList[id].products[idProd];
+            for (let i = 0; i < this.basketCat.length; i++) {
+                if (this.basketCat[i].honey == id && this.basketCat[i].prod == idProd) {
+                    producte.quantity += c;
+                    navBar.addedAmount(producte.price * c);
                     return;
                 }
             }
-            navBar.addedAmount(honeyList[id].price * honeyList[id].order);
-            basketOrder.push(honeyList[id]);
+            producte.quantity += c;
+            navBar.addedAmount(producte.price * c);
+            orderItem = {
+                id: quantityGlobal-1,
+                honey: id,
+                prod: idProd
+            }
+            console.log(orderItem.id)
+            this.basketCat.push(orderItem);
         },
-        upDownCount: function (id, c) {
-            this.honeyVueList[id].order += c;
+        upDownCount: function (id, idProd, c) {
+            let producte = this.honeyVueList[id].products[idProd];
+            producte.quantity += c;
+            navBar.addedAmount(producte.price * c);
         },
         slideTo: function (id, count) {
             let cntVisibleProd = 0;
@@ -199,25 +210,47 @@ let catalogBlock = new Vue({
 
 Vue.component('basket-item', {
     props: ['cat'],
+    data: function () {
+        return {
+            cntVisibleProd: 0,
+            catt: catalogList,
+            honey: null,
+            product: null
+        }
+    },
     template: `
         <div class="card d-flex flex-row justify-content-center align-items-center" style="width: 18rem;">
-           <h4 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h4>
+           <h4 class="card-title">Мёд {{honey.name}} {{product.count}} л.</h4>
            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
            <div class="card-body d-flex flex-row justify-content-center align-items-center">
                <div class="d-flex flex-row ">
-                   <input class="input" type="submit" value="-" @click="uppp(cat.id,-1)">
-                   <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="cat.order">
-                   <input class="input" type="submit" value="+"  @click="uppp(cat.id, 1)">
+                   <input class="input" type="submit" value="-" @click="uppp(cat.honey, cat.prod, -1)">
+                   <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="product.quantity">
+                   <input class="input" type="submit" value="+"  @click="uppp(cat.honey, cat.prod, 1)">
                </div>
-               <p class="card-text">{{cat.price * cat.order}} руб.</p>
+               <p class="card-text">{{product.price * product.quantity}} руб.</p>
+               <div @click="removeOrder(cat.honey, cat.prod)">
+                   <svg style="margin-left: 20px" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                       <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                   </svg>
+               </div>
            </div>
         </div>`,
+    created: function () {
+        this.honey = this.catt[this.cat.honey];
+        this.product = this.honey.products[this.cat.prod];
+    },
     methods: {
-        uppp: function (id, count) {
-            this.$emit('up-down', id, count)
-        }
+        uppp: function (id, idProd, count) {
+            this.$emit('up-down', id, idProd, count)
+        },
+        removeOrder: function (id, idProd) {
+            console.log(id, idProd);
+            this.$emit('remove-order', id, idProd)
+        },
     }
-})
+});
 let basketCatalog = new Vue({
     el: "#basketForm",
     data: {
@@ -226,14 +259,24 @@ let basketCatalog = new Vue({
         },
         amount: navBar.amount,
         isActive: visibleMenu,
-        honeyVueList: basketOrder
+        basketCatalog: basketOrder
+    },
+    updated: function () {
+        console.log(amountGlobal);
+        this.amount = navBar.amount;
     },
     methods: {
         openBasket() {
             navBar.openBasket()
         },
-        upDownCount: function (id, c) {
-            catalogBlock.upDownCount(id, c)
+        upDownCount: function (id, idProd, c) {
+            catalogBlock.upDownCount(id, idProd, c);
+            this.amount = navBar.amount;
+        },
+        removeOrder: function (id, idProd) {
+            let index = this.basketCatalog.find({honey: id, prod: idProd});
+            console.log(index);
+            this.basketCatalog.splice(index, 1);
         }
     }
-})
+});

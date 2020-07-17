@@ -13,6 +13,7 @@
 
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="script/data.js"></script>
 <header class="d-flex justify-content-center align-items-center w-100 fixed-top">
@@ -113,8 +114,8 @@
 <div id="basketForm" v-bind:style="styleObject">
     <span class="closeBtn" v-on:click="openBasket"></span>
     <h4>Ваша корзина пока пуста</h4>
-    <basket-item v-for="list in honeyVueList" :cat="list" v-bind:class="{basket: isActive}" :key="list.id"
-                 v-on:up-down="upDownCount"></basket-item>
+    <basket-item v-for="list in basketCatalog" :cat="list" v-bind:class="{basket: isActive}" :key="list.id"
+                 v-on:up-down="upDownCount" v-on:remove-order="removeOrder"></basket-item>
     <p>Сумма заказа: {{amount}}</p>
 </div>
 <footer id="contact">
@@ -123,11 +124,19 @@
                 behavior: 'smooth'
             });"></span>
 </footer>
+
+<form id="form" method="POST">
+    <input type="text" name="name" required="required"/>
+    <input type="text" name="phone" required="required"/>
+    <input type="submit" value="Заказать звонок"/>
+</form>
 <!--<div id="qa"></div>-->
+
 <script src="script/script.js"></script>
+<script src="script/sendPost.js"></script>
 <script src="script/vue.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

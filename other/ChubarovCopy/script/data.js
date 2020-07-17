@@ -105,25 +105,29 @@ const catalogList = [
                 id: 0,
                 count: 3,
                 price: 1900,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 1,
                 count: 2,
                 price: 1600,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 2,
                 count: 1,
                 price: 750,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 3,
                 count: 0.5,
                 price: 320,
-                visible: true
+                visible: true,
+                quantity: 0
             },
         ],
         order: 1,
@@ -143,25 +147,29 @@ const catalogList = [
                 id: 0,
                 count: 3,
                 price: 1930,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 1,
                 count: 2,
                 price: 1620,
-                visible: false
+                visible: false,
+                quantity: 0
             },
             {
                 id: 2,
                 count: 1,
                 price: 790,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 3,
                 count: 0.5,
                 price: 350,
-                visible: true
+                visible: true,
+                quantity: 0
             },
         ],
         order: 1,
@@ -181,25 +189,29 @@ const catalogList = [
                 id: 0,
                 count: 3,
                 price: 2000,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 1,
                 count: 2,
                 price: 1650,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 2,
                 count: 1,
                 price: 780,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 3,
                 count: 0.5,
                 price: 360,
-                visible: false
+                visible: false,
+                quantity: 0
             },
         ],
         order: 1,
@@ -219,25 +231,29 @@ const catalogList = [
                 id: 0,
                 count: 3,
                 price: 1980,
-                visible: false
+                visible: false,
+                quantity: 0
             },
             {
                 id: 1,
                 count: 2,
                 price: 1700,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 2,
                 count: 1,
                 price: 800,
-                visible: false
+                visible: false,
+                quantity: 0
             },
             {
                 id: 3,
                 count: 0.5,
                 price: 400,
-                visible: true
+                visible: true,
+                quantity: 0
             },
         ],
         order: 1,
@@ -257,25 +273,29 @@ const catalogList = [
                 id: 0,
                 count: 3,
                 price: 2100,
-                visible: true
+                visible: true,
+                quantity: 0
             },
             {
                 id: 1,
                 count: 2,
                 price: 1800,
-                visible: false
+                visible: false,
+                quantity: 0
             },
             {
                 id: 2,
                 count: 1,
                 price: 900,
-                visible: false
+                visible: false,
+                quantity: 0
             },
             {
                 id: 3,
                 count: 0.5,
                 price: 450,
-                visible: true
+                visible: true,
+                quantity: 0
             },
         ],
         order: 1,
