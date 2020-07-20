@@ -111,11 +111,11 @@
         <h2 class="title-block">Прочее</h2>
     </section>
 </main>
-<div id="basketForm" v-bind:style="styleObject">
-    <span class="closeBtn" v-on:click="openBasket"></span>
+<div id="basketForm" :style="styleObject">
+    <span class="closeBtn" @click="openBasket"></span>
     <h4>Ваша корзина пока пуста</h4>
     <basket-item v-for="list in basketCatalog" :cat="list" v-bind:class="{basket: isActive}" :key="list.id"
-                 v-on:up-down="upDownCount" v-on:remove-order="removeOrder"></basket-item>
+                 v-on:up-down="upDownCount" v-on:remove="removeOrder"></basket-item>
     <p>Сумма заказа: {{amount}}</p>
 </div>
 <footer id="contact">

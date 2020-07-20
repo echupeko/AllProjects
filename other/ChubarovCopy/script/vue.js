@@ -2,6 +2,7 @@ let navBar = new Vue({
     el: "#navBar",
     data: {
         visibleForm: false,
+        basketCatalog: basketOrder,
         amount: '',
         quantity: 0,
         visibleQuantity: 'none',
@@ -10,6 +11,9 @@ let navBar = new Vue({
         basketSrc: 'resource/basket.png',
         // basketSrc: '../../node_modules/bootstrap-icons/icons/basket.svg',
         navItems: navList
+    },
+    updated: function () {
+        this.amount = amountGlobal + ' руб.';
     },
     methods: {
         addedAmount: function (sal) {
@@ -25,6 +29,17 @@ let navBar = new Vue({
                 this.topQuantity = '0px';
                 this.leftQuantity = '2px';
             }
+        },
+        updateAmount: function () {
+            amountGlobal = 0;
+            this.basketCatalog.forEach(item => {
+                let catalogItem = catalogList[item.honey].products[item.prod];
+                if (catalogItem.quantity > 0) {
+                    amountGlobal += catalogItem.quantity * catalogItem.price;
+                    console.log(catalogItem, catalogList[item.honey], amountGlobal)
+                }
+            })
+            this.amount = amountGlobal + ' руб.';
         },
         scrollingTo(to) {
             document.getElementById('navbarSupportedContent').classList.remove('show');
@@ -180,11 +195,10 @@ let catalogBlock = new Vue({
             producte.quantity += c;
             navBar.addedAmount(producte.price * c);
             orderItem = {
-                id: quantityGlobal-1,
+                id: quantityGlobal - 1,
                 honey: id,
                 prod: idProd
             }
-            console.log(orderItem.id)
             this.basketCat.push(orderItem);
         },
         upDownCount: function (id, idProd, c) {
@@ -229,7 +243,7 @@ Vue.component('basket-item', {
                    <input class="input" type="submit" value="+"  @click="uppp(cat.honey, cat.prod, 1)">
                </div>
                <p class="card-text">{{product.price * product.quantity}} руб.</p>
-               <div @click="removeOrder(cat.honey, cat.prod)">
+               <div @click="removeOrder(cat.honey, cat.prod)"> 
                    <svg style="margin-left: 20px" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -237,17 +251,18 @@ Vue.component('basket-item', {
                </div>
            </div>
         </div>`,
+    //@click="removeee(cat.honey, cat.prod)">
     created: function () {
         this.honey = this.catt[this.cat.honey];
         this.product = this.honey.products[this.cat.prod];
     },
+
     methods: {
         uppp: function (id, idProd, count) {
             this.$emit('up-down', id, idProd, count)
         },
         removeOrder: function (id, idProd) {
-            console.log(id, idProd);
-            this.$emit('remove-order', id, idProd)
+            this.$emit('remove', id, idProd)
         },
     }
 });
@@ -262,8 +277,8 @@ let basketCatalog = new Vue({
         basketCatalog: basketOrder
     },
     updated: function () {
-        console.log(amountGlobal);
         this.amount = navBar.amount;
+
     },
     methods: {
         openBasket() {
@@ -274,9 +289,11 @@ let basketCatalog = new Vue({
             this.amount = navBar.amount;
         },
         removeOrder: function (id, idProd) {
-            let index = this.basketCatalog.find({honey: id, prod: idProd});
-            console.log(index);
+            console.log(id, catalogList[id].name, catalogList[id].products[idProd].count)
+            let index = this.basketCatalog.find(item => item.honey == id && item.prod == idProd);
+            catalogList[id].products[idProd].quantity = 0;
             this.basketCatalog.splice(index, 1);
+            navBar.updateAmount();
         }
     }
 });
