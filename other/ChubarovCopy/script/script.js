@@ -14,6 +14,27 @@ let clientHeight = window.innerHeight;
 let basketOrder = [];
 
 window.onload = function () {
+
+    let url = "D:\\Phone.xlsx";
+    console.log(url);
+
+    var req = new XMLHttpRequest();
+    req.open("GET", url, true);
+    req.responseType = "arraybuffer";
+
+
+    req.onload = function(e) {
+        var data = new Uint8Array(req.response);
+        var workbook = XLSX.read(data, {type:"array"});
+
+
+
+        /* DO SOMETHING WITH workbook HERE */
+    }
+
+
+
+    req.send();
     honeyList.forEach(item => {
         if (item.sale) {
             hotBlock.title = item.name;

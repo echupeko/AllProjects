@@ -93,31 +93,6 @@ let hotBlock = new Vue({
     }
 });
 
-// Vue.component('item', {
-//     props: ['cat'],
-//     template: `
-//         <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
-//            <h4 class="card-title">Мёд {{cat.name}} {{cat.count}} л.</h4>
-//            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
-//            <div class="card-body d-flex flex-column justify-content-center align-items-center">
-//                <div class="d-flex flex-column">
-//                <p class="card-text">{{cat.price}} Р.</p>
-//                    <!--<div class="d-flex flex-row w-100">-->
-//                        <!--<input class="input" type="submit" value="-" @click="uppp(cat.id,-1)">-->
-//                        <!--<input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="cat.order">-->
-//                        <!--<input class="input" type="submit" value="+"  @click="uppp(cat.id, 1)">-->
-//                    <!--</div>-->
-//                    <a class="btn btn-warning" @click="$emit('click', cat.id)">В корзину</a>
-//                </div>
-//            </div>
-//         </div>`,
-//     methods: {
-//         uppp: function (id, count) {
-//             this.$emit('up-down', id, count)
-//         }
-//     }
-// })
-
 Vue.component('item', {
     props: ['cat', 'products'],
     data: function () {
@@ -162,9 +137,6 @@ Vue.component('item', {
         }
     },
     methods: {
-        // uppp: function (id, count) {
-        //     this.$emit('up-down', id, count)
-        // },
         sliders: function (id, count) {
             this.$emit('slide-to', id, count)
         },
