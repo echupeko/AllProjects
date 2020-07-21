@@ -160,6 +160,10 @@ header {
     margin: 20px !important;
 }
 
+#certificate > .card {
+
+}
+
 .card-title {
     margin-top: 10px;
     font-weight: bold !important;

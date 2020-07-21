@@ -15,26 +15,21 @@ let basketOrder = [];
 
 window.onload = function () {
 
-    let url = "D:\\Phone.xlsx";
-    console.log(url);
+    // let url = "D:/Phone.xlsx";
+    // console.log(url);
+    //
+    // var req = new XMLHttpRequest();
+    // req.open("GET", url, true);
+    // req.responseType = "arraybuffer";
+    //
+    // req.onload = function(e) {
+    //     var data = new Uint8Array(req.response);
+    //     var workbook = XLSX.read(data, {type:"array"});
+    //     /* DO SOMETHING WITH workbook HERE */
+    // }
+    //
+    // req.send();
 
-    var req = new XMLHttpRequest();
-    req.open("GET", url, true);
-    req.responseType = "arraybuffer";
-
-
-    req.onload = function(e) {
-        var data = new Uint8Array(req.response);
-        var workbook = XLSX.read(data, {type:"array"});
-
-
-
-        /* DO SOMETHING WITH workbook HERE */
-    }
-
-
-
-    req.send();
     honeyList.forEach(item => {
         if (item.sale) {
             hotBlock.title = item.name;
@@ -44,6 +39,7 @@ window.onload = function () {
             hotBlock.honey = item.id;
         }
     })
+
     document.getElementById('carouselExampleCaptions').style.marginTop = header.clientHeight + 'px';
     basketForm.style.top = header.clientHeight + 'px';
 }

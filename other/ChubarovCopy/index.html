@@ -97,7 +97,8 @@
     <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
-            <item v-for="catalog in honeyVueList" :cat="catalog" :products="catalog.products" :key="catalog.id" @click="orderAdd"
+            <item v-for="catalog in honeyVueList" :cat="catalog" :products="catalog.products" :key="catalog.id"
+                  @click="orderAdd"
                   v-on:up-down="upDownCount" v-on:slide-to="slideTo" v-on:open-description="openDescription">
             </item>
         </div>
@@ -105,6 +106,78 @@
 
     <section id="certificate" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Сертификаты</h2>
+        <div class="d-flex flex-row w-100 justify-content-center flex-wrap">
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/5.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/4.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+            <div class="card m-3" style="width: 18rem;">
+                <img src="resource/certificate/5.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="about" class="d-flex flex-column justify-content-center align-items-center">
@@ -125,11 +198,11 @@
             });"></span>
 </footer>
 
-<form id="form" method="POST">
-    <input type="text" name="name" required="required"/>
-    <input type="text" name="phone" required="required"/>
-    <input type="submit" value="Заказать звонок"/>
-</form>
+<!--<form id="form" method="POST">-->
+<!--<input type="text" name="name" required="required"/>-->
+<!--<input type="text" name="phone" required="required"/>-->
+<!--<input type="submit" value="Заказать звонок"/>-->
+<!--</form>-->
 <!--<div id="qa"></div>-->
 
 <script src="script/script.js"></script>
