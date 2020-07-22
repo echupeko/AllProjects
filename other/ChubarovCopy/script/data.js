@@ -308,3 +308,41 @@ const catalogList = [
     },
 
 ]
+
+let certificateList = [
+    {
+        id: 0,
+        src: 'resource/certificate/1.jpg',
+        title: 'Серитификат',
+        description: 'Сертификат выдан за то что у нас хороший мёд и здоровые пчёлы',
+        date: '01.01.2020'
+    },
+    {
+        id: 1,
+        src: 'resource/certificate/2.jpg',
+        title: 'Серитификат',
+        description: 'Сертификат выдан за то что у нас хороший мёд и здоровые пчёлы',
+        date: '01.02.2020'
+    },
+    {
+        id: 2,
+        src: 'resource/certificate/3.jpg',
+        title: 'Серитификат',
+        description: 'Сертификат выдан за то что у нас хороший мёд и здоровые пчёлы',
+        date: '01.03.2020'
+    },
+    {
+        id: 3,
+        src: 'resource/certificate/4.jpg',
+        title: 'Серитификат',
+        description: 'Сертификат выдан за то что у нас хороший мёд и здоровые пчёлы',
+        date: '01.04.2020'
+    },
+    {
+        id: 4,
+        src: 'resource/certificate/5.jpg',
+        title: 'Серитификат',
+        description: 'Сертификат выдан за то что у нас хороший мёд и здоровые пчёлы',
+        date: '01.05.2020'
+    }
+]

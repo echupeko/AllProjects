@@ -107,76 +107,8 @@
     <section id="certificate" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Сертификаты</h2>
         <div class="d-flex flex-row w-100 justify-content-center flex-wrap">
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/4.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/4.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
-            <div class="card m-3" style="width: 18rem;">
-                <img src="resource/certificate/5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                </div>
-            </div>
+            <certificate-item v-for="certificate in certList" :certificate="certificate" :key="certificate.id"
+                              v-on:load-viewer="loadViewer"></certificate-item>
         </div>
     </section>
 
@@ -184,6 +116,25 @@
         <h2 class="title-block">Прочее</h2>
     </section>
 </main>
+<div id="viewer" class="d-flex justify-content-center align-items-center w-100 h-100" v-if="isActive"
+     @click="openViewer">
+    <div class="card mb-3" style="width: 50rem;">
+        <div class="row no-gutters">
+            <div class="col-md-8 d-flex justify-content-center">
+                <img :src="src" class="card-img-top" alt="...">
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">Сертификат</h5>
+                    <p class="card-text">{{description}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">{{date}}</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="basketForm" :style="styleObject">
     <span class="closeBtn" @click="openBasket"></span>
     <h4>Ваша корзина пока пуста</h4>

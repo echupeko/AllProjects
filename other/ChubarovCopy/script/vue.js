@@ -1,3 +1,24 @@
+let viewer = new Vue({
+    el: "#viewer",
+    data: {
+        isActive: false,
+        src: 'resource/',
+        description: '',
+        date: ''
+    },
+    methods: {
+        openViewer() {
+            this.isActive = !this.isActive;
+        },
+        loadViewer(item) {
+            this.src = item.src;
+            this.description = item.description;
+            this.date = item.date;
+            this.openViewer();
+        }
+    }
+});
+
 let navBar = new Vue({
     el: "#navBar",
     data: {
@@ -66,7 +87,7 @@ Vue.component('slider-item', {
     '       <p>{{slide.description}}</p>' +
     '   </div>' +
     '</div>'
-})
+});
 
 let carousel = new Vue({
     el: "#carouselExampleCaptions",
@@ -266,6 +287,34 @@ let basketCatalog = new Vue({
             catalogList[id].products[idProd].quantity = 0;
             this.basketCatalog.splice(index, 1);
             navBar.updateAmount();
+        }
+    }
+});
+
+Vue.component('certificate-item', {
+    props: ['certificate'],
+    template: `
+        <div class="card m-3" style="width: 18rem;">
+            <img v-bind:src="certificate.src" class="card-img-top" @click="loadViewer(certificate)">
+            <div class="card-body">
+                <p class="card-text">{{certificate.description}}</p>
+            </div>
+        </div>`,
+    methods: {
+        loadViewer(item) {
+            this.$emit('load-viewer', item)
+        }
+    }
+});
+
+let certificate = new Vue({
+    el: "#certificate",
+    data: {
+        certList: certificateList
+    },
+    methods: {
+        loadViewer(item) {
+            viewer.loadViewer(item);
         }
     }
 });
