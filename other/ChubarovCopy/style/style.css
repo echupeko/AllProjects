@@ -154,6 +154,10 @@ header {
     background-color: transparent !important;
 }
 
+.card-head {
+    position: relative;
+}
+
 #catalogBlock > .card {
     background-color: rgba(255, 255, 255, 0.5) !important;
     border-radius: 10px;
@@ -196,8 +200,13 @@ header {
 
 .info-text {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    background-color: white;
+    border-radius: 0 10px;
 }
 
 .basket {

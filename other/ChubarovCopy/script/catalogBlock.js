@@ -8,10 +8,12 @@ Vue.component('item', {
     },
     template: `
     <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
-        <h4 class="card-title">Мёд {{cat.name}}</h4>
-        <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
-        <div class="info-icon" @click="openDescription(cat.id)"></div>
-        <p class="info-text">{{cat.description}}</p>
+        <div class="card-head d-flex flex-column justify-content-center align-items-center w-100 pb-0">
+            <h4 class="card-title">Мёд {{cat.name}}</h4>
+            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
+            <div class="info-icon" @click="openDescription(cat.id)"></div>
+            <p class="info-text">{{cat.description}}</p>
+        </div>
         <div class="card-body d-flex flex-column justify-content-center align-items-center pb-0">
             <div class="slide-bar w-100 d-flex flex-row justify-content-sm-between align-items-center" >
                 <div class="slide-point"></div>
