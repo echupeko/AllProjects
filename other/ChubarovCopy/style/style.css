@@ -139,13 +139,30 @@ header {
 }
 
 #hotItem {
-    background-image: url("../resource/hot.JPG");
-    background-size: cover;
-    background-position: right;
+    position: relative;
+    width: 450px !important;
+    height: 450px !important;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    direction: ltr;
+    /*background-image: url("../resource/hot.JPG");*/
+    /*background-size: cover;*/
+    /*background-position: right;*/
+}
+
+#hotItem img:hover {
+    /*background-size: 500px;*/
+    width: 300%;
 }
 
 #hotItem img {
-    visibility: hidden;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    position: relative;
 }
 
 #hotBlock > .card {
@@ -189,24 +206,33 @@ header {
 .info-icon {
     position: absolute;
     display: block;
-    bottom: 30%;
+    bottom: 20px;
     right: 20px;
-    background-image: url("../resource/info.png");
     background-size: cover;
     width: 25px;
     height: 25px;
     cursor: pointer;
+    z-index: 1111;
+}
+
+.info-icon-start {
+    background-image: url("../resource/info.png");
+}
+
+.info-icon-close {
+    background-image: url("../resource/close.png");
 }
 
 .info-text {
-    display: none;
+    display: block;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: white;
-    border-radius: 0 10px;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
 }
 
 .basket {

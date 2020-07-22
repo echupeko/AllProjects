@@ -1,4 +1,5 @@
 const btnToUp = document.getElementById('btn-to-up');
+const hotItem = document.getElementById('hotItem');
 const basketForm = document.getElementById('basketForm');
 const header = document.querySelector('header');
 let visibleMenu = 1;
@@ -53,8 +54,7 @@ window.onscroll = function () {
     if (pageYOffset > 400) {
         btnToUp.style.opacity = '1';
         btnToUp.style.cursor = 'pointer';
-    }
-    else {
+    } else {
         btnToUp.style.opacity = '0';
         btnToUp.style.cursor = 'auto';
     }
@@ -66,8 +66,7 @@ let menuBar = () => {
         if (visibleMenu) {
             menu.classList.add('active');
             visibleMenu--;
-        }
-        else {
+        } else {
             menu.classList.toggle('active');
             visibleMenu++;
         }

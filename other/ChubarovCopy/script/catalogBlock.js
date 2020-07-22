@@ -2,31 +2,35 @@ Vue.component('item', {
     props: ['cat', 'products'],
     data: function () {
         return {
+            visibleDescription: false,
             cntVisibleProd: 0,
             product: null
         }
     },
+    // language=HTML
     template: `
-    <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
-        <div class="card-head d-flex flex-column justify-content-center align-items-center w-100 pb-0">
+        <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
             <h4 class="card-title">Мёд {{cat.name}}</h4>
-            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
-            <div class="info-icon" @click="openDescription(cat.id)"></div>
-            <p class="info-text">{{cat.description}}</p>
-        </div>
-        <div class="card-body d-flex flex-column justify-content-center align-items-center pb-0">
-            <div class="slide-bar w-100 d-flex flex-row justify-content-sm-between align-items-center" >
-                <div class="slide-point"></div>
-                <div v-for="prod in products" v-if="prod.visible"  class="slide-item" @click="sliders(cat.id, prod.id)">
-                    {{prod.count}} л.
+            <div class="card-head d-flex flex-column justify-content-center align-items-center w-100 pb-0">
+                <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
+                <div :class="{'info-icon-start': !visibleDescription, 'info-icon-close': visibleDescription}"
+                     class="info-icon" @click="openDescription(cat.id)"></div>
+                <p class="info-text" v-if="visibleDescription">{{cat.description}}</p>
+            </div>
+            <div class="card-body d-flex flex-column justify-content-center align-items-center pb-0">
+                <div class="slide-bar w-100 d-flex flex-row justify-content-sm-between align-items-center">
+                    <div class="slide-point"></div>
+                    <div v-for="prod in products" v-if="prod.visible" class="slide-item"
+                         @click="sliders(cat.id, prod.id)">
+                        {{prod.count}} л.
+                    </div>
+                </div>
+                <div class="w-100 p-3 d-flex flex-row justify-content-around">
+                    <h5 class="card-text">{{product.price}} Р.</h5>
+                    <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1)">В корзину</a>
                 </div>
             </div>
-            <div class="w-100 p-3 d-flex flex-row justify-content-around">
-                <h5 class="card-text">{{product.price}} Р.</h5>
-                <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1)">В корзину</a>
-            </div>
-        </div>
-    </div>`,
+        </div>`,
     created: function () {
         this.products.forEach(item => {
             if (item.visible) {
@@ -48,24 +52,23 @@ Vue.component('item', {
             this.$emit('slide-to', id, count)
         },
         openDescription: function (id) {
-            this.$emit('open-description', id)
+            this.visibleDescription = !this.visibleDescription;
         }
     }
-})
+});
 
 let catalogBlock = new Vue({
     el: "#catalogBlock",
     data: {
         title: 'catalogItem',
         honeyVueList: catalogList,
-        visibleDescription: false,
         basketCat: basketOrder
     },
     methods: {
         orderAdd: function (id, idProd, c) {
             let producte = this.honeyVueList[id].products[idProd];
             for (let i = 0; i < this.basketCat.length; i++) {
-                if (this.basketCat[i].honey == id && this.basketCat[i].prod == idProd) {
+                if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd) {
                     producte.quantity += c;
                     navBar.addedAmount(producte.price * c);
                     return;
@@ -92,11 +95,6 @@ let catalogBlock = new Vue({
             })
             document.getElementsByClassName('slide-point')[id].style.transform = "translatex(" + (100 * (cntVisibleProd - 1)) + "%)";
             this.$children[id].product = this.$children[id].products[count];
-        },
-        openDescription: function (id) {
-            this.visibleDescription = !this.visibleDescription;
-            infoText = this.$el.children[id].getElementsByClassName('info-text')[0];
-            infoText.style.display = this.visibleDescription ? 'block' : 'none';
         }
     }
 });

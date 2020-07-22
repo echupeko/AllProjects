@@ -70,8 +70,8 @@
         <div id="hotBlock">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
-                    <div id="hotItem" class="col-md-4">
-                        <img src="resource/hot.JPG" class="card-img">
+                    <div id="hotItem"   >
+                        <img src="resource/hot.JPG" @mousemove="move" class="card-img" :style="{top: top, left: left}">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -97,7 +97,7 @@
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
             <item v-for="catalog in honeyVueList" :cat="catalog" :products="catalog.products" :key="catalog.id"
                   @click="orderAdd"
-                  v-on:up-down="upDownCount" v-on:slide-to="slideTo" v-on:open-description="openDescription">
+                  v-on:up-down="upDownCount" v-on:slide-to="slideTo">
             </item>
         </div>
     </section>
