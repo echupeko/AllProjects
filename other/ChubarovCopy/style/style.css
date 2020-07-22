@@ -1,6 +1,6 @@
 * {
     transition: all 0.5s ease;
-    font-family: "Open Sans";
+    font-family: "Open Sans", serif;
     font-size: 15px;
 }
 
@@ -139,9 +139,8 @@ header {
 }
 
 #hotItem {
-    background-image: url("../resource/hot.JPG");
     background-size: cover;
-    background-position: right;
+    background: url("../resource/hot.JPG") right;
 }
 
 #hotItem img {
