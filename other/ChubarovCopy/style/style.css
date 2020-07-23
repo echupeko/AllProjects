@@ -4,6 +4,10 @@
     font-size: 15px;
 }
 
+h4 {
+    font-size: 1.2rem !important;
+}
+
 body {
     min-width: 400px;
     background-image: url("../resource/bg.jpg");
@@ -139,31 +143,34 @@ header {
 }
 
 #hotItem {
-    position: relative;
-    width: 450px !important;
-    height: 450px !important;
-    overflow: hidden;
-    cursor: pointer;
-    text-align: center;
-    direction: ltr;
-    /*background-image: url("../resource/hot.JPG");*/
-    /*background-size: cover;*/
-    /*background-position: right;*/
+    /*transition: all unset;*/
+    /*position: relative;*/
+    /*width: 450px !important;*/
+    /*height: 450px !important;*/
+    /*overflow: hidden;*/
+    /*cursor: pointer;*/
+    /*text-align: center;*/
+    /*direction: ltr;*/
+    background-image: url("../resource/hot.JPG");
+    background-size: cover;
+    background-position: right;
 }
 
-#hotItem img:hover {
-    /*background-size: 500px;*/
-    width: 300%;
-}
+/*#hotItem:hover img {*/
+    /*!*background-size: 500px;*!*/
+   /*transform: scale(1.5);*/
+/*}*/
 
 #hotItem img {
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: auto;
-    vertical-align: middle;
-    position: relative;
+    visibility: hidden;
 }
+    /*top: 0px;*/
+    /*left: 0px;*/
+    /*width: 100%;*/
+    /*height: auto;*/
+    /*vertical-align: middle;*/
+    /*position: relative;*/
+/*}*/
 
 #hotBlock > .card {
     max-width: 60% !important;
@@ -175,14 +182,23 @@ header {
     position: relative;
 }
 
+
+
 #catalogBlock > .card {
     background-color: rgba(255, 255, 255, 0.5) !important;
     border-radius: 10px;
     margin: 20px !important;
+    position: relative;
+    overflow: hidden;
 }
 
 #certificate > .card {
 
+}
+
+#catalogBlock .card-img-top {
+    min-height: 200px !important;
+    /*border: 1px solid #4e4c4c;*/
 }
 
 .card-title {
@@ -208,7 +224,9 @@ header {
     display: block;
     bottom: 20px;
     right: 20px;
+    background-color: rgba(255, 255, 255, 0.64);
     background-size: cover;
+    border-radius: 50%;
     width: 25px;
     height: 25px;
     cursor: pointer;

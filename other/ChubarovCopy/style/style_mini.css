@@ -9,11 +9,11 @@
 
     #catalogBlock > .card {
         width: 100% !important;
-        margin: 0 !important;
+        margin: 20px 0 !important;
     }
 
     .card-img-top {
-        width: 70% !important;
+        width: 100% !important;
     }
 
     #basketForm {

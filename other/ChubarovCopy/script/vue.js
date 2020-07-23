@@ -54,13 +54,6 @@ let navBar = new Vue({
     }
 });
 
-Vue.directive('pin', {
-    bind: function (el, bindingT, bindingL, vnode) {
-        el.style.top = bindingT.value + 'px'
-        el.style.left = bindingL.value + 'px'
-    }
-})
-
 let hotBlock = new Vue({
     el: "#hotBlock",
     data: {
@@ -69,18 +62,22 @@ let hotBlock = new Vue({
         sale: 0,
         count: 0,
         id: 0,
-        top: 0,
-        left: 0
+        // top: 0,
+        // left: 0
     },
     methods: {
         addedQuantity() {
             navBar.addedAmount(this.sale);
-        },
-        move($event) {
-            this.top = 245 - $event.clientY + "px";
-            this.left = 752 - $event.clientX + "px";
-            console.log(this.top, this.left)
         }
+        // move($event) {
+        //     this.top = -$event.offsetY + "px";
+        //     this.left = -$event.offsetX + "px";
+        //     console.log(this.top, this.left)
+        // },
+        // out() {
+        //     this.top = 0;
+        //     this.left = 0;
+        // }
     }
 });
 
