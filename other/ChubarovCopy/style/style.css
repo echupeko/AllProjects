@@ -24,6 +24,7 @@ header {
     border-radius: 10px;
     margin: 0 10px;
     background-color: rgba(255, 255, 255, 0.64);
+    cursor: pointer;
 }
 
 #navBar a {
@@ -143,34 +144,33 @@ header {
 }
 
 #hotItem {
-    /*transition: all unset;*/
-    /*position: relative;*/
-    /*width: 450px !important;*/
-    /*height: 450px !important;*/
-    /*overflow: hidden;*/
-    /*cursor: pointer;*/
-    /*text-align: center;*/
-    /*direction: ltr;*/
-    background-image: url("../resource/hot.JPG");
-    background-size: cover;
-    background-position: right;
+    position: relative;
+    width: 450px !important;
+    height: 450px !important;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    direction: ltr;
+    /*background-image: url("../resource/hot.JPG");*/
+    /*background-size: cover;*/
+    /*background-position: right;*/
 }
 
-/*#hotItem:hover img {*/
-    /*!*background-size: 500px;*!*/
-   /*transform: scale(1.5);*/
-/*}*/
+#hotItem:hover img {
+    /*background-size: 500px;*/
+   transform: scale(1.5);
+}
 
 #hotItem img {
-    visibility: hidden;
-}
-    /*top: 0px;*/
-    /*left: 0px;*/
-    /*width: 100%;*/
-    /*height: auto;*/
-    /*vertical-align: middle;*/
-    /*position: relative;*/
+/*    visibility: hidden;*/
 /*}*/
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    position: relative;
+}
 
 #hotBlock > .card {
     max-width: 60% !important;

@@ -62,22 +62,22 @@ let hotBlock = new Vue({
         sale: 0,
         count: 0,
         id: 0,
-        // top: 0,
-        // left: 0
+         top: 0,
+         left: 0
     },
     methods: {
         addedQuantity() {
             navBar.addedAmount(this.sale);
+        },
+        move($event) {
+            this.top = -$event.offsetY + "px";
+            this.left = -$event.offsetX + "px";
+            console.log(this.top, this.left)
+        },
+        out() {
+            this.top = 0;
+            this.left = 0;
         }
-        // move($event) {
-        //     this.top = -$event.offsetY + "px";
-        //     this.left = -$event.offsetX + "px";
-        //     console.log(this.top, this.left)
-        // },
-        // out() {
-        //     this.top = 0;
-        //     this.left = 0;
-        // }
     }
 });
 
