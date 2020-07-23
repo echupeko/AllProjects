@@ -10,7 +10,7 @@ Vue.component('basket-item', {
     },
     template: `
         <div class="card d-flex flex-row justify-content-center align-items-center" style="width: 18rem;">
-           <h4 class="card-title">Мёд {{honey.name}} {{product.count}} л.</h4>
+           <h6 class="card-title">Мёд {{honey.name}} {{product.count}} л.</h6>
            <img src="resource/bochka.png" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
            <div class="card-body d-flex flex-row justify-content-center align-items-center">
                <div class="d-flex flex-row ">
