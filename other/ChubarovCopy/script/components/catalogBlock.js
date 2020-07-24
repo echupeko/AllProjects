@@ -12,7 +12,7 @@ Vue.component('item', {
         <div class="card d-flex flex-column justify-content-center align-items-center" style="width: 18rem;">
             <h4 class="card-title">Мёд {{cat.name}}</h4>
             <div class="card-head d-flex flex-column justify-content-center align-items-center w-100 pb-0">
-                <img :src="'resource/honeyImage/' + cat.name + '.jpg'" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
+                <img :src="this.$srcHoney + cat.name + '.jpg'" class="card-img-top" v-bind:alt="'Мёд' + cat.name">
                 <div :class="{'info-icon-start': !visibleDescription, 'info-icon-close': visibleDescription}"
                      class="info-icon" @click="openDescription(cat.id)"></div>
                 <p class="info-text" v-if="visibleDescription">{{cat.description}}</p>

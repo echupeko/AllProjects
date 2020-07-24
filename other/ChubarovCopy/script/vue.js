@@ -57,11 +57,13 @@ let navBar = new Vue({
 let hotBlock = new Vue({
     el: "#hotBlock",
     data: {
-        title: '',
-        oldPrice: 0,
-        sale: 0,
-        count: 0,
-        id: 0,
+        idSale: saleHoney,
+        hotHoney: null,
+        prodHoney: null,
+    },
+    created: function() {
+      this.hotHoney = catalogList[this.idSale[0]];
+      this.prodHoney = this.hotHoney.products[this.idSale[1]];
     },
     methods: {
         addedQuantity() {
@@ -74,7 +76,7 @@ let viewer = new Vue({
     el: "#viewer",
     data: {
         isActive: false,
-        src: 'resource/',
+        src: '',
         description: '',
         date: ''
     },
@@ -82,8 +84,8 @@ let viewer = new Vue({
         openViewer() {
             this.isActive = !this.isActive;
         },
-        loadViewer(item) {
-            this.src = item.src;
+        loadViewer(item, src) {
+            this.src = src;
             this.description = item.description;
             this.date = item.date;
             this.openViewer();

@@ -2,16 +2,17 @@ const btnToUp = document.getElementById('btn-to-up');
 const hotItem = document.getElementById('hotItem');
 const basketForm = document.getElementById('basketForm');
 const header = document.querySelector('header');
+const saleHoney = [2,1];  // id мёда, id фасовки
+
+Vue.prototype.$srcCertificate = 'resource/certificates/';
+Vue.prototype.$srcHoney = 'resource/honey-types/';
+Vue.prototype.$srcCarousel = 'resource/carousel/';
+Vue.prototype.$srcWorkMoments = 'resource/working-moments/';
+
 let visibleMenu = 1;
 let quantityGlobal = 0;
 let amountGlobal = 0;
 let clientHeight = window.innerHeight;
-// let orderItem = {
-//     id: 0,
-//     honey: 0,
-//     count: 0,
-//     inBasket: false
-// };
 let basketOrder = [];
 
 window.onload = function () {
@@ -31,15 +32,12 @@ window.onload = function () {
     //
     // req.send();
 
-    honeyList.forEach(item => {
-        if (item.sale) {
-            hotBlock.title = item.name;
-            hotBlock.oldPrice = item.price;
-            hotBlock.sale = item.salePrice;
-            hotBlock.count = item.count;
-            hotBlock.honey = item.id;
-        }
-    })
+    // let hotHoney = catalogList[saleHoney[0]].products[saleHoney[1]];
+    //         hotBlock.title = catalogList[saleHoney[0]].name;
+    //         hotBlock.oldPrice = hotHoney.price;
+    //         hotBlock.sale = hotHoney.salePrice;
+    //         hotBlock.count = hotHoney.count;
+    //         hotBlock.honey = item.id;
 
     document.getElementById('carouselExampleCaptions').style.marginTop = header.clientHeight + 'px';
     basketForm.style.top = header.clientHeight + 'px';

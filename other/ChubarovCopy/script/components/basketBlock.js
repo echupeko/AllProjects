@@ -27,7 +27,6 @@ Vue.component('basket-item', {
                </div>
            </div>
         </div>`,
-    //@click="removeee(cat.honey, cat.prod)">
     created: function () {
         this.honey = this.catt[this.cat.honey];
         this.product = this.honey.products[this.cat.prod];

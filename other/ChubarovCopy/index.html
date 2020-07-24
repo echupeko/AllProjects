@@ -10,12 +10,20 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
           rel="stylesheet">
-
 </head>
 <body>
+
+<!--Библиотеки которые нужно запустить вначале-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="script/data.js"></script>
+
+<!--Данные для отображения-->
+<script src="script/data/carouselList.js"></script>
+<script src="script/data/catalogList.js"></script>
+<script src="script/data/certificateList.js"></script>
+<script src="script/data/navigationList.js"></script>
+
+<!--Навигационная панель-->
 <header class="d-flex justify-content-center align-items-center w-100 fixed-top">
     <nav id="navBar" class="w-100 navbar navbar-expand-lg navbar-light justify-content-sm-between">
         <button id="navbarToggler" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -42,7 +50,10 @@
         </div>
     </nav>
 </header>
+
+<!--Головной блок-->
 <main id="main">
+    <!--Карусель-->
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -63,6 +74,7 @@
         </a>
     </div>
 
+    <!--Хит продаж-->
     <section id="bestseller" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
@@ -71,17 +83,18 @@
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div id="hotItem" class="col-md-4">
+                        <!--@mousemove="move" @mouseout="out"-->
                         <img src="resource/hot.JPG" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Мёд {{title}} {{count}}л.</h5>
+                            <h5 class="card-title">Мёд {{hotHoney.name}} {{prodHoney.count}}л.</h5>
                             <div>
                                 <div class="crossOut"><span></span>
-                                    <h4>{{oldPrice}} руб.</h4></div>
-                                <h3>{{sale}} руб.</h3>
+                                    <h4>{{prodHoney.price}} руб.</h4></div>
+                                <h3>{{prodHoney.salePrice}} руб.</h3>
                             </div>
-                            <a class="btn btn-primary" @click="orderAdd(id)">Добавить в корзину</a>
+                            <a class="btn btn-primary" @click="catalogBlock.orderAdd(idSale[0],idSale[1],1)">Добавить в корзину</a>
                             <p class="card-text">
                                 <small class="text-muted">прочитать об этом виде мёда</small>
                             </p>
@@ -92,6 +105,7 @@
         </div>
     </section>
 
+    <!--Каталог мёда-->
     <section id="catalog" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Каталог</h2>
         <div id="catalogBlock" class="d-flex flex-row w-100 justify-content-center flex-wrap">
@@ -102,6 +116,7 @@
         </div>
     </section>
 
+    <!--Сертификаты-->
     <section id="certificate" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Сертификаты</h2>
         <div class="d-flex flex-row w-100 justify-content-center flex-wrap">
@@ -110,10 +125,13 @@
         </div>
     </section>
 
+    <!--О пасеке-->
     <section id="about" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Прочее</h2>
     </section>
 </main>
+
+<!--Форма для просмотра изображений-->
 <div id="viewer" class="d-flex justify-content-center align-items-center w-100 h-100" v-if="isActive"
      @click="openViewer">
     <div class="card mb-3" style="width: 50rem;">
@@ -133,6 +151,8 @@
         </div>
     </div>
 </div>
+
+<!--Корзина-->
 <div id="basketForm" :style="styleObject">
     <span class="closeBtn" @click="openBasket"></span>
     <h4>Ваша корзина пока пуста</h4>
@@ -140,6 +160,8 @@
                  v-on:up-down="upDownCount" v-on:remove="removeOrder"></basket-item>
     <p>Сумма заказа: {{amount}}</p>
 </div>
+
+<!--Контакты-->
 <footer id="contact">
     <span id="btn-to-up" onclick=" window.scrollTo({
                 top: 0,
@@ -147,22 +169,20 @@
             });"></span>
 </footer>
 
-<!--<form id="form" method="POST">-->
-<!--<input type="text" name="name" required="required"/>-->
-<!--<input type="text" name="phone" required="required"/>-->
-<!--<input type="submit" value="Заказать звонок"/>-->
-<!--</form>-->
-<!--<div id="qa"></div>-->
-
+<!--Простые скрипты-->
 <script src="script/script.js"></script>
-<script src="script/sendPost.js"></script>
+<script src="script/post/sendPost.js"></script>
 
+<!--Vue скрипты-->
 <script src="script/vue.js"></script>
-<script src="script/carouselBlock.js"></script>
-<script src="script/catalogBlock.js"></script>
-<script src="script/basketBlock.js"></script>
-<script src="script/certificateBlock.js"></script>
 
+<!--Компоненты и их методы-->
+<script src="script/components/carouselBlock.js"></script>
+<script src="script/components/catalogBlock.js"></script>
+<script src="script/components/basketBlock.js"></script>
+<script src="script/components/certificateBlock.js"></script>
+
+<!--Библиотеки-->
 <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
         crossorigin="anonymous"></script>
@@ -172,5 +192,12 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+
+<!--<form id="form" method="POST">-->
+<!--<input type="text" name="name" required="required"/>-->
+<!--<input type="text" name="phone" required="required"/>-->
+<!--<input type="submit" value="Заказать звонок"/>-->
+<!--</form>-->
+<!--<div id="qa"></div>-->
 </body>
 </html>
