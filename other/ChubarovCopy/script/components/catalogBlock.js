@@ -27,7 +27,7 @@ Vue.component('item', {
                 </div>
                 <div class="w-100 p-3 d-flex flex-row justify-content-around">
                     <h5 class="card-text">{{product.price}} Р.</h5>
-                    <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1)">В корзину</a>
+                    <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1, false)">В корзину</a>
                 </div>
             </div>
         </div>`,
@@ -65,12 +65,12 @@ let catalogBlock = new Vue({
         basketCat: basketOrder
     },
     methods: {
-        orderAdd: function (id, idProd, c) {
+        orderAdd: function (id, idProd, c, sale) {
             let producte = this.honeyVueList[id].products[idProd];
             for (let i = 0; i < this.basketCat.length; i++) {
                 if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd) {
                     producte.quantity += c;
-                    navBar.addedAmount(producte.price * c);
+                    navBar.addedAmount((sale? producte.salePrice : producte.price) * c);
                     return;
                 }
             }
@@ -86,7 +86,7 @@ let catalogBlock = new Vue({
         upDownCount: function (id, idProd, c) {
             let producte = this.honeyVueList[id].products[idProd];
             producte.quantity += c;
-            navBar.addedAmount(producte.price * c);
+            navBar.addedAmount((sale? producte.salePrice : producte.price) * c);
         },
         slideTo: function (id, count) {
             let cntVisibleProd = 0;

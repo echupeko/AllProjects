@@ -144,35 +144,21 @@ header {
 }
 
 #hotItem {
-    /*transition: all unset;*/
-    /*position: relative;*/
-    /*width: 450px !important;*/
-    /*height: 450px !important;*/
-    /*overflow: hidden;*/
-    /*cursor: pointer;*/
-    /*text-align: center;*/
-    /*direction: ltr;*/
-    background-image: url("../resource/hot.JPG");
+
+    position: relative;
+    overflow: hidden;
     background-size: cover;
     background-position: right;
 }
 
-/*#hotItem:hover img {*/
-    /*!*background-size: 500px;*!*/
-   /*transform: scale(1.5);*/
-/*}*/
-
 #hotItem img {
-    visibility: hidden;
+    transform: scale(2);
+    position: relative;
+    top: 50px;
 }
-    /*top: 0px;*/
-    /*left: 0px;*/
-    /*width: 100%;*/
-    /*height: auto;*/
-    /*vertical-align: middle;*/
-    /*position: relative;*/
-/*}*/
-
+#hotItem:hover img {
+    transform: scale(2.2);
+}
 #hotBlock > .card {
     max-width: 60% !important;
     margin: 0 auto !important;
@@ -203,7 +189,7 @@ header {
 
 #catalogBlock .card-img-top {
     height: 100%;
-    border-radius: 30px ;
+    /*border-radius: 30px ;*/
 }
 
 .card-title {

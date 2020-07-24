@@ -66,8 +66,8 @@ let hotBlock = new Vue({
       this.prodHoney = this.hotHoney.products[this.idSale[1]];
     },
     methods: {
-        addedQuantity() {
-            navBar.addedAmount(this.sale);
+        orderAdd: function(id, idProd, c) {
+            catalogBlock.orderAdd(id, idProd, c, true);
         }
     }
 });

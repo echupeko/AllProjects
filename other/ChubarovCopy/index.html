@@ -78,13 +78,11 @@
     <section id="bestseller" class="d-flex flex-column justify-content-center align-items-center">
         <h2 class="title-block">Хит продаж</h2>
         <div class="bckg" id="bestsellerHoney"></div>
-        <!--        <img src="resource/hotHoney2.png">-->
         <div id="hotBlock">
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div id="hotItem" class="col-md-4">
-                        <!--@mousemove="move" @mouseout="out"-->
-                        <img src="resource/hot.JPG" class="card-img">
+                        <img :src="this.$srcHoney + hotHoney.name + '.jpg'" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -94,7 +92,7 @@
                                     <h4>{{prodHoney.price}} руб.</h4></div>
                                 <h3>{{prodHoney.salePrice}} руб.</h3>
                             </div>
-                            <a class="btn btn-primary" @click="catalogBlock.orderAdd(idSale[0],idSale[1],1)">Добавить в корзину</a>
+                            <a class="btn btn-primary" @click="orderAdd(idSale[0],idSale[1],1)">Добавить в корзину</a>
                             <p class="card-text">
                                 <small class="text-muted">прочитать об этом виде мёда</small>
                             </p>
