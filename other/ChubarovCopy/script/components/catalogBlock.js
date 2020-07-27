@@ -67,19 +67,22 @@ let catalogBlock = new Vue({
     methods: {
         orderAdd: function (id, idProd, c, sale) {
             let producte = this.honeyVueList[id].products[idProd];
+            price = (sale? producte.salePrice : producte.price);
             for (let i = 0; i < this.basketCat.length; i++) {
-                if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd) {
+                if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd &&
+                    this.basketCat[i].honey !== this.$saleHoney[0] && this.basketCat[i].prod !== this.$saleHoney[1]) {
                     producte.quantity += c;
-                    navBar.addedAmount((sale? producte.salePrice : producte.price) * c);
+                    navBar.addedAmount(price * c);
                     return;
                 }
             }
             producte.quantity += c;
-            navBar.addedAmount(producte.price * c);
+            navBar.addedAmount(price * c);
             orderItem = {
                 id: quantityGlobal - 1,
                 honey: id,
-                prod: idProd
+                prod: idProd,
+                sale: sale
             }
             this.basketCat.push(orderItem);
         },

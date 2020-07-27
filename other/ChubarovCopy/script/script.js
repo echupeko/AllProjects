@@ -2,8 +2,8 @@ const btnToUp = document.getElementById('btn-to-up');
 const hotItem = document.getElementById('hotItem');
 const basketForm = document.getElementById('basketForm');
 const header = document.querySelector('header');
-const saleHoney = [2,1];  // id мёда, id фасовки
-
+const saleHoney= [2,1];
+//Vue.prototype.$saleHoney = [2,1];  // id мёда, id фасовки
 Vue.prototype.$srcCertificate = 'resource/certificates/';
 Vue.prototype.$srcHoney = 'resource/honey-types/';
 Vue.prototype.$srcCarousel = 'resource/carousel/';
@@ -81,4 +81,20 @@ let addedOrder = (id) => {
 
 let updateTopHeader = () => {
     basketForm.style.top = header.clientHeight + 'px';
+}
+
+function initMap() {
+    var coordinates = {lat: 51.692655, lng: 83.358092},
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: coordinates,
+            zoom: 10,
+            disableDefaultUI: true,
+            scrollwheel: true
+        }),
+
+        marker = new google.maps.Marker({
+            position: coordinates,
+            map: map,
+            animation: google.maps.Animation.BOUNCE
+        });
 }

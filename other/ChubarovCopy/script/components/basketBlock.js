@@ -18,7 +18,7 @@ Vue.component('basket-item', {
                    <input v-bind:id="'honey' + cat.id" class="input" step="1"  min="1" max="20" type="number" v-model="product.quantity">
                    <input class="input" type="submit" value="+"  @click="uppp(cat.honey, cat.prod, 1)">
                </div>
-               <p class="card-text">{{product.price * product.quantity}} руб.</p>
+               <p class="card-text">{{(cat.sale? product.salePrice : product.price) * product.quantity}} руб.</p>
                <div @click="removeOrder(cat.honey, cat.prod)"> 
                    <svg style="margin-left: 20px" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
