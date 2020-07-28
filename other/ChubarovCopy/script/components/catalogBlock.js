@@ -2,9 +2,11 @@ Vue.component('item', {
     props: ['cat', 'products'],
     data: function () {
         return {
+            idSale: saleHoney,
             visibleDescription: false,
             cntVisibleProd: 0,
-            product: null
+            product: null,
+            sale: false
         }
     },
     // language=HTML
@@ -26,8 +28,8 @@ Vue.component('item', {
                     </div>
                 </div>
                 <div class="w-100 p-3 d-flex flex-row justify-content-around">
-                    <h5 class="card-text">{{product.price}} Р.</h5>
-                    <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1, false)">В корзину</a>
+                    <h5 class="card-text">{{updatePrice(cat,product)}} Р.</h5>
+                    <a class="btn btn-warning" @click="$emit('click', cat.id, product.id, 1, sale)">В корзину</a>
                 </div>
             </div>
         </div>`,
@@ -48,6 +50,18 @@ Vue.component('item', {
         }
     },
     methods: {
+        updatePrice: function (honey, product) {
+            let price = 0;
+            if(this.idSale[0] === honey.id && this.idSale[1] === product.id) {
+                price = product.salePrice;
+                this.sale = true;
+            }
+            else {
+                this.sale = false;
+                price = product.price;
+            }
+            return price;
+        },
         sliders: function (id, count) {
             this.$emit('slide-to', id, count)
         },
@@ -60,6 +74,7 @@ Vue.component('item', {
 let catalogBlock = new Vue({
     el: "#catalogBlock",
     data: {
+        idSale: saleHoney,
         title: 'catalogItem',
         honeyVueList: catalogList,
         basketCat: basketOrder
@@ -67,12 +82,19 @@ let catalogBlock = new Vue({
     methods: {
         orderAdd: function (id, idProd, c, sale) {
             let producte = this.honeyVueList[id].products[idProd];
-            price = (sale? producte.salePrice : producte.price);
+            price = (sale ? producte.salePrice : producte.price);
             for (let i = 0; i < this.basketCat.length; i++) {
-                if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd &&
-                    this.basketCat[i].honey !== this.$saleHoney[0] && this.basketCat[i].prod !== this.$saleHoney[1]) {
-                    producte.quantity += c;
-                    navBar.addedAmount(price * c);
+                if (this.basketCat[i].honey !== this.idSale[0] && this.basketCat[i].prod !== this.idSale[1] || sale !== this.basketCat[i].sale) {
+                    if (this.basketCat[i].honey === id && this.basketCat[i].prod === idProd && this.basketCat[i].sale === sale) {
+                        producte.quantity += c;
+                        navBar.addedAmount(price * c);
+                        return;
+                    }
+                }
+                else {
+                    $('#element').toast({autohide: false});
+                    $('#element').toast('show');
+                    // alert("Данная акция относится на одну единицу товара");
                     return;
                 }
             }
@@ -89,7 +111,7 @@ let catalogBlock = new Vue({
         upDownCount: function (id, idProd, c) {
             let producte = this.honeyVueList[id].products[idProd];
             producte.quantity += c;
-            navBar.addedAmount((sale? producte.salePrice : producte.price) * c);
+            navBar.addedAmount((sale ? producte.salePrice : producte.price) * c);
         },
         slideTo: function (id, count) {
             let cntVisibleProd = 0;

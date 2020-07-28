@@ -144,11 +144,11 @@ header {
 }
 
 #hotItem {
-
     position: relative;
     overflow: hidden;
     background-size: cover;
     background-position: right;
+    border-radius: 9px;
 }
 
 #hotItem img {
@@ -162,7 +162,9 @@ header {
 #hotBlock > .card {
     max-width: 60% !important;
     margin: 0 auto !important;
-    background-color: transparent !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border: 3px solid #4e4c4c;
+    border-radius: 11px;
 }
 
 .card-head {
@@ -183,13 +185,13 @@ header {
 }
 
 #catalogBlock .card-head{
+    border-radius: 12.5px ;
     overflow: hidden;
     min-height: 200px !important;
 }
 
 #catalogBlock .card-img-top {
     height: 100%;
-    /*border-radius: 30px ;*/
 }
 
 .card-title {
@@ -199,6 +201,7 @@ header {
 
 .card-body {
     width: 100%;
+    border-radius: 9px;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -212,8 +215,8 @@ header {
 .info-icon {
     position: absolute;
     display: block;
-    bottom: 20px;
-    right: 20px;
+    bottom: 5px;
+    right: 5px;
     background-color: rgba(255, 255, 255, 0.64);
     background-size: cover;
     border-radius: 50%;

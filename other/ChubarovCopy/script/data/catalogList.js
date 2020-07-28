@@ -172,9 +172,7 @@ const catalogList = [
                 quantity: 0
             },
         ],
-        order: 1,
         unit: 'л.',
-        min: 1,
         max: 14, //остаток
         buy: false, //флаг для заказа
         sale: false //участвует в распродаже
